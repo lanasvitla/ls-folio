@@ -1,0 +1,117 @@
+{
+  "defaults": {
+    "email": "lanlongline@gmail.com",
+    "telegram": "https://t.me/LLanaSvitla",
+    "linkedin": "https://www.linkedin.com/in/lana-kornilova-88a773103/",
+    "behance": "https://www.behance.net/lanasvitla",
+    "year": "2026",
+    "navWorks": "",
+    "navProcess": "",
+    "navAbout": ""
+  },
+  "pages": [
+    {
+      "path": "index.html",
+      "components": [
+        "site-header",
+        "site-footer"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "#work",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "navWorks": "is-current"
+    },
+    {
+      "path": "about.html",
+      "components": [
+        "site-header",
+        "site-footer"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./index.html#work",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "navAbout": "is-current"
+    },
+    {
+      "path": "process.html",
+      "components": [
+        "site-header",
+        "site-footer"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./index.html#work",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "navProcess": "is-current"
+    },
+    {
+      "path": "contacts.html",
+      "components": [
+        "site-header",
+        "social-links"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./index.html#work",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html"
+    },
+    {
+      "path": "work/mark-n-post/index.html",
+      "components": [
+        "site-header",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../index.html#work",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current"
+    },
+    {
+      "path": "work/eqlio/index.html",
+      "components": [
+        "site-header",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../index.html#work",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current"
+    },
+    {
+      "path": "work/togas/index.html",
+      "components": [
+        "site-header",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../index.html#work",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current"
+    },
+    {
+      "path": "work/visual-brand-identity/index.html",
+      "components": [
+        "site-header",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../index.html#work",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current"
+    }
+  ]
+}

@@ -1,0 +1,1216 @@
+/* ============================================================
+   Lana Svitla — Portfolio v2 design system
+   Style family: Manrope, large display type, generous whitespace,
+   rounded full-bleed imagery, lime accent, floating pill nav.
+   ============================================================ */
+
+:root{
+  --ink: #0a0a0a;
+  --muted: #666666;
+  --line: #e6e6e6;
+  --surface: #ffffff;
+  --surface-soft: #f4f4f2;
+  --footer: #000000;
+  --footer-muted: #9a9a9a;
+  --accent: #ddff8d;
+  --accent-ink: #0a0a0a;
+  --menu-ink: #434343;
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-pill: 999px;
+
+  --grid-max: 1320px;
+  --header-max: 1080px;
+  --page-x: clamp(20px, 4vw, 64px);
+
+  --font-display: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+
+  --fs-hero: clamp(40px, 6vw, 76px);
+  --fs-h1: clamp(32px, 4.4vw, 56px);
+  --fs-h2: clamp(24px, 3vw, 34px);
+  --fs-h3: 20px;
+  --fs-footer-title: clamp(36px, 5vw, 64px);
+  --fs-about-lead: clamp(26px, 3.2vw, 40px);
+  /* Manrope: cap height sits lineHeight/2 - 0.3475 x fontSize below the
+     top of the line box. Measured in the browser from the font metrics. */
+  --cap-k: 0.3475;
+  --tone-soft: #969696;   /* серый второго плана: копирайт, Copy, вторая часть фразы */
+  --fs-lead: clamp(17px, 1.6vw, 20px);
+  --fs-body: 16px;
+  --fs-small: 13px;
+  --fs-nav: 14px;
+
+  --ease: cubic-bezier(.16,.84,.44,1);
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: auto; }
+body{
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img{ max-width: 100%; display: block; }
+a{ color: inherit; text-decoration: none; }
+ul{ list-style: none; margin: 0; padding: 0; }
+h1,h2,h3,p{ margin: 0; }
+
+.wrap{
+  max-width: var(--grid-max);
+  margin: 0 auto;
+  padding: 0 var(--page-x);
+}
+
+/* ---------- reveal-on-scroll ----------
+   Site-wide entrance: blocks drift in from the right, each one a beat after the
+   previous. `--i` is the element's index within the batch appearing together
+   (set in main.js), so a single block scrolled into view starts immediately. */
+.reveal{
+  opacity: 0;
+  transform: translate3d(48px, 0, 0);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+  transition-delay: calc(var(--i, 0) * 110ms);
+}
+.reveal.is-visible{
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal{ transform: none; transition-delay: 0s; }
+}
+
+/* ---------- header ---------- */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding: 20px var(--page-x) 0;
+  background: transparent;
+}
+/* The pill carries its faint tint at all times, exactly as in the reference —
+   measured there at scrollY 0: rgba(224,224,224,.15) + blur(6px) + inset glow. */
+.site-header__inner{
+  width: 100%;
+  max-width: calc(var(--header-max) + 22px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(224,224,224,.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: rgba(255,255,255,.4) 0 -2px 11px 0 inset;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 12px 12px 10px;
+}
+.site-header__logo{
+  display: inline-flex;
+  align-items: center;
+  height: 1.1em;
+  margin-left: 20px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  color: #9a9a9a;
+}
+.site-header__logo .brand__mark{
+  width: 20px;
+  height: 20px;
+  display: block;
+  color: inherit;
+}
+.site-header__logo .brand__short{
+  max-width: 40px;
+  opacity: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width .45s cubic-bezier(.16,1,.3,1), opacity .3s cubic-bezier(.16,1,.3,1);
+}
+.site-header__logo .brand__full{
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: rgba(10,10,10,.5);
+  transition: max-width .45s cubic-bezier(.16,1,.3,1) .04s, opacity .35s cubic-bezier(.16,1,.3,1) .06s;
+}
+.site-header__logo:hover .brand__short{
+  max-width: 0;
+  opacity: 0;
+}
+.site-header__logo:hover .brand__full{
+  max-width: 280px;
+  opacity: 1;
+}
+.site-header__nav{
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.site-header__nav-links{
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.site-header__nav a:not(.site-header__cta){
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(10,10,10,.5);
+  transition: color .35s cubic-bezier(.16,1,.3,1), transform .35s cubic-bezier(.16,1,.3,1);
+}
+.site-header__nav a:not(.site-header__cta):hover{
+  color: var(--ink);
+  transform: translateX(3px);
+}
+/* current page stays black in the menu */
+.site-header__nav a.is-current{ color: var(--ink); }
+.site-header__cta{
+  background: var(--accent);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 0 0 rgba(221,255,141,0);
+  transition:
+    background .3s cubic-bezier(.16,1,.3,1),
+    color .3s cubic-bezier(.16,1,.3,1),
+    box-shadow .3s cubic-bezier(.16,1,.3,1);
+}
+.site-header__cta:hover{
+  background: var(--ink);
+  color: var(--accent);
+  box-shadow: 0 12px 22px rgba(10,10,10,.28);
+}
+
+.site-header__menu-btn{
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 41px;
+  height: 41px;
+  flex: 0 0 auto;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+.site-header__menu-btn:focus-visible{
+  outline: 2px solid rgba(10,10,10,.35);
+  outline-offset: 2px;
+}
+.menu-btn__bar{
+  width: 19px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ink);
+  transition: transform .3s cubic-bezier(.16,1,.3,1), opacity .3s cubic-bezier(.16,1,.3,1);
+}
+.site-header.is-open .menu-btn__bar:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.site-header.is-open .menu-btn__bar:nth-child(2){ opacity: 0; }
+.site-header.is-open .menu-btn__bar:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 720px){
+  /* Mobile header: equal 14px inset on top and both sides (author's choice —
+     the header sits slightly wider than the content grid). */
+  .site-header{ padding: 14px 14px 0; }
+  .site-header__inner{ flex-wrap: wrap; }
+  .site-header__menu-btn{ display: flex; }
+  .site-header__nav{ display: none; }
+  .site-header.is-open .site-header__logo{ margin-left: 0; }
+  .site-header.is-open .site-header__nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    width: 100%;
+    margin-top: 20px;
+    padding-bottom: 4px;
+  }
+  .site-header.is-open .site-header__nav-links{
+    display: contents;
+  }
+  .site-header.is-open .site-header__nav-links a{
+    font-size: 15px;
+    white-space: nowrap;
+  }
+  .site-header.is-open .site-header__nav a:not(.site-header__cta){ display: block; }
+  .site-header.is-open .site-header__cta{
+    font-size: 15px;
+    padding: 6px 13px;
+    white-space: nowrap;
+  }
+  .site-header.is-open .site-header__inner{
+    background: rgba(224,224,224,.15);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: rgba(255,255,255,.4) 0 -2px 11px 0 inset;
+    padding: 12px;
+    border-radius: 28px;
+  }
+}
+
+/* ---------- hero ---------- */
+.hero{
+  padding: 64px 0 40px;
+}
+.hero__eyebrow{
+  font-size: var(--fs-nav);
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.hero__title{
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
+}
+.hero__title b, .hero__title strong{ font-weight: 700; }
+.hero__lead{
+  margin-top: 26px;
+  max-width: 46ch;
+  font-size: var(--fs-lead);
+  color: var(--muted);
+  line-height: 1.5;
+}
+.hero__media{
+  margin-top: 40px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface-soft);
+  aspect-ratio: 16/8.2;
+}
+.hero__media img{ width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- services ---------- */
+.services{
+  padding: 96px 0;
+  border-top: 1px solid var(--line);
+}
+.section-head{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+.section-head h2{
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  max-width: 14ch;
+}
+.section-head p{
+  color: var(--muted);
+  max-width: 40ch;
+  font-size: var(--fs-lead);
+}
+.services__grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.services__col{
+  background: var(--surface);
+  padding: 32px 28px;
+}
+.services__col h3{
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.services__col ul li{
+  color: var(--muted);
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+}
+.services__col ul li:first-child{ border-top: none; }
+
+@media (max-width: 860px){
+  .services__grid{ grid-template-columns: 1fr; }
+}
+
+/* ---------- work grid ---------- */
+.work{
+  padding: 96px 0;
+  border-top: 1px solid var(--line);
+}
+.work__grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+.work-card{
+  display: block;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+.work-card__media{
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+.work-card__media img{
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .6s var(--ease);
+}
+.work-card:hover .work-card__media img{ transform: scale(1.045); }
+.work-card__body{
+  padding: 26px 28px 30px;
+}
+.work-card__chips{
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;
+}
+.chip{
+  font-size: 12px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 5px 12px;
+}
+.work-card__title{
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.work-card__desc{
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 46ch;
+}
+.work-card__meta{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 22px;
+}
+.work-card__metric{
+  font-size: 13px;
+  color: var(--muted);
+}
+.work-card__metric b{ color: var(--ink); font-size: 15px; }
+.work-card__cta{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.work-card__cta.is-disabled{ color: var(--muted); font-weight: 500; }
+.work-card__cta img{ width: 14px; height: 14px; }
+
+.work-card--soon{ opacity: .82; }
+
+@media (max-width: 860px){
+  .work__grid{ grid-template-columns: 1fr; }
+}
+
+/* ---------- case page ---------- */
+.case-hero{ padding: 48px 0 0; }
+.case-hero__title{
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.case-hero__subtitle{
+  margin-top: 12px;
+  font-size: var(--fs-lead);
+  color: var(--muted);
+}
+.case-meta{
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.case-meta dt{
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.case-meta dd{
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+.case-hero__media{
+  margin-top: 40px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+.case-hero__media img{ width: 100%; display: block; }
+
+.case-overview{
+  padding: 80px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  border-top: 1px solid var(--line);
+}
+.case-overview h3{
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.case-overview p{
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+}
+
+.case-gallery{
+  padding-bottom: 80px;
+  display: grid;
+  gap: 24px;
+}
+.case-gallery img{
+  width: 100%;
+  border-radius: var(--radius-lg);
+}
+.case-gallery--two{ grid-template-columns: 1fr 1fr; }
+.case-gallery--three{ grid-template-columns: 1fr 1fr 1fr; }
+
+.case-link-row{ padding-bottom: 80px; }
+.case-gallery--tight-bottom{ padding-bottom: 80px; }
+
+.case-other{
+  padding: 80px 0 96px;
+  border-top: 1px solid var(--line);
+}
+.case-other--no-border{ border-top: none; }
+
+/* ---------- about page ----------
+   Reference /about: narrow label column on the left (16px/500), content on the
+   right (40px/500, line-height 56). Rows separated by a hairline. */
+.about-page{
+  --page-x: clamp(20px, 6.25vw, 80px);
+  padding-bottom: 96px;
+}
+/* first row has no hairline above it */
+.about-row--first{ border-top: none; padding-top: 96px; }
+
+/* portrait set inline in the headline */
+.inline-portrait{
+  display: inline-block;
+  vertical-align: middle;
+  width: 1.15em;
+  height: 1.15em;
+  border-radius: 999px;
+  object-fit: cover;
+  object-position: 50% 32%;
+  transform: translateY(-0.08em);
+}
+
+.about-intro__title{
+  font-family: var(--font-display);
+  font-size: var(--fs-about-lead);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  max-width: 900px;
+  color: var(--tone-soft);
+  text-wrap: pretty;
+}
+/* Reference trick: same size and weight, only the colour changes — the leading
+   clause stays black, the rest goes grey. */
+.about-intro__title b,
+.about-lead b{
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.about-row{
+  display: grid;
+  grid-template-columns: minmax(0, 230px) 1fr;
+  gap: 40px;
+  padding: 56px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+.about-row__label{
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink);
+}
+/* Optical alignment of the row label with the first line of its body.
+   `align-items: start` lines up the *boxes*, but the ink inside a box starts
+   lower the larger the type: half-leading and the ascender gap both scale with
+   font-size. Next to a 40px lead line the 16px label therefore floats ~9px too
+   high. For Manrope the distance from box top to cap height is
+   lineHeight/2 - 0.3475 x fontSize (measured in the browser, not guessed), so
+   the label is pushed down by the difference between the two. Both terms are
+   expressed in tokens: change the lead size and the shift follows by itself.
+   Only rows whose body opens with a lead line need it — everywhere else the
+   difference is under 1px. */
+.about-row--lead .about-row__label{
+  margin-top: calc(0.7 * var(--fs-about-lead) - var(--cap-k) * var(--fs-about-lead) - 5.64px);
+}
+/* When the browser can trim the leading itself, the measured constant is not
+   needed: both boxes start at cap height and plain `start` alignment is exact. */
+@supports (text-box-trim: trim-start){
+  .about-row--lead .about-row__label{ margin-top: 0; }
+  /* trim both sides of the pair, and only inside a lead row: trimming the label
+     alone would lift it off every other row, where the two already agree */
+  .about-row--lead .about-row__label,
+  .about-row--lead .about-lead,
+  .about-row--lead .about-intro__title{
+    text-box-trim: trim-start;
+    text-box-edge: cap alphabetic;
+  }
+}
+.about-lead{
+  font-family: var(--font-display);
+  font-size: var(--fs-about-lead);
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: 780px;
+  color: var(--tone-soft);
+  text-wrap: pretty;
+}
+.about-note + .about-note{ margin-top: 12px; }
+.about-note{
+  margin-top: 24px;
+  max-width: 640px;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--tone-soft);
+  text-wrap: pretty;
+}
+
+/* experience */
+.about-list{ margin-top: 40px; display: flex; flex-direction: column; }
+/* first block in a row starts flush with its label */
+.about-row__body > .about-list:first-child{ margin-top: 0; }
+.about-list li{
+  display: grid;
+  grid-template-columns: minmax(0, 130px) 1fr;
+  gap: 24px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  font-size: 18px;
+  line-height: 1.4;
+}
+.about-list li:first-child{ border-top: none; padding-top: 0; }
+.about-list--courses{ margin-top: 40px; }
+/* A row hidden with hidden="until-found" keeps its box: the browser skips the
+   contents, not the padding and the hairline, so it would leave an empty
+   striped band behind. Zeroing both collapses it to nothing while the row stays
+   reachable by find-in-page. */
+.about-list li[data-extra][hidden]{
+  padding: 0;
+  border-top: 0;
+}
+
+/* «Показать все» under a shortened list. The hidden rows carry
+   hidden="until-found", so find-in-page still reaches them and the browser
+   opens the list by itself; browsers without that support treat the attribute
+   as a plain `hidden` and the button remains the way in. */
+.list-more{
+  margin-top: 20px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--tone-soft);
+  cursor: pointer;
+  transition: color .3s var(--ease);
+}
+.list-more:hover{ color: var(--ink); }
+/* a shortened list ends on a row, so the button needs the breathing room that
+   the list's own bottom padding would otherwise provide */
+.about-list + .list-more{ margin-top: 8px; }
+
+.about-list__when{ color: var(--tone-soft); }
+.about-list__what{ color: var(--tone-soft); }
+.about-list__what b{ font-weight: 500; color: var(--ink); }
+
+/* expertise: two tracks side by side, and below them — separated by a rule —
+   what both tracks share. The split is what the reader sees first; the shared
+   band is the point, so it spans the full width instead of hiding in a column. */
+.expertise{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  max-width: 780px;
+}
+.expertise__name{
+  margin-bottom: 12px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.expertise__list{
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--tone-soft);
+  text-wrap: pretty;
+}
+.expertise__shared{
+  grid-column: 1 / -1;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.about-tags__line{ max-width: 780px; font-size: 18px; line-height: 1.55; color: var(--tone-soft); }
+
+/* numbers */
+.about-facts{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+.about-facts li{ display: grid; gap: 6px; }
+.about-facts b{
+  font-family: var(--font-display);
+  font-size: clamp(30px, 2.8vw, 38px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.about-facts span{ font-size: 16px; line-height: 1.5; color: var(--tone-soft); }
+/* the tag line may wrap between tags, never inside one */
+.about-facts i{ font-style: normal; color: var(--muted); }
+.about-facts i > span{ white-space: nowrap; }
+
+.about-notes{ margin-top: 32px; display: grid; gap: 20px; max-width: 780px; }
+.about-notes p{ font-size: 18px; line-height: 1.55; color: var(--tone-soft); }
+
+/* fact sheet: skills / tools / location */
+.about-spec{ margin: 0; display: grid; gap: 20px; }
+.about-spec > div{
+  display: grid;
+  grid-template-columns: minmax(0, 150px) 1fr;
+  gap: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.about-spec > div:last-child{ border-bottom: none; padding-bottom: 0; }
+.about-spec dt{ font-size: 18px; line-height: 1.4; color: var(--muted); }
+.about-spec dd{ margin: 0; font-size: 18px; line-height: 1.5; }
+
+/* process */
+/* deliverable line under a process step: label in grey, content in the note tone */
+.process-out{
+  margin-top: 14px;
+  max-width: 640px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--tone-soft);
+}
+.process-out span{
+  margin-right: 8px;
+  color: var(--muted);
+}
+
+/* short product flow: steps in a row, joined by arrows. On a narrow screen the
+   row wraps and the arrows wrap with it, so the chain never runs off the edge. */
+.flow{
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 14px;
+  max-width: 780px;
+}
+.flow__step{ display: grid; gap: 2px; }
+.flow__name{
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.flow__sub{ font-size: 14px; line-height: 1.4; color: var(--tone-soft); white-space: nowrap; }
+.flow__link{ display: flex; align-items: center; color: var(--line-strong, #cfcfcf); }
+.flow__arrow{ width: 16px; height: 16px; }
+
+.about-steps{ margin-top: 40px; display: grid; gap: 20px; counter-reset: none; }
+.about-steps li{
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.about-steps b{ font-weight: 500; color: var(--muted); }
+.about-steps i{ font-style: normal; color: var(--ink); }
+
+
+/* two equal blocks side by side, set in body size */
+.about-duo{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  max-width: 780px;
+}
+.about-duo__media{
+  margin-bottom: 16px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface-soft);
+  aspect-ratio: 4 / 3;
+}
+.about-duo__media img{ width: 100%; height: 100%; object-fit: cover; }
+.about-duo__title{
+  display: flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.about-duo__item p{
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--tone-soft);
+  text-wrap: pretty;
+}
+
+/* small image that opens large on hover — used for the portrait and later
+   for the embroidery / tea photos */
+.pop-media{ position: relative; display: inline-block; }
+.pop-media__big{
+  position: absolute;
+  left: 50%;
+  /* sits a touch higher and laps over the small chip; still opens downward so
+     it never slides under the sticky header */
+  top: 32%;
+  width: 240px;
+  height: 240px;
+  max-width: none;
+  border-radius: 999px;
+  object-fit: cover;
+  object-position: 50% 32%;
+  box-shadow: 0 18px 40px rgba(10,10,10,.18);
+  opacity: 0;
+  transform: translate(-32%, -10px) scale(.94);
+  transform-origin: 50% 0;
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity .3s var(--ease), transform .3s var(--ease);
+}
+.pop-media:hover .pop-media__big{
+  opacity: 1;
+  transform: translate(-32%, 0) scale(1);
+}
+
+/* chip variant: a standalone round thumbnail set in a heading line, sized in px
+   so it does not shrink with the small 20px title */
+.pop-media--chip{ vertical-align: middle; margin-right: 10px; }
+.pop-media__chip{
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+/* the chip is centred on its own big image, unlike the portrait in the headline */
+.pop-media--chip .pop-media__big{ transform: translate(-40%, -10px) scale(.94); }
+.pop-media--chip:hover .pop-media__big{ transform: translate(-40%, 0) scale(1); }
+
+/* stack: circles overlap like a deck and fan apart when the group is hovered.
+   Each circle keeps its own pop-media behaviour, so pointing at one of them
+   opens that photo large. The ring is painted in the page background so the
+   circles stay legible where they overlap. */
+.pop-stack{
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+}
+.pop-stack .pop-media--chip{
+  margin-right: 0;
+  transition: margin-left .3s var(--ease);
+}
+.pop-stack .pop-media--chip + .pop-media--chip{ margin-left: -18px; }
+.pop-stack:hover .pop-media--chip + .pop-media--chip{ margin-left: 6px; }
+.pop-stack .pop-media__chip{ box-shadow: 0 0 0 2px var(--surface); }
+/* first card sits on top of the deck, as in an avatar stack */
+.pop-stack .pop-media--chip:nth-child(1){ z-index: 4; }
+.pop-stack .pop-media--chip:nth-child(2){ z-index: 3; }
+.pop-stack .pop-media--chip:nth-child(3){ z-index: 2; }
+.pop-stack .pop-media--chip:nth-child(4){ z-index: 1; }
+/* the one being pointed at comes forward, above its neighbours and its ring */
+.pop-stack .pop-media--chip:hover{ z-index: 5; }
+
+.about-more{ margin-top: 28px; display: inline-flex; }
+/* two CVs side by side; they wrap under each other on a narrow screen */
+.cv-links{ margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px 32px; }
+
+@media (max-width: 720px){
+  .about-row--first{ padding-top: 56px; }
+  .about-row{
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 40px 0;
+  }
+  .about-list li{ grid-template-columns: 1fr; gap: 4px; }
+  .about-facts{ grid-template-columns: 1fr; gap: 24px; }
+  .about-duo{ grid-template-columns: 1fr; gap: 32px; }
+  .expertise{ grid-template-columns: 1fr; gap: 28px; }
+  .pop-media__big{ width: 180px; height: 180px; }
+  .about-lead{ max-width: none; }
+}
+
+/* ---------- contacts page ----------
+   Geometry taken from the reference /contact at 1280: eyebrow 18/500 #666,
+   title 64/500, lead 24/500, gaps 24 / 24 / 64, left text column 400px,
+   socials flush right at 300px, copy pill 36px tall with radius 50px. */
+/* Wider side margins than the rest of the site, matching the reference
+   /contact (80px at 1280 → content 1120). */
+.contact-page{
+  --page-x: clamp(20px, 6.25vw, 80px);
+  padding-bottom: 96px;
+}
+
+
+.contact-intro{ padding-top: 96px; }
+.contact-intro__eyebrow{
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.contact-intro__title{
+  margin-top: 24px;
+  font-family: var(--font-display);
+  font-size: var(--fs-footer-title);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+/* Wider than the reference's 400px: Russian runs ~30% longer than English and
+   at 400px the lead broke into a ragged column. */
+.contact-intro__lead{
+  margin-top: 24px;
+  max-width: 620px;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.contact-details{
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 620px) 1fr;
+  gap: 40px;
+  /* e-mail row sits on the same bottom line as the last social link */
+  align-items: end;
+}
+.contact-details__label{
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--muted);
+}
+/* light-theme colours for every link-with-arrow on this page (socials + e-mail) */
+.contact-details{
+  --social-color: var(--ink);
+  --social-hover: var(--muted);
+}
+.contact-details__social{
+  justify-self: end;
+  width: 100%;
+  max-width: 300px;
+}
+
+.contact-email{
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* Same as the social links: the label owns a fixed track and the arrow follows
+   it 8px later, so the arrow sits away from the glyphs (reference: 307 + 8 + 16). */
+.contact-email__link{ width: 331px; }
+.contact-email__link > span{ flex: 1; }
+.contact-email__copy{
+  flex: 0 0 auto;
+  background: #f0f0f0;
+  color: #969696;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background .3s var(--ease), color .3s var(--ease);
+}
+/* Hover changes only the label colour — the pill keeps its grey background. */
+.contact-email__copy:hover{ color: var(--ink); }
+.contact-email__copy.is-done{ color: var(--ink); }
+
+.contact-copy{
+  margin-top: 160px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #969696;
+}
+
+@media (max-width: 720px){
+  .contact-intro{ padding-top: 56px; }
+  .contact-details{
+    margin-top: 56px;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .contact-details__social{ justify-self: stretch; max-width: none; }
+  .contact-copy{ margin-top: 80px; }
+}
+
+/* ---------- site footer (component: partials/site-footer.html) ---------- */
+
+/* Scroll reveal: the footer is pinned to the bottom of the viewport and the
+   page content slides up over it. `--footer-h` is measured in main.js and
+   reserves the matching scroll distance below the content.
+   `.no-footer-reveal` is set automatically when the footer is taller than the
+   viewport (small phones), where pinning would clip it. */
+.site-footer{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background: var(--footer);
+  color: var(--surface);
+  padding: 64px var(--page-x);
+}
+/* Opaque page layer that slides up over the pinned footer. It has to wrap the
+   header too: the header itself is transparent, so without this layer the
+   footer would show through behind it at the top of the page. */
+.page{
+  position: relative;
+  z-index: 1;
+  background: var(--surface);
+  margin-bottom: var(--footer-h, 0px);
+}
+.no-footer-reveal .site-footer{ position: static; }
+.no-footer-reveal .page{ margin-bottom: 0; }
+.site-footer__inner{
+  max-width: var(--grid-max);
+  margin: 0 auto;
+}
+.site-footer__eyebrow{
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--surface);
+}
+.site-footer__title{
+  margin-top: 24px;
+  font-family: var(--font-display);
+  font-size: var(--fs-footer-title);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--surface);
+}
+.site-footer__cta{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 64px;
+  background: #f0f0f0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 16px 32px;
+  border-radius: 64px;
+  box-shadow: inset 0 0 0 1px transparent;
+  /* `transition` replaces the one from .reveal (same specificity, declared
+     later), so the reveal properties must be repeated here or the button
+     would snap into place instead of animating in with the rest. */
+  transition:
+    background .3s var(--ease),
+    color .3s var(--ease),
+    box-shadow .3s var(--ease),
+    opacity .8s var(--ease),
+    transform .8s var(--ease);
+  /* the shorthand above also resets the stagger delay — put it back */
+  transition-delay: calc(var(--i, 0) * 110ms);
+}
+.site-footer__cta:hover{
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+  /* hover must react at once, not after the entrance delay */
+  transition-delay: 0s;
+}
+
+.icon-arrow-ne{
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  transition: transform .3s var(--ease);
+}
+.site-footer__cta .icon-arrow-ne{
+  width: 19px;
+  height: 19px;
+}
+.site-footer__cta:hover .icon-arrow-ne{
+  transform: rotate(45deg);
+}
+
+.site-footer__cols{
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.site-footer__nav{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.site-footer__nav a{
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--surface);
+  transition: transform .3s var(--ease);
+}
+.site-footer__nav a:hover{
+  transform: translateX(3px);
+}
+
+/* Inline external link inside running text: the label stays black against the
+   grey paragraph, the arrow marks it as leaving the site. Only the last word and
+   the arrow are kept on one line, so a long label can still wrap. */
+.link-inline{
+  color: var(--ink);
+  font-weight: 500;
+  transition: color .3s var(--ease);
+}
+.link-inline__tail{ white-space: nowrap; }
+.link-inline .icon-arrow-ne{
+  width: 14px;
+  height: 14px;
+  margin-left: 3px;
+  vertical-align: -1px;
+}
+.link-inline:hover{ color: var(--muted); }
+.link-inline:hover .icon-arrow-ne{ transform: rotate(45deg); }
+
+/* Shared link-with-arrow behaviour: text dims and the arrow rotates from ↗ to →.
+   Used by the social list (footer + contacts) and by the contacts e-mail link. */
+.link-arrow{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--social-color, var(--ink));
+  transition: color .3s var(--ease);
+}
+.link-arrow:hover{ color: var(--social-hover, var(--muted)); }
+.link-arrow:hover .icon-arrow-ne{ transform: rotate(45deg); }
+
+/* Shared component: partials/social-links.html — used in the footer (dark) and
+   on the contacts page (light). Colours come from --social-* set by the host. */
+.social-list{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+/* only in the list does the label stretch so the arrow sits at the far edge */
+.social-list .link-arrow > span{ flex: 1; }
+
+.site-footer{
+  --social-color: var(--surface);
+  --social-hover: var(--footer-muted);
+}
+
+.site-footer__copy{
+  margin-top: 40px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255,255,255,.5);
+}
+
+@media (max-width: 720px){
+  .site-footer{ padding: 48px var(--page-x); }
+  .site-footer__cta{ margin-top: 40px; }
+  .site-footer__cols{
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 32px;
+  }
+  .site-footer__copy{ margin-top: 32px; }
+}
+
+/* ---------- utility ---------- */
+.section-cta{
+  margin-top: 40px;
+}
+.btn-arrow{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.btn-arrow img{ width: 14px; height: 14px; }
+
+@media (max-width: 640px){
+  .case-meta{ grid-template-columns: 1fr; gap: 16px; }
+  .case-overview{ grid-template-columns: 1fr; gap: 28px; }
+  .case-gallery--two{ grid-template-columns: 1fr; }
+  .services__col{ padding: 26px 22px; }
+}

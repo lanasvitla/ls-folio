@@ -1,0 +1,35 @@
+<footer class="site-footer" id="contact">
+  <div class="site-footer__inner">
+    <p class="site-footer__eyebrow reveal">Контакты</p>
+    <h2 class="site-footer__title reveal">Есть задача?</h2>
+    <a class="site-footer__cta reveal" href="mailto:{{email}}">
+      Давайте обсудим
+      <svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <div class="site-footer__cols reveal">
+      <nav class="site-footer__nav" aria-label="Навигация в подвале">
+        <a href="{{homeHref}}">Главная</a>
+        <a href="{{worksHref}}">Работы</a>
+        <a href="{{aboutHref}}">Обо мне</a>
+        <a href="{{contactPageHref}}">Контакты</a>
+      </nav>
+
+      <ul class="social-list">
+        {{> social-links}}
+        <li>
+          <a class="link-arrow" href="mailto:{{email}}">
+            <span>Email</span>
+            <svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <p class="site-footer__copy reveal">{{year}} Created by LS DESIGN</p>
+  </div>
+</footer>
