@@ -7,7 +7,15 @@
     "year": "2026",
     "navWorks": "",
     "navProcess": "",
-    "navAbout": ""
+    "navAbout": "",
+    "roleProduct": "",
+    "roleBrand": "",
+    "roleProductAria": "",
+    "roleBrandAria": "",
+    "procProduct": "",
+    "procBrand": "",
+    "procProductAria": "",
+    "procBrandAria": ""
   },
   "pages": [
     {
@@ -21,7 +29,11 @@
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
-      "navWorks": "is-current"
+      "navWorks": "is-current",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html"
     },
     {
       "path": "about.html",
@@ -34,7 +46,51 @@
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
-      "navAbout": "is-current"
+      "navAbout": "is-current",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html"
+    },
+    {
+      "path": "product.html",
+      "components": [
+        "site-header",
+        "role-switch",
+        "site-footer"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./index.html#work",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navAbout": "is-current",
+      "roleProduct": "is-current",
+      "roleProductAria": " aria-current=\"page\""
+    },
+    {
+      "path": "brand.html",
+      "components": [
+        "site-header",
+        "role-switch",
+        "site-footer"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./index.html#work",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navAbout": "is-current",
+      "roleBrand": "is-current",
+      "roleBrandAria": " aria-current=\"page\""
     },
     {
       "path": "process.html",
@@ -47,7 +103,51 @@
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
-      "navProcess": "is-current"
+      "navProcess": "is-current",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html"
+    },
+    {
+      "path": "process-product.html",
+      "components": [
+        "site-header",
+        "process-switch",
+        "site-footer"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./index.html#work",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navProcess": "is-current",
+      "procProduct": "is-current",
+      "procProductAria": " aria-current=\"page\""
+    },
+    {
+      "path": "process-brand.html",
+      "components": [
+        "site-header",
+        "process-switch",
+        "site-footer"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./index.html#work",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navProcess": "is-current",
+      "procBrand": "is-current",
+      "procBrandAria": " aria-current=\"page\""
     },
     {
       "path": "contacts.html",
@@ -59,7 +159,11 @@
       "worksHref": "./index.html#work",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
-      "contactPageHref": "./contacts.html"
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html"
     },
     {
       "path": "work/mark-n-post/index.html",
@@ -72,7 +176,11 @@
       "processHref": "../../process.html",
       "aboutHref": "../../about.html",
       "contactPageHref": "../../contacts.html",
-      "navWorks": "is-current"
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html"
     },
     {
       "path": "work/eqlio/index.html",
@@ -85,7 +193,11 @@
       "processHref": "../../process.html",
       "aboutHref": "../../about.html",
       "contactPageHref": "../../contacts.html",
-      "navWorks": "is-current"
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html"
     },
     {
       "path": "work/togas/index.html",
@@ -98,7 +210,11 @@
       "processHref": "../../process.html",
       "aboutHref": "../../about.html",
       "contactPageHref": "../../contacts.html",
-      "navWorks": "is-current"
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html"
     },
     {
       "path": "work/visual-brand-identity/index.html",
@@ -111,7 +227,28 @@
       "processHref": "../../process.html",
       "aboutHref": "../../about.html",
       "contactPageHref": "../../contacts.html",
-      "navWorks": "is-current"
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html"
+    },
+    {
+      "path": "work/svitla-embroidery/index.html",
+      "components": [
+        "site-header",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../index.html#work",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html"
     }
   ]
 }

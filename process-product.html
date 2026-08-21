@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Процесс – Lana Svitla</title>
-<meta name="description" content="Как я веду проект: продуктовый и брендовый маршруты.">
+<title>Продуктовый процесс – Lana Svitla</title>
+<meta name="description" content="Как я веду продуктовый проект: от бизнес-задачи и метрики до передачи в разработку и замера результата.">
 <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,29 +47,76 @@
   <section class="about-row about-row--first about-row--lead">
     <p class="about-row__label reveal">Процесс</p>
     <div class="about-row__body">
-      <h1 class="about-intro__title reveal"><b>Процесс подстраиваю под&nbsp;задачу.</b> Шаги на&nbsp;продуктовом и&nbsp;бренд-проекте разные – выберите, что&nbsp;ближе к&nbsp;вашей.</h1>
+      <!-- component:process-switch -->
+      <nav class="switch" aria-label="Тип проекта">
+        <a class="switch__item is-current" href="./process-product.html" aria-current="page">Продуктовый проект</a>
+        <a class="switch__item " href="./process-brand.html">Бренд-проект</a>
+      </nav>
+      <!-- /component:process-switch -->
+      <h1 class="about-intro__title reveal"><b>Процесс подстраиваю под&nbsp;задачу,</b> но&nbsp;на&nbsp;продуктовом проекте он начинается с&nbsp;метрики и&nbsp;ей же&nbsp;заканчивается.</h1>
     </div>
   </section>
 
   <section class="about-row about-row--lead">
-    <p class="about-row__label reveal">Продукт</p>
+    <p class="about-row__label reveal">01</p>
     <div class="about-row__body">
-      <p class="about-lead reveal"><b>Продуктовый проект</b> начинается с&nbsp;метрики и&nbsp;ей же&nbsp;заканчивается: исследование, структура, интерфейс на&nbsp;дизайн-системе, проверка на&nbsp;пользователях, передача в&nbsp;разработку и&nbsp;замер результата.</p>
-      <a class="link-arrow about-more" href="./process-product.html">
-        <span>Продуктовый процесс по&nbsp;шагам</span>
-        <svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-      </a>
+      <p class="about-lead reveal"><b>Вводные и&nbsp;цели</b></p>
+      <p class="about-note reveal">Разбираю бизнес-задачу, ограничения по&nbsp;срокам и&nbsp;технологиям, состояние продукта на&nbsp;входе. Договариваемся, какой метрикой измеряем результат: конверсия, время на&nbsp;задачу, число обращений в&nbsp;поддержку. Фиксирую гипотезы, чтобы в&nbsp;конце было с&nbsp;чем сверяться.</p>
+      <p class="process-out reveal"><span>На&nbsp;выходе</span> цели, метрика успеха, список гипотез и&nbsp;рамки проекта.</p>
     </div>
   </section>
 
   <section class="about-row about-row--lead">
-    <p class="about-row__label reveal">Бренд</p>
+    <p class="about-row__label reveal">02</p>
     <div class="about-row__body">
-      <p class="about-lead reveal"><b>Бренд-проект</b> идет от&nbsp;бизнес-задачи к&nbsp;системе, которую можно применять без&nbsp;меня: аудит, концепция и&nbsp;визуальная территория, айдентика, примерка на&nbsp;носители, гайдлайн и&nbsp;контроль реализации.</p>
-      <a class="link-arrow about-more" href="./process-brand.html">
-        <span>Бренд-процесс по&nbsp;шагам</span>
+      <p class="about-lead reveal"><b>Исследование</b></p>
+      <p class="about-note reveal">Интервью со&nbsp;стейкхолдерами и&nbsp;поддержкой, разбор текущих сценариев, аналитика и&nbsp;воронка, обзор конкурентов. Ищу, где именно пользователь спотыкается и&nbsp;сколько это стоит бизнесу. В&nbsp;e-commerce это обычно шаги оформления заказа, в&nbsp;B2B – работа с&nbsp;большими таблицами исостояниями.</p>
+      <p class="process-out reveal"><span>На&nbsp;выходе</span> карта проблемных мест с&nbsp;приоритетом по&nbsp;влиянию на&nbsp;метрику.</p>
+    </div>
+  </section>
+
+  <section class="about-row about-row--lead">
+    <p class="about-row__label reveal">03</p>
+    <div class="about-row__body">
+      <p class="about-lead reveal"><b>Структура</b></p>
+      <p class="about-note reveal">Информационная архитектура, user flow и&nbsp;CJM, каркасы ключевых экранов. Самый дешевый этап для&nbsp;проверки решения: перестроить схему стоит часы, перерисовать готовый интерфейс – недели. Здесь же&nbsp;согласуем объем с&nbsp;разработкой.</p>
+      <p class="process-out reveal"><span>На&nbsp;выходе</span> IA, сценарии, каркасы, согласованный объем работ.</p>
+    </div>
+  </section>
+
+  <section class="about-row about-row--lead">
+    <p class="about-row__label reveal">04</p>
+    <div class="about-row__body">
+      <p class="about-lead reveal"><b>Интерфейс</b></p>
+      <p class="about-note reveal">UI собираю на&nbsp;компонентах дизайн-системы: состояния, ошибки, пустые экраны, длинные строки и&nbsp;крайние случаи, адаптив. Если системы нет – собираю ее по&nbsp;ходу, вместе с&nbsp;токенами и&nbsp;документацией, чтобы следующая задача решалась быстрее этой.</p>
+      <p class="process-out reveal"><span>На&nbsp;выходе</span> макеты всех состояний, компоненты и&nbsp;токены в&nbsp;Figma.</p>
+    </div>
+  </section>
+
+  <section class="about-row about-row--lead">
+    <p class="about-row__label reveal">05</p>
+    <div class="about-row__body">
+      <p class="about-lead reveal"><b>Проверка</b></p>
+      <p class="about-note reveal">Кликабельный прототип и&nbsp;тесты на&nbsp;пользователях или&nbsp;на&nbsp;команде. Правки вношу до&nbsp;передачи в&nbsp;разработку, а&nbsp;не&nbsp;после релиза: на&nbsp;этом этапе исправление стоит одну итерацию, после релиза – спринт.</p>
+      <p class="process-out reveal"><span>На&nbsp;выходе</span> прототип, находки тестов и&nbsp;внесенные правки.</p>
+    </div>
+  </section>
+
+  <section class="about-row about-row--lead">
+    <p class="about-row__label reveal">06</p>
+    <div class="about-row__body">
+      <p class="about-lead reveal"><b>Передача и&nbsp;контроль</b></p>
+      <p class="about-note reveal">Спецификация, токены и&nbsp;компоненты для&nbsp;разработки, разбор нестандартных случаев вместе с&nbsp;командой. Ревью реализации перед выходом. После релиза возвращаюсь к&nbsp;метрике из&nbsp;первого шага и&nbsp;смотрю, сработала гипотеза или&nbsp;нужен следующий заход.</p>
+      <p class="process-out reveal"><span>На&nbsp;выходе</span> собранный интерфейс, ревью и&nbsp;замер метрики после релиза.</p>
+    </div>
+  </section>
+
+  <section class="about-row about-row--lead">
+    <p class="about-row__label reveal">Дальше</p>
+    <div class="about-row__body">
+      <p class="about-lead reveal"><b>Посмотрите продуктовые кейсы</b> – там видно, как&nbsp;это работает на&nbsp;практике.</p>
+      <a class="link-arrow about-more" href="./product.html">
+        <span>Продукт и&nbsp;UX/UI</span>
         <svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>

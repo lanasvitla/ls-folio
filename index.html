@@ -7,8 +7,8 @@
 <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=69">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=91">
 </head>
 <body>
 
@@ -43,47 +43,76 @@
 
 <main class="wrap">
 
-  <section class="hero">
-    <p class="hero__eyebrow reveal">Привет!</p>
-    <h1 class="hero__title reveal">Я&nbsp;Lana&nbsp;Svitla – <b>дизайнер бренда, продукта и&nbsp;UX/UI</b></h1>
-    <p class="hero__lead reveal">Помогаю экспертам и&nbsp;компаниям делать понятные и&nbsp;красивые продукты: от&nbsp;айдентики и&nbsp;лендингов до&nbsp;мобильных приложений и&nbsp;продуктовых интерфейсов.</p>
-    <div class="hero__media reveal">
-      <img src="assets/works/Eqlio/EclioCover.webp" alt="Обзор проектов Lana Svitla">
+  <section class="hero hero--home">
+    <h1 class="hero__title hero__title--home reveal"><span>Привет! Я</span> Lana&nbsp;Svitla</h1>
+  </section>
+
+  <section class="lockup" aria-hidden="false">
+    <h2 class="lockup__word morph-word" data-word="design" aria-label="Design">
+      <span class="lockup__layer lockup__layer--from">DESIGN</span>
+      <span class="lockup__layer lockup__layer--to" aria-hidden="true">WORK</span>
+    </h2>
+    <div class="lockup__forms" data-form-root data-forms-path="assets/images/forms/" aria-hidden="true">
+      <span class="lockup__frame lockup__frame--flip" data-form-slot="flip"><img class="lockup__form" src="assets/images/forms/Union.svg" alt=""></span>
+      <span class="lockup__frame lockup__frame--spin" data-form-slot="spin"><img class="lockup__form" src="assets/images/forms/Vector-33.svg" alt=""></span>
+    </div>
+  </section>
+
+  <section class="home-about" aria-labelledby="home-about-title">
+    <div class="home-about__portrait reveal">
+      <img class="home-about__image home-about__image--base" src="assets/images/lana-svitla-portrait.webp" width="560" height="560" alt="Lana Svitla">
+      <img class="home-about__image home-about__image--hover" src="assets/images/lana-svitla-portrait-hover.webp" width="560" height="560" alt="" aria-hidden="true">
+      <span class="home-about__hi" aria-hidden="true">
+        <span class="home-about__hi-cursor"></span>
+        <span class="home-about__hi-label">Hi!</span>
+      </span>
+    </div>
+    <div class="home-about__content">
+      <h2 class="home-about__text reveal" id="home-about-title"><b>Дизайнер бренда и&nbsp;продукта.</b> Превращаю смысл в&nbsp;форму: от&nbsp;фирменного стиля до&nbsp;интерфейсов, которыми пользуются каждый день.</h2>
+      <a class="home-about__more reveal" href="./about.html">
+        <span>Подробнее обо мне</span>
+        <svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </div>
   </section>
 
   <section class="services">
     <div class="section-head reveal">
       <h2>Чем я&nbsp;занимаюсь</h2>
-      <p>От&nbsp;первого впечатления бренда до&nbsp;пути пользователя в&nbsp;продукте – веду проект целиком или&nbsp;включаюсь в&nbsp;нужный этап.</p>
+      <p>От&nbsp;айдентики до&nbsp;пользовательского пути – веду проект целиком или&nbsp;подключаюсь на&nbsp;нужном этапе.</p>
     </div>
     <div class="services__grid reveal">
       <div class="services__col">
+        <p class="services__index">01</p>
         <h3>Бренд-дизайн</h3>
         <ul>
-          <li>Логотип / фирменный стиль</li>
-          <li>Гайды / прайсы / чек-листы</li>
-          <li>Презентации</li>
-          <li>Иллюстрация</li>
+          <li>Айдентика и&nbsp;бренд-системы</li>
+          <li>Гайды, презентации и&nbsp;полиграфия</li>
+          <li>Иллюстрация и&nbsp;AI-визуалы</li>
         </ul>
+        <a class="services__more" href="./brand.html"><span>Подробнее</span><svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
       <div class="services__col">
+        <p class="services__index">02</p>
         <h3>Продукт &amp; UX/UI</h3>
         <ul>
-          <li>Исследование и&nbsp;продуктовая логика</li>
-          <li>Пользовательские сценарии</li>
-          <li>UX/UI дизайн, прототипы</li>
-          <li>Мобильные и&nbsp;веб-приложения</li>
+          <li>Исследование, логика и&nbsp;сценарии</li>
+          <li>Интерфейсы и&nbsp;прототипы</li>
+          <li>Дизайн-системы для&nbsp;web и&nbsp;mobile</li>
         </ul>
+        <a class="services__more" href="./product.html"><span>Подробнее</span><svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
       <div class="services__col">
-        <h3>Web &amp; запуск</h3>
+        <p class="services__index">03</p>
+        <h3>Web &amp; digital</h3>
         <ul>
-          <li>Лендинги, сайты</li>
+          <li>Лендинги и&nbsp;сайты</li>
           <li>Tilda / Webflow / Framer</li>
-          <li>Vibe coding (Claude Code)</li>
-          <li>AI-креатив: Midjourney, Nano Banana</li>
+          <li>Vibe coding и&nbsp;AI-продакшен</li>
         </ul>
+        <a class="services__more" href="./brand.html#web"><span>Подробнее</span><svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
   </section>
@@ -94,47 +123,43 @@
       <p>Кейсы бренда, продукта и&nbsp;UX/UI – каждый со&nbsp;своей задачей и&nbsp;историей.</p>
     </div>
 
-    <div class="work__grid">
+    <div class="filters" role="group" aria-label="Фильтр проектов по направлению">
+      <button class="filters__btn is-active" type="button" data-filter="all" aria-pressed="true">Все</button>
+      <button class="filters__btn" type="button" data-filter="product" aria-pressed="false">Продукт &amp; UX/UI</button>
+      <button class="filters__btn" type="button" data-filter="brand" aria-pressed="false">Бренд</button>
+      <button class="filters__btn" type="button" data-filter="web" aria-pressed="false">Web &amp; digital</button>
+    </div>
+    <p class="filters__status" role="status" aria-live="polite"></p>
 
-      <a class="work-card reveal" href="work/mark-n-post/index.html">
+    <div class="work__grid" id="work-grid">
+
+      <a class="work-card work-card--preview reveal" data-niche="web" href="work/mark-n-post/index.html">
         <div class="work-card__media">
           <img src="assets/works/MarknPost/MarknPostCover.webp" alt="Mark'n'Post: лендинг сервиса доставки из Грузии в Европу и страны СНГ">
+          <span class="work-card__launch" aria-hidden="true">
+            <img src="assets/icons/Arrow_button.svg" alt="">
+          </span>
         </div>
-        <div class="work-card__body">
-          <div class="work-card__chips">
-            <span class="chip">Web design</span>
-            <span class="chip">Landing Page</span>
-            <span class="chip">Logistics</span>
-          </div>
+        <div class="work-card__caption">
+          <p class="work-card__eyebrow">Web design</p>
           <h3 class="work-card__title">Mark’n’Post</h3>
-          <p class="work-card__desc">Лендинг для&nbsp;логистической компании: доставка посылок, документов и&nbsp;личных вещей из&nbsp;Грузии в&nbsp;Европу и&nbsp;страны СНГ.</p>
-          <div class="work-card__meta">
-            <span class="work-card__metric"><b>4</b> / product pages for AD campany</span>
-            <span class="work-card__cta">Смотреть проект <img src="assets/icons/Arrow_right.svg" alt=""></span>
-          </div>
         </div>
       </a>
 
-      <a class="work-card reveal" href="work/eqlio/index.html">
+      <a class="work-card work-card--preview reveal" data-niche="product" href="work/eqlio/index.html">
         <div class="work-card__media">
           <img src="assets/works/Eqlio/EclioCover.webp" alt="Eqlio: корпоративное приложение для спортивных челленджей">
+          <span class="work-card__launch" aria-hidden="true">
+            <img src="assets/icons/Arrow_button.svg" alt="">
+          </span>
         </div>
-        <div class="work-card__body">
-          <div class="work-card__chips">
-            <span class="chip">Продуктовый дизайн</span>
-            <span class="chip">UX/UI</span>
-            <span class="chip">Корпоративный спорт</span>
-          </div>
+        <div class="work-card__caption">
+          <p class="work-card__eyebrow">Продукт &amp; UX/UI</p>
           <h3 class="work-card__title">Eqlio</h3>
-          <p class="work-card__desc">Корпоративная wellness-платформа, которая делает спортивные челленджи доступными и&nbsp;интересными для&nbsp;каждого сотрудника.</p>
-          <div class="work-card__meta">
-            <span class="work-card__metric"><b>6/7</b> found discovery intuitive</span>
-            <span class="work-card__cta">Смотреть проект <img src="assets/icons/Arrow_right.svg" alt=""></span>
-          </div>
         </div>
       </a>
 
-      <a class="work-card reveal" href="work/togas/index.html">
+      <a class="work-card reveal" data-niche="product brand" href="work/togas/index.html">
         <div class="work-card__media">
           <img src="assets/works/Togas/TogasApp.webp" alt="Togas: дизайн мобильного приложения для онлайн-бутика">
         </div>
@@ -153,7 +178,7 @@
         </div>
       </a>
 
-      <a class="work-card reveal" href="work/visual-brand-identity/index.html">
+      <a class="work-card reveal" data-niche="brand" href="work/visual-brand-identity/index.html">
         <div class="work-card__media">
           <img src="assets/works/Illustration_set/Illustaration_set_01.webp" alt="Visual Brand Identity: иллюстрация для маркетплейса ремесленных товаров">
         </div>
@@ -172,9 +197,9 @@
         </div>
       </a>
 
-      <div class="work-card work-card--soon reveal">
+      <a class="work-card reveal" data-niche="web" href="work/svitla-embroidery/index.html">
         <div class="work-card__media">
-          <img src="assets/works/Illustration_set/site-case_02.webp" alt="Embroidery Gallery: digital gallery and shop for contemporary embroidery thread art">
+          <img src="assets/works/SvitlaEmbroidery/cover-ls-embroidery.webp" alt="Embroidery Gallery: digital gallery and shop for contemporary embroidery thread art">
         </div>
         <div class="work-card__body">
           <div class="work-card__chips">
@@ -182,14 +207,14 @@
             <span class="chip">Art direction</span>
             <span class="chip">Vibe coding</span>
           </div>
-          <h3 class="work-card__title">Embroidery Gallery</h3>
-          <p class="work-card__desc">Digital gallery and shop for contemporary embroidery thread art.</p>
+          <h3 class="work-card__title">Svitla Embroidery Gallery</h3>
+          <p class="work-card__desc">Цифровая галерея и&nbsp;магазин авторской вышивки: 30 страниц работ.</p>
           <div class="work-card__meta">
-            <span class="work-card__metric"><b>30</b> / pages for gallery</span>
-            <span class="work-card__cta is-disabled">Case study coming soon</span>
+            <span class="work-card__metric"><b>30</b> / страниц галереи</span>
+            <span class="work-card__cta">Смотреть проект <img src="assets/icons/Arrow_right.svg" alt=""></span>
           </div>
         </div>
-      </div>
+      </a>
 
     </div>
   </section>
@@ -257,6 +282,6 @@
 </footer>
 <!-- /component:site-footer -->
 
-<script src="assets/js/main.js?v=14"></script>
+<script src="assets/js/main.js?v=22"></script>
 </body>
 </html>
