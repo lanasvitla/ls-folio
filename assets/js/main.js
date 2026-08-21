@@ -304,7 +304,7 @@ document.documentElement.classList.add('js');
   var clamp = function(v, a, b){ return Math.min(Math.max(v, a), b); };
   var ease = function(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; };
 
-  var INK = [67, 67, 67];        // #434343 — тот же базовый ink
+  var INK = [67, 67, 67];        // #434343 — тон знака (--mark), не ink
   var FADE = [230, 230, 230];    // #e6e6e6 — тот же тон, что и линии (--line)
   function mix(a, b, t){
     return 'rgb(' + a.map(function(v, i){ return Math.round(v + (b[i] - v) * t); }).join(',') + ')';

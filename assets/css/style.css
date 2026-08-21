@@ -5,10 +5,11 @@
    ============================================================ */
 
 :root{
-  /* Base ink. #434343 rather than near-black: contrast to white is 9.1:1,
-     which still clears AAA for body text, and it is the tone the DESIGN mark
-     was already drawn in — one ink instead of two. */
-  --ink: #434343;
+  /* Base ink: black. One value serves text and the footer ground. */
+  --ink: #0a0a0a;
+  /* The DESIGN mark keeps the tone it was drawn in in V1 — the only place on
+     the site that is deliberately lighter than ink. */
+  --mark: #434343;
   --muted: #666666;
   --line: #e6e6e6;
   --surface: #ffffff;
@@ -35,10 +36,9 @@
   --veil: rgba(255, 255, 255, .94);
   --scrim: rgba(190, 190, 190, .72);
   --focus-ring: rgba(10, 10, 10, .35);
-  --footer: #434343;
-  /* raised from #9a9a9a: on the new #434343 ground that gave 3.5:1, below AA.
-     #c4c4c4 gives 5.7:1, the same margin --muted has on white. */
-  --footer-muted: #c4c4c4;
+  --footer: var(--ink);
+  /* on the black footer this gives 7.5:1 — comfortably above AA */
+  --footer-muted: #9a9a9a;
   --accent: #ddff8d;
   --accent-ink: #0a0a0a;
   --radius-lg: 28px;
@@ -1071,7 +1071,7 @@ h1,h2,h3,p{ margin: 0; }
   font-weight: 100;
   line-height: .75;
   letter-spacing: normal;
-  color: var(--ink);
+  color: var(--mark);
 }
 /* The glyphs fill the 132px box to the pixel (ink measures 131.8), so a clip of
    inset(0 …) shaved the caps. Padding widens the clip box; the negative margin
