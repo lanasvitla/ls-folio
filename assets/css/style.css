@@ -1253,7 +1253,7 @@ h1,h2,h3,p{ margin: 0; }
   grid-column: 1;
   grid-row: 1;
   display: flex;
-  gap: 40px;
+  gap: clamp(20px, 2.78vw, 40px);
   align-items: flex-start;
   margin-left: clamp(24px, 3.75vw, 54px);
 }
@@ -1265,19 +1265,20 @@ h1,h2,h3,p{ margin: 0; }
 .author-portrait{
   position: relative;
   flex: 0 0 auto;
-  width: 260px;
-  height: 224px;
+  width: clamp(190px, 18.05vw, 260px);
 }
 .author-portrait__img{
-  width: 224px;
-  height: 224px;
+  display: block;
+  width: 86.15%;
+  height: auto;
+  aspect-ratio: 1;
   border-radius: var(--radius-lg);
   object-fit: cover;
 }
 .author-portrait__hi{
   position: absolute;
-  left: 199px;
-  top: 135px;
+  left: 76.54%;
+  top: 60.27%;
   display: flex;
   align-items: center;
   gap: 7px;
@@ -1316,9 +1317,11 @@ h1,h2,h3,p{ margin: 0; }
 }
 .author-copy__role{
   font-family: var(--font-display);
-  font-size: 40px;
+  /* 40 px ровно на 1440 и пропорционально ниже: иначе «Дизайнер бренда»
+     ломается на две строки, когда колонка сужается */
+  font-size: clamp(33px, 2.78vw, 40px);
   font-weight: 500;
-  line-height: 44px;
+  line-height: 1.1;
   color: var(--ink);
 }
 .author-copy__about{
@@ -1326,13 +1329,34 @@ h1,h2,h3,p{ margin: 0; }
   line-height: 21px;
   color: var(--muted);
 }
+/* Заголовок сделан строчным внутри обёртки: лейблы дисциплин текут сразу за его
+   последней строкой, оставаясь при этом снаружи h1 — доступное имя заголовка
+   не засоряется. */
+.author-copy__headline{
+  display: block;
+  /* та же метрика строки, что у заголовка: строка, на которую переносятся
+     лейблы, должна быть той же высоты, иначе она наезжает на текст выше */
+  font-size: clamp(33px, 2.78vw, 40px);
+  line-height: 1.1;
+}
+.author-copy__headline .author-copy__role{ display: inline; }
+
+/* Лейблы дисциплин текут за последней строкой заголовка, а не стоят абсолютом.
+   Абсолют с фиксированным top держался ровно на одной ширине: стоило колонке
+   сузиться, заголовок перерастал и они на него наезжали. В потоке они сами
+   переносятся общей строкой под заголовок, когда места не остаётся, — ровно то
+   поведение, что описано в спецификации для узкого экрана. */
 .author-labels{
-  position: absolute;
-  right: 19px;
-  top: 84px;
-  display: flex;
+  display: inline-flex;
   gap: 12px;
+  margin-left: 6px;
+  vertical-align: 12px;
   border-top: 1px solid var(--line);
+  /* сбрасываем наследование от 40-пиксельного заголовка */
+  font-size: 10px;
+  font-weight: 500;
+  line-height: normal;
+  white-space: nowrap;
 }
 .author-labels__item{ display: flex; flex-direction: column; gap: 3px; }
 .author-labels__item span{
@@ -1801,8 +1825,6 @@ h1,h2,h3,p{ margin: 0; }
   .author-portrait__hi{ left: min(199px, 52vw); top: 60%; }
   .author-copy{ width: 100%; }
   .author-copy__role{ font-size: 32px; line-height: 38px; }
-  /* лейблы дисциплин переносятся общей строкой под заголовок */
-  .author-labels{ position: static; margin-top: 4px; }
 
   .metrics__pair{ flex-direction: column; margin-bottom: 0; }
   .metrics__pair .metric{ width: 100%; margin-right: 0; margin-bottom: -1px; }
