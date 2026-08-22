@@ -21,11 +21,12 @@
     {
       "path": "index.html",
       "components": [
+        "icons",
         "site-header",
         "site-footer"
       ],
       "homeHref": "./index.html",
-      "worksHref": "#work",
+      "worksHref": "./works.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -36,13 +37,32 @@
       "processBrandHref": "./process-brand.html"
     },
     {
-      "path": "about.html",
+      "path": "works.html",
       "components": [
+        "icons",
         "site-header",
         "site-footer"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./index.html#work",
+      "worksHref": "./works.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navWorks": "is-current"
+    },
+    {
+      "path": "about.html",
+      "components": [
+        "icons",
+        "site-header",
+        "site-footer"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./works.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -55,12 +75,13 @@
     {
       "path": "product.html",
       "components": [
+        "icons",
         "site-header",
         "role-switch",
         "site-footer"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./index.html#work",
+      "worksHref": "./works.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -75,12 +96,13 @@
     {
       "path": "brand.html",
       "components": [
+        "icons",
         "site-header",
         "role-switch",
         "site-footer"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./index.html#work",
+      "worksHref": "./works.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -95,11 +117,12 @@
     {
       "path": "process.html",
       "components": [
+        "icons",
         "site-header",
         "site-footer"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./index.html#work",
+      "worksHref": "./works.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -112,12 +135,13 @@
     {
       "path": "process-product.html",
       "components": [
+        "icons",
         "site-header",
         "process-switch",
         "site-footer"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./index.html#work",
+      "worksHref": "./works.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -132,12 +156,13 @@
     {
       "path": "process-brand.html",
       "components": [
+        "icons",
         "site-header",
         "process-switch",
         "site-footer"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./index.html#work",
+      "worksHref": "./works.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -152,11 +177,12 @@
     {
       "path": "contacts.html",
       "components": [
+        "icons",
         "site-header",
         "social-links"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./index.html#work",
+      "worksHref": "./works.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -168,11 +194,12 @@
     {
       "path": "work/mark-n-post/index.html",
       "components": [
+        "icons",
         "site-header",
         "site-footer"
       ],
       "homeHref": "../../index.html",
-      "worksHref": "../../index.html#work",
+      "worksHref": "../../works.html",
       "processHref": "../../process.html",
       "aboutHref": "../../about.html",
       "contactPageHref": "../../contacts.html",
@@ -185,11 +212,12 @@
     {
       "path": "work/eqlio/index.html",
       "components": [
+        "icons",
         "site-header",
         "site-footer"
       ],
       "homeHref": "../../index.html",
-      "worksHref": "../../index.html#work",
+      "worksHref": "../../works.html",
       "processHref": "../../process.html",
       "aboutHref": "../../about.html",
       "contactPageHref": "../../contacts.html",
@@ -202,11 +230,12 @@
     {
       "path": "work/togas/index.html",
       "components": [
+        "icons",
         "site-header",
         "site-footer"
       ],
       "homeHref": "../../index.html",
-      "worksHref": "../../index.html#work",
+      "worksHref": "../../works.html",
       "processHref": "../../process.html",
       "aboutHref": "../../about.html",
       "contactPageHref": "../../contacts.html",
@@ -219,11 +248,12 @@
     {
       "path": "work/visual-brand-identity/index.html",
       "components": [
+        "icons",
         "site-header",
         "site-footer"
       ],
       "homeHref": "../../index.html",
-      "worksHref": "../../index.html#work",
+      "worksHref": "../../works.html",
       "processHref": "../../process.html",
       "aboutHref": "../../about.html",
       "contactPageHref": "../../contacts.html",
@@ -236,11 +266,12 @@
     {
       "path": "work/svitla-embroidery/index.html",
       "components": [
+        "icons",
         "site-header",
         "site-footer"
       ],
       "homeHref": "../../index.html",
-      "worksHref": "../../index.html#work",
+      "worksHref": "../../works.html",
       "processHref": "../../process.html",
       "aboutHref": "../../about.html",
       "contactPageHref": "../../contacts.html",

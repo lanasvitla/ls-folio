@@ -8,9 +8,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=92">
+<link rel="stylesheet" href="assets/css/style.css?v=99">
 </head>
 <body>
+<!-- component:icons -->
+<svg class="icon-sprite" width="0" height="0" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow-right" viewBox="0 0 22 22">
+    <path d="M4 11h14M18 11l-6-6M18 11l-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-star" viewBox="0 0 44 44">
+    <path d="M22 0c1.4 11.2 10.4 20.2 21.6 21.6-11.2 1.4-20.2 10.4-21.6 21.6C20.6 32 11.6 23 .4 21.6 11.6 20.2 20.6 11.2 22 0z" fill="currentColor"/>
+  </symbol>
+</svg>
+<!-- /component:icons -->
+
 
 <div class="page">
 <!-- component:site-header -->
@@ -31,7 +42,7 @@
     </button>
     <nav class="site-header__nav" id="primary-nav" aria-label="Основная навигация">
       <div class="site-header__nav-links">
-      <a class="is-current" href="#work">Работы</a>
+      <a class="is-current" href="./works.html">Портфолио</a>
       <a class="" href="./process.html">Процесс</a>
       <a class="" href="./about.html">Обо мне</a>
       </div>
@@ -41,183 +52,133 @@
 </header>
 <!-- /component:site-header -->
 
-<main class="wrap">
+<main class="wrap wrap--grid8">
 
-  <section class="hero hero--home">
-    <h1 class="hero__title hero__title--home reveal"><span>Привет! Я</span> Lana&nbsp;Svitla</h1>
-  </section>
+  <section class="home-hero" aria-labelledby="home-role">
+    <p class="home-hero__spine" aria-hidden="true">DesignPortfolio</p>
 
-  <section class="lockup" aria-hidden="false">
-    <h2 class="lockup__word morph-word" data-word="design" aria-label="Design">
-      <span class="lockup__layer lockup__layer--from">DESIGN</span>
-      <span class="lockup__layer lockup__layer--to" aria-hidden="true">WORK</span>
-    </h2>
-    <div class="lockup__forms" data-form-root data-forms-path="assets/images/forms/" aria-hidden="true">
-      <span class="lockup__frame lockup__frame--flip" data-form-slot="flip"><img class="lockup__form" src="assets/images/forms/Union.svg" alt=""></span>
-      <span class="lockup__frame lockup__frame--spin" data-form-slot="spin"><img class="lockup__form" src="assets/images/forms/Vector-33.svg" alt=""></span>
+    <div class="home-hero__author">
+      <div class="author-portrait">
+        <img class="author-portrait__img" src="assets/images/lana-svitla-portrait.webp" width="560" height="560" alt="Lana Svitla">
+        <span class="author-portrait__hi" aria-hidden="true">
+          <svg class="author-portrait__cursor" viewBox="0 0 20 18" fill="none"><path d="M1 1l17 7-7 2.5L8.5 17 1 1z" fill="currentColor"/></svg>
+          <span class="author-portrait__label">Hi!</span>
+        </span>
+      </div>
+      <div class="author-copy">
+        <div class="author-copy__inner">
+          <p class="author-copy__eyebrow">Lana Svitla</p>
+          <h1 class="author-copy__role" id="home-role">Дизайнер бренда<br>и&nbsp;продукта</h1>
+          <p class="author-copy__about">Превращаю смысл в&nbsp;форму: от&nbsp;айдентики до&nbsp;интерфейсов, которыми пользуются каждый день.</p>
+          <p class="author-labels">
+            <span class="author-labels__item"><span>VISUAL IDENTITY</span><i></i></span>
+            <span class="author-labels__item"><span>PRODUCT UX/UI</span><i></i></span>
+          </p>
+        </div>
+        <a class="ilink" href="about.html">
+          <span class="ilink__row">Подробнее обо&nbsp;мне<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+          <span class="ilink__rule"></span>
+        </a>
+      </div>
     </div>
-  </section>
 
-  <section class="home-about" aria-labelledby="home-about-title">
-    <div class="home-about__portrait reveal">
-      <img class="home-about__image home-about__image--base" src="assets/images/lana-svitla-portrait.webp" width="560" height="560" alt="Lana Svitla">
-      <img class="home-about__image home-about__image--hover" src="assets/images/lana-svitla-portrait-hover.webp" width="560" height="560" alt="" aria-hidden="true">
-      <span class="home-about__hi" aria-hidden="true">
-        <span class="home-about__hi-cursor"></span>
-        <span class="home-about__hi-label">Hi!</span>
+    <div class="home-hero__metrics">
+      <div class="metrics">
+        <div class="metrics__pair">
+          <div class="metric"><b class="metric__value">10+ лет</b><span class="metric__label">в&nbsp;дизайне</span></div>
+          <div class="metric"><b class="metric__value">+25%</b><span class="metric__label">к&nbsp;числу заказов</span></div>
+        </div>
+        <div class="metrics__band">
+          <div><b>6+ лет</b><span>senior / lead</span></div>
+          <div><b>до&nbsp;16</b><span>человек в&nbsp;команде</span></div>
+        </div>
+        <svg class="metrics__star" viewBox="0 0 44 44" aria-hidden="true"><use href="#i-star"/></svg>
+      </div>
+    </div>
+
+    <a class="featured home-hero__featured" id="featured" href="work/eqlio/index.html" data-featured>
+      <span class="featured__media">
+        <img class="featured__img" src="assets/works/MarknPost/MarknPostCover.webp" alt="Mark’n’Post: лендинг логистического сервиса" width="760" height="340" data-case="0">
+        <img class="featured__img is-current" src="assets/works/Eqlio/EclioCover.webp" alt="Eqlio: корпоративное приложение для спортивных челленджей" width="760" height="340" data-case="1">
+        <img class="featured__img" src="assets/works/Togas/TogasApp.webp" alt="Togas: мобильное приложение премиального бренда" width="760" height="340" data-case="2">
       </span>
-    </div>
-    <div class="home-about__content">
-      <h2 class="home-about__text reveal" id="home-about-title"><b>Дизайнер бренда и&nbsp;продукта.</b> Превращаю смысл в&nbsp;форму: от&nbsp;фирменного стиля до&nbsp;интерфейсов, которыми пользуются каждый день.</h2>
-      <a class="home-about__more reveal" href="./about.html">
-        <span>Подробнее обо мне</span>
-        <svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    </div>
-  </section>
+      <span class="featured__caption">
+        <span class="featured__num">02</span>
+        <span class="featured__title">Eqlio</span>
+        <span class="featured__type">E-commerce / UX/UI</span>
+        <span class="ilink"><span class="ilink__row">Открыть кейс<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span>
+      </span>
+    </a>
 
-  <section class="services">
-    <div class="section-head reveal">
-      <h2>Чем я&nbsp;занимаюсь</h2>
-      <p>От&nbsp;айдентики до&nbsp;пользовательского пути – веду проект целиком или&nbsp;подключаюсь на&nbsp;нужном этапе.</p>
-    </div>
-    <div class="services__grid reveal">
-      <div class="services__col">
-        <p class="services__index">01</p>
-        <h3>Бренд-дизайн</h3>
-        <ul>
-          <li>Айдентика и&nbsp;бренд-системы</li>
-          <li>Гайды, презентации и&nbsp;полиграфия</li>
-          <li>Иллюстрация и&nbsp;AI-визуалы</li>
-        </ul>
-        <a class="services__more" href="./brand.html"><span>Подробнее</span><svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-      <div class="services__col">
-        <p class="services__index">02</p>
-        <h3>Продукт &amp; UX/UI</h3>
-        <ul>
-          <li>Исследование, логика и&nbsp;сценарии</li>
-          <li>Интерфейсы и&nbsp;прототипы</li>
-          <li>Дизайн-системы для&nbsp;web и&nbsp;mobile</li>
-        </ul>
-        <a class="services__more" href="./product.html"><span>Подробнее</span><svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-      <div class="services__col">
-        <p class="services__index">03</p>
-        <h3>Web &amp; digital</h3>
-        <ul>
-          <li>Лендинги и&nbsp;сайты</li>
-          <li>Tilda / Webflow / Framer</li>
-          <li>Vibe coding и&nbsp;AI-продакшен</li>
-        </ul>
-        <a class="services__more" href="./brand.html#web"><span>Подробнее</span><svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <div class="home-hero__index">
+      <div class="cindex" data-cindex>
+        <p class="cindex__eyebrow">Избранные работы</p>
+        <div class="cindex__rows">
+        <a class="crow" href="work/mark-n-post/index.html" data-case="0">
+          <span class="crow__num">01</span>
+          <span class="crow__title">Mark’n’Post</span>
+          <span class="crow__type">Веб / коммуникация</span>
+          <span class="crow__arrow"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="crow is-selected" href="work/eqlio/index.html" data-case="1">
+          <span class="crow__num">02</span>
+          <span class="crow__title">Eqlio</span>
+          <span class="crow__type">E-commerce / UX/UI</span>
+          <span class="crow__arrow"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="crow" href="work/togas/index.html" data-case="2">
+          <span class="crow__num">03</span>
+          <span class="crow__title">Togas App</span>
+          <span class="crow__type">Mobile app / UX/UI</span>
+          <span class="crow__arrow"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        </div>
+        <a class="allworks" href="works.html">
+          <span class="allworks__text">Смотреть все работы</span>
+          <span class="allworks__circle"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="work" id="work">
-    <div class="section-head reveal">
-      <h2>Избранные проекты</h2>
-      <p>Кейсы бренда, продукта и&nbsp;UX/UI – каждый со&nbsp;своей задачей и&nbsp;историей.</p>
+  <section class="directions" aria-labelledby="directions-title">
+    <div class="directions__head">
+      <h2 class="directions__title" id="directions-title">Направления</h2>
+      <p class="directions__lead">Мой опыт в&nbsp;каждом направлении и&nbsp;кейсы.</p>
     </div>
-
-    <div class="filters" role="group" aria-label="Фильтр проектов по направлению">
-      <button class="filters__btn is-active" type="button" data-filter="all" aria-pressed="true">Все</button>
-      <button class="filters__btn" type="button" data-filter="product" aria-pressed="false">Продукт &amp; UX/UI</button>
-      <button class="filters__btn" type="button" data-filter="brand" aria-pressed="false">Бренд</button>
-      <button class="filters__btn" type="button" data-filter="web" aria-pressed="false">Web &amp; digital</button>
-    </div>
-    <p class="filters__status" role="status" aria-live="polite"></p>
-
-    <div class="work__grid" id="work-grid">
-
-      <a class="work-card work-card--preview reveal" data-niche="web" href="work/mark-n-post/index.html">
-        <div class="work-card__media">
-          <img src="assets/works/MarknPost/MarknPostCover.webp" alt="Mark'n'Post: лендинг сервиса доставки из Грузии в Европу и страны СНГ">
-          <span class="work-card__launch" aria-hidden="true">
-            <img src="assets/icons/Arrow_button.svg" alt="">
-          </span>
-        </div>
-        <div class="work-card__caption">
-          <p class="work-card__eyebrow">Web design</p>
-          <h3 class="work-card__title">Mark’n’Post</h3>
-        </div>
+    <div class="directions__grid">
+      <a class="dcard" href="brand.html">
+        <span class="dcard__fill" aria-hidden="true"></span>
+        <span class="dcard__title">Бренд-дизайн</span>
+        <span class="dcard__row">Айдентика и&nbsp;бренд-системы</span>
+        <span class="dcard__row">Гайды, презентации и&nbsp;полиграфия</span>
+        <span class="dcard__row">Иллюстрация и&nbsp;AI-визуалы</span>
+        <span class="dcard__spacer"></span>
+        <span class="dcard__action"><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span></span>
       </a>
-
-      <a class="work-card work-card--preview reveal" data-niche="product" href="work/eqlio/index.html">
-        <div class="work-card__media">
-          <img src="assets/works/Eqlio/EclioCover.webp" alt="Eqlio: корпоративное приложение для спортивных челленджей">
-          <span class="work-card__launch" aria-hidden="true">
-            <img src="assets/icons/Arrow_button.svg" alt="">
-          </span>
-        </div>
-        <div class="work-card__caption">
-          <p class="work-card__eyebrow">Продукт &amp; UX/UI</p>
-          <h3 class="work-card__title">Eqlio</h3>
-        </div>
+      <a class="dcard" href="product.html">
+        <span class="dcard__fill" aria-hidden="true"></span>
+        <span class="dcard__title">Продукт &amp; UX/UI</span>
+        <span class="dcard__row">Исследование, логика и&nbsp;сценарии</span>
+        <span class="dcard__row">Интерфейсы и&nbsp;прототипы</span>
+        <span class="dcard__row">Дизайн-системы для&nbsp;web и&nbsp;mobile</span>
+        <span class="dcard__spacer"></span>
+        <span class="dcard__action"><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span></span>
       </a>
-
-      <a class="work-card reveal" data-niche="product brand" href="work/togas/index.html">
-        <div class="work-card__media">
-          <img src="assets/works/Togas/TogasApp.webp" alt="Togas: дизайн мобильного приложения для онлайн-бутика">
-        </div>
-        <div class="work-card__body">
-          <div class="work-card__chips">
-            <span class="chip">Mobile App</span>
-            <span class="chip">UX/UI</span>
-            <span class="chip">Communication Design</span>
-          </div>
-          <h3 class="work-card__title">Togas</h3>
-          <p class="work-card__desc">Мобильное приложение для&nbsp;онлайн-бутика премиальных продуктов для&nbsp;сна: каталог, корзина, оформление заказа, бонусы и&nbsp;карта бутиков.</p>
-          <div class="work-card__meta">
-            <span class="work-card__metric"><b>1/1</b> iOS / Android</span>
-            <span class="work-card__cta">Смотреть проект <img src="assets/icons/Arrow_right.svg" alt=""></span>
-          </div>
-        </div>
+      <a class="dcard" href="brand.html#web">
+        <span class="dcard__fill" aria-hidden="true"></span>
+        <span class="dcard__title">Web &amp; digital</span>
+        <span class="dcard__row">Лендинги и&nbsp;сайты</span>
+        <span class="dcard__row">Tilda / Webflow / Framer</span>
+        <span class="dcard__row">Vibe coding и&nbsp;AI-продакшен</span>
+        <span class="dcard__spacer"></span>
+        <span class="dcard__action"><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span></span>
       </a>
-
-      <a class="work-card reveal" data-niche="brand" href="work/visual-brand-identity/index.html">
-        <div class="work-card__media">
-          <img src="assets/works/Illustration_set/Illustaration_set_01.webp" alt="Visual Brand Identity: иллюстрация для маркетплейса ремесленных товаров">
-        </div>
-        <div class="work-card__body">
-          <div class="work-card__chips">
-            <span class="chip">Visual Identity</span>
-            <span class="chip">Category system</span>
-            <span class="chip">AI-assisted visuals</span>
-          </div>
-          <h3 class="work-card__title">Visual Brand Identity</h3>
-          <p class="work-card__desc">Набор иллюстраций для&nbsp;маркетплейса ремесленных товаров.</p>
-          <div class="work-card__meta">
-            <span class="work-card__metric">&nbsp;</span>
-            <span class="work-card__cta">Смотреть проект <img src="assets/icons/Arrow_right.svg" alt=""></span>
-          </div>
-        </div>
-      </a>
-
-      <a class="work-card reveal" data-niche="web" href="work/svitla-embroidery/index.html">
-        <div class="work-card__media">
-          <img src="assets/works/SvitlaEmbroidery/cover-ls-embroidery.webp" alt="Embroidery Gallery: digital gallery and shop for contemporary embroidery thread art">
-        </div>
-        <div class="work-card__body">
-          <div class="work-card__chips">
-            <span class="chip">Web design</span>
-            <span class="chip">Art direction</span>
-            <span class="chip">Vibe coding</span>
-          </div>
-          <h3 class="work-card__title">Svitla Embroidery Gallery</h3>
-          <p class="work-card__desc">Цифровая галерея и&nbsp;магазин авторской вышивки: 30 страниц работ.</p>
-          <div class="work-card__meta">
-            <span class="work-card__metric"><b>30</b> / страниц галереи</span>
-            <span class="work-card__cta">Смотреть проект <img src="assets/icons/Arrow_right.svg" alt=""></span>
-          </div>
-        </div>
-      </a>
-
+      <svg class="directions__star directions__star--one" viewBox="0 0 44 44" aria-hidden="true"><use href="#i-star"/></svg>
+      <svg class="directions__star directions__star--two" viewBox="0 0 44 44" aria-hidden="true"><use href="#i-star"/></svg>
     </div>
   </section>
+
 </main>
 </div>
 
@@ -236,7 +197,7 @@
     <div class="site-footer__cols reveal">
       <nav class="site-footer__nav" aria-label="Навигация в подвале">
         <a href="./index.html">Главная</a>
-        <a href="#work">Работы</a>
+        <a href="./works.html">Портфолио</a>
         <a href="./about.html">Обо мне</a>
         <a href="./contacts.html">Контакты</a>
       </nav>
@@ -282,6 +243,6 @@
 </footer>
 <!-- /component:site-footer -->
 
-<script src="assets/js/main.js?v=23"></script>
+<script src="assets/js/main.js?v=25"></script>
 </body>
 </html>

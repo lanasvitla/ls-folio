@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Процесс – Lana Svitla</title>
-<meta name="description" content="Как я веду проект: продуктовый и брендовый маршруты.">
+<title>Портфолио – Lana Svitla</title>
+<meta name="description" content="Работы Lana Svitla: бренд-дизайн, продуктовый UX/UI, web и digital. Фильтр по направлениям.">
 <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="assets/css/style.css?v=99">
 </head>
 <body>
+
 <!-- component:icons -->
 <svg class="icon-sprite" width="0" height="0" aria-hidden="true" focusable="false">
   <symbol id="i-arrow-right" viewBox="0 0 22 22">
@@ -22,7 +23,6 @@
   </symbol>
 </svg>
 <!-- /component:icons -->
-
 
 <div class="page">
 <!-- component:site-header -->
@@ -43,8 +43,8 @@
     </button>
     <nav class="site-header__nav" id="primary-nav" aria-label="Основная навигация">
       <div class="site-header__nav-links">
-      <a class="" href="./works.html">Портфолио</a>
-      <a class="is-current" href="./process.html">Процесс</a>
+      <a class="is-current" href="./works.html">Портфолио</a>
+      <a class="" href="./process.html">Процесс</a>
       <a class="" href="./about.html">Обо мне</a>
       </div>
       <a href="./contacts.html" class="site-header__cta">Контакт</a>
@@ -53,39 +53,94 @@
 </header>
 <!-- /component:site-header -->
 
-<main class="wrap about-page">
+<main class="wrap wrap--grid8">
 
-  <section class="about-row about-row--first about-row--lead">
-    <p class="about-row__label reveal">Процесс</p>
-    <div class="about-row__body">
-      <h1 class="about-intro__title reveal"><b>Процесс подстраиваю под&nbsp;задачу.</b> Шаги на&nbsp;продуктовом и&nbsp;бренд-проекте разные – выберите, что&nbsp;ближе к&nbsp;вашей.</h1>
+  <section class="portfolio" aria-labelledby="portfolio-title">
+    <div class="portfolio__head">
+      <h1 class="portfolio__title" id="portfolio-title">Портфолио</h1>
+      <div class="portfolio__filters" role="group" aria-label="Фильтр работ по направлению">
+      <button class="pfilter is-active" type="button" data-filter="all" aria-pressed="true">Все</button>
+      <button class="pfilter" type="button" data-filter="product" aria-pressed="false">Продукт &amp; UX/UI</button>
+      <button class="pfilter" type="button" data-filter="brand" aria-pressed="false">Бренд</button>
+      <button class="pfilter" type="button" data-filter="web" aria-pressed="false">Web &amp; digital</button>
+      </div>
+      <p class="filters__status" role="status" aria-live="polite"></p>
     </div>
-  </section>
 
-  <section class="about-row about-row--lead">
-    <p class="about-row__label reveal">Продукт</p>
-    <div class="about-row__body">
-      <p class="about-lead reveal"><b>Продуктовый проект</b> начинается с&nbsp;метрики и&nbsp;ей же&nbsp;заканчивается: исследование, структура, интерфейс на&nbsp;дизайн-системе, проверка на&nbsp;пользователях, передача в&nbsp;разработку и&nbsp;замер результата.</p>
-      <a class="link-arrow about-more" href="./process-product.html">
-        <span>Продуктовый процесс по&nbsp;шагам</span>
-        <svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+    <div class="portfolio__grid" id="portfolio-grid">
+      <a class="pcase" href="work/mark-n-post/index.html" data-niche="web">
+        <span class="pcase__cover">
+          <img src="assets/works/MarknPost/MarknPostCover.webp" alt="Mark’n’Post: лендинг логистического сервиса" width="610" height="458">
+          <span class="pcase__go"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </span>
+        <span class="pcase__caption">
+          <span class="pcase__chips"><span class="chip">Web &amp; digital</span><span class="chip">Web design</span><span class="chip">Vibe coding</span></span>
+          <span class="pcase__head">
+            <span class="pcase__title">Mark’n’Post</span>
+            <span class="pcase__desc">Лендинг логистического сервиса: форматы отправки, процесс и&nbsp;заявка в&nbsp;Telegram.</span>
+          </span>
+          <span class="pcase__metric"><b>7</b><span>продуктовые страницы для&nbsp;рекламной кампании</span></span>
+        </span>
+      </a>
+      <a class="pcase" href="work/eqlio/index.html" data-niche="product">
+        <span class="pcase__cover">
+          <img src="assets/works/Eqlio/EclioCover.webp" alt="Eqlio: корпоративное приложение для спортивных челленджей" width="610" height="458">
+          <span class="pcase__go"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </span>
+        <span class="pcase__caption">
+          <span class="pcase__chips"><span class="chip">Продукт &amp; UX/UI</span><span class="chip">E-commerce</span><span class="chip">Прототипы</span></span>
+          <span class="pcase__head">
+            <span class="pcase__title">Eqlio</span>
+            <span class="pcase__desc">Корпоративное приложение для&nbsp;спортивных челленджей: сценарии, интерфейс и&nbsp;прототип.</span>
+          </span>
+          <span class="pcase__metric"><b>6/7</b><span>участников сочли сценарий понятным</span></span>
+        </span>
+      </a>
+      <a class="pcase" href="work/togas/index.html" data-niche="product brand">
+        <span class="pcase__cover">
+          <img src="assets/works/Togas/TogasApp.webp" alt="Togas: мобильное приложение премиального бренда" width="610" height="458">
+          <span class="pcase__go"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </span>
+        <span class="pcase__caption">
+          <span class="pcase__chips"><span class="chip">Продукт &amp; UX/UI</span><span class="chip">Бренд</span><span class="chip">Mobile app</span></span>
+          <span class="pcase__head">
+            <span class="pcase__title">Togas</span>
+            <span class="pcase__desc">Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и&nbsp;бонусы.</span>
+          </span>
+          <span class="pcase__metric"><b>+25%</b><span>к&nbsp;числу заказов</span></span>
+        </span>
+      </a>
+      <a class="pcase" href="work/visual-brand-identity/index.html" data-niche="brand">
+        <span class="pcase__cover">
+          <img src="assets/works/Illustration_set/Illustaration_set_01.webp" alt="Visual Brand Identity: система иллюстраций" width="610" height="458">
+          <span class="pcase__go"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </span>
+        <span class="pcase__caption">
+          <span class="pcase__chips"><span class="chip">Бренд</span><span class="chip">Иллюстрация</span><span class="chip">AI-визуалы</span></span>
+          <span class="pcase__head">
+            <span class="pcase__title">Visual Brand Identity</span>
+            <span class="pcase__desc">Система иллюстраций для&nbsp;маркетплейса ремесленных товаров.</span>
+          </span>
+          <span class="pcase__metric"><b>12</b><span>изображений в&nbsp;визуальной системе</span></span>
+        </span>
+      </a>
+      <a class="pcase" href="work/svitla-embroidery/index.html" data-niche="web">
+        <span class="pcase__cover">
+          <img src="assets/works/SvitlaEmbroidery/cover-ls-embroidery.webp" alt="Svitla Embroidery Gallery: цифровая галерея вышивки" width="610" height="458">
+          <span class="pcase__go"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </span>
+        <span class="pcase__caption">
+          <span class="pcase__chips"><span class="chip">Web &amp; digital</span><span class="chip">Web design</span><span class="chip">Art direction</span></span>
+          <span class="pcase__head">
+            <span class="pcase__title">Svitla Embroidery Gallery</span>
+            <span class="pcase__desc">Цифровая галерея и&nbsp;магазин авторской вышивки: страница на&nbsp;каждую работу, три языка.</span>
+          </span>
+          <span class="pcase__metric"><b>30</b><span>страниц галереи</span></span>
+        </span>
       </a>
     </div>
-  </section>
 
-  <section class="about-row about-row--lead">
-    <p class="about-row__label reveal">Бренд</p>
-    <div class="about-row__body">
-      <p class="about-lead reveal"><b>Бренд-проект</b> идет от&nbsp;бизнес-задачи к&nbsp;системе, которую можно применять без&nbsp;меня: аудит, концепция и&nbsp;визуальная территория, айдентика, примерка на&nbsp;носители, гайдлайн и&nbsp;контроль реализации.</p>
-      <a class="link-arrow about-more" href="./process-brand.html">
-        <span>Бренд-процесс по&nbsp;шагам</span>
-        <svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-      </a>
-    </div>
+    <p class="portfolio__empty" hidden>В&nbsp;этом направлении работ пока нет. <a class="ilink" href="works.html"><span class="ilink__row">Показать все<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></a></p>
   </section>
 
 </main>

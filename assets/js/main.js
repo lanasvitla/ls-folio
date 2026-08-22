@@ -190,61 +190,49 @@ document.documentElement.classList.add('js');
   });
 })();
 
-/* Work grid filter.
-   The filter is a view of one and the same set, not a change of positioning:
-   «Все» is first and is the default, so anyone arriving without a goal sees
-   everything before touching anything. The chosen value lives in the URL, so a
-   filtered grid can be linked to and Back/Forward behave the way the browser
-   promises. A card may belong to more than one niche — data-niche holds a
-   space-separated list. */
+/* Каталог: фильтр по направлениям.
+   Фильтр — это вид на один и тот же набор, а не смена позиционирования.
+   «Все» стоит первой и активна по умолчанию, состояние живёт в адресе, поэтому
+   отфильтрованный каталог можно отправить ссылкой, а Back и Forward ведут себя
+   так, как обещает браузер. Карточка может принадлежать нескольким нишам —
+   data-niche хранит список через пробел. */
 (function(){
-  var bar = document.querySelector('.filters');
-  var grid = document.getElementById('work-grid');
+  var bar = document.querySelector('.portfolio__filters');
+  var grid = document.getElementById('portfolio-grid');
   if(!bar || !grid) return;
 
-  var buttons = bar.querySelectorAll('.filters__btn');
+  var buttons = bar.querySelectorAll('.pfilter');
   var cards = grid.querySelectorAll('[data-niche]');
   var status = document.querySelector('.filters__status');
-  var LABELS = { all: 'все проекты', product: 'продукт и UX/UI', brand: 'бренд', web: 'web и digital' };
+  var empty = document.querySelector('.portfolio__empty');
+  var LABELS = { all: 'все работы', product: 'продукт и UX/UI', brand: 'бренд', web: 'web и digital' };
 
   function matches(card, value){
     if(value === 'all') return true;
     return (' ' + card.dataset.niche + ' ').indexOf(' ' + value + ' ') !== -1;
   }
 
-  function apply(value, focusGrid){
+  function plural(n){
+    var d = n % 10, dd = n % 100;
+    if(d === 1 && dd !== 11) return 'работа';
+    if(d >= 2 && d <= 4 && (dd < 10 || dd >= 20)) return 'работы';
+    return 'работ';
+  }
+
+  function apply(value){
     var shown = 0;
     Array.prototype.forEach.call(cards, function(card){
       var on = matches(card, value);
       card.hidden = !on;
-      if(on){
-        // a card hidden at first paint never intersected, so the observer never
-        // revealed it; showing it later has to bring it in explicitly
-        card.classList.add('is-visible');
-        shown++;
-      }
+      if(on){ card.classList.add('is-visible'); shown++; }
     });
     Array.prototype.forEach.call(buttons, function(btn){
       var on = btn.dataset.filter === value;
       btn.classList.toggle('is-active', on);
       btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
-    if(status){
-      status.textContent = shown + ' ' + plural(shown) + ' – ' + LABELS[value];
-    }
-    if(focusGrid){
-      // keep the grid in view: filtering out the tall cards can otherwise leave
-      // the reader staring at empty space below the fold
-      var top = grid.getBoundingClientRect().top + window.scrollY;
-      if(window.scrollY > top) window.scrollTo({ top: top - 120, behavior: 'smooth' });
-    }
-  }
-
-  function plural(n){
-    var d = n % 10, dd = n % 100;
-    if(d === 1 && dd !== 11) return 'проект';
-    if(d >= 2 && d <= 4 && (dd < 10 || dd >= 20)) return 'проекта';
-    return 'проектов';
+    if(empty) empty.hidden = shown !== 0;
+    if(status) status.textContent = shown + ' ' + plural(shown) + ' – ' + LABELS[value];
   }
 
   function fromUrl(){
@@ -259,14 +247,91 @@ document.documentElement.classList.add('js');
         ? location.pathname + location.hash
         : location.pathname + '?filter=' + value + location.hash;
       history.pushState({ filter: value }, '', url);
-      apply(value, true);
+      apply(value);
     });
   });
 
-  window.addEventListener('popstate', function(){ apply(fromUrl(), false); });
-
-  apply(fromUrl(), false);
+  window.addEventListener('popstate', function(){ apply(fromUrl()); });
+  apply(fromUrl());
 })();
+
+/* Первый экран: три строки управляют большой карточкой.
+   Автопереключение идёт по кругу; наведение или клавиатурный фокус временно
+   выбирает свою строку и останавливает цикл, уход возобновляет. Изображения
+   лежат стопкой в фиксированном контейнере, поэтому смена не двигает вёрстку. */
+(function(){
+  var AUTO_MS = 5000;
+
+  var index = document.querySelector('[data-cindex]');
+  var featured = document.querySelector('[data-featured]');
+  if(!index || !featured) return;
+
+  var rows = Array.prototype.slice.call(index.querySelectorAll('.crow'));
+  var imgs = Array.prototype.slice.call(featured.querySelectorAll('.featured__img'));
+  var num = featured.querySelector('.featured__num');
+  var title = featured.querySelector('.featured__title');
+  var type = featured.querySelector('.featured__type');
+  if(!rows.length || !imgs.length) return;
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var current = rows.findIndex(function(r){ return r.classList.contains('is-selected'); });
+  if(current < 0) current = 0;
+  var timer = null;
+  var held = false;
+
+  function select(i){
+    if(i === current) return;
+    var from = imgs[current], to = imgs[i], row = rows[i];
+
+    from.classList.remove('is-current');
+    from.classList.add('is-leaving');
+    to.classList.remove('is-leaving');
+    to.classList.add('is-current');
+    window.setTimeout(function(){ from.classList.remove('is-leaving'); }, 320);
+
+    rows[current].classList.remove('is-selected');
+    row.classList.add('is-selected');
+
+    // подпись меняется с задержкой, чтобы не спорить с кроссфейдом
+    window.setTimeout(function(){
+      num.textContent = row.querySelector('.crow__num').textContent;
+      title.textContent = row.querySelector('.crow__title').textContent;
+      type.textContent = row.querySelector('.crow__type').textContent;
+      featured.setAttribute('href', row.getAttribute('href'));
+    }, reduced ? 0 : 40);
+
+    current = i;
+  }
+
+  function start(){
+    // скрытая вкладка: таймер не заводим вовсе, а не полагаемся на троттлинг браузера
+    if(reduced || held || timer || document.hidden) return;
+    timer = window.setInterval(function(){ select((current + 1) % rows.length); }, AUTO_MS);
+  }
+  function stop(){
+    if(!timer) return;
+    window.clearInterval(timer);
+    timer = null;
+  }
+
+  rows.forEach(function(row, i){
+    // наведение и фокус выбирают кейс сразу и держат цикл на паузе
+    ['mouseenter', 'focus'].forEach(function(evt){
+      row.addEventListener(evt, function(){ held = true; stop(); select(i); }, true);
+    });
+    ['mouseleave', 'blur'].forEach(function(evt){
+      row.addEventListener(evt, function(){ held = false; start(); }, true);
+    });
+  });
+
+  // вкладка скрыта — цикл незачем крутить
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden) stop(); else start();
+  });
+
+  start();
+})();
+
 
 /* Portrait height follows the headline beside it.
    The number cannot be written in CSS: it depends on how many lines the Russian
