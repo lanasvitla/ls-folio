@@ -122,7 +122,7 @@ h1,h2,h3,p{ margin: 0; }
 }
 
 @media (prefers-reduced-motion: reduce){
-  .teaser__card{ transition: none; }
+  .teaser__row{ animation: none; transform: none; }
   .reveal{ transform: none; transition-delay: 0s; }
 }
 
@@ -881,6 +881,9 @@ h1,h2,h3,p{ margin: 0; }
    ниже. Пока это правило стояло выше .about-row, линия первого раздела
    упиралась в шапку, а верхний отступ не применялся. */
 .about-row--first{ border-top: none; padding-top: 96px; }
+/* min-width: auto у грид-элемента позволяет содержимому растягивать колонку:
+   раскрытая лента обложек раздувала строку до своей полной ширины */
+.about-row__body{ min-width: 0; }
 .about-row__label{
   font-family: var(--font-display);
   font-size: 16px;
@@ -2179,21 +2182,19 @@ h1,h2,h3,p{ margin: 0; }
    контента, как у всех остальных строк. */
 .about-row--plain .about-row__body{ grid-column: 2; }
 
-/* ---------- переход в каталог: текст и стопка обложек ---------- */
-/* Одна ссылка на весь блок. Стопка показывает объём портфолио: обложки лежат
-   в линию, перекрывая друг друга на три четверти, и на наведении расходятся
-   настолько, насколько позволяет колонка. */
+/* ---------- переход в каталог: текст и лента обложек ---------- */
+/* Одна ссылка на весь блок. Обложки идут бесконечной лентой слева направо и
+   уходят за оба края экрана: блок показывает объём портфолио сам, без наведения. */
 .teaser{
-  /* Ширина карточки — доля контейнера с потолком в 180 px. Двенадцать штук с
-     перекрытием в три четверти занимают 3.75 ширины карточки. 22% оставляют
-     запас, за счёт которого стопка расходится на любой ширине, а не только
-     на широком экране. */
-  --card-w: min(180px, 22%);
-  --steps: 11;              /* карточек минус одна */
+  --card-w: clamp(120px, 12.5vw, 180px);
+  --row-gap: 20px;
+  --bleed-l: calc(var(--page-x) + 270px);
+  --bleed-r: var(--page-x);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
+  min-width: 0;
   color: var(--ink);
 }
 .teaser__text{
@@ -2211,59 +2212,51 @@ h1,h2,h3,p{ margin: 0; }
 .teaser:hover .teaser__text{ box-shadow: inset 0 -1px 0 currentColor; }
 .teaser__text .icon-arrow-ne{ width: 16px; height: 16px; flex: 0 0 auto; }
 
+/* окно ленты во всю ширину экрана */
 .teaser__stack{
-  position: relative;
   display: block;
-  width: 100%;
+  width: calc(100% + var(--bleed-l) + var(--bleed-r));
+  flex: none;
   min-width: 0;
+  margin-left: calc(-1 * var(--bleed-l));
+  margin-right: calc(-1 * var(--bleed-r));
+  overflow: hidden;
 }
-/* высоту контейнеру задаёт распорка: проценты в padding считаются от ширины,
-   поэтому она следует за текучей карточкой */
-.teaser__stack::before{
-  content: "";
-  display: block;
-  padding-top: calc(var(--card-w) / 1.278);
+/* Набор обложек продублирован: лента едет на половину своей ширины и
+   возвращается в начало, стык приходится ровно на границу наборов.
+   Интервал задан через margin, а не gap — с gap половина ширины не совпала бы
+   с длиной одного набора и лента дёргалась бы на каждом круге. */
+.teaser__row{
+  display: flex;
+  width: max-content;
+  animation: teaser-drift 90s linear infinite;
+}
+/* курсор на блоке — лента замирает, чтобы можно было рассмотреть и нажать */
+.teaser:hover .teaser__row,
+.teaser:focus-visible .teaser__row{ animation-play-state: paused; }
+@keyframes teaser-drift{
+  from{ transform: translateX(-50%); }
+  to{ transform: translateX(0); }
 }
 .teaser__card{
-  position: absolute;
-  top: 0;
-  /* в покое шаг равен четверти карточки: видна четверть каждой */
-  left: calc(var(--card-w) * .25 * var(--i));
+  flex: 0 0 auto;
   width: var(--card-w);
+  margin-right: var(--row-gap);
   aspect-ratio: 308 / 241;
   height: auto;
   border-radius: 10px;
   object-fit: cover;
   background: var(--surface-soft);
   box-shadow: 0 1px 5px var(--shadow-soft);
-  transition: left .42s var(--ease), box-shadow .42s var(--ease);
+  user-select: none;
+  -webkit-user-drag: none;
 }
-/* на наведении карточки распределяются по всей ширине колонки; max() не даёт
-   им сжаться теснее покоя, если места мало */
-.teaser:hover .teaser__card,
-.teaser:focus-visible .teaser__card{
-  left: calc(max(var(--card-w) * .25, (100% - var(--card-w)) / var(--steps)) * var(--i));
-}
-/* стопка занимает всю ширину контента: 12 обложек рядом с текстом в одну
-   строку не помещаются даже сложенными, и раздвигать их было бы некуда */
-.teaser__stack{ width: 100%; }
-.teaser__card:nth-child(1){ --i: 0; z-index: 1; }
-.teaser__card:nth-child(2){ --i: 1; z-index: 2; }
-.teaser__card:nth-child(3){ --i: 2; z-index: 3; }
-.teaser__card:nth-child(4){ --i: 3; z-index: 4; }
-.teaser__card:nth-child(5){ --i: 4; z-index: 5; }
-.teaser__card:nth-child(6){ --i: 5; z-index: 6; }
-.teaser__card:nth-child(7){ --i: 6; z-index: 7; }
-.teaser__card:nth-child(8){ --i: 7; z-index: 8; }
-.teaser__card:nth-child(9){ --i: 8; z-index: 9; }
-.teaser__card:nth-child(10){ --i: 9; z-index: 10; }
-.teaser__card:nth-child(11){ --i: 10; z-index: 11; }
-.teaser__card:nth-child(12){ --i: 11; z-index: 12; }
 .teaser:focus-visible{
   outline: 2px solid var(--focus-ring);
   outline-offset: 6px;
   border-radius: 4px;
 }
+
 /* two CVs side by side; they wrap under each other on a narrow screen */
 .cv-links{ margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px 32px; }
 
@@ -2276,7 +2269,11 @@ h1,h2,h3,p{ margin: 0; }
   .about-row--first{ padding-top: 56px; }
   /* колонка одна: без сброса тело уезжает в неявную вторую и сужается */
   .about-row--plain .about-row__body{ grid-column: auto; }
-  .teaser{ --card-w: min(108px, 22%); gap: 20px; }
+  .teaser{
+    --card-w: 132px;
+    --bleed-l: var(--page-x);
+    gap: 20px;
+  }
   .about-directions{ flex-direction: column; }
   .directions__star--mid{ display: none; }
   .about-list li{ grid-template-columns: 1fr; gap: 4px; }
