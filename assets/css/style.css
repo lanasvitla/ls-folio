@@ -122,6 +122,7 @@ h1,h2,h3,p{ margin: 0; }
 }
 
 @media (prefers-reduced-motion: reduce){
+  .teaser__card{ transition: none; }
   .reveal{ transform: none; transition-delay: 0s; }
 }
 
@@ -837,8 +838,6 @@ h1,h2,h3,p{ margin: 0; }
   --page-x: clamp(20px, 6.25vw, 80px);
   padding-bottom: 96px;
 }
-/* first row has no hairline above it */
-.about-row--first{ border-top: none; padding-top: 96px; }
 
 /* portrait set inline in the headline */
 .inline-portrait{
@@ -878,6 +877,10 @@ h1,h2,h3,p{ margin: 0; }
   border-top: 1px solid var(--line);
   align-items: start;
 }
+/* Порядок важен: специфичность у обоих правил одинаковая, побеждает объявленное
+   ниже. Пока это правило стояло выше .about-row, линия первого раздела
+   упиралась в шапку, а верхний отступ не применялся. */
+.about-row--first{ border-top: none; padding-top: 96px; }
 .about-row__label{
   font-family: var(--font-display);
   font-size: 16px;
@@ -924,7 +927,7 @@ h1,h2,h3,p{ margin: 0; }
 .about-note{
   margin-top: 24px;
   max-width: 640px;
-  font-size: 18px;
+  font-size: var(--fs-body);
   line-height: 1.55;
   color: var(--muted);
   text-wrap: pretty;
@@ -940,8 +943,8 @@ h1,h2,h3,p{ margin: 0; }
   gap: 24px;
   padding: 16px 0;
   border-top: 1px solid var(--line);
-  font-size: 18px;
-  line-height: 1.4;
+  font-size: var(--fs-body);
+  line-height: 1.5;
 }
 .about-list li:first-child{ border-top: none; padding-top: 0; }
 .about-list--courses{ margin-top: 40px; }
@@ -1007,7 +1010,7 @@ h1,h2,h3,p{ margin: 0; }
   padding-top: 28px;
   border-top: 1px solid var(--line);
 }
-.about-tags__line{ max-width: 780px; font-size: 18px; line-height: 1.55; color: var(--muted); }
+.about-tags__line{ max-width: 780px; font-size: var(--fs-body); line-height: 1.55; color: var(--muted); }
 
 /* numbers */
 .about-facts{
@@ -1015,7 +1018,10 @@ h1,h2,h3,p{ margin: 0; }
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 32px;
 }
-.about-facts li{ display: grid; gap: 6px; }
+/* align-content: start обязателен. Без него строки внутреннего грида тянутся
+   до высоты самой длинной карточки ряда, и описания под короткими числами
+   уезжают вниз на 36 px. */
+.about-facts li{ display: grid; align-content: start; gap: 6px; }
 .about-facts b{
   font-family: var(--font-display);
   font-size: clamp(30px, 2.8vw, 38px);
@@ -1023,13 +1029,13 @@ h1,h2,h3,p{ margin: 0; }
   line-height: 1;
   letter-spacing: -0.01em;
 }
-.about-facts span{ font-size: 16px; line-height: 1.5; color: var(--muted); }
+.about-facts span{ font-size: var(--fs-body); line-height: 1.55; color: var(--muted); }
 /* the tag line may wrap between tags, never inside one */
 .about-facts i{ font-style: normal; color: var(--muted); }
 .about-facts i > span{ white-space: nowrap; }
 
 .about-notes{ margin-top: 32px; display: grid; gap: 20px; max-width: 780px; }
-.about-notes p{ font-size: 18px; line-height: 1.55; color: var(--muted); }
+.about-notes p{ font-size: var(--fs-body); line-height: 1.55; color: var(--muted); }
 
 /* fact sheet: skills / tools / location */
 .about-spec{ margin: 0; display: grid; gap: 20px; }
@@ -1041,8 +1047,10 @@ h1,h2,h3,p{ margin: 0; }
   border-bottom: 1px solid var(--line);
 }
 .about-spec > div:last-child{ border-bottom: none; padding-bottom: 0; }
-.about-spec dt{ font-size: 18px; line-height: 1.4; color: var(--muted); }
-.about-spec dd{ margin: 0; font-size: 18px; line-height: 1.5; }
+.about-spec dt{ font-size: var(--fs-body); line-height: 1.5; color: var(--muted); }
+.about-spec dd{ margin: 0; font-size: var(--fs-body); line-height: 1.5; }
+.spec-chips{ display: flex; flex-wrap: wrap; gap: 8px; }
+.about-spec--after-chips{ margin-top: 20px; }
 
 /* process */
 /* ---------- DESIGN / WORKS lockup ----------
@@ -1646,9 +1654,11 @@ h1,h2,h3,p{ margin: 0; }
 .dcard:focus-visible .dcard__fill{ height: 0; }
 .dcard__title{
   font-family: var(--font-display);
-  font-size: 26px;
+  /* 26 px на широком экране; когда карточка сужается, кегль идёт следом —
+     иначе заголовок из двух слов ломается на три-четыре строки */
+  font-size: clamp(20px, 2.2vw, 26px);
   font-weight: 600;
-  line-height: 32px;
+  line-height: 1.23;
   color: var(--ink);
   margin-bottom: 24px;
 }
@@ -1684,6 +1694,14 @@ h1,h2,h3,p{ margin: 0; }
 }
 .directions__star--one{ left: 33.33%; }
 .directions__star--two{ left: 66.66%; }
+/* на «Обо мне» карточек две, поэтому стык один — ровно посередине */
+.directions__star--mid{ left: 50%; }
+/* карточка-переход несёт только заголовок и действие, ей не нужны 400 px */
+.dcard--slim{ min-height: 208px; }
+.about-directions{ max-width: 780px; }
+/* отступ нужен только когда над карточками есть текст: в «Направлениях»
+   они идут первыми и должны начинаться на общем уровне раздела */
+.about-directions:not(:first-child){ margin-top: 28px; }
 
 
 /* ---------- Каталог «Портфолио» ---------- */
@@ -1844,7 +1862,10 @@ h1,h2,h3,p{ margin: 0; }
   .crow__arrow{ margin-left: auto; }
 
   .directions__grid{ flex-direction: column; }
-  .dcard{ min-height: 0; }
+  /* В колонке flex-basis: 0 из базового правила меряется по высоте: карточки
+     сжимались до padding (60 px) и прятали содержимое под overflow: hidden.
+     По высоте они должны занимать столько, сколько занимает контент. */
+  .dcard{ min-height: 0; flex: 0 0 auto; }
   .dcard + .dcard{ margin-left: 0; margin-top: -1px; }
   .directions__star{ display: none; }
 
@@ -2152,16 +2173,112 @@ h1,h2,h3,p{ margin: 0; }
 .pop-stack .pop-media--chip:hover{ z-index: 5; }
 
 .about-more{ margin-top: 28px; display: inline-flex; }
+
+/* У строки без лейбла тело попадало в первую колонку шириной 230 px и
+   зажималось: текст переносился, стопка не помещалась. Ставим его в колонку
+   контента, как у всех остальных строк. */
+.about-row--plain .about-row__body{ grid-column: 2; }
+
+/* ---------- переход в каталог: текст и стопка обложек ---------- */
+/* Одна ссылка на весь блок. Стопка показывает объём портфолио: обложки лежат
+   в линию, перекрывая друг друга на три четверти, и на наведении расходятся
+   настолько, насколько позволяет колонка. */
+.teaser{
+  /* Ширина карточки — доля контейнера с потолком в 180 px. Двенадцать штук с
+     перекрытием в три четверти занимают 3.75 ширины карточки. 22% оставляют
+     запас, за счёт которого стопка расходится на любой ширине, а не только
+     на широком экране. */
+  --card-w: min(180px, 22%);
+  --steps: 11;              /* карточек минус одна */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  color: var(--ink);
+}
+.teaser__text{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  box-shadow: inset 0 -1px 0 transparent;
+  transition: box-shadow .3s var(--ease);
+}
+.teaser:hover .teaser__text{ box-shadow: inset 0 -1px 0 currentColor; }
+.teaser__text .icon-arrow-ne{ width: 16px; height: 16px; flex: 0 0 auto; }
+
+.teaser__stack{
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+/* высоту контейнеру задаёт распорка: проценты в padding считаются от ширины,
+   поэтому она следует за текучей карточкой */
+.teaser__stack::before{
+  content: "";
+  display: block;
+  padding-top: calc(var(--card-w) / 1.278);
+}
+.teaser__card{
+  position: absolute;
+  top: 0;
+  /* в покое шаг равен четверти карточки: видна четверть каждой */
+  left: calc(var(--card-w) * .25 * var(--i));
+  width: var(--card-w);
+  aspect-ratio: 308 / 241;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  background: var(--surface-soft);
+  box-shadow: 0 1px 5px var(--shadow-soft);
+  transition: left .42s var(--ease), box-shadow .42s var(--ease);
+}
+/* на наведении карточки распределяются по всей ширине колонки; max() не даёт
+   им сжаться теснее покоя, если места мало */
+.teaser:hover .teaser__card,
+.teaser:focus-visible .teaser__card{
+  left: calc(max(var(--card-w) * .25, (100% - var(--card-w)) / var(--steps)) * var(--i));
+}
+/* стопка занимает всю ширину контента: 12 обложек рядом с текстом в одну
+   строку не помещаются даже сложенными, и раздвигать их было бы некуда */
+.teaser__stack{ width: 100%; }
+.teaser__card:nth-child(1){ --i: 0; z-index: 1; }
+.teaser__card:nth-child(2){ --i: 1; z-index: 2; }
+.teaser__card:nth-child(3){ --i: 2; z-index: 3; }
+.teaser__card:nth-child(4){ --i: 3; z-index: 4; }
+.teaser__card:nth-child(5){ --i: 4; z-index: 5; }
+.teaser__card:nth-child(6){ --i: 5; z-index: 6; }
+.teaser__card:nth-child(7){ --i: 6; z-index: 7; }
+.teaser__card:nth-child(8){ --i: 7; z-index: 8; }
+.teaser__card:nth-child(9){ --i: 8; z-index: 9; }
+.teaser__card:nth-child(10){ --i: 9; z-index: 10; }
+.teaser__card:nth-child(11){ --i: 10; z-index: 11; }
+.teaser__card:nth-child(12){ --i: 11; z-index: 12; }
+.teaser:focus-visible{
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
 /* two CVs side by side; they wrap under each other on a narrow screen */
 .cv-links{ margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px 32px; }
 
 @media (max-width: 720px){
-  .about-row--first{ padding-top: 56px; }
   .about-row{
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 40px 0;
   }
+  .about-row--first{ padding-top: 56px; }
+  /* колонка одна: без сброса тело уезжает в неявную вторую и сужается */
+  .about-row--plain .about-row__body{ grid-column: auto; }
+  .teaser{ --card-w: min(108px, 22%); gap: 20px; }
+  .about-directions{ flex-direction: column; }
+  .directions__star--mid{ display: none; }
   .about-list li{ grid-template-columns: 1fr; gap: 4px; }
   .about-facts{ grid-template-columns: 1fr; gap: 24px; }
   .about-duo{ grid-template-columns: 1fr; gap: 32px; }
@@ -2361,7 +2478,7 @@ h1,h2,h3,p{ margin: 0; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 64px;
+  margin-top: 32px;
   background: var(--tint-solid);
   color: var(--ink);
   font-family: var(--font-display);
@@ -2406,7 +2523,7 @@ h1,h2,h3,p{ margin: 0; }
 }
 
 .site-footer__cols{
-  margin-top: 40px;
+  margin-top: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
@@ -2489,11 +2606,11 @@ h1,h2,h3,p{ margin: 0; }
 
 @media (max-width: 720px){
   .site-footer{ padding: 48px var(--page-x); }
-  .site-footer__cta{ margin-top: 40px; }
+  .site-footer__cta{ margin-top: 28px; }
   .site-footer__cols{
     grid-template-columns: 1fr;
     gap: 32px;
-    margin-top: 32px;
+    margin-top: 40px;
   }
   .site-footer__copy{ margin-top: 32px; }
 }
