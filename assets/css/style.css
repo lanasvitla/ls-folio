@@ -79,7 +79,11 @@
 }
 
 *{ box-sizing: border-box; }
-html{ scroll-behavior: auto; }
+html{ scroll-behavior: auto; overflow-x: clip; }
+/* clip на body одном не держит границу надёжно: html — настоящий корневой
+   скроллер, и в части случаев overflow-x:clip с body на него не переносится.
+   Полноэкранная лента обложек на «Обо мне» это и обнажила: scrollWidth не
+   рос, но document.scrollTo(500,0) реально прокручивал страницу на 48px. */
 body{
   margin: 0;
   overflow-x: clip;
