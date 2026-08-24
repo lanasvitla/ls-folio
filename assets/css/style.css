@@ -1057,7 +1057,6 @@ h1,h2,h3,p{ margin: 0; }
 .about-spec dt{ font-size: var(--fs-body); line-height: 1.5; color: var(--muted); }
 .about-spec dd{ margin: 0; font-size: var(--fs-body); line-height: 1.5; }
 .spec-chips{ display: flex; flex-wrap: wrap; gap: 8px; }
-.about-spec--after-chips{ margin-top: 20px; }
 
 /* process */
 /* ---------- DESIGN / WORKS lockup ----------
