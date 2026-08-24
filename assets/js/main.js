@@ -175,7 +175,10 @@ document.documentElement.classList.add('js');
         if(open){ el.removeAttribute('hidden'); }
         else { el.setAttribute('hidden', 'until-found'); }
       });
-      btn.textContent = open ? btn.dataset.less : btn.dataset.more;
+      // подпись живёт в отдельном span: у кнопки внутри ещё стрелка и линия,
+      // и запись в textContent самой кнопки стёрла бы их
+      var label = btn.querySelector('[data-label]') || btn;
+      label.textContent = open ? btn.dataset.less : btn.dataset.more;
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
 
@@ -491,4 +494,41 @@ document.documentElement.classList.add('js');
 
   setInterval(function(){ cycle(flip, flipImg, 'flip', 'is-flipping', 360, 740); }, 6800);
   setInterval(function(){ cycle(spin, spinImg, 'spin', 'is-flipping-reverse', 460, 920); }, 15980);
+})();
+
+/* Год в подвале: строка в HTML — то, что было верно на момент последней
+   сборки (tools/pages.json → {{year}}), а не то, что верно сейчас. Статика
+   не пересобирается сама 1 января — без этой правки год просто застынет
+   на «2026» навсегда. Подменяем на настоящий текущий год при каждой
+   загрузке страницы, независимо от того, когда её в последний раз собрали. */
+(function(){
+  var nodes = document.querySelectorAll('.js-year');
+  if(!nodes.length) return;
+  var year = String(new Date().getFullYear());
+  nodes.forEach(function(el){ el.textContent = year; });
+})();
+
+/* Превью чужого сайта в рамке-браузере (кейсы Mark'n'Post и Svitla Embroidery).
+   Копия свёрстана в натуральную ширину 1400px и ужимается под ширину колонки
+   через scale. Высоту рамки ставим здесь же: scale не меняет геометрию для
+   потока, поэтому без явной высоты рамка не знает, где кончается копия, и
+   снизу оставалось пустое поле. */
+(function(){
+  var frames = document.querySelectorAll('[data-preview-frame]');
+  if(!frames.length) return;
+
+  function fit(frame){
+    var stage = frame.querySelector('[data-preview-stage]');
+    if(!stage) return;
+    var scale = frame.clientWidth / 1400;
+    stage.style.transform = 'scale(' + scale + ')';
+    frame.style.height = (stage.offsetHeight * scale) + 'px';
+  }
+  function fitAll(){ Array.prototype.forEach.call(frames, fit); }
+
+  fitAll();
+  window.addEventListener('resize', fitAll);
+  // шрифты и картинки внутри копии меняют её высоту уже после первого прохода
+  window.addEventListener('load', fitAll);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
 })();

@@ -196,6 +196,7 @@
       "components": [
         "icons",
         "site-header",
+        "other-projects",
         "site-footer"
       ],
       "homeHref": "../../index.html",
@@ -207,13 +208,30 @@
       "productHref": "../../product.html",
       "brandHref": "../../brand.html",
       "processProductHref": "../../process-product.html",
-      "processBrandHref": "../../process-brand.html"
+      "processBrandHref": "../../process-brand.html",
+      "otherAHref": "../eqlio/index.html",
+      "otherACover": "../../assets/works/Eqlio/EclioCover.webp",
+      "otherAAlt": "Eqlio: корпоративное приложение для спортивных челленджей",
+      "otherAChips": "<span class=\"chip\">Продукт &amp; UX/UI</span><span class=\"chip\">E-commerce</span><span class=\"chip\">Прототипы</span>",
+      "otherATitle": "Eqlio",
+      "otherADesc": "Корпоративное приложение для&nbsp;спортивных челленджей: сценарии, интерфейс и&nbsp;прототип.",
+      "otherAMetricValue": "6/7",
+      "otherAMetricLabel": "участников сочли сценарий понятным",
+      "otherBHref": "../togas/index.html",
+      "otherBCover": "../../assets/works/Togas/TogasApp.webp",
+      "otherBAlt": "Togas: мобильное приложение премиального бренда",
+      "otherBChips": "<span class=\"chip\">Продукт &amp; UX/UI</span><span class=\"chip\">Бренд</span><span class=\"chip\">Mobile app</span>",
+      "otherBTitle": "Togas",
+      "otherBDesc": "Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и&nbsp;бонусы.",
+      "otherBMetricValue": "+25%",
+      "otherBMetricLabel": "к&nbsp;числу заказов"
     },
     {
       "path": "work/eqlio/index.html",
       "components": [
         "icons",
         "site-header",
+        "other-projects",
         "site-footer"
       ],
       "homeHref": "../../index.html",
@@ -225,13 +243,30 @@
       "productHref": "../../product.html",
       "brandHref": "../../brand.html",
       "processProductHref": "../../process-product.html",
-      "processBrandHref": "../../process-brand.html"
+      "processBrandHref": "../../process-brand.html",
+      "otherAHref": "../mark-n-post/index.html",
+      "otherACover": "../../assets/works/MarknPost/MarknPostCover.webp",
+      "otherAAlt": "Mark’n’Post: лендинг логистического сервиса",
+      "otherAChips": "<span class=\"chip\">Web &amp; digital</span><span class=\"chip\">Web design</span><span class=\"chip\">Vibe coding</span>",
+      "otherATitle": "Mark’n’Post",
+      "otherADesc": "Лендинг логистического сервиса: форматы отправки, процесс и&nbsp;заявка в&nbsp;Telegram.",
+      "otherAMetricValue": "7",
+      "otherAMetricLabel": "продуктовые страницы для&nbsp;рекламной кампании",
+      "otherBHref": "../togas/index.html",
+      "otherBCover": "../../assets/works/Togas/TogasApp.webp",
+      "otherBAlt": "Togas: мобильное приложение премиального бренда",
+      "otherBChips": "<span class=\"chip\">Продукт &amp; UX/UI</span><span class=\"chip\">Бренд</span><span class=\"chip\">Mobile app</span>",
+      "otherBTitle": "Togas",
+      "otherBDesc": "Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и&nbsp;бонусы.",
+      "otherBMetricValue": "+25%",
+      "otherBMetricLabel": "к&nbsp;числу заказов"
     },
     {
       "path": "work/togas/index.html",
       "components": [
         "icons",
         "site-header",
+        "other-projects",
         "site-footer"
       ],
       "homeHref": "../../index.html",
@@ -243,13 +278,30 @@
       "productHref": "../../product.html",
       "brandHref": "../../brand.html",
       "processProductHref": "../../process-product.html",
-      "processBrandHref": "../../process-brand.html"
+      "processBrandHref": "../../process-brand.html",
+      "otherAHref": "../eqlio/index.html",
+      "otherACover": "../../assets/works/Eqlio/EclioCover.webp",
+      "otherAAlt": "Eqlio: корпоративное приложение для спортивных челленджей",
+      "otherAChips": "<span class=\"chip\">Продукт &amp; UX/UI</span><span class=\"chip\">E-commerce</span><span class=\"chip\">Прототипы</span>",
+      "otherATitle": "Eqlio",
+      "otherADesc": "Корпоративное приложение для&nbsp;спортивных челленджей: сценарии, интерфейс и&nbsp;прототип.",
+      "otherAMetricValue": "6/7",
+      "otherAMetricLabel": "участников сочли сценарий понятным",
+      "otherBHref": "../visual-brand-identity/index.html",
+      "otherBCover": "../../assets/works/Illustration_set/Illustaration_set_01.webp",
+      "otherBAlt": "Visual Brand Identity: система иллюстраций",
+      "otherBChips": "<span class=\"chip\">Бренд</span><span class=\"chip\">Иллюстрация</span><span class=\"chip\">AI-визуалы</span>",
+      "otherBTitle": "Visual Brand Identity",
+      "otherBDesc": "Система иллюстраций для&nbsp;маркетплейса ремесленных товаров.",
+      "otherBMetricValue": "12",
+      "otherBMetricLabel": "изображений в&nbsp;визуальной системе"
     },
     {
       "path": "work/visual-brand-identity/index.html",
       "components": [
         "icons",
         "site-header",
+        "other-projects",
         "site-footer"
       ],
       "homeHref": "../../index.html",
@@ -261,13 +313,30 @@
       "productHref": "../../product.html",
       "brandHref": "../../brand.html",
       "processProductHref": "../../process-product.html",
-      "processBrandHref": "../../process-brand.html"
+      "processBrandHref": "../../process-brand.html",
+      "otherAHref": "../eqlio/index.html",
+      "otherACover": "../../assets/works/Eqlio/EclioCover.webp",
+      "otherAAlt": "Eqlio: корпоративное приложение для спортивных челленджей",
+      "otherAChips": "<span class=\"chip\">Продукт &amp; UX/UI</span><span class=\"chip\">E-commerce</span><span class=\"chip\">Прототипы</span>",
+      "otherATitle": "Eqlio",
+      "otherADesc": "Корпоративное приложение для&nbsp;спортивных челленджей: сценарии, интерфейс и&nbsp;прототип.",
+      "otherAMetricValue": "6/7",
+      "otherAMetricLabel": "участников сочли сценарий понятным",
+      "otherBHref": "../togas/index.html",
+      "otherBCover": "../../assets/works/Togas/TogasApp.webp",
+      "otherBAlt": "Togas: мобильное приложение премиального бренда",
+      "otherBChips": "<span class=\"chip\">Продукт &amp; UX/UI</span><span class=\"chip\">Бренд</span><span class=\"chip\">Mobile app</span>",
+      "otherBTitle": "Togas",
+      "otherBDesc": "Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и&nbsp;бонусы.",
+      "otherBMetricValue": "+25%",
+      "otherBMetricLabel": "к&nbsp;числу заказов"
     },
     {
       "path": "work/svitla-embroidery/index.html",
       "components": [
         "icons",
         "site-header",
+        "other-projects",
         "site-footer"
       ],
       "homeHref": "../../index.html",
@@ -279,7 +348,23 @@
       "productHref": "../../product.html",
       "brandHref": "../../brand.html",
       "processProductHref": "../../process-product.html",
-      "processBrandHref": "../../process-brand.html"
+      "processBrandHref": "../../process-brand.html",
+      "otherAHref": "../mark-n-post/index.html",
+      "otherACover": "../../assets/works/MarknPost/MarknPostCover.webp",
+      "otherAAlt": "Mark’n’Post: лендинг логистического сервиса",
+      "otherAChips": "<span class=\"chip\">Web &amp; digital</span><span class=\"chip\">Web design</span><span class=\"chip\">Vibe coding</span>",
+      "otherATitle": "Mark’n’Post",
+      "otherADesc": "Лендинг логистического сервиса: форматы отправки, процесс и&nbsp;заявка в&nbsp;Telegram.",
+      "otherAMetricValue": "7",
+      "otherAMetricLabel": "продуктовые страницы для&nbsp;рекламной кампании",
+      "otherBHref": "../visual-brand-identity/index.html",
+      "otherBCover": "../../assets/works/Illustration_set/Illustaration_set_01.webp",
+      "otherBAlt": "Visual Brand Identity: система иллюстраций",
+      "otherBChips": "<span class=\"chip\">Бренд</span><span class=\"chip\">Иллюстрация</span><span class=\"chip\">AI-визуалы</span>",
+      "otherBTitle": "Visual Brand Identity",
+      "otherBDesc": "Система иллюстраций для&nbsp;маркетплейса ремесленных товаров.",
+      "otherBMetricValue": "12",
+      "otherBMetricLabel": "изображений в&nbsp;визуальной системе"
     }
   ]
 }

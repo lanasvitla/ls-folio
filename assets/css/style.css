@@ -748,11 +748,47 @@ h1,h2,h3,p{ margin: 0; }
 }
 
 /* ---------- case page ---------- */
-.case-hero{ padding: 48px 0 0; }
+/* padding-bottom is required, not decorative: whatever the hero's last child
+   is (media, video, a live-link) needs guaranteed clearance from whatever
+   section follows — relying on the NEXT section to bring its own top space
+   glued case-hero straight into the first .case-gallery on pages with no
+   .case-overview between them (0px gap, confirmed in the browser) */
+.case-hero{ padding: 48px 0 80px; }
+/* consecutive gallery blocks (case-gallery--tight-bottom stacks of full/half
+   images) had zero gap between them for the same reason — the padding they
+   carry is padding-BOTTOM only, so a gallery has none of its own above it */
+.case-gallery + .case-gallery{ margin-top: 24px; }
+/* Two abstract shapes above the title, each swapped on its own timer by the
+   dormant [data-form-root] cycle in main.js (ported from V1's brand-forms) */
+.case-forms{
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(28px, 3.5vw, 40px);
+  width: fit-content;
+  margin: 0 0 28px;
+  pointer-events: none;
+}
+.case-forms__frame{
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(96px, 11vw, 132px);
+  height: clamp(96px, 11vw, 132px);
+  transform-style: preserve-3d;
+  perspective: 700px;
+}
+.case-forms__frame--flip{ transition: transform 740ms var(--ease); }
+.case-forms__frame--spin{ transition: transform 920ms var(--ease); }
+.case-forms__frame.is-flipping{ transform: rotateY(90deg); }
+.case-forms__frame.is-flipping-reverse{ transform: rotateY(-90deg); }
+.case-forms__img{ display: block; width: 100%; height: 100%; object-fit: contain; }
+@media (max-width: 700px){
+  .case-forms{ display: none; }
+}
 .case-hero__title{
   font-family: var(--font-display);
   font-size: var(--fs-h1);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -0.01em;
 }
 .case-hero__subtitle{
@@ -761,7 +797,7 @@ h1,h2,h3,p{ margin: 0; }
   color: var(--muted);
 }
 .case-meta{
-  margin-top: 40px;
+  margin: 40px 0 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
@@ -784,6 +820,12 @@ h1,h2,h3,p{ margin: 0; }
   overflow: hidden;
   background: var(--surface-soft);
 }
+/* Первая картинка страницы, идущая за строкой метрик, отбивается сильнее
+   обычного: 40px тут читались как «прилипла» — строка метрик мелкая, и
+   картинке нужен собственный воздух, чтобы начать новый смысловой блок.
+   Селектор общего соседства (~), а не прямого (+): на части кейсов между
+   метриками и картинкой стоит ещё кнопка Live site. */
+.case-meta ~ .case-hero__media{ margin-top: 60px; }
 /* height: auto is required, not optional: the width/height attributes on the
    <img> act as a presentational hint, so scaling the width alone leaves the
    old pixel height in place and squashes the picture */
@@ -795,6 +837,8 @@ h1,h2,h3,p{ margin: 0; }
   margin-left: auto;
   margin-right: auto;
 }
+.case-hero__media--video{ aspect-ratio: 16 / 9; }
+.case-hero__media--video iframe{ display: block; width: 100%; height: 100%; border: 0; }
 
 .case-overview{
   padding: 80px 0;
@@ -803,15 +847,31 @@ h1,h2,h3,p{ margin: 0; }
   gap: 40px;
   border-top: 1px solid var(--line);
 }
+/* Линия-разделитель не нужна, когда блок стоит сразу после медиа или хиро:
+   в этих случаях выше уже есть своя граница (линия case-meta или край
+   картинки), и вторая читается как случайно оставленное правило.
+   --no-border — для случаев, когда блок вклинивается между картинками. */
+.case-hero + .case-overview,
+.case-overview--no-border{ border-top: 0; padding-top: 0; }
+.case-overview--three{ grid-template-columns: repeat(3, 1fr); }
+/* Метка блока живёт по тем же правилам, что и остальные метки на кейсе
+   (case-meta dt, case-story__label): 13px, обычное начертание, серый.
+   font-weight обязателен: у h3 браузерный дефолт 700, и без сброса
+   заголовок выпадал из системы — единственный жирный среди меток. */
 .case-overview h3{
   font-size: 13px;
+  font-weight: 400;
   color: var(--muted);
   margin-bottom: 14px;
 }
+/* Описательный абзац — базовый размер текста, как в insight-grid.
+   Раньше стоял --fs-lead (20px), из-за чего два одинаковых по смыслу блока
+   на одной странице набирались разным кеглем. */
 .case-overview p{
-  font-size: var(--fs-lead);
+  font-size: var(--fs-body);
   line-height: 1.55;
 }
+.case-overview .spec-chips{ margin-top: 16px; }
 
 .case-gallery{
   padding-bottom: 80px;
@@ -828,12 +888,182 @@ h1,h2,h3,p{ margin: 0; }
 
 .case-link-row{ padding-bottom: 80px; }
 .case-gallery--tight-bottom{ padding-bottom: 80px; }
+/* Идущие подряд галереи — это одна сетка, разбитая на секции только ради
+   разной раскладки строк (2 в ряд / во всю ширину). Поэтому по вертикали
+   между ними тот же шаг, что и между картинками внутри строки (gap: 24px),
+   иначе ряды одного набора разъезжаются на 104px и ритм рвётся.
+   Полные 80px остаются только у последней — до следующей секции. */
+.case-gallery:has(+ .case-gallery){ padding-bottom: 0; }
 
-.case-other{
-  padding: 80px 0 96px;
+/* ---------- case story (benchmark / hypothesis / journeys / wireframes) ---------- */
+.case-story{
+  padding: 80px 0;
   border-top: 1px solid var(--line);
 }
+.case-story__label{
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.case-story__grid{
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 24px 56px;
+  align-items: start;
+}
+.case-story__title{
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.case-story__intro{
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--muted);
+}
+/* Подпись к ряду картинок: та же метка, что открывает блоки-истории.
+   grid-column растягивает её на всю сетку, иначе она встала бы первой
+   ячейкой ряда и сдвинула картинки. */
+.case-gallery__label{
+  grid-column: 1 / -1;
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Плашка с итогами теста: тёмная, чтобы цифры читались как результат, а не
+   как ещё один абзац. Цвета — footer-токены, те же, что у подвала. */
+.metric-board{
+  margin-top: 48px;
+  display: grid;
+  /* колонки по числу метрик: auto-fit схлопывает лишние треки, поэтому
+     плашка не рассыпается, если метрик станет три или пять */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 24px;
+  padding: 44px 40px;
+  border-radius: var(--radius-lg);
+  background: var(--footer);
+}
+.metric-board__item{ min-width: 0; }
+.metric-board__item b{
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.4vw, 44px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--surface);
+}
+.metric-board__item span{
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--footer-muted);
+}
+
+/* Без линии сверху: разделители в системе отбивают блоки друг от друга,
+   а сетка инсайтов — часть того же блока, что и заголовок над ней.
+   Разделяет их только воздух. */
+.insight-grid{
+  margin-top: 48px;
+  padding-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 40px;
+}
+/* селектор по колонке, а не по классу .insight: в разметке колонки размечены
+   как обычные div (им нужен только .reveal), поэтому правило на .insight
+   не применялось и подзаголовок стоял вплотную к тексту — 0px вместо 14px */
+.insight-grid h3{ font-size: 13px; color: var(--muted); margin-bottom: 14px; font-weight: 400; }
+.insight-grid p{ font-size: var(--fs-body); line-height: 1.55; }
+/* тот же шаг от заголовка секции до её вводного абзаца, что и от подзаголовка
+   до текста внутри колонки — раньше стоял инлайном на самих страницах */
+.case-story__title + .case-story__intro{ margin-top: 14px; }
+
+/* journeys variant: copy + two step lanes on the left, a media frame on the right */
+.case-story--journeys .case-story__grid{ grid-template-columns: minmax(0, 1fr) minmax(280px, 0.86fr); }
+.journeys{
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  max-width: 420px;
+}
+.journey-lane h3{ font-size: 13px; color: var(--muted); font-weight: 400; }
+.journey-lane h3 span{ display: block; margin-top: 4px; font-size: var(--fs-body); color: var(--ink); }
+.journey-steps{
+  list-style: none;
+  margin: 16px 0 0;
+  padding-left: 16px;
+  border-left: 1px solid var(--line);
+  display: grid;
+  gap: 10px;
+}
+.journey-step{ font-size: var(--fs-body); line-height: 1.4; }
+.journeys-visual{
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface-soft);
+  align-self: stretch;
+}
+.journeys-visual img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* wireframes variant: horizontal-scroll track of phone mocks, arrow-linked */
+.wireframes-scroll{
+  margin-top: 48px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+.wireframes-scroll::-webkit-scrollbar{ display: none; }
+.wireframes-track{ display: flex; align-items: flex-start; width: max-content; }
+.wireframe-item{ position: relative; flex: 0 0 146px; width: 146px; text-align: center; }
+.wireframe-item:not(:last-child){ margin-right: 64px; }
+.wireframe-item h3{ font-size: var(--fs-body); font-weight: 500; margin-bottom: 12px; }
+.wireframe-item img{
+  display: block;
+  width: 146px;
+  height: 353px;
+  margin: 0 auto;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+}
+.wireframe-item__arrow{
+  position: absolute;
+  top: 190px;
+  left: calc(100% + 21px);
+  width: 22px;
+  height: 22px;
+  color: var(--tone-soft);
+}
+
+/* Воздух над линией и под ней должен читаться одинаково. Снизу линии стоят
+   те же 80px, но заголовок «Другие проекты» набран крупно (--fs-h1) и его
+   полулидинг добавляет сверху ещё ~22px пустоты — оптически низ выглядел
+   просторнее верха. Компенсируем это margin'ом над линией, считая пустоту
+   по метрикам шрифта: половина интерлиньяжа минус расстояние до капители.
+   Множитель 0.75 — это line-height 1.5, поделённый пополам. */
+/* Воздух вокруг линии — 120px с обеих сторон. Снизу это padding секции,
+   сверху складывается из 80px, которые несёт предыдущий блок, и 40px
+   собственного margin: до линии и после неё получается поровну.
+   К margin добавлена компенсация полулидинга заголовка (он набран --fs-h1
+   и его верхняя пустота зрительно увеличивала нижнюю половину). */
+.case-other{
+  margin-top: calc(40px + 0.75 * var(--fs-h1) - var(--cap-k) * var(--fs-h1));
+  padding: 120px 0 96px;
+  border-top: 1px solid var(--line);
+}
+/* Браузеры с text-box-trim сами срезают полулидинг — остаётся чистые 40px */
+@supports (text-box-trim: trim-start){
+  .case-other{ margin-top: 40px; }
+  .section-head h2{ text-box-trim: trim-start; text-box-edge: cap alphabetic; }
+}
 .case-other--no-border{ border-top: none; }
+.case-other__grid{ margin-top: 40px; padding-bottom: 0; }
 
 /* ---------- about page ----------
    Reference /about: narrow label column on the left (16px/500), content on the
@@ -926,11 +1156,17 @@ h1,h2,h3,p{ margin: 0; }
   font-size: var(--fs-about-lead);
   font-weight: 400;
   line-height: 1.4;
-  max-width: 780px;
+  /* 800, а не 780: строке «6+ лет на senior- / руководящих позициях»
+     нужно 788px, и на прежней ширине она разрывалась ради восьми пикселей */
+  max-width: 800px;
   color: var(--tone-soft);
   text-wrap: pretty;
 }
 .about-note + .about-note{ margin-top: 12px; }
+/* верхний отступ нужен, только когда над абзацем что-то есть: если он
+   открывает раздел (как в «Локации»), 24px опускали текст ниже заголовка
+   слева, и строка переставала начинаться с ним на одном уровне */
+.about-row__body > .about-note:first-child{ margin-top: 0; }
 .about-note{
   margin-top: 24px;
   max-width: 640px;
@@ -973,15 +1209,18 @@ h1,h2,h3,p{ margin: 0; }
   padding: 0;
   border: 0;
   background: none;
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.4;
   color: var(--muted);
   cursor: pointer;
   transition: color .3s var(--ease);
 }
 .list-more:hover{ color: var(--ink); }
+/* стрелка из спрайта смотрит вправо — поворачиваем её вниз, а в раскрытом
+   состоянии вверх; размер меньше обычного, чтобы не спорить с подписью */
+.list-more .ic{ width: 14px; height: 14px; transition: transform .3s var(--ease); }
+.list-more .list-more__chev{ transform: rotate(90deg); }
+.list-more[aria-expanded="true"] .list-more__chev{ transform: rotate(-90deg); }
+.list-more:hover .list-more__chev{ transform: rotate(90deg) translateX(2px); }
+.list-more[aria-expanded="true"]:hover .list-more__chev{ transform: rotate(-90deg) translateX(2px); }
 /* a shortened list ends on a row, so the button needs the breathing room that
    the list's own bottom padding would otherwise provide */
 .about-list + .list-more{ margin-top: 8px; }
@@ -1028,7 +1267,7 @@ h1,h2,h3,p{ margin: 0; }
 /* align-content: start обязателен. Без него строки внутреннего грида тянутся
    до высоты самой длинной карточки ряда, и описания под короткими числами
    уезжают вниз на 36 px. */
-.about-facts li{ display: grid; align-content: start; gap: 6px; }
+.about-facts li{ display: grid; align-content: start; gap: 20px; }
 .about-facts b{
   font-family: var(--font-display);
   font-size: clamp(30px, 2.8vw, 38px);
@@ -1216,20 +1455,27 @@ h1,h2,h3,p{ margin: 0; }
 }
 .ilink .ic{ width: 18px; height: 18px; }
 /* линия рисуется на всю ширину строки, то есть до правого края стрелки */
+/* Линия появляется только по наведению и выезжает слева направо. Постоянной
+   серой подложки нет намеренно: на лаймовой плашке она смотрелась грязно. */
 .ilink__rule{
+  position: relative;
   height: 1px;
-  background: var(--muted);
+}
+.ilink__rule::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
   transform: scaleX(0);
   transform-origin: left center;
-  opacity: 0;
-  transition: transform .42s var(--ease) .04s, opacity .42s var(--ease) .04s;
+  transition: transform .42s var(--ease) .04s;
 }
 .ilink:hover .ic,
 .ilink:focus-visible .ic{ transform: translateX(2px); }
-.ilink:hover .ilink__rule,
-.ilink:focus-visible .ilink__rule{ transform: scaleX(1); opacity: 1; }
+.ilink:hover .ilink__rule::after,
+.ilink:focus-visible .ilink__rule::after{ transform: scaleX(1); }
 .ilink:active .ic{ transform: translateX(1px); }
-.ilink:active .ilink__rule{ opacity: .75; }
+.ilink:active .ilink__rule::after{ opacity: .75; }
 .ilink:focus-visible{ outline: 2px solid var(--ink); outline-offset: 4px; }
 
 /* ---------- Первый экран главной ---------- */
@@ -1363,16 +1609,25 @@ h1,h2,h3,p{ margin: 0; }
 .author-labels{
   display: inline-flex;
   gap: 12px;
-  margin-left: 6px;
+  /* чуть дальше от последнего слова заголовка */
+  margin-left: 9px;
   vertical-align: 12px;
-  border-top: 1px solid var(--line);
+  /* линия сверху висит не на контейнере, а на каждом лейбле отдельно —
+     иначе она тянется сквозь промежуток между ними */
   /* сбрасываем наследование от 40-пиксельного заголовка */
   font-size: 10px;
   font-weight: 500;
   line-height: normal;
   white-space: nowrap;
 }
-.author-labels__item{ display: flex; flex-direction: column; gap: 3px; }
+/* padding-top равен gap: воздух над текстом и под ним одинаковый */
+.author-labels__item{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 3px;
+  border-top: 1px solid var(--line);
+}
 .author-labels__item span{
   font-family: var(--font-display);
   font-size: 10px;
@@ -1466,23 +1721,41 @@ h1,h2,h3,p{ margin: 0; }
 .featured:hover .featured__img.is-current{ transform: scale(1.02); }
 .featured:active{ transform: scale(.995); }
 
+/* Три зоны, а не space-between: боковые колонки равной ширины (1fr) держат
+   направление ровно по центру плашки независимо от длины названия работы.
+   Номер и название лежат в одной ячейке и читаются как пара — при
+   space-between название уезжало в середину свободного места и «отрывалось»
+   от номера. */
 .featured__caption{
   position: absolute;
   left: 24px;
   right: 24px;
   bottom: 24px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
+  gap: 24px;
   height: 62px;
-  padding: 0 16px;
+  /* было 16px — стрелка «Открыть кейс» упиралась в скругление */
+  padding: 0 28px;
   border-radius: var(--radius-md);
   background: var(--surface);
+  box-shadow: 0 18px 40px var(--shadow-soft);
   transition: transform .32s var(--ease);
 }
+/* baseline, а не center: цифра мельче названия, и по центру она вставала
+   оптически выше его базовой линии */
+.featured__head{
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  min-width: 0;
+}
 .featured:hover .featured__caption{ transform: translateY(-6px); }
+/* ширину не задаём: номер стоит вплотную к названию через gap родителя,
+   как в строках списка справа */
 .featured__num{
-  width: 32px;
+  flex: 0 0 auto;
   font-family: var(--font-display);
   font-size: 12px;
   font-weight: 600;
@@ -1491,22 +1764,25 @@ h1,h2,h3,p{ margin: 0; }
   transition: color .32s var(--ease);
 }
 .featured__title{
-  flex: 1 1 auto;
   min-width: 0;
   font-family: var(--font-display);
   font-size: 18px;
   font-weight: 500;
   line-height: 27px;
   color: var(--ink);
+  white-space: nowrap;
 }
+/* auto-ширина: колонка центрируется сеткой, фиксированные 230px смещали
+   направление вправо от настоящего центра плашки */
 .featured__type{
-  width: 230px;
   font-size: 12px;
   line-height: 18px;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--muted);
   transition: color .32s var(--ease);
 }
+.featured__caption .ilink{ justify-self: end; }
 .featured:hover .featured__num,
 .featured:hover .featured__type{ color: var(--ink); }
 .featured:focus-visible{ outline: 2px solid var(--ink); outline-offset: 2px; }
@@ -1528,7 +1804,11 @@ h1,h2,h3,p{ margin: 0; }
   align-items: center;
   justify-content: space-between;
   height: 70px;
-  padding: 0 16px;
+  /* Отступы неравные по числу, но равные на глаз: слева край упирается
+     в текст номера, справа — в круг 48px, внутри которого стрелка 22px,
+     то есть ещё 13px собственного воздуха. При одинаковых 16px слева
+     читалось 17px, справа — 30px. 24 и 11 дают ровно 24 с обеих сторон. */
+  padding: 0 11px 0 24px;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: var(--surface);
@@ -1585,13 +1865,32 @@ h1,h2,h3,p{ margin: 0; }
   height: 62px;
   padding-right: 16px;
 }
+/* Текст отвечает на наведение той же линией, что и остальные ссылки сайта
+   (.ilink): выезжает слева направо. Раньше реагировал только круг, и половина
+   строки казалась неинтерактивной. */
 .allworks__text{
+  position: relative;
+  padding-bottom: 4px;
   font-family: var(--font-display);
   font-size: 18px;
   font-weight: 500;
   line-height: 27px;
   color: var(--ink);
 }
+.allworks__text::after{
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .42s var(--ease) .04s;
+}
+.allworks:hover .allworks__text::after,
+.allworks:focus-visible .allworks__text::after{ transform: scaleX(1); }
 .allworks__circle{
   display: grid;
   place-items: center;
@@ -1678,7 +1977,12 @@ h1,h2,h3,p{ margin: 0; }
   line-height: 24px;
   color: var(--muted);
 }
-.dcard__spacer{ flex: 1 1 auto; }
+/* min-height, а не только flex-grow: на высокой карточке распорка и так
+   растягивается, но когда карточка сжимается по содержимому (узкий экран),
+   она схлопывается в ноль — и лаймовая заливка, которая всегда 72px от низа,
+   наезжает на последнюю строку списка. Этот минимум держит воздух перед
+   строкой действия при любой высоте карточки. */
+.dcard__spacer{ flex: 1 1 auto; min-height: 28px; }
 .dcard__action{
   position: relative;
   z-index: 1;
@@ -1704,7 +2008,50 @@ h1,h2,h3,p{ margin: 0; }
 .directions__star--mid{ left: 50%; }
 /* карточка-переход несёт только заголовок и действие, ей не нужны 400 px */
 .dcard--slim{ min-height: 208px; }
-.about-directions{ max-width: 780px; }
+/* На тач-экране наведения не бывает: браузер подставляет hover после тапа,
+   и лаймовая заливка «залипает» на карточке, к тому же на сжатой карточке
+   её фиксированные 72px наезжают на заголовок. Поэтому там её нет вовсе,
+   а нажатие подтверждается подсветкой всей карточки. Кликабельность видна
+   по строке «Подробнее» со стрелкой. */
+@media (hover: none){
+  .dcard__fill{ display: none; }
+  .dcard:active{ background: var(--tint-soft); }
+}
+/* Колонка = карточка направления + её CV. Так ссылка принадлежит блоку,
+   а не висит общей строкой снизу: на узком экране колонки встают друг под
+   друга и каждое CV едет вместе со своей карточкой. */
+.about-directions{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 780px;
+}
+.about-direction{ display: flex; flex-direction: column; min-width: 0; }
+/* 24px — левый внутренний отступ карточки: ссылка начинается по той же
+   вертикали, что заголовок и «Подробнее» внутри плашки, а не по её краю */
+.about-direction .link-arrow{
+  margin-top: 20px;
+  margin-left: 24px;
+  align-self: start;
+  /* по центру, а не по базовой линии: в строке рядом с текстом стоят чипс
+     и стрелка — у них своя высота, и baseline поднимал стрелку над строкой */
+  align-items: center;
+  flex-wrap: wrap;
+}
+/* «CV» вынесено в чипс: это тип документа, а не часть названия роли.
+   Мельче основного текста, чтобы не спорить с ним. */
+.about-direction .link-arrow .chip{
+  flex: 0 0 auto;
+  font-size: 11px;
+  letter-spacing: .04em;
+  padding: 3px 10px;
+}
+/* формат и вес файла: по ссылке уходит PDF, и это стоит сказать до клика */
+.link-arrow__meta{
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
 /* отступ нужен только когда над карточками есть текст: в «Направлениях»
    они идут первыми и должны начинаться на общем уровне раздела */
 .about-directions:not(:first-child){ margin-top: 28px; }
@@ -1794,12 +2141,29 @@ h1,h2,h3,p{ margin: 0; }
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: var(--surface);
-  transition: background .35s var(--ease), color .35s var(--ease), transform .12s var(--ease);
+  transition: background .35s var(--ease), color .35s var(--ease), transform .35s var(--ease);
 }
-.pcase__go .ic{ width: 24px; height: 24px; }
+/* Механика снята с референса gocetinkaya.com: там круг в покое повёрнут на
+   45°, а стрелка внутри развёрнута обратно, поэтому стоит прямо. При
+   наведении круг раскручивается в 0°, а стрелка доворачивается — суммарно
+   она проходит 90° и уходит по диагонали «наружу». Поворот держим на двух
+   вложенных элементах, иначе он не наберёт полный ход. */
+.pcase__go{ transform: rotate(45deg); }
+.pcase__go .ic{
+  width: 24px;
+  height: 24px;
+  transform: rotate(-45deg);
+  transition: transform .5s var(--ease);
+}
 .pcase:hover .pcase__go,
-.pcase:focus-visible .pcase__go{ background: var(--surface); color: var(--ink); }
-.pcase:active .pcase__go{ transform: scale(.96); }
+.pcase:focus-visible .pcase__go{
+  background: var(--surface);
+  color: var(--ink);
+  transform: rotate(0deg);
+}
+.pcase:hover .pcase__go .ic,
+.pcase:focus-visible .pcase__go .ic{ transform: rotate(45deg); }
+.pcase:active .pcase__go{ transform: rotate(0deg) scale(.94); }
 .pcase:focus-visible{ outline: 2px solid var(--ink); outline-offset: 2px; }
 
 .pcase__caption{ display: flex; flex-direction: column; gap: 10px; }
@@ -1855,17 +2219,40 @@ h1,h2,h3,p{ margin: 0; }
   .metrics__band{ flex-direction: column; align-items: flex-start; gap: 16px; }
   .metrics__star{ display: none; }
 
+  /* Три колонки на узкий экран не помещаются. Не переносим их по строкам
+     (тогда направление липнет к названию, а действие уезжает вправо), а
+     ставим всё в столбик по левому краю — строки читаются сверху вниз. */
   .featured__caption{
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     height: auto;
-    padding: 12px 16px;
-    gap: 4px 12px;
+    padding: 14px 16px;
+    gap: 6px;
   }
   .featured__num, .featured__title, .featured__type{ width: auto; }
+  .featured__title, .featured__type{ white-space: normal; }
+  .featured__caption .ilink{ margin-left: 0; margin-top: 2px; }
 
-  .crow{ flex-wrap: wrap; height: auto; padding: 14px 16px; gap: 4px 12px; }
+  /* Сетка вместо переноса строк: у длинного направления стрелка уезжала на
+     вторую строку, у короткого оставалась на первой — строки списка стояли
+     по-разному. Теперь номер с названием сверху, направление под ними,
+     а стрелка держит правый край на всю высоту строки. */
+  .crow{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    height: auto;
+    padding: 14px 11px 14px 24px;
+    column-gap: 10px;
+    row-gap: 2px;
+  }
   .crow__num, .crow__title, .crow__type{ width: auto; }
-  .crow__arrow{ margin-left: auto; }
+  .crow__num{ grid-column: 1; grid-row: 1; }
+  .crow__title{ grid-column: 2; grid-row: 1; }
+  .crow__type{ grid-column: 2; grid-row: 2; }
+  .crow__arrow{ grid-column: 3; grid-row: 1 / 3; margin-left: 0; }
 
   .directions__grid{ flex-direction: column; }
   /* В колонке flex-basis: 0 из базового правила меряется по высоте: карточки
@@ -1873,7 +2260,19 @@ h1,h2,h3,p{ margin: 0; }
      По высоте они должны занимать столько, сколько занимает контент. */
   .dcard{ min-height: 0; flex: 0 0 auto; }
   .dcard + .dcard{ margin-left: 0; margin-top: -1px; }
+  /* Звёзды с широкого экрана стоят на стыках колонок — в столбик стыков нет,
+     поэтому исходные прячем, а вместо них каждая карточка получает свою:
+     тот же знак открывает направление, но уже сверху, перед заголовком.
+     Звезда нарисована фоном, чтобы не заводить её в разметку трёх страниц. */
   .directions__star{ display: none; }
+  .dcard::before{
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-bottom: 16px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Cpath d='M22 0c1.4 11.2 10.4 20.2 21.6 21.6-11.2 1.4-20.2 10.4-21.6 21.6C20.6 32 11.6 23 .4 21.6 11.6 20.2 20.6 11.2 22 0z' fill='%230a0a0a'/%3E%3C/svg%3E") no-repeat center / contain;
+  }
 
   .portfolio__grid{ grid-template-columns: 1fr; gap: 48px; }
   .pcase__go{ width: 56px; height: 56px; left: 18px; bottom: 18px; }
@@ -1885,22 +2284,35 @@ h1,h2,h3,p{ margin: 0; }
 @media (prefers-reduced-motion: reduce){
   .author-portrait__hi,
   .metrics__star,
-  .directions__star{ animation: none; }
+  .directions__star,
+  .process-lead__diamond,
+  .process-lead__wave,
+  .live-link__dot{ animation: none; }
   .featured__img,
   .featured__caption,
   .pcase__cover img,
   .dcard__fill,
   .ilink .ic,
-  .ilink__rule,
-  .allworks__circle{ transition: none; }
+  .ilink__rule::after,
+  .allworks__circle,
+  .allworks__text::after{ transition: none; }
   .featured:hover .featured__img.is-current,
   .pcase:hover .pcase__cover img,
   .pcase:focus-visible .pcase__cover img{ transform: none; }
+  /* поворот оставляем статичным: круг и стрелка сразу в конечном положении */
+  .pcase__go,
+  .pcase__go .ic{ transition: none; }
+  .pcase__go{ transform: rotate(0deg); }
+  .pcase__go .ic{ transform: rotate(0deg); }
+  .pcase:hover .pcase__go,
+  .pcase:focus-visible .pcase__go{ transform: rotate(0deg); }
+  .pcase:hover .pcase__go .ic,
+  .pcase:focus-visible .pcase__go .ic{ transform: rotate(0deg); }
   .featured:hover .featured__caption{ transform: none; }
   .ilink:hover .ic,
   .ilink:focus-visible .ic{ transform: none; }
-  .ilink:hover .ilink__rule,
-  .ilink:focus-visible .ilink__rule{ transform: scaleX(1); }
+  .ilink:hover .ilink__rule::after,
+  .ilink:focus-visible .ilink__rule::after{ transform: scaleX(1); }
   .allworks:hover .allworks__circle{ transform: none; }
 }
 
@@ -2277,10 +2689,16 @@ h1,h2,h3,p{ margin: 0; }
     --bleed-l: var(--page-x);
     gap: 20px;
   }
-  .about-directions{ flex-direction: column; }
+  /* в столбик колонки нужно развести: иначе CV первого направления упирается
+     в карточку второго (по горизонтали карточки, наоборот, стоят встык) */
+  .about-directions{ grid-template-columns: 1fr; row-gap: 40px; }
   .directions__star--mid{ display: none; }
   .about-list li{ grid-template-columns: 1fr; gap: 4px; }
-  .about-facts{ grid-template-columns: 1fr; gap: 24px; }
+  /* В столбик цифра и её текст должны читаться как одна пара, поэтому
+     расстояние между парами заметно больше, чем внутри пары (20px).
+     При прежних 24px между блоками оказывалось теснее, чем внутри них,
+     и метрики сливались в сплошную ленту. */
+  .about-facts{ grid-template-columns: 1fr; gap: 60px; }
   .about-duo{ grid-template-columns: 1fr; gap: 32px; }
   .about-router{ grid-template-columns: 1fr; gap: 16px; }
   .filters__btn{ padding: 8px 14px; font-size: 14px; }
@@ -2615,6 +3033,318 @@ h1,h2,h3,p{ margin: 0; }
   .site-footer__copy{ margin-top: 32px; }
 }
 
+/* ---------- reference-styled process blocks: gocetinkaya.com/process ---------- */
+/* Заголовок двухцветный собран на существующем .about-lead + <b>: тот же
+   приём, что в рефе (утверждение чёрным, продолжение серым), уже есть в
+   системе — новый класс не нужен. */
+/* Double Diamond рядом с описанием процесса: цвет — токен ink, а не чёрный
+   из исходного файла (fill в svg заменён на currentColor). */
+.process-lead{ display: flex; flex-direction: column; gap: 24px; }
+.process-lead__icon{
+  width: clamp(128px, 16vw, 208px);
+  height: auto;
+  color: var(--ink);
+}
+.process-lead__text{ margin: 0; }
+
+/* Иконка переехала в левую колонку, под лейбл «Как я работаю» — своя
+   явная grid-раскладка только для этой секции, чтобы не трогать общий
+   .about-row, который используется на всех остальных строках сайта.
+   body растягивается на обе строки (grid-row: 1 / 3), поэтому его высота
+   не завязана на высоту иконки — он идёт своим чередом рядом с обеими. */
+.about-row--icon-label{
+  grid-template-rows: auto 1fr;
+}
+.about-row--icon-label > .about-row__label{ grid-row: 1; grid-column: 1; }
+.about-row--icon-label > .process-lead__icon{
+  grid-row: 2;
+  grid-column: 1;
+  align-self: start;
+  /* сдвинуто так, чтобы центр ромбов совпадал по высоте со 2-й строкой
+     текста справа (измерено в браузере: getBoundingClientRect ромбов
+     против getClientRects текста) */
+  margin-top: -17px;
+  width: 100%;
+  max-width: none;
+}
+.about-row--icon-label > .about-row__body{ grid-row: 1 / 3; grid-column: 2; }
+
+/* Два ромба пульсируют асинхронно. Поворот на 45° теперь сидит СТАТИЧНО на
+   родительском <g> (XML-атрибут, CSS его не трогает и не может подменить).
+   CSS-анимация трогает только сам <rect> и масштабирует его от СОБСТВЕННОГО
+   геометрического центра (transform-box: fill-box; transform-origin: center —
+   считается в локальных координатах rect, до применения поворота родителя).
+   Раньше scale стоял на том же элементе, что и rotate(45, угол-квадрата) —
+   тогда центром масштабирования был угол ромба, а не его середина, и ромб
+   визуально «стекал» в сторону этого угла вместо того, чтобы дышать на месте. */
+.process-lead__diamond{
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.process-lead__diamond--a{ animation: process-diamond-pulse 2600ms var(--ease) infinite; }
+/* отрицательная задержка стартует со середины цикла сразу при отрисовке —
+   без неё асинхронность была бы заметна только после первой паузы */
+.process-lead__diamond--b{ animation: process-diamond-pulse 2600ms var(--ease) -1300ms infinite; }
+@keyframes process-diamond-pulse{
+  0%, 100%{ transform: scale(.88); opacity: .82; }
+  50%{ transform: scale(1.14); opacity: 1; }
+}
+
+/* Волна течёт слева направо, зациклена. Ровно один период (44px) за цикл:
+   волна нарисована на 10 периодов вперёд, поэтому сдвиг на один период
+   выглядит идентично исходному кадру — цикл бесшовный без дублирования
+   разметки (сам путь уже избыточно длинный, в отличие от ленты обложек). */
+.process-lead__wave{ animation: process-wave-drift 3200ms linear infinite; }
+@keyframes process-wave-drift{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(44px); }
+}
+
+/* <ol> без сброса маркера рисовал собственную нумерацию браузера рядом с
+   нашими «01/02/03/04»: список превращался в «1 01», «2 02». */
+.process-steps{
+  list-style: none;
+  margin: 56px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 780px;
+}
+.process-steps__item{ list-style: none; }
+/* По референсу (gocetinkaya) число сидит на высоте середины заголовка, не
+   по верху и не по бейзлайну — align-items: center, без подбора чисел под
+   конкретный кегль. */
+/* center годится, пока заголовок в одну строку: тогда номер стоит вровень
+   с ним. Как только заголовок переносится, центр пары уходит вниз и номер
+   повисает между строками — поэтому многострочный случай выравниваем
+   по первой строке (см. медиазапрос ниже). */
+.process-steps__row{ display: flex; align-items: center; gap: 16px; }
+.process-steps__num{
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--tone-soft);
+}
+.process-steps__title{
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--ink);
+}
+.process-steps__desc{
+  margin: 12px 0 0;
+  max-width: 720px;
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.process-services{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 900px;
+}
+/* Три колонки — плейсхолдер, текст, чипы. flex-wrap вместо жёстких
+   брейкпоинтов: когда ширины не хватает на все три в ряд, чипы (самый
+   узкий и самый независимый по смыслу блок) сами уходят на новую строку —
+   без отдельного media-правила под каждую промежуточную ширину. */
+.process-services__item{ display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px 40px; }
+.process-services__text{ flex: 1 1 260px; min-width: 200px; }
+/* заглушка тем же токеном, что фон пилюли хедера: --tint-soft.
+   overflow:hidden — под будущее фото: сейчас масштабируется сама плашка,
+   когда придёт картинка, тот же hover будет её увеличивать без выхода за
+   скруглённые края. position:relative — точка отсчёта для кнопки поверх. */
+.process-services__ph{
+  position: relative;
+  flex: 0 0 220px;
+  height: 170px;
+  border-radius: var(--radius-md);
+  background: var(--tint-soft);
+  overflow: hidden;
+  transition: transform .4s var(--ease);
+}
+.process-services__item:hover .process-services__ph,
+.process-services__item:focus-within .process-services__ph{ transform: scale(1.05); }
+.process-services__ph img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s var(--ease);
+}
+/* «В портфолио» — та же лаймовая пилюля, что у «Смотреть все работы»
+   (.allworks__circle), только текстом и появляется по наведению/фокусу,
+   не стоит на плашке постоянно */
+.process-services__ph-cta{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(.94);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .3s var(--ease), transform .3s var(--ease);
+}
+.process-services__ph-cta .ic{ width: 16px; height: 16px; }
+.process-services__item:hover .process-services__ph-cta,
+.process-services__ph-cta:focus-visible{
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.process-services__title{
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.process-services__desc{
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 560px;
+}
+/* список через «/»: слэш — псевдоэлемент, не часть текста, чтобы контент
+   можно было переставлять и редактировать без ручного слэша в разметке */
+.process-services__list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.process-services__list li{
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  color: var(--muted);
+}
+.process-services__list li::before{ content: "/ "; color: var(--tone-soft); }
+/* третья колонка: чипы вертикальным столбцом, тот же .chip, что у языков
+   на «Обо мне». Без стрелок между ними — стрелка читалась в горизонтальном
+   потоке, в столбце сам порядок сверху вниз уже читается как
+   последовательность */
+/* фиксированная ширина колонки чипов — иначе flex:0 0 auto подгоняется под
+   САМЫЙ ДЛИННЫЙ чип каждой карточки отдельно, и колонки трёх карточек не
+   стоят на одной вертикали (у Web & digital чипы короче, чем у остальных,
+   и flow съезжал на 32px правее). 200px — с запасом от самого широкого
+   чипа на странице (161px, «Концепция и айдентика» / «Исследование и анализ»). */
+.process-services__flow{
+  flex: 0 0 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+/* обёртка чипов прозрачна для раскладки: на широком экране столбец чипов
+   строится ровно так же, как строился без неё */
+.process-services__chips{ display: contents; }
+/* вертикальная подпись нужна только в мобильной раскладке */
+.process-services__caption{ display: none; }
+@media (max-width: 720px){
+  .process-steps{ gap: 32px; margin-top: 40px; }
+  .process-steps__title{ font-size: 22px; }
+  /* на узком экране заголовки переносятся, поэтому номер садится на базовую
+     линию первой строки, а не в центр всей пары */
+  .process-steps__row{ align-items: baseline; }
+  /* ---- мобильная раскладка блока услуг ----
+     Порядок сверху вниз: заголовок с описанием → подпись процесса и чипы →
+     картинка → кнопка. На широком экране те же элементы стоят в три колонки,
+     поэтому переставляем их через order, не трогая разметку. */
+  .process-services{ gap: 60px; margin-top: 50px; }
+  .process-services__item{ flex-direction: column; gap: 24px; }
+  .process-services__text{ order: 1; flex: 1 1 auto; }
+  .process-services__flow{ order: 2; }
+  .process-services__ph{ order: 3; }
+  .process-services__title{ font-size: 24px; }
+
+  /* подпись — обычный подзаголовок над чипами */
+  .process-services__flow{
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .process-services__caption{
+    display: block;
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--muted);
+  }
+  .process-services__chips{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* картинка перестаёт быть кадром с наведением: кнопка уходит под неё
+     обычным блоком, потому что на тач-экране hover не случается */
+  .process-services__ph{
+    flex-basis: auto;
+    max-width: 320px;
+    height: auto;
+    overflow: visible;
+    background: none;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .process-services__item:hover .process-services__ph,
+  .process-services__item:focus-within .process-services__ph{ transform: none; }
+  .process-services__ph img{
+    height: 200px;
+    border-radius: var(--radius-md);
+  }
+  .process-services__ph-cta{
+    position: static;
+    /* left/top остались бы от абсолютного позиционирования и продолжали
+       смещать кнопку уже в обычном потоке */
+    left: auto;
+    top: auto;
+    opacity: 1;
+    margin-top: 16px;
+    transform: none;
+  }
+  /* тот же вес селектора, что у правила наведения на широком экране: иначе
+     оно перебивает мобильное и возвращает кнопке центрирующий сдвиг
+     translate(-50%,-50%) — кнопка уезжала за левый край */
+  .process-services__item:hover .process-services__ph-cta,
+  .process-services__ph-cta:focus-visible{ transform: none; }
+  /* явные grid-row/column у --icon-label создают вторую колонку сами по
+     себе, даже когда общий .about-row уже схлопнут в одну (браузер
+     достраивает недостающий трек под явное размещение) — сбрасываем на
+     обычный поток, как у всех строк на узком экране */
+  .about-row--icon-label > .about-row__label,
+  .about-row--icon-label > .process-lead__icon,
+  .about-row--icon-label > .about-row__body{
+    grid-row: auto;
+    grid-column: auto;
+  }
+  .about-row--icon-label > .process-lead__icon{
+    width: min(100%, 208px);
+    margin-top: 16px;
+  }
+}
+
 /* ---------- utility ---------- */
 .section-cta{
   margin-top: 40px;
@@ -2628,8 +3358,484 @@ h1,h2,h3,p{ margin: 0; }
 }
 .btn-arrow img{ width: 14px; height: 14px; }
 
+/* ---------- ссылка на живой сайт: та же лаймовая пилюля и та же инверсия
+   на hover, что у .allworks__circle («Смотреть все работы») — один и тот
+   же язык действия по всему сайту, не отдельный стиль под этот случай */
+.live-link-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 40px;
+}
+.live-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  width: fit-content;
+  margin-top: 40px;
+  padding: 10px 20px 10px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--accent-ink);
+  transition: background .3s var(--ease), color .3s var(--ease);
+}
+.live-link-row .live-link{ margin-top: 0; }
+.live-link:hover, .live-link:focus-visible{ background: var(--ink); color: var(--accent); outline: none; }
+.live-link__badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 14px;
+  border-right: 1px solid currentColor;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .82;
+}
+/* точка того же цвета, что и текст (currentColor) — на лайме тёмная, на
+   инверсии hover светлая; отдельный зелёный токен не заводим специально
+   под статус-индикатор, того же приёма пульса, что у звёзд и ромбов */
+.live-link__dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: live-dot-pulse 1800ms var(--ease) infinite;
+}
+@keyframes live-dot-pulse{
+  0%, 100%{ transform: scale(.82); opacity: .75; }
+  50%{ transform: scale(1.15); opacity: 1; }
+}
+.live-link__text{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+}
+.live-link .ic{ width: 16px; height: 16px; }
+
+/* ---------- embedded site preview: browser-frame mockup around a 1:1 replica
+   of an external site's own hero (svitla.live), scaled to fit the frame via
+   JS (see the inline script next to its markup). The chrome uses our tokens;
+   everything inside .svitla-hero is a literal copy of that site's own CSS —
+   different font, different red, on purpose. ---------- */
+/* внешние отступы держит обёртка: сама рамка внутри неё должна прилегать
+   вплотную, иначе кнопка, наложенная на шапку, съедет вместе с рамкой */
+.site-preview-wrap{
+  margin-top: 40px;
+  /* padding, а не margin: со следующим блоком margin схлопывался бы
+     (соседние вертикальные margin берут максимум, а не сумму), и вместо
+     120px до линии «Другие проекты» оставалось 80px — на других страницах
+     там padding секции, поэтому расхождение было только здесь */
+  padding-bottom: 80px;
+}
+/* Секции уже отбивают себя снизу своим padding'ом. Собственный margin
+   превью складывался с ним и давал 120px там, где сверху блока стоит 80px —
+   один и тот же промежуток отбивали дважды. */
+:is(.case-overview, .case-story, .case-gallery, .case-hero) + .site-preview-wrap{
+  margin-top: 0;
+}
+.site-preview{
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+.site-preview__chrome{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.site-preview__dot{ width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+.site-preview__url{
+  margin-left: 12px;
+  padding: 5px 14px;
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--surface);
+  border-radius: var(--radius-pill);
+}
+/* Кнопка живёт вне рамки (в .site-preview-wrap), а на широком экране
+   накладывается на шапку рамки справа. Так она может уехать НАД рамкой на
+   узком экране — из шапки её было бы не вынести, overflow: hidden у рамки
+   обрезал бы её по краю. */
+.site-preview-wrap{ position: relative; }
+.site-preview__cta{
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  z-index: 2;
+  margin-top: 0;
+}
+/* Порог по содержимому, а не по устройству: точки + адрес + кнопка требуют
+   около 540px, и на более узкой шапке кнопка вылезала за край рамки.
+   Ниже порога она встаёт обычным блоком над превью. Само превью при этом
+   не перестраивается — оно показывает первый экран чужого сайта как есть. */
+@media (max-width: 720px){
+  .site-preview__cta{
+    position: static;
+    margin-bottom: 12px;
+  }
+}
+/* height ставит JS по фактической высоте копии внутри.
+   width: 100% обязателен: с aspect-ratio и заданной высотой браузер начинал
+   выводить ШИРИНУ из высоты, скрипт считал масштаб от неё, получал меньшую
+   высоту — и рамка схлопывалась по кругу. min-height держит вид, если скрипт
+   почему-то не отработал. */
+.site-preview__frame{
+  position: relative;
+  width: 100%;
+  min-height: 120px;
+  overflow: hidden;
+  background: rgb(250, 248, 245);
+}
+/* содержимое рамки — картинка сайта, а не сам сайт: ни ховеров, ни переходов.
+   Ссылки внутри копии ведут на чужой домен и по клику уводили бы с портфолио */
+.site-preview__stage,
+.site-preview__stage *{ pointer-events: none; }
+.site-preview__stage{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1400px;
+  /* без height: копия сама задаёт свою высоту, а скрипт по ней подгоняет рамку */
+  transform-origin: top left;
+}
+
+/* ---------- svitla-hero: literal port of svitla.live's own hero ---------- */
+.svitla-hero{
+  --sh-red: #c8282a;
+  --sh-red-soft: #e04040;
+  --sh-red-dark: #8b1010;
+  --sh-text: #2a2520;
+  --sh-text-md: #5a534a;
+  --sh-border: rgba(200,40,42,.12);
+  width: 1400px;
+  height: 800px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: rgb(250, 248, 245);
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  color: var(--sh-text);
+}
+.svitla-hero__left{ display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; }
+.svitla-hero__eyebrow{
+  display: flex; align-items: center; gap: 16px;
+  font-size: 10px; font-weight: 400; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--sh-red); margin: 0 0 36px;
+  opacity: 0; transform: translateY(20px);
+  animation: svitla-fadeUp .9s ease .2s 1 forwards;
+}
+.svitla-hero__eyebrow::after{ content: ""; width: 40px; height: 1px; background: var(--sh-red); opacity: .4; }
+.svitla-hero__title{
+  font-family: "Cormorant Garamond", serif;
+  font-size: 92px; font-weight: 300; letter-spacing: 10px; line-height: 1;
+  color: var(--sh-text); margin: 0;
+  opacity: 0; transform: translateY(20px);
+  animation: svitla-fadeUp .9s ease .4s 1 forwards;
+}
+.svitla-hero__title-sub{
+  font-family: "Cormorant Garamond", serif; font-style: italic;
+  font-size: 28px; font-weight: 300; color: var(--sh-red-soft); letter-spacing: 4px;
+  margin: 8px 0 48px;
+  opacity: 0; transform: translateY(20px);
+  animation: svitla-fadeUp .9s ease .6s 1 forwards;
+}
+.svitla-hero__quote{
+  font-family: "Cormorant Garamond", serif; font-style: italic;
+  font-size: 18px; font-weight: 300; line-height: 1.7; color: var(--sh-text-md);
+  max-width: 440px; margin: 0 0 52px;
+  border-left: 2px solid var(--sh-border); padding-left: 24px;
+  opacity: 0; transform: translateY(20px);
+  animation: svitla-fadeUp .9s ease .8s 1 forwards;
+}
+.svitla-hero__actions{
+  display: flex; gap: 20px; align-items: center;
+  opacity: 0; transform: translateY(20px);
+  animation: svitla-fadeUp .9s ease 1s 1 forwards;
+}
+.svitla-hero__btn-primary{
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 44px;
+  background: var(--sh-red); color: rgb(250,248,245);
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 400;
+  text-decoration: none; border: 0; cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: background .3s, transform .3s;
+}
+.svitla-hero__btn-primary::after{
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent 30%, rgba(255,140,110,.45) 50%, transparent 70%) 0 0 / 300% 300%;
+  animation: svitla-btnSweep 4s ease-in-out infinite;
+}
+.svitla-hero__btn-primary span{ position: relative; z-index: 1; }
+.svitla-hero__btn-primary:hover{ background: var(--sh-red-dark); transform: translateY(-2px); }
+.svitla-hero__btn-ghost{
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--sh-red);
+  text-decoration: none; padding-bottom: 2px; font-weight: 400; position: relative;
+  transition: color .2s, opacity .2s;
+}
+.svitla-hero__btn-ghost::after{
+  content: ""; position: absolute; bottom: 0; left: 0; width: 0; height: 1px;
+  background: currentColor; transition: width .4s;
+}
+.svitla-hero__btn-ghost:hover::after{ width: 100%; }
+
+.svitla-hero__right{
+  background: transparent; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; position: relative; overflow: visible;
+  opacity: 0;
+  animation: svitla-fadeIn 1.2s ease .5s 1 forwards;
+}
+.svitla-hero__yantra-wrap{ width: 520px; height: 520px; position: relative; }
+.svitla-hero__yantra-outer{ width: 100%; height: 100%; animation: svitla-slowRotate 40s linear infinite; }
+.svitla-hero__yantra-inner{ position: absolute; inset: 15%; animation: svitla-slowRotate 25s linear infinite reverse; }
+.svitla-hero__portal-blob,
+.svitla-hero__portal-blob-2,
+.svitla-hero__portal-blob-3,
+.svitla-hero__portal-blob-4,
+.svitla-hero__portal-blob-5{
+  position: absolute; top: 50%; left: 50%; width: 110%; height: 110%;
+  transform: translate(-50%,-50%);
+  background: linear-gradient(160deg, rgb(237,231,223) 0%, rgb(232,226,218) 50%, rgb(223,217,208) 100%);
+  opacity: .18; mix-blend-mode: multiply; pointer-events: none;
+}
+.svitla-hero__portal-blob{ z-index: 3; border-radius: 30% 70% 60% 40% / 55% 35% 65% 45%; animation: svitla-blobRotate 100s linear infinite; }
+.svitla-hero__portal-blob-2{ z-index: 2; border-radius: 55% 45% 35% 65% / 40% 60% 40% 60%; animation: svitla-blobRotateReverse 100s linear infinite; }
+.svitla-hero__portal-blob-3{ z-index: 1; border-radius: 65% 35% 45% 55% / 35% 55% 45% 65%; animation: svitla-blobRotate3 120s linear infinite; }
+.svitla-hero__portal-blob-4{ z-index: 1; width: 108%; height: 108%; border-radius: 48% 52% 40% 60% / 62% 38% 55% 45%; animation: svitla-blobRotate4 75s linear infinite; }
+.svitla-hero__portal-blob-5{ z-index: 1; width: 112%; height: 112%; border-radius: 38% 62% 52% 48% / 58% 42% 60% 40%; animation: svitla-blobRotate5 130s linear infinite; }
+.svitla-hero__portal{
+  position: absolute; top: 50%; left: 50%; width: 55%; height: 55%;
+  transform: translate(-50%,-50%);
+  border-radius: 50%; overflow: hidden; z-index: 5;
+  mask-image: radial-gradient(circle, #000 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle, #000 60%, transparent 100%);
+}
+.svitla-hero__portal img{
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; animation: svitla-portalFade 30s ease-in-out infinite;
+}
+.svitla-hero__portal img:nth-child(1){ animation-delay: 0s; }
+.svitla-hero__portal img:nth-child(2){ animation-delay: 6s; }
+.svitla-hero__portal img:nth-child(3){ animation-delay: 12s; }
+.svitla-hero__portal img:nth-child(4){ animation-delay: 18s; animation-name: svitla-portalFadeZoom; }
+.svitla-hero__portal-ring{
+  position: absolute; top: 50%; left: 50%; width: 55%; height: 55%;
+  transform: translate(-50%,-50%); z-index: 6; pointer-events: none;
+  animation: svitla-ringRotate 55s linear infinite;
+}
+.svitla-hero__portal-ring svg{ width: 100%; height: 100%; }
+
+@keyframes svitla-fadeUp{ 100%{ opacity: 1; transform: translateY(0); } }
+@keyframes svitla-fadeIn{ 100%{ opacity: 1; } }
+@keyframes svitla-slowRotate{ 0%{ transform: rotate(0); } 100%{ transform: rotate(360deg); } }
+@keyframes svitla-ringRotate{ 0%{ transform: translate(-50%,-50%) rotate(0); } 100%{ transform: translate(-50%,-50%) rotate(360deg); } }
+@keyframes svitla-blobRotate{ 0%{ transform: translate(-50%,-50%) rotate(0); } 100%{ transform: translate(-50%,-50%) rotate(360deg); } }
+@keyframes svitla-blobRotateReverse{ 0%{ transform: translate(-43%,-56%) rotate(0); } 100%{ transform: translate(-43%,-56%) rotate(-360deg); } }
+@keyframes svitla-blobRotate3{ 0%{ transform: translate(-57%,-44%) rotate(0); } 100%{ transform: translate(-57%,-44%) rotate(360deg); } }
+@keyframes svitla-blobRotate4{ 0%{ transform: translate(-57%,-56%) rotate(0); } 100%{ transform: translate(-57%,-56%) rotate(-360deg); } }
+@keyframes svitla-blobRotate5{ 0%{ transform: translate(-43%,-44%) rotate(0); } 100%{ transform: translate(-43%,-44%) rotate(360deg); } }
+@keyframes svitla-portalFade{
+  0%{ opacity: 0; transform: scale(1.08); }
+  3%{ opacity: 1; }
+  20%{ opacity: 1; }
+  23%{ opacity: 0; transform: scale(1); }
+  100%{ opacity: 0; }
+}
+@keyframes svitla-portalFadeZoom{
+  0%{ opacity: 0; transform: scale(1.2); }
+  3%{ opacity: 1; transform: scale(1.2); }
+  20%{ opacity: 1; transform: scale(1.2); }
+  23%{ opacity: 0; transform: scale(1.2); }
+  100%{ opacity: 0; }
+}
+@keyframes svitla-btnSweep{
+  0%{ background-position: 100% 100%; }
+  50%{ background-position: 0% 0%; }
+  100%{ background-position: 100% 100%; }
+}
+
+/* ---------- mnp-hero: literal port of moving.marknpost.com's own hero ---------- */
+/* высота НЕ фиксирована: экран обрезается ровно там, где кончается первый
+   экран оригинала (под строкой «* Откроется в Telegram»), а рамка снаружи
+   подгоняется под неё скриптом — иначе снизу оставалось пустое поле */
+.mnp-hero{
+  position: relative;
+  width: 1400px;
+  padding: 58px 110px 32px;
+  box-sizing: border-box;
+  background: rgb(245, 245, 247);
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  color: rgb(24, 24, 24);
+}
+/* Белая полоса снизу: на оригинале форма расчёта стоит на стыке двух секций
+   разного тона — серый экран кончается ровно по её середине, нижняя половина
+   формы уже лежит на белом фоне следующего блока.
+   64px = padding-bottom (32) + половина высоты формы (64/2). */
+.mnp-hero::after{
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 64px;
+  background: #fff;
+}
+/* контент поднят над белой полосой, иначе она перекрыла бы форму */
+.mnp-hero__grid,
+.mnp-hero__quote{ position: relative; z-index: 1; }
+.mnp-hero__grid{
+  display: grid;
+  grid-template-columns: 760px 404px;
+  column-gap: 16px;
+}
+.mnp-hero__eyebrow{
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgb(8, 122, 153);
+  margin: 0 0 14px;
+}
+.mnp-hero__title{
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 41.2px;
+  color: rgb(24, 24, 24);
+  margin: 0 0 30px;
+}
+.mnp-hero__lead{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: rgb(52, 52, 52);
+  margin: 0 0 28px;
+}
+.mnp-hero__cta{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgb(227, 6, 19);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-bottom: 24px;
+}
+.mnp-hero__ratings{ display: flex; align-items: center; gap: 14px; }
+.mnp-hero__rating{ display: flex; align-items: center; gap: 8px; }
+.mnp-hero__rating img{ display: block; height: 20px; width: auto; }
+.mnp-hero__rating-score{ font-size: 14px; font-weight: 700; color: rgb(24, 24, 24); }
+.mnp-hero__rating-star{ height: 12px !important; }
+.mnp-hero__rating-count{ font-size: 10px; color: rgb(110, 110, 110); }
+.mnp-hero__rating-divider{ width: 1px; height: 26px; background: rgb(216, 225, 230); }
+/* Геометрия колонки и обоих её слоёв снята с оригинала напрямую
+   (getBoundingClientRect на moving.marknpost.com). */
+.mnp-hero__visual{ position: relative; width: 404px; height: 500px; }
+/* Картинка лежит ПОВЕРХ голубой карточки: у людей вырезан фон (альфа-канал),
+   поэтому коробка и руки выходят за верхнюю грань карточки, а сама грань
+   проходит по обрезу одежды. Раньше карточка была выше по слою и срезала их. */
+.mnp-hero__visual img{
+  position: absolute;
+  top: -13px;
+  left: 20px;
+  z-index: 3;
+  display: block;
+  width: 370px;
+  height: 313.5px;
+}
+.mnp-hero__usp{
+  position: absolute;
+  /* шире своей колонки и сдвинута влево — как в оригинале */
+  top: 276px;
+  left: -24px;
+  width: 428px;
+  /* высота с оригинала: текст занимает не всю карточку, снизу остаётся воздух.
+     Без неё карточка сжималась по тексту (118px вместо 154) и её нижний край
+     подходил вплотную к форме расчёта */
+  min-height: 154px;
+  z-index: 1;
+  box-sizing: border-box;
+  background: rgba(211, 239, 247, .92);
+  padding: 18px;
+  border-radius: 8px;
+}
+.mnp-hero__usp p{
+  margin: 0;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: rgb(8, 122, 153);
+}
+.mnp-hero__usp strong{
+  display: block;
+  margin-top: 4px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 30px;
+  color: rgb(24, 24, 24);
+}
+.mnp-hero__quote{
+  /* подъём формы на колонку с картинкой; значение подобрано так, чтобы под
+     голубой карточкой остались те же 30px зазора, что и на оригинале */
+  margin-top: -40px;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr auto;
+  background: rgb(216, 221, 226);
+  border-radius: 6px;
+  gap: 1px;
+  padding: 1px;
+  max-width: 1180px;
+}
+.mnp-hero__field{
+  background: #fff;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.mnp-hero__field:first-child{ border-radius: 6px 0 0 0; }
+.mnp-hero__field label{ font-size: 12px; color: rgb(98, 98, 98); }
+.mnp-hero__field span{ font-size: 15px; color: rgb(24, 24, 24); }
+.mnp-hero__submit{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(227, 6, 19);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 0 6px 6px 0;
+  white-space: nowrap;
+}
+/* сноска висит под кнопкой расчёта у правого края формы, а не в общем потоке:
+   в потоке она сдвигала форму вверх от стыка фонов */
+.mnp-hero__note{
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  font-size: 13px;
+  color: rgb(98, 98, 98);
+}
+
 @media (max-width: 640px){
   .case-meta{ grid-template-columns: 1fr; gap: 16px; }
   .case-overview{ grid-template-columns: 1fr; gap: 28px; }
   .case-gallery--two{ grid-template-columns: 1fr; }
+  .case-story__grid,
+  .case-story--journeys .case-story__grid{ grid-template-columns: 1fr; gap: 24px; }
+  .insight-grid{ grid-template-columns: 1fr; gap: 28px; }
+  .journeys{ max-width: none; grid-template-columns: 1fr; gap: 24px; }
+  .metric-board{ grid-template-columns: repeat(2, 1fr); padding: 32px 24px; gap: 28px 20px; }
 }
