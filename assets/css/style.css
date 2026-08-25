@@ -35,6 +35,8 @@
   --glow-inset: rgba(255, 255, 255, .4);
   --veil: rgba(255, 255, 255, .94);
   --scrim: rgba(190, 190, 190, .72);
+  /* подложка круглой кнопки на обложке кейса: мягче и прозрачнее scrim */
+  --scrim-soft: rgba(255, 255, 255, .58);
   --focus-ring: rgba(10, 10, 10, .35);
   --footer: var(--ink);
   /* on the black footer this gives 7.5:1 — comfortably above AA */
@@ -481,9 +483,12 @@ h1,h2,h3,p{ margin: 0; }
   line-height: 1;
   white-space: nowrap;
 }
+/* Амплитуда ±7px по каждой оси: путь по диагонали ≈19.8px — вдвое короче
+   прежнего. Период 12s: на этом пути даёт 3.3 px/s — на треть медленнее,
+   чем 8s, по отдельной правке Ланы. */
 @keyframes home-hi-float{
-  0%, 100%{ transform: translate3d(-14px, 14px, 0); }
-  50%{ transform: translate3d(14px, -14px, 0); }
+  0%, 100%{ transform: translate3d(-7px, 7px, 0); }
+  50%{ transform: translate3d(7px, -7px, 0); }
 }
 @media (hover: hover) and (pointer: fine){
   .home-about__portrait:hover .home-about__image--base{ opacity: 0; transform: scale(.995); }
@@ -1312,7 +1317,13 @@ h1,h2,h3,p{ margin: 0; }
   line-height: 21px;
   white-space: nowrap;
 }
-.ilink .ic{ width: 18px; height: 18px; }
+/* Стрелка выравнивается по оптической середине надписи, а не по середине
+   строки. `align-items: center` ставит её по центру инлайнового бокса, то есть
+   на 0.5px выше центра заглавных и на 1.7px выше центра строчных. Надписи здесь
+   почти целиком строчные («Подробнее», «Открыть кейс»), поэтому глаз читает
+   середину по ним. Сдвигаем на 1px вниз — ровно между двумя серединами.
+   Через margin, а не transform: transform занят сдвигом стрелки на hover. */
+.ilink .ic{ width: 18px; height: 18px; margin-top: 2px; }
 /* линия рисуется на всю ширину строки, то есть до правого края стрелки */
 /* Линия появляется только по наведению и выезжает слева направо. Постоянной
    серой подложки нет намеренно: на лаймовой плашке она смотрелась грязно. */
@@ -1394,33 +1405,42 @@ h1,h2,h3,p{ margin: 0; }
   border-radius: var(--radius-lg);
   object-fit: cover;
 }
+/* Курсор с «Hi!» перенесён из V1 как есть: группа не пульсирует масштабом,
+   а плавно уезжает по диагонали и возвращается — 12s, ease-in-out, ±14px.
+   Сам курсор рисуется clip-path, а не svg, и наклонён на -14°, как там. */
 .author-portrait__hi{
   position: absolute;
   left: 76.54%;
   top: 60.27%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 7px;
-  animation: breathe 2400ms var(--ease) infinite;
-  transform-origin: 0 50%;
+  pointer-events: none;
+  animation: home-hi-float 12s cubic-bezier(.45, 0, .55, 1) infinite;
+  will-change: transform;
 }
-.author-portrait__cursor{ width: 20px; height: 18px; color: var(--ink); }
+.author-portrait__cursor{
+  width: 19px;
+  height: 20px;
+  background: var(--ink);
+  clip-path: polygon(0 0, 100% 40%, 44% 55%, 32% 100%);
+  transform: rotate(-14deg);
+  transform-origin: 50% 50%;
+}
 .author-portrait__label{
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 23px;
-  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 23px;
+  padding: 5px 9px 6px;
+  border-radius: 5px;
   background: var(--ink);
   color: var(--surface);
   font-family: var(--font-display);
   font-size: 12px;
   font-weight: 500;
-  line-height: 16px;
-}
-@keyframes breathe{
-  0%, 100%{ transform: scale(.98); }
-  50%{ transform: scale(1.02); }
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
 }
 
 /* текстовая колонка автора */
@@ -1722,7 +1742,11 @@ h1,h2,h3,p{ margin: 0; }
   align-items: center;
   justify-content: space-between;
   height: 62px;
-  padding-right: 16px;
+  /* 11px внутреннего отступа строки кейса плюс её 1px границы: у CTA границы
+     нет, поэтому её собственный отступ должен добрать этот пиксель. Тогда
+     центр стрелки CTA стоит на той же вертикали, что центры стрелок трёх
+     строк выше. Считаем по центрам стрелок, а не по краям кругов. */
+  padding-right: 12px;
 }
 /* Текст отвечает на наведение той же линией, что и остальные ссылки сайта
    (.ilink): выезжает слева направо. Раньше реагировал только круг, и половина
@@ -1991,42 +2015,56 @@ h1,h2,h3,p{ margin: 0; }
 .pcase:hover .pcase__cover img,
 .pcase:focus-visible .pcase__cover img{ transform: scale(1.06); }
 
+/* Механика с референса gocetinkaya.com. В покое кнопка — сплющенная и
+   наклонённая капсула, стрелка внутри смотрит вверх-вправо под 45°. При
+   наведении капсула распрямляется в полный круг, а стрелка доворачивается
+   до горизонтали. Сплющивание живёт на ::before, а не на самой кнопке:
+   иначе оно растянуло бы и стрелку, и та плыла бы всю анимацию. */
 .pcase__go{
   position: absolute;
-  left: 30px;
-  bottom: 30px;
+  left: 24px;
+  bottom: 24px;
   display: grid;
   place-items: center;
-  width: 72px;
-  height: 72px;
+  width: 60px;
+  height: 60px;
+  color: var(--surface);
+  transition: color .35s var(--ease), transform .35s var(--ease);
+}
+.pcase__go::before{
+  content: "";
+  position: absolute;
+  /* Сплющиваем геометрией бокса, а не scaleY: масштаб превратил бы круг в
+     эллипс. Здесь в покое бокс 60×34 с pill-радиусом — торцы полукруглые,
+     верх и низ прямые, то есть капсула, как в референсе. На наведении бокс
+     разворачивается в 60×60, радиус уходит в 50% — честный круг. */
+  inset: 13px 0;
   border-radius: var(--radius-pill);
-  background: var(--scrim);
+  background: var(--scrim-soft);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  color: var(--surface);
-  transition: background .35s var(--ease), color .35s var(--ease), transform .35s var(--ease);
+  transform: rotate(-45deg);
+  transition: inset .5s var(--ease), border-radius .5s var(--ease),
+              transform .5s var(--ease), background .35s var(--ease);
 }
-/* Механика снята с референса gocetinkaya.com: там круг в покое повёрнут на
-   45°, а стрелка внутри развёрнута обратно, поэтому стоит прямо. При
-   наведении круг раскручивается в 0°, а стрелка доворачивается — суммарно
-   она проходит 90° и уходит по диагонали «наружу». Поворот держим на двух
-   вложенных элементах, иначе он не наберёт полный ход. */
-.pcase__go{ transform: rotate(45deg); }
 .pcase__go .ic{
-  width: 24px;
-  height: 24px;
+  position: relative;
+  width: 20px;
+  height: 20px;
   transform: rotate(-45deg);
   transition: transform .5s var(--ease);
 }
-.pcase:hover .pcase__go,
-.pcase:focus-visible .pcase__go{
+.pcase:hover .pcase__go::before,
+.pcase:focus-visible .pcase__go::before{
   background: var(--surface);
-  color: var(--ink);
+  inset: 0;
   transform: rotate(0deg);
 }
+.pcase:hover .pcase__go,
+.pcase:focus-visible .pcase__go{ color: var(--ink); }
 .pcase:hover .pcase__go .ic,
-.pcase:focus-visible .pcase__go .ic{ transform: rotate(45deg); }
-.pcase:active .pcase__go{ transform: rotate(0deg) scale(.94); }
+.pcase:focus-visible .pcase__go .ic{ transform: rotate(0deg); }
+.pcase:active .pcase__go{ transform: scale(.94); }
 .pcase:focus-visible{ outline: 2px solid var(--ink); outline-offset: 2px; }
 
 .pcase__caption{ display: flex; flex-direction: column; gap: 10px; }
@@ -2074,8 +2112,22 @@ h1,h2,h3,p{ margin: 0; }
   .author-portrait{ width: 100%; height: auto; }
   .author-portrait__img{ width: min(224px, 60vw); height: auto; aspect-ratio: 1; }
   .author-portrait__hi{ left: min(199px, 52vw); top: 60%; }
+  /* те же уменьшенные размеры, что в V1 на узком экране */
+  .author-portrait__hi{ gap: 6px; }
+  .author-portrait__cursor{ width: 17px; height: 18px; }
+  .author-portrait__label{ min-height: 22px; padding: 5px 8px 6px; font-size: 11px; }
   .author-copy{ width: 100%; }
   .author-copy__role{ font-size: 32px; line-height: 38px; }
+  /* На узком экране лейблы встают отдельной строкой, а не текут за заголовком:
+     иначе они либо прилипают к последнему слову, либо переносятся со сдвигом в
+     9px и не совпадают по левому краю с именем, заголовком, описанием и ссылкой.
+     `display: flex` делает их блоком — строка своя при любой длине заголовка. */
+  .author-labels{
+    display: flex;
+    margin-left: 0;
+    margin-top: 12px;
+    vertical-align: baseline;
+  }
 
   .metrics__pair{ flex-direction: column; margin-bottom: 0; }
   .metrics__pair .metric{ width: 100%; margin-right: 0; margin-bottom: -1px; }
@@ -2085,12 +2137,26 @@ h1,h2,h3,p{ margin: 0; }
   /* Три колонки на узкий экран не помещаются. Не переносим их по строкам
      (тогда направление липнет к названию, а действие уезжает вправо), а
      ставим всё в столбик по левому краю — строки читаются сверху вниз. */
+  /* Обложки кейсов квадратные, а рамка 760/340 — на узком экране от картинки
+     оставалась горизонтальная полоса, которую плашка перекрывала целиком.
+     4/3 ближе к исходному кадру: изображения видно заметно больше, при этом
+     блок не вырастает в полный квадрат. */
+  .featured{ aspect-ratio: 4 / 3; }
+
   .featured__caption{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    height: auto;
+    /* Плашка в столбик выше, чем десктопная строка, и на прижатой к низу
+       позиции воздух над ней и под ней разный. Держим оба отступа и центруем
+       свободное место через auto-маргины: высота остаётся по содержимому.
+       Через transform центровать нельзя — `.featured:hover .featured__caption`
+       специфичнее и вернул бы плашку на место при первом же касании. */
+    top: 24px;
+    bottom: 24px;
+    height: fit-content;
+    margin-block: auto;
     padding: 14px 16px;
     gap: 6px;
   }
@@ -2138,13 +2204,16 @@ h1,h2,h3,p{ margin: 0; }
   }
 
   .portfolio__grid{ grid-template-columns: 1fr; gap: 48px; }
-  .pcase__go{ width: 56px; height: 56px; left: 18px; bottom: 18px; }
-  .pcase__go .ic{ width: 20px; height: 20px; }
+  .pcase__go{ width: 52px; height: 52px; left: 18px; bottom: 18px; }
+  /* та же пропорция сплющивания, что на десктопе */
+  .pcase__go::before{ inset: 11px 0; }
+  .pcase__go .ic{ width: 18px; height: 18px; }
   .pfilter{ min-width: 0; }
 }
 
 /* ---------- Уважение к настройке «меньше движения» ---------- */
 @media (prefers-reduced-motion: reduce){
+  .author-portrait__hi{ transform: translate3d(0, 0, 0); }
   .author-portrait__hi,
   .metrics__star,
   .directions__star,
@@ -2163,12 +2232,12 @@ h1,h2,h3,p{ margin: 0; }
   .pcase:hover .pcase__cover img,
   .pcase:focus-visible .pcase__cover img{ transform: none; }
   /* поворот оставляем статичным: круг и стрелка сразу в конечном положении */
-  .pcase__go,
+  .pcase__go::before,
   .pcase__go .ic{ transition: none; }
-  .pcase__go{ transform: rotate(0deg); }
+  .pcase__go::before{ inset: 0; transform: rotate(0deg); }
   .pcase__go .ic{ transform: rotate(0deg); }
-  .pcase:hover .pcase__go,
-  .pcase:focus-visible .pcase__go{ transform: rotate(0deg); }
+  .pcase:hover .pcase__go::before,
+  .pcase:focus-visible .pcase__go::before{ inset: 0; transform: rotate(0deg); }
   .pcase:hover .pcase__go .ic,
   .pcase:focus-visible .pcase__go .ic{ transform: rotate(0deg); }
   .featured:hover .featured__caption{ transform: none; }
@@ -3279,7 +3348,7 @@ h1,h2,h3,p{ margin: 0; }
   font-size: 14px;
   font-weight: 500;
 }
-.live-link .ic{ width: 16px; height: 16px; }
+.live-link .ic{ width: 16px; height: 16px; margin-top: 2px; }
 
 /* ---------- embedded site preview: browser-frame mockup around a 1:1 replica
    of an external site's own hero (svitla.live), scaled to fit the frame via

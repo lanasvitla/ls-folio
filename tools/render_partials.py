@@ -209,6 +209,51 @@ def apply_component(html: str, name: str, rendered: str, page_path: str) -> str:
     return html[: match.start()] + replacement + html[match.end() :]
 
 
+# Слот с атрибутами — это компонент, который встречается на странице много раз
+# с разными значениями: `<!-- component:ilink text="Подробнее" href="about.html" -->`.
+# Обычные слоты без атрибутов остаются как были: один на страницу, значения из
+# pages.json. Здесь значения приходят прямо из разметки, потому что у каждой
+# ссылки свой текст, и держать их в манифесте было бы дальше от места правки.
+INLINE_SLOT = re.compile(
+    # атрибуты обязательны: слот без них — обычный блочный компонент
+    r'(?P<open><!--\s*component:(?P<name>[a-z0-9-]+)\s+'
+    r'(?P<attrs>[a-zA-Z][\w-]*="[^"]*"[^>]*?)\s*-->)'
+    r'.*?'
+    r'<!--\s*/component:(?P=name)\s*-->',
+    re.DOTALL,
+)
+ATTR = re.compile(r'(?P<key>[a-zA-Z][\w-]*)="(?P<value>[^"]*)"')
+
+
+def apply_inline_components(html: str, page_path: str) -> str:
+    def render(match: "re.Match[str]") -> str:
+        name = match.group("name")
+        template_file = PARTIALS / f"{name}.html"
+        if not template_file.exists():
+            raise SystemExit(
+                f"[render_partials] {page_path}: no partial for inline component '{name}'"
+            )
+        values = {m.group("key"): m.group("value") for m in ATTR.finditer(match.group("attrs"))}
+        # ссылка получает <a href>, всё остальное — нейтральный <span>
+        values["tag"] = "a" if values.get("href") else "span"
+        values["href"] = f' href="{values["href"]}"' if values.get("href") else ""
+        template = template_file.read_text(encoding="utf-8").strip("\n")
+
+        def sub(m: "re.Match[str]") -> str:
+            key = m.group(1)
+            if key not in values:
+                raise SystemExit(
+                    f"[render_partials] {page_path}: component '{name}' needs "
+                    f'attribute {key}="..." on its slot'
+                )
+            return values[key]
+
+        body = PLACEHOLDER.sub(sub, template)
+        return f'{match.group("open")}{body}<!-- /component:{name} -->'
+
+    return INLINE_SLOT.sub(render, html)
+
+
 def main() -> int:
     check_only = "--check" in sys.argv
     manifest = load_manifest()
@@ -234,6 +279,10 @@ def main() -> int:
 
         for component in page.get("components", []):
             html = apply_component(html, component, render_component(component, data), page_path)
+
+        # слоты с атрибутами обрабатываются после блочных: они могут стоять
+        # и внутри отрендеренного компонента, и прямо в странице
+        html = apply_inline_components(html, page_path)
 
         if html != original:
             changed.append(page_path)
