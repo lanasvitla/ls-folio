@@ -34,6 +34,107 @@ def load_manifest() -> dict:
     return json.loads(MANIFEST.read_text(encoding="utf-8"))
 
 
+def build_case_slots(page: dict, cases: dict) -> dict:
+    """A page may show more than one grid — brand.html has a brand row and a web
+    row. Every `caseList<Suffix>` key on the page fills `{{caseCards<Suffix>}}`.
+    """
+    slots = {"caseCards": ""}
+    slots.update(
+        {
+            "caseCards" + key[len("caseList"):]: build_case_cards(page, cases, key)
+            for key in page
+            if key.startswith("caseList")
+        }
+    )
+    return slots
+
+
+def build_home_cases(page: dict, cases: dict) -> dict:
+    """Render the home hero — the big preview plus the numbered index — from the
+    same case registry the cards use, so a cover or a title has one home only.
+    `heroList` names the cases in order; `heroSelected` is the one shown first.
+    """
+    ids = page.get("heroList")
+    if not ids:
+        return {}
+    root = page.get("root", "")
+    selected = page.get("heroSelected", 0)
+    images, rows = [], []
+    for i, case_id in enumerate(ids):
+        if case_id not in cases:
+            raise SystemExit(f"[render_partials] unknown case id '{case_id}' in {page['path']}")
+        case = cases[case_id]
+        title = case.get("shortTitle", case["title"])
+        current = " is-current" if i == selected else ""
+        images.append(
+            f'        <img class="featured__img{current}" src="{root}{case["cover"]}" '
+            f'alt="{case["alt"]}" width="760" height="340" data-case="{i}">'
+        )
+        rows.append(
+            f'        <a class="crow{" is-selected" if i == selected else ""}" '
+            f'href="{root}{case["path"]}" data-case="{i}">\n'
+            f'          <span class="crow__num">{i + 1:02d}</span>\n'
+            f'          <span class="crow__title">{title}</span>\n'
+            f'          <span class="crow__type">{case["type"]}</span>\n'
+            f'          <span class="crow__arrow"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>\n'
+            f'        </a>'
+        )
+    hero = cases[ids[selected]]
+    return {
+        "heroImages": "\n".join(images),
+        "heroRows": "\n".join(rows),
+        "heroHref": root + hero["path"],
+        "heroNum": f"{selected + 1:02d}",
+        "heroTitle": hero.get("shortTitle", hero["title"]),
+        "heroType": hero["type"],
+    }
+
+
+def build_case_cards(page: dict, cases: dict, key: str = "caseList") -> str:
+    """Render `caseList` — the ids of the cases a page shows — into cards.
+
+    The case registry in pages.json is the single place where a case's title,
+    cover, tags and metric live. A page only names the ids it needs, so the
+    same case shown on several pages cannot drift apart.
+
+    Paths in the registry are written from the site root; `root` on the page
+    turns them into links that work from that page's depth.
+    """
+    ids = page.get(key)
+    if not ids:
+        return ""
+
+    root = page.get("root", "./")
+    with_niche = page.get("caseNiche")  # only the filtered catalogue needs it
+    # the catalogue is driven by the filter, so it opts out of the reveal animation
+    reveal = "" if with_niche else " reveal"
+    template = (PARTIALS / "case-card.html").read_text(encoding="utf-8").rstrip("\n")
+
+    cards = []
+    for case_id in ids:
+        if case_id not in cases:
+            raise SystemExit(
+                f"[render_partials] unknown case id '{case_id}' in {page['path']}"
+            )
+        case = cases[case_id]
+        chips = "".join(f'<span class="chip">{c}</span>' for c in case["chips"])
+        values = {
+            "caseHref": root + case["path"],
+            "caseCover": root + case["cover"],
+            "caseAlt": case["alt"],
+            "caseChips": chips,
+            "caseTitle": case["title"],
+            "caseDesc": case["desc"],
+            "caseMetricValue": case["metricValue"],
+            "caseMetricLabel": case["metricLabel"],
+            "caseNiche": f' data-niche="{case["niche"]}"' if with_niche else "",
+            "caseReveal": reveal,
+        }
+        cards.append(PLACEHOLDER.sub(lambda m: values[m.group(1)], template))
+
+    return "\n".join(cards)
+
+
 def expand_includes(template: str, name: str, seen: tuple[str, ...] = ()) -> str:
     """Expand `{{> other-partial }}` so components can be composed of components.
 
@@ -112,6 +213,7 @@ def main() -> int:
     check_only = "--check" in sys.argv
     manifest = load_manifest()
     defaults = manifest.get("defaults", {})
+    cases = manifest.get("cases", {})
 
     changed: list[str] = []
 
@@ -121,7 +223,12 @@ def main() -> int:
         if not target.exists():
             raise SystemExit(f"[render_partials] missing page: {page_path}")
 
-        data = {**defaults, **page}
+        data = {
+            **defaults,
+            **page,
+            **build_case_slots(page, cases),
+            **build_home_cases(page, cases),
+        }
         original = target.read_text(encoding="utf-8")
         html = original
 

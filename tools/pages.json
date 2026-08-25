@@ -17,13 +17,97 @@
     "procProductAria": "",
     "procBrandAria": ""
   },
+  "cases": {
+    "mark-n-post": {
+      "path": "work/mark-n-post/index.html",
+      "title": "Mark’n’Post",
+      "desc": "Лендинг логистического сервиса: форматы отправки, процесс и&nbsp;заявка в&nbsp;Telegram.",
+      "cover": "assets/works/MarknPost/MarknPostCover.webp",
+      "alt": "Mark’n’Post: лендинг логистического сервиса",
+      "chips": [
+        "Web &amp; digital",
+        "Web design",
+        "Vibe coding"
+      ],
+      "metricValue": "7",
+      "metricLabel": "продуктовые страницы для&nbsp;рекламной кампании",
+      "niche": "web",
+      "type": "Веб / коммуникация"
+    },
+    "eqlio": {
+      "path": "work/eqlio/index.html",
+      "title": "Eqlio",
+      "desc": "Корпоративное приложение для&nbsp;спортивных челленджей: сценарии, интерфейс и&nbsp;прототип.",
+      "cover": "assets/works/Eqlio/EclioCover.webp",
+      "alt": "Eqlio: корпоративное приложение для спортивных челленджей",
+      "chips": [
+        "Продукт &amp; UX/UI",
+        "E-commerce",
+        "Прототипы"
+      ],
+      "metricValue": "6/7",
+      "metricLabel": "участников сочли сценарий понятным",
+      "niche": "product",
+      "type": "E-commerce / UX/UI"
+    },
+    "togas": {
+      "path": "work/togas/index.html",
+      "title": "Togas",
+      "shortTitle": "Togas App",
+      "desc": "Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и&nbsp;бонусы.",
+      "cover": "assets/works/Togas/TogasApp.webp",
+      "alt": "Togas: мобильное приложение премиального бренда",
+      "chips": [
+        "Продукт &amp; UX/UI",
+        "Бренд",
+        "Mobile app"
+      ],
+      "metricValue": "+25%",
+      "metricLabel": "к&nbsp;числу заказов",
+      "niche": "product brand",
+      "type": "Mobile app / UX/UI"
+    },
+    "visual-brand-identity": {
+      "path": "work/visual-brand-identity/index.html",
+      "title": "Visual Brand Identity",
+      "desc": "Система иллюстраций для&nbsp;маркетплейса ремесленных товаров.",
+      "cover": "assets/works/Illustration_set/Illustaration_set_01.webp",
+      "alt": "Visual Brand Identity: система иллюстраций",
+      "chips": [
+        "Бренд",
+        "Иллюстрация",
+        "AI-визуалы"
+      ],
+      "metricValue": "15",
+      "metricLabel": "изображений в&nbsp;визуальной системе",
+      "niche": "brand",
+      "type": "Бренд / иллюстрация"
+    },
+    "svitla-embroidery": {
+      "path": "work/svitla-embroidery/index.html",
+      "title": "Svitla Embroidery Gallery",
+      "desc": "Цифровая галерея и&nbsp;магазин авторской вышивки: страница на&nbsp;каждую работу, три языка.",
+      "cover": "assets/works/SvitlaEmbroidery/cover-ls-embroidery.webp",
+      "alt": "Svitla Embroidery Gallery: цифровая галерея вышивки",
+      "chips": [
+        "Web &amp; digital",
+        "Web design",
+        "Art direction"
+      ],
+      "metricValue": "30",
+      "metricLabel": "страниц галереи",
+      "niche": "web",
+      "type": "Веб / арт-дирекшен"
+    }
+  },
   "pages": [
     {
       "path": "index.html",
       "components": [
         "icons",
         "site-header",
-        "site-footer"
+        "site-footer",
+        "home-cases"
       ],
       "homeHref": "./index.html",
       "worksHref": "./works.html",
@@ -34,13 +118,21 @@
       "productHref": "./product.html",
       "brandHref": "./brand.html",
       "processProductHref": "./process-product.html",
-      "processBrandHref": "./process-brand.html"
+      "processBrandHref": "./process-brand.html",
+      "root": "",
+      "heroList": [
+        "mark-n-post",
+        "eqlio",
+        "togas"
+      ],
+      "heroSelected": 1
     },
     {
       "path": "works.html",
       "components": [
         "icons",
         "site-header",
+        "case-catalogue",
         "site-footer"
       ],
       "homeHref": "./index.html",
@@ -52,7 +144,16 @@
       "brandHref": "./brand.html",
       "processProductHref": "./process-product.html",
       "processBrandHref": "./process-brand.html",
-      "navWorks": "is-current"
+      "navWorks": "is-current",
+      "root": "",
+      "caseList": [
+        "mark-n-post",
+        "eqlio",
+        "togas",
+        "visual-brand-identity",
+        "svitla-embroidery"
+      ],
+      "caseNiche": true
     },
     {
       "path": "about.html",
@@ -70,7 +171,8 @@
       "productHref": "./product.html",
       "brandHref": "./brand.html",
       "processProductHref": "./process-product.html",
-      "processBrandHref": "./process-brand.html"
+      "processBrandHref": "./process-brand.html",
+      "root": ""
     },
     {
       "path": "product.html",
@@ -78,7 +180,8 @@
         "icons",
         "site-header",
         "role-switch",
-        "site-footer"
+        "site-footer",
+        "work-cases"
       ],
       "homeHref": "./index.html",
       "worksHref": "./works.html",
@@ -91,7 +194,12 @@
       "processBrandHref": "./process-brand.html",
       "navAbout": "is-current",
       "roleProduct": "is-current",
-      "roleProductAria": " aria-current=\"page\""
+      "roleProductAria": " aria-current=\"page\"",
+      "root": "",
+      "caseList": [
+        "eqlio",
+        "togas"
+      ]
     },
     {
       "path": "brand.html",
@@ -99,7 +207,9 @@
         "icons",
         "site-header",
         "role-switch",
-        "site-footer"
+        "site-footer",
+        "work-cases",
+        "work-cases-web"
       ],
       "homeHref": "./index.html",
       "worksHref": "./works.html",
@@ -112,7 +222,16 @@
       "processBrandHref": "./process-brand.html",
       "navAbout": "is-current",
       "roleBrand": "is-current",
-      "roleBrandAria": " aria-current=\"page\""
+      "roleBrandAria": " aria-current=\"page\"",
+      "root": "",
+      "caseList": [
+        "visual-brand-identity",
+        "togas"
+      ],
+      "caseListWeb": [
+        "mark-n-post",
+        "svitla-embroidery"
+      ]
     },
     {
       "path": "process.html",
@@ -130,7 +249,8 @@
       "productHref": "./product.html",
       "brandHref": "./brand.html",
       "processProductHref": "./process-product.html",
-      "processBrandHref": "./process-brand.html"
+      "processBrandHref": "./process-brand.html",
+      "root": ""
     },
     {
       "path": "process-product.html",
@@ -151,7 +271,8 @@
       "processBrandHref": "./process-brand.html",
       "navProcess": "is-current",
       "procProduct": "is-current",
-      "procProductAria": " aria-current=\"page\""
+      "procProductAria": " aria-current=\"page\"",
+      "root": ""
     },
     {
       "path": "process-brand.html",
@@ -172,7 +293,8 @@
       "processBrandHref": "./process-brand.html",
       "navProcess": "is-current",
       "procBrand": "is-current",
-      "procBrandAria": " aria-current=\"page\""
+      "procBrandAria": " aria-current=\"page\"",
+      "root": ""
     },
     {
       "path": "contacts.html",
@@ -189,7 +311,8 @@
       "productHref": "./product.html",
       "brandHref": "./brand.html",
       "processProductHref": "./process-product.html",
-      "processBrandHref": "./process-brand.html"
+      "processBrandHref": "./process-brand.html",
+      "root": ""
     },
     {
       "path": "work/mark-n-post/index.html",
@@ -209,22 +332,11 @@
       "brandHref": "../../brand.html",
       "processProductHref": "../../process-product.html",
       "processBrandHref": "../../process-brand.html",
-      "otherAHref": "../eqlio/index.html",
-      "otherACover": "../../assets/works/Eqlio/EclioCover.webp",
-      "otherAAlt": "Eqlio: корпоративное приложение для спортивных челленджей",
-      "otherAChips": "<span class=\"chip\">Продукт &amp; UX/UI</span><span class=\"chip\">E-commerce</span><span class=\"chip\">Прототипы</span>",
-      "otherATitle": "Eqlio",
-      "otherADesc": "Корпоративное приложение для&nbsp;спортивных челленджей: сценарии, интерфейс и&nbsp;прототип.",
-      "otherAMetricValue": "6/7",
-      "otherAMetricLabel": "участников сочли сценарий понятным",
-      "otherBHref": "../togas/index.html",
-      "otherBCover": "../../assets/works/Togas/TogasApp.webp",
-      "otherBAlt": "Togas: мобильное приложение премиального бренда",
-      "otherBChips": "<span class=\"chip\">Продукт &amp; UX/UI</span><span class=\"chip\">Бренд</span><span class=\"chip\">Mobile app</span>",
-      "otherBTitle": "Togas",
-      "otherBDesc": "Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и&nbsp;бонусы.",
-      "otherBMetricValue": "+25%",
-      "otherBMetricLabel": "к&nbsp;числу заказов"
+      "root": "../../",
+      "caseList": [
+        "eqlio",
+        "togas"
+      ]
     },
     {
       "path": "work/eqlio/index.html",
@@ -244,22 +356,11 @@
       "brandHref": "../../brand.html",
       "processProductHref": "../../process-product.html",
       "processBrandHref": "../../process-brand.html",
-      "otherAHref": "../mark-n-post/index.html",
-      "otherACover": "../../assets/works/MarknPost/MarknPostCover.webp",
-      "otherAAlt": "Mark’n’Post: лендинг логистического сервиса",
-      "otherAChips": "<span class=\"chip\">Web &amp; digital</span><span class=\"chip\">Web design</span><span class=\"chip\">Vibe coding</span>",
-      "otherATitle": "Mark’n’Post",
-      "otherADesc": "Лендинг логистического сервиса: форматы отправки, процесс и&nbsp;заявка в&nbsp;Telegram.",
-      "otherAMetricValue": "7",
-      "otherAMetricLabel": "продуктовые страницы для&nbsp;рекламной кампании",
-      "otherBHref": "../togas/index.html",
-      "otherBCover": "../../assets/works/Togas/TogasApp.webp",
-      "otherBAlt": "Togas: мобильное приложение премиального бренда",
-      "otherBChips": "<span class=\"chip\">Продукт &amp; UX/UI</span><span class=\"chip\">Бренд</span><span class=\"chip\">Mobile app</span>",
-      "otherBTitle": "Togas",
-      "otherBDesc": "Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и&nbsp;бонусы.",
-      "otherBMetricValue": "+25%",
-      "otherBMetricLabel": "к&nbsp;числу заказов"
+      "root": "../../",
+      "caseList": [
+        "mark-n-post",
+        "togas"
+      ]
     },
     {
       "path": "work/togas/index.html",
@@ -279,22 +380,11 @@
       "brandHref": "../../brand.html",
       "processProductHref": "../../process-product.html",
       "processBrandHref": "../../process-brand.html",
-      "otherAHref": "../eqlio/index.html",
-      "otherACover": "../../assets/works/Eqlio/EclioCover.webp",
-      "otherAAlt": "Eqlio: корпоративное приложение для спортивных челленджей",
-      "otherAChips": "<span class=\"chip\">Продукт &amp; UX/UI</span><span class=\"chip\">E-commerce</span><span class=\"chip\">Прототипы</span>",
-      "otherATitle": "Eqlio",
-      "otherADesc": "Корпоративное приложение для&nbsp;спортивных челленджей: сценарии, интерфейс и&nbsp;прототип.",
-      "otherAMetricValue": "6/7",
-      "otherAMetricLabel": "участников сочли сценарий понятным",
-      "otherBHref": "../visual-brand-identity/index.html",
-      "otherBCover": "../../assets/works/Illustration_set/Illustaration_set_01.webp",
-      "otherBAlt": "Visual Brand Identity: система иллюстраций",
-      "otherBChips": "<span class=\"chip\">Бренд</span><span class=\"chip\">Иллюстрация</span><span class=\"chip\">AI-визуалы</span>",
-      "otherBTitle": "Visual Brand Identity",
-      "otherBDesc": "Система иллюстраций для&nbsp;маркетплейса ремесленных товаров.",
-      "otherBMetricValue": "12",
-      "otherBMetricLabel": "изображений в&nbsp;визуальной системе"
+      "root": "../../",
+      "caseList": [
+        "eqlio",
+        "visual-brand-identity"
+      ]
     },
     {
       "path": "work/visual-brand-identity/index.html",
@@ -314,22 +404,11 @@
       "brandHref": "../../brand.html",
       "processProductHref": "../../process-product.html",
       "processBrandHref": "../../process-brand.html",
-      "otherAHref": "../eqlio/index.html",
-      "otherACover": "../../assets/works/Eqlio/EclioCover.webp",
-      "otherAAlt": "Eqlio: корпоративное приложение для спортивных челленджей",
-      "otherAChips": "<span class=\"chip\">Продукт &amp; UX/UI</span><span class=\"chip\">E-commerce</span><span class=\"chip\">Прототипы</span>",
-      "otherATitle": "Eqlio",
-      "otherADesc": "Корпоративное приложение для&nbsp;спортивных челленджей: сценарии, интерфейс и&nbsp;прототип.",
-      "otherAMetricValue": "6/7",
-      "otherAMetricLabel": "участников сочли сценарий понятным",
-      "otherBHref": "../togas/index.html",
-      "otherBCover": "../../assets/works/Togas/TogasApp.webp",
-      "otherBAlt": "Togas: мобильное приложение премиального бренда",
-      "otherBChips": "<span class=\"chip\">Продукт &amp; UX/UI</span><span class=\"chip\">Бренд</span><span class=\"chip\">Mobile app</span>",
-      "otherBTitle": "Togas",
-      "otherBDesc": "Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и&nbsp;бонусы.",
-      "otherBMetricValue": "+25%",
-      "otherBMetricLabel": "к&nbsp;числу заказов"
+      "root": "../../",
+      "caseList": [
+        "eqlio",
+        "togas"
+      ]
     },
     {
       "path": "work/svitla-embroidery/index.html",
@@ -349,22 +428,11 @@
       "brandHref": "../../brand.html",
       "processProductHref": "../../process-product.html",
       "processBrandHref": "../../process-brand.html",
-      "otherAHref": "../mark-n-post/index.html",
-      "otherACover": "../../assets/works/MarknPost/MarknPostCover.webp",
-      "otherAAlt": "Mark’n’Post: лендинг логистического сервиса",
-      "otherAChips": "<span class=\"chip\">Web &amp; digital</span><span class=\"chip\">Web design</span><span class=\"chip\">Vibe coding</span>",
-      "otherATitle": "Mark’n’Post",
-      "otherADesc": "Лендинг логистического сервиса: форматы отправки, процесс и&nbsp;заявка в&nbsp;Telegram.",
-      "otherAMetricValue": "7",
-      "otherAMetricLabel": "продуктовые страницы для&nbsp;рекламной кампании",
-      "otherBHref": "../visual-brand-identity/index.html",
-      "otherBCover": "../../assets/works/Illustration_set/Illustaration_set_01.webp",
-      "otherBAlt": "Visual Brand Identity: система иллюстраций",
-      "otherBChips": "<span class=\"chip\">Бренд</span><span class=\"chip\">Иллюстрация</span><span class=\"chip\">AI-визуалы</span>",
-      "otherBTitle": "Visual Brand Identity",
-      "otherBDesc": "Система иллюстраций для&nbsp;маркетплейса ремесленных товаров.",
-      "otherBMetricValue": "12",
-      "otherBMetricLabel": "изображений в&nbsp;визуальной системе"
+      "root": "../../",
+      "caseList": [
+        "mark-n-post",
+        "visual-brand-identity"
+      ]
     }
   ]
 }
