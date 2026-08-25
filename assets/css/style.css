@@ -46,6 +46,9 @@
   --radius-lg: 28px;
   --radius-md: 18px;
   --radius-pill: 999px;
+  /* Шапка липкая: 87px на десктопе, 79px в мобилке. Цель якоря должна
+     отступить на её высоту плюс воздух, иначе заголовок уезжает под плашку. */
+  --anchor-offset: 120px;
 
   /* DESIGN/WORKS lockup, measured from V1: word 176 at line-height .75 stands
      exactly as tall as the 132px shapes beside it */
@@ -111,6 +114,10 @@ h1,h2,h3,p{ margin: 0; }
    Site-wide entrance: blocks drift in from the right, each one a beat after the
    previous. `--i` is the element's index within the batch appearing together
    (set in main.js), so a single block scrolled into view starts immediately. */
+/* Любая цель якоря отступает от липкой шапки. Свойство ни на что не влияет,
+   пока к элементу не перешли по ссылке с #, поэтому задаём его всем сразу. */
+[id]{ scroll-margin-top: var(--anchor-offset); }
+
 /* ВНИМАНИЕ. Правило стоит в начале файла, а `transition` — шорткат: любое
    более позднее правило с тем же весом, объявившее свою `transition`,
    стирает эту и появление происходит мгновенно. Класс при этом на месте,
@@ -127,6 +134,10 @@ h1,h2,h3,p{ margin: 0; }
 .reveal.is-visible{
   opacity: 1;
   transform: translate3d(0, 0, 0);
+}
+
+@media (max-width: 720px){
+  :root{ --anchor-offset: 108px; }
 }
 
 @media (max-width: 640px){
@@ -1749,6 +1760,8 @@ h1,h2,h3,p{ margin: 0; }
   transition: background .32s var(--ease);
 }
 .crow__arrow .ic{ width: 22px; height: 22px; }
+/* Единственный кликабельный элемент сайта, который раньше не отвечал вовсе */
+.crow:hover .crow__arrow .ic{ transform: translateX(2px); }
 /* выбранная строка: лаймовая заливка, вторичный текст уходит в ink */
 .crow.is-selected{ background: var(--accent); border-color: var(--accent); }
 .crow.is-selected .crow__num{ color: var(--ink); }
@@ -1806,6 +1819,8 @@ h1,h2,h3,p{ margin: 0; }
 }
 .allworks__circle .ic{ width: 22px; height: 22px; }
 .allworks:hover .allworks__circle{ background: var(--ink); color: var(--accent); transform: scale(1.04); }
+/* стрелка в круге доворачивается вверх, как у кнопок на обложках кейсов */
+.allworks:hover .allworks__circle .ic{ transform: rotate(-45deg); }
 .allworks:active .allworks__circle{ transform: scale(.96); }
 .allworks:focus-visible{ outline: 2px solid var(--ink); outline-offset: 2px; }
 /* Тот же акцентный CTA, что «Смотреть все работы», но внутри текстового
@@ -2062,6 +2077,12 @@ h1,h2,h3,p{ margin: 0; }
    наведении капсула распрямляется в полный круг, а стрелка доворачивается
    до горизонтали. Сплющивание живёт на ::before, а не на самой кнопке:
    иначе оно растянуло бы и стрелку, и та плыла бы всю анимацию. */
+/* Кнопка на обложке кейса. Форма — обычный круг: капсула с наклоном
+   существовала ровно здесь и выпадала из системы. Стрелка внутри круга при
+   наведении доворачивается на 45° вверх, а не едет вправо: у круга есть свои
+   границы, и движение внутрь них читается хуже поворота. Цвета прежние — в
+   покое полупрозрачная подложка и белая стрелка, при наведении белый круг
+   и черная стрелка. */
 .pcase__go{
   position: absolute;
   left: 24px;
@@ -2070,42 +2091,20 @@ h1,h2,h3,p{ margin: 0; }
   place-items: center;
   width: 60px;
   height: 60px;
-  color: var(--surface);
-  transition: color .35s var(--ease), transform .35s var(--ease);
-}
-.pcase__go::before{
-  content: "";
-  position: absolute;
-  /* Сплющиваем геометрией бокса, а не scaleY: масштаб превратил бы круг в
-     эллипс. Здесь в покое бокс 60×34 с pill-радиусом — торцы полукруглые,
-     верх и низ прямые, то есть капсула, как в референсе. На наведении бокс
-     разворачивается в 60×60, радиус уходит в 50% — честный круг. */
-  inset: 13px 0;
   border-radius: var(--radius-pill);
   background: var(--scrim-soft);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  transform: rotate(-45deg);
-  transition: inset .5s var(--ease), border-radius .5s var(--ease),
-              transform .5s var(--ease), background .35s var(--ease);
+  color: var(--surface);
+  transition: background .35s var(--ease), color .35s var(--ease),
+              transform .35s var(--ease),
+              opacity .8s var(--ease) calc(var(--i, 0) * 110ms);
 }
-.pcase__go .ic{
-  position: relative;
-  width: 20px;
-  height: 20px;
-  transform: rotate(-45deg);
-  transition: transform .5s var(--ease);
-}
-.pcase:hover .pcase__go::before,
-.pcase:focus-visible .pcase__go::before{
-  background: var(--surface);
-  inset: 0;
-  transform: rotate(0deg);
-}
+.pcase__go .ic{ width: 20px; height: 20px; }
 .pcase:hover .pcase__go,
-.pcase:focus-visible .pcase__go{ color: var(--ink); }
+.pcase:focus-visible .pcase__go{ background: var(--surface); color: var(--ink); }
 .pcase:hover .pcase__go .ic,
-.pcase:focus-visible .pcase__go .ic{ transform: rotate(0deg); }
+.pcase:focus-visible .pcase__go .ic{ transform: rotate(-45deg); }
 .pcase:active .pcase__go{ transform: scale(.94); }
 .pcase:focus-visible{ outline: 2px solid var(--ink); outline-offset: 2px; }
 
@@ -2246,9 +2245,7 @@ h1,h2,h3,p{ margin: 0; }
   }
 
   .portfolio__grid{ grid-template-columns: 1fr; gap: 48px; }
-    .pcase__go{ width: 52px; height: 52px; left: 18px; bottom: 18px; }
-  /* та же пропорция сплющивания, что на десктопе */
-  .pcase__go::before{ inset: 11px 0; }
+  .pcase__go{ width: 52px; height: 52px; left: 18px; bottom: 18px; }
   .pcase__go .ic{ width: 18px; height: 18px; }
   .pfilter{ min-width: 0; }
 }
@@ -2273,15 +2270,10 @@ h1,h2,h3,p{ margin: 0; }
   .featured:hover .featured__img.is-current,
   .pcase:hover .pcase__cover img,
   .pcase:focus-visible .pcase__cover img{ transform: none; }
-  /* поворот оставляем статичным: круг и стрелка сразу в конечном положении */
-  .pcase__go::before,
-  .pcase__go .ic{ transition: none; }
-  .pcase__go::before{ inset: 0; transform: rotate(0deg); }
-  .pcase__go .ic{ transform: rotate(0deg); }
-  .pcase:hover .pcase__go::before,
-  .pcase:focus-visible .pcase__go::before{ inset: 0; transform: rotate(0deg); }
+  /* на тач-экране сдвига стрелки нет: наведения не бывает */
+  .pcase__go .ic{ transition: none; transform: none; }
   .pcase:hover .pcase__go .ic,
-  .pcase:focus-visible .pcase__go .ic{ transform: rotate(0deg); }
+  .pcase:focus-visible .pcase__go .ic{ transform: none; }
   .featured:hover .featured__caption{ transform: none; }
   .ilink:hover .ic,
   .ilink:focus-visible .ic{ transform: none; }
@@ -2584,7 +2576,8 @@ h1,h2,h3,p{ margin: 0; }
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
+  /* 40px — системный шаг, тот же, что между лидом и списком в `about-row__body` */
+  gap: 40px;
   min-width: 0;
   color: var(--ink);
 }
@@ -3222,6 +3215,10 @@ h1,h2,h3,p{ margin: 0; }
   flex-direction: column;
   gap: 2px;
 }
+/* Вход в направление под списком услуг. Зелёная кнопка на изображении ведёт
+   в каталог с фильтром — это «покажи работы»; здесь другое намерение,
+   «расскажи, что ты умеешь в этом», поэтому ссылка отдельная и тихая. */
+.process-services__more{ display: block; margin-top: 20px; }
 .process-services__list li{
   font-size: var(--fs-body);
   line-height: 1.55;
@@ -3372,6 +3369,10 @@ h1,h2,h3,p{ margin: 0; }
 }
 .live-link-row .live-link{ margin-top: 0; }
 .live-link:hover, .live-link:focus-visible{ background: var(--ink); color: var(--accent); outline: none; }
+/* Кнопка ведёт на внешний сайт или в стор, поэтому стрелка диагональная
+   и доворачивается до горизонтали — тем же жестом, что у `.link-arrow`. */
+.live-link:hover .icon-arrow-ne,
+.live-link:focus-visible .icon-arrow-ne{ transform: rotate(45deg); }
 .live-link__badge{
   display: inline-flex;
   align-items: center;

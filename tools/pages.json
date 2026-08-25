@@ -105,7 +105,7 @@
       "name": "Бренд &amp; коммуникация",
       "path": "brand.html",
       "desc": "Айдентика, бренд-системы, арт-дирекшен и&nbsp;рекламные кампании.",
-      "process": "process-brand.html",
+      "process": "process.html",
       "cv": "assets/cv/lana-svitla-cv-brand-designer.pdf",
       "cvLabel": "Brand &amp; Graphic Designer",
       "rows": [
@@ -118,7 +118,7 @@
       "name": "Продукт &amp; UX/UI",
       "path": "product.html",
       "desc": "Сценарии, интерфейсы, прототипы и&nbsp;дизайн-системы.",
-      "process": "process-product.html",
+      "process": "process.html",
       "cv": "assets/cv/lana-svitla-cv-product-designer.pdf",
       "cvLabel": "Product / UX/UI Designer",
       "rows": [

@@ -346,6 +346,17 @@ def main() -> int:
         # и внутри отрендеренного компонента, и прямо в странице
         html = apply_inline_components(html, page_path)
 
+        # Плейсхолдеры подставляются только внутри слотов компонентов. Если
+        # `{{ключ}}` написан прямо в теле страницы, он молча уезжает в вёрстку
+        # и виден читателю — так на web.html в продакшен ушло «CV: {{...}}».
+        leftover = sorted(set(PLACEHOLDER.findall(html)))
+        if leftover:
+            raise SystemExit(
+                f"[render_partials] {page_path}: незаменённые плейсхолдеры в разметке: "
+                + ", ".join("{{" + k + "}}" for k in leftover)
+                + ". Значения подставляются только внутри слотов компонентов."
+            )
+
         if html != original:
             changed.append(page_path)
             if not check_only:
