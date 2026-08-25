@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=223">
+<link rel="stylesheet" href="assets/css/style.css?v=232">
 </head>
 <body>
 <!-- component:icons -->
@@ -44,8 +44,9 @@
     <nav class="site-header__nav" id="primary-nav" aria-label="Основная навигация">
       <div class="site-header__nav-links">
       <a class="" href="./works.html">Портфолио</a>
+      <a class="is-current" href="./index.html#directions">Направления</a>
       <a class="" href="./process.html">Процесс</a>
-      <a class="is-current" href="./about.html">Обо мне</a>
+      <a class="" href="./about.html">Обо мне</a>
       </div>
       <a href="./contacts.html" class="site-header__cta">Контакт</a>
     </nav>
@@ -60,8 +61,9 @@
     <div class="about-row__body">
       <!-- component:role-switch -->
       <nav class="switch" aria-label="Направление">
-        <a class="switch__item is-current" href="./product.html" aria-current="page">Продукт &amp; UX/UI</a>
-        <a class="switch__item " href="./brand.html">Бренд &amp; коммуникация</a>
+        <a class="switch__item" href="brand.html">Бренд &amp; коммуникация</a>
+        <a class="switch__item is-current" href="product.html" aria-current="page">Продукт &amp; UX/UI</a>
+        <a class="switch__item" href="web.html">Web &amp; digital</a>
       </nav>
       <!-- /component:role-switch -->
       <h1 class="about-intro__title reveal"><b>Продуктовый и&nbsp;UX/UI дизайн.</b> Проектирую сложные data-heavy B2B-интерфейсы и&nbsp;премиальные B2C e-commerce-продукты: от&nbsp;требований и&nbsp;сценариев до&nbsp;прототипа, UI, дизайн-системы и&nbsp;передачи в&nbsp;разработку.</h1>
@@ -94,7 +96,7 @@
   <section class="about-row">
     <p class="about-row__label reveal">Экспертиза</p>
     <div class="about-row__body">
-      <p class="about-tags__line reveal">Полный цикл продукта (Product Discovery &amp; Delivery) • Информационная архитектура • User Flow / CJM • Enterprise B2B и&nbsp;data-heavy интерфейсы • B2C и&nbsp;e-commerce • Оптимизация конверсии и&nbsp;checkout • Design-to-Development • Работа с&nbsp;продуктовыми метриками • Дизайн-системы и&nbsp;их документация • Дизайн-системы и&nbsp;их документация • Design Leadership / DesignOps • Design Operations • Управление дизайн-командами до&nbsp;16&nbsp;человек • Построение дизайн-процессов • Менторинг дизайнеров • AI-автоматизация дизайн-процессов • AI-assisted Creative Workflow</p>
+      <p class="about-tags__line reveal">Полный цикл продукта (Product Discovery &amp; Delivery) • Информационная архитектура • User Flow / CJM • Enterprise B2B и&nbsp;data-heavy интерфейсы • B2C и&nbsp;e-commerce • Оптимизация конверсии и&nbsp;checkout • Design-to-Development • Работа с&nbsp;продуктовыми метриками • Дизайн-системы и&nbsp;их документация • Design Leadership / DesignOps • Design Operations • Управление дизайн-командами до&nbsp;16&nbsp;человек • Построение дизайн-процессов • Менторинг дизайнеров • AI-автоматизация дизайн-процессов • AI-assisted Creative Workflow</p>
     </div>
   </section>
 
@@ -169,6 +171,35 @@
     </div>
   </section>
 
+  <!-- component:other-directions -->
+  <section class="about-row about-row--lead">
+    <p class="about-row__label reveal">Другие направления</p>
+    <div class="about-row__body">
+      <div class="directions__grid">
+        <a class="dcard reveal" href="brand.html">
+          <span class="dcard__fill" aria-hidden="true"></span>
+          <span class="dcard__title">Бренд &amp; коммуникация</span>
+          <span class="dcard__row">Айдентика и&nbsp;бренд-системы</span>
+          <span class="dcard__row">Презентации и&nbsp;полиграфия</span>
+          <span class="dcard__row">Иллюстрация и&nbsp;AI-визуалы</span>
+          <span class="dcard__spacer"></span>
+          <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
+        </a>
+        <a class="dcard reveal" href="web.html">
+          <span class="dcard__fill" aria-hidden="true"></span>
+          <span class="dcard__title">Web &amp; digital</span>
+          <span class="dcard__row">Лендинги и&nbsp;сайты</span>
+          <span class="dcard__row">Tilda / Webflow / Framer</span>
+          <span class="dcard__row">Vibe coding и&nbsp;AI-продакшен</span>
+          <span class="dcard__spacer"></span>
+          <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
+        </a>
+        <svg class="directions__star directions__star--mid" viewBox="0 0 44 44" aria-hidden="true"><use href="#i-star"/></svg>
+      </div>
+    </div>
+  </section>
+  <!-- /component:other-directions -->
+
 </main>
 </div>
 
@@ -186,12 +217,21 @@
 
     <div class="site-footer__cols reveal">
       <nav class="site-footer__nav" aria-label="Навигация в подвале">
-        <a href="./index.html">Главная</a>
+        <p class="site-footer__col-title" aria-hidden="true"></p>
         <a href="./works.html">Портфолио</a>
         <a href="./about.html">Обо мне</a>
         <a href="./contacts.html">Контакты</a>
       </nav>
 
+      <nav class="site-footer__nav" aria-label="Направления">
+        <p class="site-footer__col-title">Направления</p>
+        <a href="./brand.html">Бренд &amp; коммуникация</a>
+        <a href="./product.html">Продукт &amp; UX/UI</a>
+        <a href="./web.html">Web &amp; digital</a>
+      </nav>
+
+      <div class="site-footer__col">
+      <p class="site-footer__col-title" aria-hidden="true"></p>
       <ul class="social-list">
         <li>
           <a class="link-arrow" href="https://t.me/LLanaSvitla" target="_blank" rel="noopener">
@@ -226,6 +266,7 @@
           </a>
         </li>
       </ul>
+      </div>
     </div>
 
     <p class="site-footer__copy reveal"><span class="js-year">2026</span>&nbsp;LS&nbsp;DESIGN</p>

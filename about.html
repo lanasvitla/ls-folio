@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=223">
+<link rel="stylesheet" href="assets/css/style.css?v=232">
 </head>
 <body>
 <!-- component:icons -->
@@ -43,6 +43,7 @@
     <nav class="site-header__nav" id="primary-nav" aria-label="Основная навигация">
       <div class="site-header__nav-links">
       <a class="" href="./works.html">Портфолио</a>
+      <a class="" href="./index.html#directions">Направления</a>
       <a class="" href="./process.html">Процесс</a>
       <a class="is-current" href="./about.html">Обо мне</a>
       </div>
@@ -77,7 +78,7 @@
         <li data-extra hidden="until-found"><span class="about-list__when">2016 – 2021</span><span class="about-list__what"><b>TOGAS</b> · Руководитель дизайн-бюро</span></li>
         <li data-extra hidden="until-found"><span class="about-list__when">2005 – 2016</span><span class="about-list__what"><b>Рекламные агентства и&nbsp;маркетинговые отделы компаний</b>, Москва · ведущий дизайнер, арт-директор, руководитель дизайнерских групп</span></li>
       </ul>
-      <button class="list-more ilink" type="button" aria-expanded="false" data-more="Показать все" data-less="Свернуть">
+      <button class="list-more ilink reveal" type="button" aria-expanded="false" data-more="Показать все" data-less="Свернуть">
         <span class="ilink__row"><span data-label>Показать все</span><svg class="ic list-more__chev" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
         <span class="ilink__rule"></span>
       </button>
@@ -85,48 +86,42 @@
     </div>
   </section>
 
-  <section class="about-row">
+  <section class="about-row about-row--lead">
     <p class="about-row__label reveal">Направления</p>
     <div class="about-row__body">
-      <div class="about-directions">
-        <div class="about-direction reveal">
-          <a class="dcard reveal" href="./product.html">
-            <span class="dcard__fill" aria-hidden="true"></span>
-            <span class="dcard__title">Продукт &amp; UX/UI</span>
-            <span class="dcard__row">Исследование продукта, логика сценариев</span>
-            <span class="dcard__row">Интерфейсы и&nbsp;прототипы</span>
-            <span class="dcard__row">Дизайн-системы</span>
-            <span class="dcard__row">Работа с&nbsp;метриками</span>
-            <span class="dcard__spacer"></span>
-            <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
-          </a>
-          <a class="link-arrow" href="./assets/cv/lana-svitla-cv-product-designer.pdf" target="_blank" rel="noopener">
-            <span>Product / UX/UI Designer</span><span class="chip">CV</span><span class="link-arrow__meta">PDF&nbsp;· 94&nbsp;КБ</span>
-            <svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-        <div class="about-direction reveal">
-          <a class="dcard reveal" href="./brand.html">
-            <span class="dcard__fill" aria-hidden="true"></span>
-            <span class="dcard__title">Бренд &amp; коммуникация</span>
-            <span class="dcard__row">Айдентика и&nbsp;бренд-системы</span>
-            <span class="dcard__row">Арт-дирекшен</span>
-            <span class="dcard__row">Рекламные кампании</span>
-            <span class="dcard__row">Сайты, гайды и&nbsp;презентации</span>
-            <span class="dcard__spacer"></span>
-            <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
-          </a>
-          <a class="link-arrow" href="./assets/cv/lana-svitla-cv-brand-designer.pdf" target="_blank" rel="noopener">
-            <span>Brand &amp;&nbsp;Graphic Designer</span><span class="chip">CV</span><span class="link-arrow__meta">PDF&nbsp;· 94&nbsp;КБ</span>
-            <svg class="icon-arrow-ne" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M2.5 13.5L13.5 2.5M13.5 2.5H5.25M13.5 2.5V10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-        <svg class="directions__star directions__star--mid" viewBox="0 0 44 44" aria-hidden="true"><use href="#i-star"/></svg>
+      <!-- component:all-directions -->
+      <div class="directions__grid">
+            <a class="dcard reveal" href="brand.html">
+              <span class="dcard__fill" aria-hidden="true"></span>
+              <span class="dcard__title">Бренд &amp; коммуникация</span>
+              <span class="dcard__row">Айдентика и&nbsp;бренд-системы</span>
+              <span class="dcard__row">Презентации и&nbsp;полиграфия</span>
+              <span class="dcard__row">Иллюстрация и&nbsp;AI-визуалы</span>
+              <span class="dcard__spacer"></span>
+              <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
+            </a>
+            <a class="dcard reveal" href="product.html">
+              <span class="dcard__fill" aria-hidden="true"></span>
+              <span class="dcard__title">Продукт &amp; UX/UI</span>
+              <span class="dcard__row">Исследование и&nbsp;гипотезы</span>
+              <span class="dcard__row">Прототипы и&nbsp;интерфейсы</span>
+              <span class="dcard__row">Дизайн-системы</span>
+              <span class="dcard__spacer"></span>
+              <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
+            </a>
+            <a class="dcard reveal" href="web.html">
+              <span class="dcard__fill" aria-hidden="true"></span>
+              <span class="dcard__title">Web &amp; digital</span>
+              <span class="dcard__row">Лендинги и&nbsp;сайты</span>
+              <span class="dcard__row">Tilda / Webflow / Framer</span>
+              <span class="dcard__row">Vibe coding и&nbsp;AI-продакшен</span>
+              <span class="dcard__spacer"></span>
+              <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
+            </a>
+            <svg class="directions__star directions__star--one" viewBox="0 0 44 44" aria-hidden="true"><use href="#i-star"/></svg>
+            <svg class="directions__star directions__star--two" viewBox="0 0 44 44" aria-hidden="true"><use href="#i-star"/></svg>
       </div>
+      <!-- /component:all-directions -->
     </div>
   </section>
 
@@ -188,7 +183,7 @@
         <li data-extra hidden="until-found"><span class="about-list__when">2019 – 2020</span><span class="about-list__what"><b>Яндекс Практикум</b> · Frontend Developer</span></li>
         <li data-extra hidden="until-found"><span class="about-list__when">2018</span><span class="about-list__what"><b>LoftSchool</b> · Frontend Developer</span></li>
       </ul>
-      <button class="list-more ilink" type="button" aria-expanded="false" data-more="Показать все" data-less="Свернуть">
+      <button class="list-more ilink reveal" type="button" aria-expanded="false" data-more="Показать все" data-less="Свернуть">
         <span class="ilink__row"><span data-label>Показать все</span><svg class="ic list-more__chev" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
         <span class="ilink__rule"></span>
       </button>
@@ -220,24 +215,13 @@
   </section>
 
   <section class="about-row about-row--lead" id="process">
-    <p class="about-row__label reveal">Дизайн-процесс</p>
+    <p class="about-row__label reveal">Workflow</p>
     <div class="about-row__body">
-      <p class="about-lead reveal"><b>Дизайн-процесс подстраиваю под&nbsp;задачу.</b> Работаю с&nbsp;Double Diamond и&nbsp;Design Thinking.</p>
-      <div class="directions__grid about-directions">
-        <a class="dcard dcard--slim reveal" href="./process-product.html">
-          <span class="dcard__fill" aria-hidden="true"></span>
-          <span class="dcard__title">Процесс работы<br>в&nbsp;продукте (UX)</span>
-          <span class="dcard__spacer"></span>
-          <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
-        </a>
-        <a class="dcard dcard--slim reveal" href="./process-brand.html">
-          <span class="dcard__fill" aria-hidden="true"></span>
-          <span class="dcard__title">Дизайн-процесс<br>в&nbsp;бренде</span>
-          <span class="dcard__spacer"></span>
-          <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
-        </a>
-        <svg class="directions__star directions__star--mid" viewBox="0 0 44 44" aria-hidden="true"><use href="#i-star"/></svg>
-      </div>
+      <p class="about-lead reveal"><b>Дизайн-процесс собираю под&nbsp;задачу.</b><br>Использую Double Diamond и&nbsp;Design Thinking.</p>
+      <a class="allworks allworks--compact reveal" href="./process.html">
+        <span class="allworks__text">Как&nbsp;я&nbsp;работаю</span>
+        <span class="allworks__circle"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      </a>
     </div>
   </section>
 
@@ -339,12 +323,21 @@
 
     <div class="site-footer__cols reveal">
       <nav class="site-footer__nav" aria-label="Навигация в подвале">
-        <a href="./index.html">Главная</a>
+        <p class="site-footer__col-title" aria-hidden="true"></p>
         <a href="./works.html">Портфолио</a>
         <a href="./about.html">Обо мне</a>
         <a href="./contacts.html">Контакты</a>
       </nav>
 
+      <nav class="site-footer__nav" aria-label="Направления">
+        <p class="site-footer__col-title">Направления</p>
+        <a href="./brand.html">Бренд &amp; коммуникация</a>
+        <a href="./product.html">Продукт &amp; UX/UI</a>
+        <a href="./web.html">Web &amp; digital</a>
+      </nav>
+
+      <div class="site-footer__col">
+      <p class="site-footer__col-title" aria-hidden="true"></p>
       <ul class="social-list">
         <li>
           <a class="link-arrow" href="https://t.me/LLanaSvitla" target="_blank" rel="noopener">
@@ -379,6 +372,7 @@
           </a>
         </li>
       </ul>
+      </div>
     </div>
 
     <p class="site-footer__copy reveal"><span class="js-year">2026</span>&nbsp;LS&nbsp;DESIGN</p>

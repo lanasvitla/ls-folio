@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=223">
+<link rel="stylesheet" href="assets/css/style.css?v=232">
 </head>
 <body>
 <!-- component:icons -->
@@ -43,6 +43,7 @@
     <nav class="site-header__nav" id="primary-nav" aria-label="Основная навигация">
       <div class="site-header__nav-links">
       <a class="is-current" href="./works.html">Портфолио</a>
+      <a class="" href="./index.html#directions">Направления</a>
       <a class="" href="./process.html">Процесс</a>
       <a class="" href="./about.html">Обо мне</a>
       </div>
@@ -58,14 +59,14 @@
     <p class="home-hero__spine" aria-hidden="true">DesignPortfolio</p>
 
     <div class="home-hero__author">
-      <div class="author-portrait">
+      <div class="author-portrait reveal">
         <img class="author-portrait__img" src="assets/images/lana-svitla-portrait.webp" width="560" height="560" alt="Lana Svitla">
         <span class="author-portrait__hi" aria-hidden="true">
           <span class="author-portrait__cursor"></span>
           <span class="author-portrait__label">Hi!</span>
         </span>
       </div>
-      <div class="author-copy">
+      <div class="author-copy reveal">
         <div class="author-copy__inner">
           <p class="author-copy__eyebrow">Lana Svitla</p>
           <div class="author-copy__headline">
@@ -81,7 +82,7 @@
     </div>
 
     <div class="home-hero__metrics">
-      <div class="metrics">
+      <div class="metrics reveal">
         <div class="metrics__pair">
           <div class="metric"><b class="metric__value">10+ лет</b><span class="metric__label">в&nbsp;дизайне</span></div>
           <div class="metric"><b class="metric__value">+25%</b><span class="metric__label">к&nbsp;числу заказов</span></div>
@@ -95,7 +96,7 @@
     </div>
 
     <!-- component:home-cases -->
-    <a class="featured home-hero__featured" id="featured" href="work/eqlio/index.html" data-featured>
+    <a class="featured home-hero__featured reveal" id="featured" href="work/eqlio/index.html" data-featured>
       <span class="featured__media">
             <img class="featured__img" src="assets/works/MarknPost/MarknPostCover.webp" alt="Mark’n’Post: лендинг логистического сервиса" width="760" height="340" data-case="0">
             <img class="featured__img is-current" src="assets/works/Eqlio/EclioCover.webp" alt="Eqlio: корпоративное приложение для спортивных челленджей" width="760" height="340" data-case="1">
@@ -113,28 +114,28 @@
 
     <div class="home-hero__index">
       <div class="cindex" data-cindex>
-        <p class="cindex__eyebrow">Избранные работы</p>
+        <p class="cindex__eyebrow reveal">Избранные работы</p>
         <div class="cindex__rows">
-            <a class="crow" href="work/mark-n-post/index.html" data-case="0">
+            <a class="crow reveal" href="work/mark-n-post/index.html" data-case="0">
               <span class="crow__num">01</span>
               <span class="crow__title">Mark’n’Post</span>
               <span class="crow__type">Веб / коммуникация</span>
               <span class="crow__arrow"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
             </a>
-            <a class="crow is-selected" href="work/eqlio/index.html" data-case="1">
+            <a class="crow reveal is-selected" href="work/eqlio/index.html" data-case="1">
               <span class="crow__num">02</span>
               <span class="crow__title">Eqlio</span>
               <span class="crow__type">E-commerce / UX/UI</span>
               <span class="crow__arrow"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
             </a>
-            <a class="crow" href="work/togas/index.html" data-case="2">
+            <a class="crow reveal" href="work/togas/index.html" data-case="2">
               <span class="crow__num">03</span>
               <span class="crow__title">Togas App</span>
               <span class="crow__type">Mobile app / UX/UI</span>
               <span class="crow__arrow"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
             </a>
         </div>
-        <a class="allworks" href="works.html">
+        <a class="allworks reveal" href="works.html">
           <span class="allworks__text">Смотреть все работы</span>
           <span class="allworks__circle"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
         </a>
@@ -143,42 +144,44 @@
     <!-- /component:home-cases -->
   </section>
 
-  <section class="directions" aria-labelledby="directions-title">
+  <section class="directions" id="directions" aria-labelledby="directions-title">
     <div class="directions__head">
       <h2 class="directions__title" id="directions-title">Направления</h2>
       <p class="directions__lead">Мой опыт в&nbsp;каждом направлении и&nbsp;кейсы.</p>
     </div>
+    <!-- component:all-directions -->
     <div class="directions__grid">
-      <a class="dcard" href="brand.html">
-        <span class="dcard__fill" aria-hidden="true"></span>
-        <span class="dcard__title">Бренд-дизайн</span>
-        <span class="dcard__row">Айдентика и&nbsp;бренд-системы</span>
-        <span class="dcard__row">Гайды, презентации и&nbsp;полиграфия</span>
-        <span class="dcard__row">Иллюстрация и&nbsp;AI-визуалы</span>
-        <span class="dcard__spacer"></span>
-        <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
-      </a>
-      <a class="dcard" href="product.html">
-        <span class="dcard__fill" aria-hidden="true"></span>
-        <span class="dcard__title">Продукт &amp; UX/UI</span>
-        <span class="dcard__row">Исследование, логика и&nbsp;сценарии</span>
-        <span class="dcard__row">Интерфейсы и&nbsp;прототипы</span>
-        <span class="dcard__row">Дизайн-системы для&nbsp;web и&nbsp;mobile</span>
-        <span class="dcard__spacer"></span>
-        <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
-      </a>
-      <a class="dcard" href="brand.html#web">
-        <span class="dcard__fill" aria-hidden="true"></span>
-        <span class="dcard__title">Web &amp; digital</span>
-        <span class="dcard__row">Лендинги и&nbsp;сайты</span>
-        <span class="dcard__row">Tilda / Webflow / Framer</span>
-        <span class="dcard__row">Vibe coding и&nbsp;AI-продакшен</span>
-        <span class="dcard__spacer"></span>
-        <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
-      </a>
-      <svg class="directions__star directions__star--one" viewBox="0 0 44 44" aria-hidden="true"><use href="#i-star"/></svg>
-      <svg class="directions__star directions__star--two" viewBox="0 0 44 44" aria-hidden="true"><use href="#i-star"/></svg>
+          <a class="dcard reveal" href="brand.html">
+            <span class="dcard__fill" aria-hidden="true"></span>
+            <span class="dcard__title">Бренд &amp; коммуникация</span>
+            <span class="dcard__row">Айдентика и&nbsp;бренд-системы</span>
+            <span class="dcard__row">Презентации и&nbsp;полиграфия</span>
+            <span class="dcard__row">Иллюстрация и&nbsp;AI-визуалы</span>
+            <span class="dcard__spacer"></span>
+            <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
+          </a>
+          <a class="dcard reveal" href="product.html">
+            <span class="dcard__fill" aria-hidden="true"></span>
+            <span class="dcard__title">Продукт &amp; UX/UI</span>
+            <span class="dcard__row">Исследование и&nbsp;гипотезы</span>
+            <span class="dcard__row">Прототипы и&nbsp;интерфейсы</span>
+            <span class="dcard__row">Дизайн-системы</span>
+            <span class="dcard__spacer"></span>
+            <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
+          </a>
+          <a class="dcard reveal" href="web.html">
+            <span class="dcard__fill" aria-hidden="true"></span>
+            <span class="dcard__title">Web &amp; digital</span>
+            <span class="dcard__row">Лендинги и&nbsp;сайты</span>
+            <span class="dcard__row">Tilda / Webflow / Framer</span>
+            <span class="dcard__row">Vibe coding и&nbsp;AI-продакшен</span>
+            <span class="dcard__spacer"></span>
+            <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
+          </a>
+          <svg class="directions__star directions__star--one" viewBox="0 0 44 44" aria-hidden="true"><use href="#i-star"/></svg>
+          <svg class="directions__star directions__star--two" viewBox="0 0 44 44" aria-hidden="true"><use href="#i-star"/></svg>
     </div>
+    <!-- /component:all-directions -->
   </section>
 
 </main>
@@ -198,12 +201,21 @@
 
     <div class="site-footer__cols reveal">
       <nav class="site-footer__nav" aria-label="Навигация в подвале">
-        <a href="./index.html">Главная</a>
+        <p class="site-footer__col-title" aria-hidden="true"></p>
         <a href="./works.html">Портфолио</a>
         <a href="./about.html">Обо мне</a>
         <a href="./contacts.html">Контакты</a>
       </nav>
 
+      <nav class="site-footer__nav" aria-label="Направления">
+        <p class="site-footer__col-title">Направления</p>
+        <a href="./brand.html">Бренд &amp; коммуникация</a>
+        <a href="./product.html">Продукт &amp; UX/UI</a>
+        <a href="./web.html">Web &amp; digital</a>
+      </nav>
+
+      <div class="site-footer__col">
+      <p class="site-footer__col-title" aria-hidden="true"></p>
       <ul class="social-list">
         <li>
           <a class="link-arrow" href="https://t.me/LLanaSvitla" target="_blank" rel="noopener">
@@ -238,6 +250,7 @@
           </a>
         </li>
       </ul>
+      </div>
     </div>
 
     <p class="site-footer__copy reveal"><span class="js-year">2026</span>&nbsp;LS&nbsp;DESIGN</p>

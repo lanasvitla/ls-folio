@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=223">
+<link rel="stylesheet" href="assets/css/style.css?v=232">
 </head>
 <body>
 <!-- component:icons -->
@@ -44,6 +44,7 @@
     <nav class="site-header__nav" id="primary-nav" aria-label="Основная навигация">
       <div class="site-header__nav-links">
       <a class="" href="./works.html">Портфолио</a>
+      <a class="" href="./index.html#directions">Направления</a>
       <a class="is-current" href="./process.html">Процесс</a>
       <a class="" href="./about.html">Обо мне</a>
       </div>
@@ -165,7 +166,7 @@
           <div class="process-services__flow">
             <span class="process-services__caption">Дизайн-процесс для&nbsp;бренд проекта</span>
             <div class="process-services__chips">
-              <span class="chip">Аудит</span>
+              <span class="chip">Аудит бизнес-задачи</span>
               <span class="chip">Концепция и&nbsp;айдентика</span>
               <span class="chip">Примерка на&nbsp;носители</span>
               <span class="chip">Гайдлайн</span>
@@ -182,13 +183,19 @@
           </span>
           <div class="process-services__text">
             <h3 class="process-services__title">Web &amp; digital</h3>
-            <p class="process-services__desc">Лендинги и&nbsp;сайты / Tilda, Webflow, Framer / Vibe coding / Макеты&nbsp;к&nbsp;печати / Гайды, презентации и&nbsp;полиграфия</p>
+            <ul class="process-services__list">
+              <li>Лендинги и&nbsp;сайты</li>
+              <li>Tilda, Webflow, Framer</li>
+              <li>Vibe coding</li>
+              <li>Макеты к&nbsp;печати</li>
+              <li>Гайды, презентации и&nbsp;полиграфия</li>
+            </ul>
           </div>
           <div class="process-services__flow">
             <span class="process-services__caption">Дизайн-процесс для&nbsp;web &amp; digital</span>
             <div class="process-services__chips">
-              <span class="chip">Исследование</span>
-              <span class="chip">Гипотеза и&nbsp;структура</span>
+              <span class="chip">Бриф и&nbsp;анализ</span>
+              <span class="chip">Концепция решения</span>
               <span class="chip">Дизайн и&nbsp;сборка</span>
               <span class="chip">Публикация</span>
             </div>
@@ -215,12 +222,21 @@
 
     <div class="site-footer__cols reveal">
       <nav class="site-footer__nav" aria-label="Навигация в подвале">
-        <a href="./index.html">Главная</a>
+        <p class="site-footer__col-title" aria-hidden="true"></p>
         <a href="./works.html">Портфолио</a>
         <a href="./about.html">Обо мне</a>
         <a href="./contacts.html">Контакты</a>
       </nav>
 
+      <nav class="site-footer__nav" aria-label="Направления">
+        <p class="site-footer__col-title">Направления</p>
+        <a href="./brand.html">Бренд &amp; коммуникация</a>
+        <a href="./product.html">Продукт &amp; UX/UI</a>
+        <a href="./web.html">Web &amp; digital</a>
+      </nav>
+
+      <div class="site-footer__col">
+      <p class="site-footer__col-title" aria-hidden="true"></p>
       <ul class="social-list">
         <li>
           <a class="link-arrow" href="https://t.me/LLanaSvitla" target="_blank" rel="noopener">
@@ -255,6 +271,7 @@
           </a>
         </li>
       </ul>
+      </div>
     </div>
 
     <p class="site-footer__copy reveal"><span class="js-year">2026</span>&nbsp;LS&nbsp;DESIGN</p>

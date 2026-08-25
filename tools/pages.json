@@ -100,6 +100,47 @@
       "type": "Веб / арт-дирекшен"
     }
   },
+  "directions": {
+    "brand": {
+      "name": "Бренд &amp; коммуникация",
+      "path": "brand.html",
+      "desc": "Айдентика, бренд-системы, арт-дирекшен и&nbsp;рекламные кампании.",
+      "process": "process-brand.html",
+      "cv": "assets/cv/lana-svitla-cv-brand-designer.pdf",
+      "cvLabel": "Brand &amp; Graphic Designer",
+      "rows": [
+        "Айдентика и&nbsp;бренд-системы",
+        "Презентации и&nbsp;полиграфия",
+        "Иллюстрация и&nbsp;AI-визуалы"
+      ]
+    },
+    "product": {
+      "name": "Продукт &amp; UX/UI",
+      "path": "product.html",
+      "desc": "Сценарии, интерфейсы, прототипы и&nbsp;дизайн-системы.",
+      "process": "process-product.html",
+      "cv": "assets/cv/lana-svitla-cv-product-designer.pdf",
+      "cvLabel": "Product / UX/UI Designer",
+      "rows": [
+        "Исследование и&nbsp;гипотезы",
+        "Прототипы и&nbsp;интерфейсы",
+        "Дизайн-системы"
+      ]
+    },
+    "web": {
+      "name": "Web &amp; digital",
+      "path": "web.html",
+      "desc": "Сайты целиком: структура, дизайн, сборка и&nbsp;публикация.",
+      "process": "process.html",
+      "cv": "assets/cv/lana-svitla-cv-brand-designer.pdf",
+      "cvLabel": "Brand &amp; Graphic Designer",
+      "rows": [
+        "Лендинги и&nbsp;сайты",
+        "Tilda / Webflow / Framer",
+        "Vibe coding и&nbsp;AI-продакшен"
+      ]
+    }
+  },
   "pages": [
     {
       "path": "index.html",
@@ -107,7 +148,8 @@
         "icons",
         "site-header",
         "site-footer",
-        "home-cases"
+        "home-cases",
+        "all-directions"
       ],
       "homeHref": "./index.html",
       "worksHref": "./works.html",
@@ -125,7 +167,10 @@
         "eqlio",
         "togas"
       ],
-      "heroSelected": 1
+      "heroSelected": 1,
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": ""
     },
     {
       "path": "works.html",
@@ -153,14 +198,18 @@
         "visual-brand-identity",
         "svitla-embroidery"
       ],
-      "caseNiche": true
+      "caseNiche": true,
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": ""
     },
     {
       "path": "about.html",
       "components": [
         "icons",
         "site-header",
-        "site-footer"
+        "site-footer",
+        "all-directions"
       ],
       "homeHref": "./index.html",
       "worksHref": "./works.html",
@@ -172,7 +221,10 @@
       "brandHref": "./brand.html",
       "processProductHref": "./process-product.html",
       "processBrandHref": "./process-brand.html",
-      "root": ""
+      "root": "",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": ""
     },
     {
       "path": "product.html",
@@ -181,7 +233,8 @@
         "site-header",
         "role-switch",
         "site-footer",
-        "work-cases"
+        "work-cases",
+        "other-directions"
       ],
       "homeHref": "./index.html",
       "worksHref": "./works.html",
@@ -192,14 +245,16 @@
       "brandHref": "./brand.html",
       "processProductHref": "./process-product.html",
       "processBrandHref": "./process-brand.html",
-      "navAbout": "is-current",
-      "roleProduct": "is-current",
-      "roleProductAria": " aria-current=\"page\"",
+      "navAbout": "",
       "root": "",
       "caseList": [
         "eqlio",
         "togas"
-      ]
+      ],
+      "direction": "product",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "is-current"
     },
     {
       "path": "brand.html",
@@ -209,7 +264,7 @@
         "role-switch",
         "site-footer",
         "work-cases",
-        "work-cases-web"
+        "other-directions"
       ],
       "homeHref": "./index.html",
       "worksHref": "./works.html",
@@ -220,18 +275,16 @@
       "brandHref": "./brand.html",
       "processProductHref": "./process-product.html",
       "processBrandHref": "./process-brand.html",
-      "navAbout": "is-current",
-      "roleBrand": "is-current",
-      "roleBrandAria": " aria-current=\"page\"",
+      "navAbout": "",
       "root": "",
       "caseList": [
         "visual-brand-identity",
         "togas"
       ],
-      "caseListWeb": [
-        "mark-n-post",
-        "svitla-embroidery"
-      ]
+      "direction": "brand",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "is-current"
     },
     {
       "path": "process.html",
@@ -250,7 +303,10 @@
       "brandHref": "./brand.html",
       "processProductHref": "./process-product.html",
       "processBrandHref": "./process-brand.html",
-      "root": ""
+      "root": "",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": ""
     },
     {
       "path": "process-product.html",
@@ -272,7 +328,10 @@
       "navProcess": "is-current",
       "procProduct": "is-current",
       "procProductAria": " aria-current=\"page\"",
-      "root": ""
+      "root": "",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": ""
     },
     {
       "path": "process-brand.html",
@@ -294,7 +353,10 @@
       "navProcess": "is-current",
       "procBrand": "is-current",
       "procBrandAria": " aria-current=\"page\"",
-      "root": ""
+      "root": "",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": ""
     },
     {
       "path": "contacts.html",
@@ -312,7 +374,10 @@
       "brandHref": "./brand.html",
       "processProductHref": "./process-product.html",
       "processBrandHref": "./process-brand.html",
-      "root": ""
+      "root": "",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": ""
     },
     {
       "path": "work/mark-n-post/index.html",
@@ -336,7 +401,10 @@
       "caseList": [
         "eqlio",
         "togas"
-      ]
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": ""
     },
     {
       "path": "work/eqlio/index.html",
@@ -360,7 +428,10 @@
       "caseList": [
         "mark-n-post",
         "togas"
-      ]
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": ""
     },
     {
       "path": "work/togas/index.html",
@@ -384,7 +455,10 @@
       "caseList": [
         "eqlio",
         "visual-brand-identity"
-      ]
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": ""
     },
     {
       "path": "work/visual-brand-identity/index.html",
@@ -408,7 +482,10 @@
       "caseList": [
         "eqlio",
         "togas"
-      ]
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": ""
     },
     {
       "path": "work/svitla-embroidery/index.html",
@@ -432,7 +509,40 @@
       "caseList": [
         "mark-n-post",
         "visual-brand-identity"
-      ]
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": ""
+    },
+    {
+      "path": "web.html",
+      "components": [
+        "icons",
+        "site-header",
+        "role-switch",
+        "site-footer",
+        "work-cases",
+        "other-directions"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./works.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navAbout": "",
+      "root": "",
+      "caseList": [
+        "mark-n-post",
+        "svitla-embroidery"
+      ],
+      "direction": "web",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "is-current"
     }
   ]
 }

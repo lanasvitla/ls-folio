@@ -34,6 +34,66 @@ def load_manifest() -> dict:
     return json.loads(MANIFEST.read_text(encoding="utf-8"))
 
 
+def build_directions(page: dict, directions: dict) -> dict:
+    """Переключатель направлений и блок «Другие направления».
+
+    Три направления равноправны, поэтому имя, ссылка и описание каждого лежат
+    в реестре один раз: страница называет только своё `direction`. Порядок
+    в реестре — он же порядок на экране, менять его в одном месте.
+    """
+    if not directions:
+        return {}
+    current = page.get("direction")
+    if current and current not in directions:
+        raise SystemExit(f"[render_partials] unknown direction '{current}' in {page['path']}")
+    root = page.get("root", "")
+
+    items, others, every = [], [], []
+    for key, d in directions.items():
+        is_current = key == current
+        cls = " is-current" if is_current else ""
+        aria = ' aria-current="page"' if is_current else ""
+        items.append(
+            f'  <a class="switch__item{cls}" href="{root}{d["path"]}"{aria}>{d["name"]}</a>'
+        )
+        rows = "".join(
+            f'\n        <span class="dcard__row">{r}</span>' for r in d.get("rows", [])
+        )
+        # разметка карточки — та же, что на главной: направление везде выглядит
+        # одинаково, а «Подробнее» остаётся общим компонентом ссылки
+        card = (
+            f'      <a class="dcard reveal" href="{root}{d["path"]}">\n'
+            f'        <span class="dcard__fill" aria-hidden="true"></span>\n'
+            f'        <span class="dcard__title">{d["name"]}</span>'
+            f'{rows}\n'
+            f'        <span class="dcard__spacer"></span>\n'
+            f'        <span class="dcard__action">'
+            f'<!-- component:ilink text="Подробнее" --><!-- /component:ilink --></span>\n'
+            f'      </a>'
+        )
+        every.append(card)
+        if is_current:
+            continue
+        others.append(card)
+    star = ('      <svg class="directions__star directions__star--{mod}" viewBox="0 0 44 44" '
+            'aria-hidden="true"><use href="#i-star"/></svg>')
+    # звёзды стоят на стыках карточек: у трёх стыка два, у двух — один
+    stars_all = "\n".join(star.format(mod=m) for m in ("one", "two"))
+    values = {"allDirections": "\n".join(every) + "\n" + stars_all}
+    if not current:
+        return values
+    d = directions[current]
+    values.update({
+        "switchItems": "\n".join(items),
+        "otherDirections": "\n".join(others) + "\n" + star.format(mod="mid"),
+        "directionName": d["name"],
+        "directionProcess": root + d["process"],
+        "directionCv": root + d["cv"],
+        "directionCvLabel": d["cvLabel"],
+    })
+    return values
+
+
 def build_case_slots(page: dict, cases: dict) -> dict:
     """A page may show more than one grid — brand.html has a brand row and a web
     row. Every `caseList<Suffix>` key on the page fills `{{caseCards<Suffix>}}`.
@@ -71,7 +131,7 @@ def build_home_cases(page: dict, cases: dict) -> dict:
             f'alt="{case["alt"]}" width="760" height="340" data-case="{i}">'
         )
         rows.append(
-            f'        <a class="crow{" is-selected" if i == selected else ""}" '
+            f'        <a class="crow reveal{" is-selected" if i == selected else ""}" '
             f'href="{root}{case["path"]}" data-case="{i}">\n'
             f'          <span class="crow__num">{i + 1:02d}</span>\n'
             f'          <span class="crow__title">{title}</span>\n'
@@ -259,6 +319,7 @@ def main() -> int:
     manifest = load_manifest()
     defaults = manifest.get("defaults", {})
     cases = manifest.get("cases", {})
+    directions = manifest.get("directions", {})
 
     changed: list[str] = []
 
@@ -273,6 +334,7 @@ def main() -> int:
             **page,
             **build_case_slots(page, cases),
             **build_home_cases(page, cases),
+            **build_directions(page, directions),
         }
         original = target.read_text(encoding="utf-8")
         html = original

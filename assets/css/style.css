@@ -111,6 +111,13 @@ h1,h2,h3,p{ margin: 0; }
    Site-wide entrance: blocks drift in from the right, each one a beat after the
    previous. `--i` is the element's index within the batch appearing together
    (set in main.js), so a single block scrolled into view starts immediately. */
+/* ВНИМАНИЕ. Правило стоит в начале файла, а `transition` — шорткат: любое
+   более позднее правило с тем же весом, объявившее свою `transition`,
+   стирает эту и появление происходит мгновенно. Класс при этом на месте,
+   `opacity` уходит с 0 на 1 — глазами это выглядит как «блок стоит каменно».
+   Если компоненту с `.reveal` нужна своя `transition`, он обязан перечислить
+   `opacity` и `transform` сам, вместе с задержкой `calc(var(--i, 0) * 110ms)`.
+   Так сделано у `.dcard` и `.list-more`. */
 .reveal{
   opacity: 0;
   transform: translate3d(48px, 0, 0);
@@ -1075,7 +1082,10 @@ h1,h2,h3,p{ margin: 0; }
   background: none;
   color: var(--muted);
   cursor: pointer;
-  transition: color .3s var(--ease);
+  /* то же, что у .dcard: своя transition обязана нести и появление */
+  transition: color .3s var(--ease),
+              opacity .8s var(--ease) calc(var(--i, 0) * 110ms),
+              transform .8s var(--ease) calc(var(--i, 0) * 110ms);
 }
 .list-more:hover{ color: var(--ink); }
 /* стрелка из спрайта смотрит вправо — поворачиваем её вниз, а в раскрытом
@@ -1356,7 +1366,9 @@ h1,h2,h3,p{ margin: 0; }
   row-gap: 80px;
   /* 166 сверху и 160 снизу — по макету: автор на y=166, секция направлений на y=970
      при нижней кромке большой карточки на 810 */
-  padding: 79px 0 160px;
+  /* 112px — системный отступ между блоками: два соседних `.about-row` дают
+     56 + 56, столько же стоит снизу у самих «Направлений». 160px выбивались. */
+  padding: 79px 0 112px;
 }
 /* вертикальная подпись у левого поля; из-за неё авторский блок начинается с 150 */
 .home-hero__spine{
@@ -1582,8 +1594,14 @@ h1,h2,h3,p{ margin: 0; }
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--surface-soft);
-  transition: transform .12s var(--ease);
+  /* transform здесь занят нажатием (.995 за 120 мс), поэтому появление идёт
+     только прозрачностью, а стартовый сдвиг из `.reveal` снят ниже — иначе
+     карточка прыгала бы на месте в момент показа */
+  transition: transform .12s var(--ease),
+              opacity .8s var(--ease) calc(var(--i, 0) * 110ms);
 }
+.featured.reveal{ transform: none; }
+.featured.reveal.is-visible{ transform: none; }
 .featured__media{ position: absolute; inset: 0; }
 .featured__img{
   position: absolute;
@@ -1691,7 +1709,9 @@ h1,h2,h3,p{ margin: 0; }
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: var(--surface);
-  transition: background .32s var(--ease), border-color .32s var(--ease);
+  transition: background .32s var(--ease), border-color .32s var(--ease),
+              opacity .8s var(--ease) calc(var(--i, 0) * 110ms),
+              transform .8s var(--ease) calc(var(--i, 0) * 110ms);
 }
 .crow__num{
   width: 24px;
@@ -1788,6 +1808,17 @@ h1,h2,h3,p{ margin: 0; }
 .allworks:hover .allworks__circle{ background: var(--ink); color: var(--accent); transform: scale(1.04); }
 .allworks:active .allworks__circle{ transform: scale(.96); }
 .allworks:focus-visible{ outline: 2px solid var(--ink); outline-offset: 2px; }
+/* Тот же акцентный CTA, что «Смотреть все работы», но внутри текстового
+   блока: там он занимал колонку целиком и разносил текст и круг по краям.
+   Здесь ширина по содержимому, круг сразу за надписью — читается кнопкой. */
+.allworks--compact{
+  width: max-content;
+  max-width: 100%;
+  justify-content: flex-start;
+  gap: 20px;
+  margin-top: 28px;
+  padding-right: 0;
+}
 
 /* ---------- Направления ---------- */
 .directions{ padding: 0 0 112px; }
@@ -1815,7 +1846,11 @@ h1,h2,h3,p{ margin: 0; }
   border-radius: var(--radius-lg);
   background: var(--surface);
   overflow: hidden;
-  transition: background .32s var(--ease);
+  /* своя transition стирает ту, что задана в `.reveal`, поэтому появление
+     перечислено здесь же — вместе с задержкой каскада */
+  transition: background .32s var(--ease),
+              opacity .8s var(--ease) calc(var(--i, 0) * 110ms),
+              transform .8s var(--ease) calc(var(--i, 0) * 110ms);
 }
 /* соседние карточки делят границу: перекрытие в 1px, как в макете */
 .dcard + .dcard{ margin-left: -1px; }
@@ -1848,13 +1883,20 @@ h1,h2,h3,p{ margin: 0; }
   font-weight: 600;
   line-height: 1.23;
   color: var(--ink);
+  /* Место под две строки держим всегда: «Бренд & коммуникация» переносится,
+     остальные названия короче. Без резерва тексты в карточках начинались бы
+     на разной высоте, и ряды не совпадали бы по горизонтали. */
+  min-height: 2.46em;
   margin-bottom: 24px;
 }
 .dcard__row{
   display: flex;
   align-items: center;
   width: 100%;
-  height: 56px;
+  /* min-height, а не height: одной строки хватает всем пунктам, но если текст
+     когда-нибудь перерастёт строку, он раздвинет ряд, а не наедет на линию */
+  min-height: 56px;
+  padding: 8px 0;
   border-bottom: 1px solid var(--line);
   font-size: 16px;
   line-height: 24px;
@@ -2204,7 +2246,7 @@ h1,h2,h3,p{ margin: 0; }
   }
 
   .portfolio__grid{ grid-template-columns: 1fr; gap: 48px; }
-  .pcase__go{ width: 52px; height: 52px; left: 18px; bottom: 18px; }
+    .pcase__go{ width: 52px; height: 52px; left: 18px; bottom: 18px; }
   /* та же пропорция сплющивания, что на десктопе */
   .pcase__go::before{ inset: 11px 0; }
   .pcase__go .ic{ width: 18px; height: 18px; }
@@ -2321,6 +2363,8 @@ h1,h2,h3,p{ margin: 0; }
   outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
+
+
 
 /* ---------- direction router on the shared About page ---------- */
 .about-router__intro{ margin-top: 0; }
@@ -2875,7 +2919,8 @@ h1,h2,h3,p{ margin: 0; }
 .site-footer__cols{
   margin-top: 50px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* три колонки: разделы сайта, направления, контакты */
+  grid-template-columns: repeat(3, 1fr);
   gap: 40px;
 }
 .site-footer__nav{
@@ -2884,6 +2929,27 @@ h1,h2,h3,p{ margin: 0; }
   align-items: flex-start;
   gap: 16px;
 }
+/* Подзаголовок ставим над всеми тремя колонками, а не над одной: одиночный
+   заголовок читался бы как случайная надпись и ломал бы ритм ряда.
+   Тот же кегль и цвет, что у меток разделов на страницах. */
+.site-footer__col{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+/* Подзаголовок есть только у колонки направлений, но строку под него держат
+   все три: пустая метка сохраняет высоту, и первые пункты колонок стоят
+   на одном уровне — «Портфолио» ровно напротив «Бренд & коммуникация». */
+.site-footer__col-title{
+  margin-bottom: 4px;
+  min-height: 20px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--footer-muted);
+}
+.site-footer__col-title:empty{ margin-bottom: 4px; }
 .site-footer__nav a{
   font-family: var(--font-display);
   font-size: 18px;
@@ -3145,13 +3211,6 @@ h1,h2,h3,p{ margin: 0; }
   font-size: 32px;
   font-weight: 500;
   color: var(--ink);
-}
-.process-services__desc{
-  margin: 0;
-  font-size: var(--fs-body);
-  line-height: 1.55;
-  color: var(--muted);
-  max-width: 560px;
 }
 /* список через «/»: слэш — псевдоэлемент, не часть текста, чтобы контент
    можно было переставлять и редактировать без ручного слэша в разметке */

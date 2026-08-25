@@ -11,12 +11,21 @@
 
     <div class="site-footer__cols reveal">
       <nav class="site-footer__nav" aria-label="Навигация в подвале">
-        <a href="{{homeHref}}">Главная</a>
+        <p class="site-footer__col-title" aria-hidden="true"></p>
         <a href="{{worksHref}}">Портфолио</a>
         <a href="{{aboutHref}}">Обо мне</a>
         <a href="{{contactPageHref}}">Контакты</a>
       </nav>
 
+      <nav class="site-footer__nav" aria-label="Направления">
+        <p class="site-footer__col-title">Направления</p>
+        <a href="{{brandHref}}">Бренд &amp; коммуникация</a>
+        <a href="{{productHref}}">Продукт &amp; UX/UI</a>
+        <a href="{{webHref}}">Web &amp; digital</a>
+      </nav>
+
+      <div class="site-footer__col">
+      <p class="site-footer__col-title" aria-hidden="true"></p>
       <ul class="social-list">
         {{> social-links}}
         <li>
@@ -28,6 +37,7 @@
           </a>
         </li>
       </ul>
+      </div>
     </div>
 
     <p class="site-footer__copy reveal"><span class="js-year">{{year}}</span>&nbsp;LS&nbsp;DESIGN</p>
