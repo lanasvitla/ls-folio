@@ -94,6 +94,56 @@ def build_directions(page: dict, directions: dict) -> dict:
     return values
 
 
+BASE_URL = "https://lanasvitla.github.io/ls-folio/"
+
+
+def canonical_url(page: dict) -> str:
+    """Публичный адрес страницы. index.html канонизируется в адрес каталога:
+    так его отдаёт GitHub Pages, и именно этот адрес люди копируют и шлют."""
+    path = page["path"]
+    if path == "index.html":
+        return BASE_URL
+    return BASE_URL + path
+
+
+def seo_fields(page: dict) -> dict:
+    """og:image требует абсолютный URL — относительный краулеры не читают."""
+    robots = (
+        '<meta name="robots" content="noindex, nofollow">'
+        if page.get("noindex") else ""
+    )
+    return {
+        "canonicalUrl": canonical_url(page),
+        "ogImageAbs": BASE_URL + page["ogImage"],
+        "robotsMeta": robots,
+    }
+
+
+def build_robots(pages: list[dict]) -> str:
+    lines = ["User-agent: *", "Allow: /"]
+    for page in pages:
+        if page.get("noindex"):
+            lines.append(f'Disallow: /{page["path"]}')
+    lines.append("")
+    lines.append(f"Sitemap: {BASE_URL}sitemap.xml")
+    return "\n".join(lines) + "\n"
+
+
+def build_sitemap(pages: list[dict]) -> str:
+    entries = []
+    for page in pages:
+        if page.get("noindex"):
+            continue
+        entries.append(f"  <url><loc>{canonical_url(page)}</loc></url>")
+    body = "\n".join(entries)
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{body}\n"
+        "</urlset>\n"
+    )
+
+
 def build_case_slots(page: dict, cases: dict) -> dict:
     """A page may show more than one grid — brand.html has a brand row and a web
     row. Every `caseList<Suffix>` key on the page fills `{{caseCards<Suffix>}}`.
@@ -335,11 +385,17 @@ def main() -> int:
             **build_case_slots(page, cases),
             **build_home_cases(page, cases),
             **build_directions(page, directions),
+            **seo_fields(page),
         }
         original = target.read_text(encoding="utf-8")
         html = original
 
-        for component in page.get("components", []):
+        # аналитика — не в списке components каждой страницы, а обязательна для
+        # всех: если появится новая страница со слотом analytics в <head>, она
+        # получит счётчики без единой правки в её собственном списке компонентов.
+        # Если слота нет — сборка падает явной ошибкой, а не молча пропускает.
+        components = ["seo", "analytics", *page.get("components", [])]
+        for component in components:
             html = apply_component(html, component, render_component(component, data), page_path)
 
         # слоты с атрибутами обрабатываются после блочных: они могут стоять
@@ -361,6 +417,20 @@ def main() -> int:
             changed.append(page_path)
             if not check_only:
                 target.write_text(html, encoding="utf-8")
+
+    # robots.txt и sitemap.xml — сгенерированы из того же manifest['pages'],
+    # поэтому список страниц физически не может разъехаться с тем, что
+    # реально есть на сайте.
+    for name, content in (
+        ("robots.txt", build_robots(manifest["pages"])),
+        ("sitemap.xml", build_sitemap(manifest["pages"])),
+    ):
+        target = SITE / name
+        original = target.read_text(encoding="utf-8") if target.exists() else ""
+        if content != original:
+            changed.append(name)
+            if not check_only:
+                target.write_text(content, encoding="utf-8")
 
     if check_only:
         if changed:

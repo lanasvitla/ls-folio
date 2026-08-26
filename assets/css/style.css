@@ -627,6 +627,16 @@ h1,h2,h3,p{ margin: 0; }
   padding: 5px 12px;
 }
 
+/* process steps as a row of chips, static arrow between them (not a link,
+   so it uses the straight icon and never rotates) */
+.process-chips{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.process-chips .ic{ width: 14px; height: 14px; color: var(--muted); }
 
 
 /* ---------- case page ---------- */
@@ -1381,15 +1391,29 @@ h1,h2,h3,p{ margin: 0; }
      56 + 56, столько же стоит снизу у самих «Направлений». 160px выбивались. */
   padding: 79px 0 112px;
 }
-/* вертикальная подпись у левого поля; из-за неё авторский блок начинается с 150 */
+/* вертикальная подпись слева от портрета: контейнер растянут ровно по
+   высоте .author-copy — от верхней кромки блока автора до нижней кромки
+   ссылки "Подробнее обо мне" (а не по высоте всего .home-hero__author:
+   портрет выше текстовой колонки, поэтому раньше подпись до низа ссылки
+   не доставала). .author-copy — ближайший позиционированный предок.
+   Текст внутри — центрирован: точная посимвольная растяжка на всю высоту
+   ломалась на стыке flex + vertical-rl (контейнер игнорировал заданную
+   через top/bottom высоту), а естественная длина слова и так достаточно
+   близка к высоте блока. */
 .home-hero__spine{
-  grid-column: 1;
-  /* Только первый ряд: подпись идёт вдоль портрета, по его верхней кромке.
-     В метаданных Figma у повёрнутого текста отдаётся точка до поворота (y=394),
-     из-за неё подпись уезжала под портрет — сверено со снимком кадра. */
-  grid-row: 1;
-  align-self: start;
-  justify-self: start;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* сдвиг влево на ширину портрета + тот же gap, что был между подписью
+     и портретом в старой flex-раскладке — визуально подпись остаётся
+     на прежнем месте */
+  right: calc(100% + clamp(190px, 18.05vw, 260px) + clamp(20px, 2.78vw, 40px));
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-hero__spine-text{
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   font-family: var(--font-display);
@@ -1467,7 +1491,14 @@ h1,h2,h3,p{ margin: 0; }
 }
 
 /* текстовая колонка автора */
-.author-copy{ flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.author-copy{
+  position: relative; /* точка отсчёта для .home-hero__spine */
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 .author-copy__inner{ position: relative; display: flex; flex-direction: column; gap: 8px; }
 .author-copy__eyebrow{
   font-family: var(--font-display);
@@ -2324,20 +2355,22 @@ h1,h2,h3,p{ margin: 0; }
   white-space: nowrap;
 }
 /* ---------- direction switch ----------
-   Two ordinary links styled as one segmented control. They are separate pages,
-   not tabs: direct URL, Back/Forward and keyboard focus all behave normally,
-   and the whole thing works with JavaScript off. */
+   Three ordinary links styled as one segmented control. They are separate
+   pages, not tabs: direct URL, Back/Forward and keyboard focus all behave
+   normally, and the whole thing works with JavaScript off.
+   Styled to read as the same family as the .dcard "3 directions" blocks
+   (shared borders between segments, accent fill for the active one)
+   instead of a generic dark pill switch. */
 .switch{
   margin-bottom: 32px;
-  display: inline-flex;
-  padding: 4px;
+  display: flex;
   border: 1px solid var(--line);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   background: var(--surface);
+  overflow: hidden;
 }
 .switch__item{
-  padding: 9px 18px;
-  border-radius: var(--radius-pill);
+  padding: 13px 22px;
   font-family: var(--font-display);
   font-size: 15px;
   font-weight: 500;
@@ -2346,14 +2379,18 @@ h1,h2,h3,p{ margin: 0; }
   white-space: nowrap;
   transition: color .3s var(--ease), background .3s var(--ease);
 }
-.switch__item:hover{ color: var(--ink); }
+.switch__item + .switch__item{ border-left: 1px solid var(--line); }
+.switch__item:hover{ color: var(--ink); background: var(--tint-soft); }
 .switch__item.is-current{
-  background: var(--ink);
-  color: var(--surface);
+  background: var(--accent);
+  color: var(--ink);
 }
+.switch__item.is-current:hover{ background: var(--accent); }
 .switch__item:focus-visible{
+  position: relative;
+  z-index: 1;
   outline: 2px solid var(--ink);
-  outline-offset: 2px;
+  outline-offset: -2px;
 }
 
 

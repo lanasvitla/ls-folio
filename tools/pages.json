@@ -15,7 +15,9 @@
     "procProduct": "",
     "procBrand": "",
     "procProductAria": "",
-    "procBrandAria": ""
+    "procBrandAria": "",
+    "gaId": "G-1WF4KEEHWP",
+    "ymId": "111964006"
   },
   "cases": {
     "mark-n-post": {
@@ -106,7 +108,7 @@
       "path": "brand.html",
       "desc": "Айдентика, бренд-системы, арт-дирекшен и&nbsp;рекламные кампании.",
       "process": "process.html",
-      "cv": "assets/cv/lana-svitla-cv-brand-designer.pdf",
+      "cv": "cv-brand/",
       "cvLabel": "Brand &amp; Graphic Designer",
       "rows": [
         "Айдентика и&nbsp;бренд-системы",
@@ -119,7 +121,7 @@
       "path": "product.html",
       "desc": "Сценарии, интерфейсы, прототипы и&nbsp;дизайн-системы.",
       "process": "process.html",
-      "cv": "assets/cv/lana-svitla-cv-product-designer.pdf",
+      "cv": "cv-product/",
       "cvLabel": "Product / UX/UI Designer",
       "rows": [
         "Исследование и&nbsp;гипотезы",
@@ -132,7 +134,7 @@
       "path": "web.html",
       "desc": "Сайты целиком: структура, дизайн, сборка и&nbsp;публикация.",
       "process": "process.html",
-      "cv": "assets/cv/lana-svitla-cv-brand-designer.pdf",
+      "cv": "cv-brand/",
       "cvLabel": "Brand &amp; Graphic Designer",
       "rows": [
         "Лендинги и&nbsp;сайты",
@@ -152,7 +154,7 @@
         "all-directions"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./works.html",
+      "worksHref": "./portfolio.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -170,10 +172,13 @@
       "heroSelected": 1,
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
-      "navDirections": ""
+      "navDirections": "",
+      "description": "Lana Svitla – дизайнер бренда и продукта. Айдентика, UX/UI и веб-дизайн.",
+      "ogTitle": "Lana Svitla – Brand, Product & UX/UI Designer",
+      "ogImage": "assets/images/og-default.jpg"
     },
     {
-      "path": "works.html",
+      "path": "portfolio.html",
       "components": [
         "icons",
         "site-header",
@@ -181,7 +186,7 @@
         "site-footer"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./works.html",
+      "worksHref": "./portfolio.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -201,7 +206,10 @@
       "caseNiche": true,
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
-      "navDirections": ""
+      "navDirections": "",
+      "description": "Portfolio Lana Svitla: бренд-дизайн, продуктовый UX/UI, web и digital.",
+      "ogTitle": "Портфолио – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg"
     },
     {
       "path": "about.html",
@@ -212,7 +220,7 @@
         "all-directions"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./works.html",
+      "worksHref": "./portfolio.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -224,7 +232,10 @@
       "root": "",
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
-      "navDirections": ""
+      "navDirections": "",
+      "description": "Lana Svitla – 10+ лет в дизайне бренда и продукта, 6+ лет на senior- и руководящих позициях. CV, portfolio, подход к работе.",
+      "ogTitle": "Обо мне – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg"
     },
     {
       "path": "product.html",
@@ -237,7 +248,7 @@
         "other-directions"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./works.html",
+      "worksHref": "./portfolio.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -254,7 +265,10 @@
       "direction": "product",
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
-      "navDirections": "is-current"
+      "navDirections": "is-current",
+      "description": "Продуктовый и UX/UI дизайн: исследование, информационная архитектура, интерфейсы, дизайн-системы, работа с метриками.",
+      "ogTitle": "Продукт и UX/UI – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg"
     },
     {
       "path": "brand.html",
@@ -267,7 +281,7 @@
         "other-directions"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./works.html",
+      "worksHref": "./portfolio.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -278,13 +292,16 @@
       "navAbout": "",
       "root": "",
       "caseList": [
-        "visual-brand-identity",
-        "togas"
+        "togas",
+        "visual-brand-identity"
       ],
       "direction": "brand",
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
-      "navDirections": "is-current"
+      "navDirections": "is-current",
+      "description": "Бренд- и графический дизайн: айдентика, визуальные системы, арт-дирекшен, digital-коммуникация, сайты, презентации.",
+      "ogTitle": "Бренд и коммуникация – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg"
     },
     {
       "path": "process.html",
@@ -294,7 +311,7 @@
         "site-footer"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./works.html",
+      "worksHref": "./portfolio.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -306,7 +323,10 @@
       "root": "",
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
-      "navDirections": ""
+      "navDirections": "",
+      "description": "Как я веду проект. Бренд-задача и продукт: дизайн-процесс по шагам.",
+      "ogTitle": "Процесс – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg"
     },
     {
       "path": "process-product.html",
@@ -317,7 +337,7 @@
         "site-footer"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./works.html",
+      "worksHref": "./portfolio.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -331,7 +351,11 @@
       "root": "",
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
-      "navDirections": ""
+      "navDirections": "",
+      "description": "Как я веду продуктовый проект: от бизнес-задачи и метрики до передачи в разработку и замера результата.",
+      "ogTitle": "Продуктовый процесс – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "noindex": true
     },
     {
       "path": "process-brand.html",
@@ -342,7 +366,7 @@
         "site-footer"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./works.html",
+      "worksHref": "./portfolio.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -356,7 +380,11 @@
       "root": "",
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
-      "navDirections": ""
+      "navDirections": "",
+      "description": "Как я веду бренд-проект: от брифа и аудита до айдентики, носителей и гайдлайна.",
+      "ogTitle": "Бренд-процесс – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "noindex": true
     },
     {
       "path": "contacts.html",
@@ -366,7 +394,7 @@
         "social-links"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./works.html",
+      "worksHref": "./portfolio.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -377,7 +405,10 @@
       "root": "",
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
-      "navDirections": ""
+      "navDirections": "",
+      "description": "Lana Svitla. Дизайнер бренда и продукта: Email, Telegram, LinkedIn, Behance. CV.",
+      "ogTitle": "Контакты – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg"
     },
     {
       "path": "work/mark-n-post/index.html",
@@ -388,7 +419,7 @@
         "site-footer"
       ],
       "homeHref": "../../index.html",
-      "worksHref": "../../works.html",
+      "worksHref": "../../portfolio.html",
       "processHref": "../../process.html",
       "aboutHref": "../../about.html",
       "contactPageHref": "../../contacts.html",
@@ -404,7 +435,10 @@
       ],
       "webHref": "../../web.html",
       "directionsHref": "../../index.html#directions",
-      "navDirections": ""
+      "navDirections": "",
+      "description": "Сервис логистической компании: форматы отправки, процесс и заявки в Telegram. 7 продуктовых страниц для рекламной кампании.",
+      "ogTitle": "Mark’n’Post",
+      "ogImage": "assets/works/MarknPost/MarknPostCover.webp"
     },
     {
       "path": "work/eqlio/index.html",
@@ -415,7 +449,7 @@
         "site-footer"
       ],
       "homeHref": "../../index.html",
-      "worksHref": "../../works.html",
+      "worksHref": "../../portfolio.html",
       "processHref": "../../process.html",
       "aboutHref": "../../about.html",
       "contactPageHref": "../../contacts.html",
@@ -431,7 +465,10 @@
       ],
       "webHref": "../../web.html",
       "directionsHref": "../../index.html#directions",
-      "navDirections": ""
+      "navDirections": "",
+      "description": "Корпоративное приложение для спортивных челленджей: сценарии, интерфейс и прототип.",
+      "ogTitle": "Eqlio",
+      "ogImage": "assets/works/Eqlio/EclioCover.webp"
     },
     {
       "path": "work/togas/index.html",
@@ -442,7 +479,7 @@
         "site-footer"
       ],
       "homeHref": "../../index.html",
-      "worksHref": "../../works.html",
+      "worksHref": "../../portfolio.html",
       "processHref": "../../process.html",
       "aboutHref": "../../about.html",
       "contactPageHref": "../../contacts.html",
@@ -458,7 +495,10 @@
       ],
       "webHref": "../../web.html",
       "directionsHref": "../../index.html#directions",
-      "navDirections": ""
+      "navDirections": "",
+      "description": "Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и бонусы.",
+      "ogTitle": "Togas",
+      "ogImage": "assets/works/Togas/TogasApp.webp"
     },
     {
       "path": "work/visual-brand-identity/index.html",
@@ -469,7 +509,7 @@
         "site-footer"
       ],
       "homeHref": "../../index.html",
-      "worksHref": "../../works.html",
+      "worksHref": "../../portfolio.html",
       "processHref": "../../process.html",
       "aboutHref": "../../about.html",
       "contactPageHref": "../../contacts.html",
@@ -485,7 +525,10 @@
       ],
       "webHref": "../../web.html",
       "directionsHref": "../../index.html#directions",
-      "navDirections": ""
+      "navDirections": "",
+      "description": "Визуальная система для сервиса, сет иллюстраций для маркетплейса ремесленных товаров.",
+      "ogTitle": "Visual Brand Identity",
+      "ogImage": "assets/works/Illustration_set/Illustaration_set_01.webp"
     },
     {
       "path": "work/svitla-embroidery/index.html",
@@ -496,7 +539,7 @@
         "site-footer"
       ],
       "homeHref": "../../index.html",
-      "worksHref": "../../works.html",
+      "worksHref": "../../portfolio.html",
       "processHref": "../../process.html",
       "aboutHref": "../../about.html",
       "contactPageHref": "../../contacts.html",
@@ -512,7 +555,10 @@
       ],
       "webHref": "../../web.html",
       "directionsHref": "../../index.html#directions",
-      "navDirections": ""
+      "navDirections": "",
+      "description": "Цифровая галерея и магазин авторской вышивки: 30+ страниц работ, единая визуальная система, языковые версии.",
+      "ogTitle": "Svitla Embroidery Gallery",
+      "ogImage": "assets/works/SvitlaEmbroidery/cover-ls-embroidery.webp"
     },
     {
       "path": "web.html",
@@ -525,7 +571,7 @@
         "other-directions"
       ],
       "homeHref": "./index.html",
-      "worksHref": "./works.html",
+      "worksHref": "./portfolio.html",
       "processHref": "./process.html",
       "aboutHref": "./about.html",
       "contactPageHref": "./contacts.html",
@@ -542,7 +588,37 @@
       "direction": "web",
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
-      "navDirections": "is-current"
+      "navDirections": "is-current",
+      "description": "Web и digital дизайн: лендинги и сайты на Tilda, Webflow, Framer, сборка кодом вместе с AI. Публикация сайта: настройка хостинга, домена, контекстной рекламы.",
+      "ogTitle": "Web и digital – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg"
+    },
+    {
+      "path": "404.html",
+      "components": [
+        "icons",
+        "site-header",
+        "site-footer",
+        "seo",
+        "analytics"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "root": "",
+      "description": "Страница не найдена – Lana Svitla.",
+      "ogTitle": "Страница не найдена – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "noindex": true
     }
   ]
 }

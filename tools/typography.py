@@ -23,11 +23,11 @@ from pathlib import Path
 SITE = Path(__file__).resolve().parents[1]
 
 TARGETS = [
-    "index.html", "works.html", "about.html", "product.html", "brand.html",
+    "index.html", "portfolio.html", "about.html", "product.html", "brand.html",
     "process.html", "process-product.html", "process-brand.html", "contacts.html",
     "work/mark-n-post/index.html", "work/eqlio/index.html",
     "work/togas/index.html", "work/visual-brand-identity/index.html",
-    "work/svitla-embroidery/index.html",
+    "work/svitla-embroidery/index.html", "web.html", "404.html",
     "partials/site-header.html", "partials/site-footer.html",
     "partials/social-links.html", "partials/role-switch.html",
     "partials/process-switch.html", "partials/icons.html",

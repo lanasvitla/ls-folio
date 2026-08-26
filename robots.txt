@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /process-product.html
+Disallow: /process-brand.html
+Disallow: /404.html
+
+Sitemap: https://lanasvitla.github.io/ls-folio/sitemap.xml
