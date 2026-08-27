@@ -3753,7 +3753,9 @@ h1,h2,h3,p{ margin: 0; }
 .mnp-hero{
   position: relative;
   width: 1400px;
-  padding: 58px 110px 32px;
+  /* нижний отступ 72, а не 32: примечание «* Opens in Telegram» висело
+     в 8px от кромки и выглядело зажатым (правка 27.08) */
+  padding: 58px 110px 72px;
   box-sizing: border-box;
   background: rgb(245, 245, 247);
   font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
@@ -3762,14 +3764,15 @@ h1,h2,h3,p{ margin: 0; }
 /* Белая полоса снизу: на оригинале форма расчёта стоит на стыке двух секций
    разного тона — серый экран кончается ровно по её середине, нижняя половина
    формы уже лежит на белом фоне следующего блока.
-   64px = padding-bottom (32) + половина высоты формы (64/2). */
+   104px = padding-bottom (72) + половина высоты формы (64/2): полоса растет
+   вместе с отступом, иначе стык уехал бы с середины формы. */
 .mnp-hero::after{
   content: "";
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
-  height: 64px;
+  height: 104px;
   background: #fff;
 }
 /* контент поднят над белой полосой, иначе она перекрыла бы форму */
