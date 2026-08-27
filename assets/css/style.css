@@ -1177,6 +1177,9 @@ h1,h2,h3,p{ margin: 0; }
 
 .about-notes{ margin-top: 32px; display: grid; gap: 20px; max-width: 780px; }
 .about-notes p{ font-size: var(--fs-body); line-height: 1.55; color: var(--muted); }
+/* тот же прием, что в `.about-lead b`: смысловая часть уходит в черный,
+   остальная строка остается серой — размер и начертание почти не меняются */
+.about-notes b{ font-weight: 500; color: var(--ink); }
 
 /* fact sheet: skills / tools / location */
 .about-spec{ margin: 0; display: grid; gap: 20px; }
@@ -1384,22 +1387,17 @@ h1,h2,h3,p{ margin: 0; }
   display: grid;
   grid-template-columns: minmax(0, 760fr) minmax(0, 434fr);
   column-gap: clamp(24px, 3.75vw, 54px);
-  row-gap: 80px;
-  /* 166 сверху и 160 снизу — по макету: автор на y=166, секция направлений на y=970
-     при нижней кромке большой карточки на 810 */
-  /* 112px — системный отступ между блоками: два соседних `.about-row` дают
-     56 + 56, столько же стоит снизу у самих «Направлений». 160px выбивались. */
-  padding: 79px 0 112px;
+  /* 50px сверху и между рядами — решение 27.08: прежние 79/80 читались
+     как слишком просторные. В адаптиве те же отступы равны 40px. */
+  row-gap: 50px;
+  /* 112px снизу — системный отступ между блоками: два соседних `.about-row`
+     дают 56 + 56, столько же стоит снизу у самих «Направлений». */
+  padding: 50px 0 112px;
 }
 /* вертикальная подпись слева от портрета: контейнер растянут ровно по
    высоте .author-copy — от верхней кромки блока автора до нижней кромки
-   ссылки "Подробнее обо мне" (а не по высоте всего .home-hero__author:
-   портрет выше текстовой колонки, поэтому раньше подпись до низа ссылки
-   не доставала). .author-copy — ближайший позиционированный предок.
-   Текст внутри — центрирован: точная посимвольная растяжка на всю высоту
-   ломалась на стыке flex + vertical-rl (контейнер игнорировал заданную
-   через top/bottom высоту), а естественная длина слова и так достаточно
-   близка к высоте блока. */
+   ссылки "Подробнее обо мне". .author-copy — ближайший позиционированный
+   предок. */
 .home-hero__spine{
   position: absolute;
   top: 0;
@@ -1407,20 +1405,40 @@ h1,h2,h3,p{ margin: 0; }
   /* сдвиг влево на ширину портрета + тот же gap, что был между подписью
      и портретом в старой flex-раскладке — визуально подпись остаётся
      на прежнем месте */
-  right: calc(100% + clamp(190px, 18.05vw, 260px) + clamp(20px, 2.78vw, 40px));
+  right: calc(100% + clamp(190px, 16vw, 230px) + clamp(20px, 2.78vw, 40px));
   width: 36px;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 }
+/* Буквы разнесены по всей высоте контейнера, а не идут естественной длиной
+   слова: раньше слово было длиннее блока и вылезало за верхнюю кромку.
+   `text-align-last: justify` тут не работает — в слове нет пробелов, строку
+   некуда разбивать, поэтому каждая буква вынесена отдельным span и
+   раздвигается через `justify-content`. В `writing-mode: vertical-rl`
+   главная ось строчного flex идет сверху вниз, поэтому распределение
+   получается вертикальным; `height: 100%` дает flex определенную главную
+   ось — без нее контейнер считает высоту по содержимому и растяжка не
+   срабатывает. */
 .home-hero__spine-text{
   writing-mode: vertical-rl;
   transform: rotate(180deg);
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-family: var(--font-display);
-  /* 30/36 из макета: в вертикальном письме интерлиньяж становится толщиной
-     колонки, поэтому 36 даёт ровно ту ширину 36 px, что и в Figma */
-  font-size: 30px;
+  /* Кегль взят чуть меньше точного вписывания: естественная длина стопки
+     букв должна быть КОРОЧЕ контейнера, тогда остаток добирает
+     `justify-content: space-between` и слово всегда заполняет высоту ровно.
+     При большем кегле сжать нечем — space-between только раздвигает, и
+     буквы вылезали за верхнюю кромку. Множитель vw повторяет тот, что задан
+     портрету: высота контейнера равна высоте картинки, поэтому кегль
+     обязан ехать вместе с ней. */
+  font-size: clamp(20px, 1.8vw, 26px);
   font-weight: 500;
+  /* в вертикальном письме интерлиньяж становится толщиной колонки:
+     36 px держит ту же ширину подписи, что и в Figma, независимо от кегля */
   line-height: 36px;
   letter-spacing: normal;
   color: var(--muted);
@@ -1431,7 +1449,14 @@ h1,h2,h3,p{ margin: 0; }
   grid-row: 1;
   display: flex;
   gap: clamp(20px, 2.78vw, 40px);
-  align-items: flex-start;
+  /* stretch внутри блока: текстовая колонка тянется на высоту портрета,
+     и «Подробнее обо мне» встает по нижней кромке — на одну линию
+     с низом портрета и вертикальной подписи */
+  align-items: stretch;
+  /* но сам блок не тянется на высоту ряда: ее задает блок метрик справа
+     (224px), и без этого колонка растягивалась под него, а ссылка уезжала
+     ниже портрета */
+  align-self: start;
   margin-left: clamp(24px, 3.75vw, 54px);
 }
 .home-hero__metrics{ grid-column: 2; grid-row: 1; }
@@ -1442,7 +1467,12 @@ h1,h2,h3,p{ margin: 0; }
 .author-portrait{
   position: relative;
   flex: 0 0 auto;
-  width: clamp(190px, 18.05vw, 260px);
+  /* уменьшено 27.08: портрет был выше текстовой колонки и не сходился
+     с ней по нижней кромке */
+  width: clamp(190px, 16vw, 230px);
+  /* не растягивать вместе с колонкой: у пузыря «Hi!» позиция в процентах
+     от высоты контейнера, при растяжении он уезжал бы вниз */
+  align-self: flex-start;
 }
 .author-portrait__img{
   display: block;
@@ -1499,6 +1529,9 @@ h1,h2,h3,p{ margin: 0; }
   flex-direction: column;
   gap: 12px;
 }
+/* ссылка прижата к низу колонки — по макету она стоит на одной линии
+   с нижней кромкой портрета, а не сразу под описанием */
+.author-copy > .ilink{ margin-top: auto; }
 .author-copy__inner{ position: relative; display: flex; flex-direction: column; gap: 8px; }
 .author-copy__eyebrow{
   font-family: var(--font-display);
@@ -1572,7 +1605,8 @@ h1,h2,h3,p{ margin: 0; }
 
 /* метрики: карточки с общей границей за счёт перекрытия в 1px */
 .metrics{ display: flex; flex-direction: column; width: 100%; }
-.metrics__pair{ display: flex; margin-bottom: -1px; }
+/* relative — точка отсчета для звезды: она садится на стык пары и полосы */
+.metrics__pair{ position: relative; display: flex; margin-bottom: -1px; }
 .metric{
   display: flex;
   flex-direction: column;
@@ -1586,17 +1620,22 @@ h1,h2,h3,p{ margin: 0; }
 }
 .metrics__pair .metric{ flex: 1 1 0; min-width: 0; }
 .metrics__pair .metric:first-child{ margin-right: -1px; }
+/* Две равные колонки вместо space-between: при space-between «до 16» уезжало
+   к правому краю карточки и не вставало под «+25%». Горизонтальный padding
+   снят с самой полосы и перенесен на колонки — тогда левый край второй
+   колонки совпадает с левым краем второй карточки пары, и обе правые
+   метрики стоят на одной вертикали. */
 .metrics__band{
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  justify-content: space-between;
   min-height: 112.5px;
-  padding: 16px 24px;
+  padding: 16px 0;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
 }
-.metrics__band > div{ display: flex; flex-direction: column; gap: 4px; }
+.metrics__band > div{ display: flex; flex-direction: column; gap: 4px; padding: 0 24px; }
 .metric__value,
 .metrics__band b{
   font-family: var(--font-display);
@@ -1611,11 +1650,18 @@ h1,h2,h3,p{ margin: 0; }
   line-height: 21px;
   color: var(--muted);
 }
-.metrics{ position: relative; }
+/* Звезда сидит ровно на пересечении швов: по горизонтали — стык двух карточек
+   пары (всегда 50%, карточки равны), по вертикали — нижняя кромка пары.
+   Раньше стояли подобранные под одну ширину `left: 44.93%` и `top: 90px`:
+   на другой ширине и при выросших по высоте карточках звезда уезжала.
+   Смещение на половину размера сделано через margin, а не translate —
+   transform занят пульсацией и затер бы сдвиг. */
 .metrics__star{
   position: absolute;
-  left: 44.93%;
-  top: 90px;
+  left: 50%;
+  bottom: 0;
+  margin-left: -21.5px;
+  margin-bottom: -21.5px;
   width: 43px;
   height: 43px;
   color: var(--ink);
@@ -2164,7 +2210,8 @@ h1,h2,h3,p{ margin: 0; }
 
 /* ---------- Адаптив нового контура ---------- */
 @media (max-width: 1180px){
-  .home-hero{ grid-template-columns: 1fr; row-gap: 48px; }
+  /* одна колонка — блоки идут стопкой, между ними и над первым по 40px */
+  .home-hero{ grid-template-columns: 1fr; row-gap: 40px; padding-top: 40px; }
   .home-hero__spine{ display: none; }
   .home-hero__author{ margin-left: 0; }
   .home-hero__metrics,
@@ -2203,7 +2250,15 @@ h1,h2,h3,p{ margin: 0; }
 
   .metrics__pair{ flex-direction: column; margin-bottom: 0; }
   .metrics__pair .metric{ width: 100%; margin-right: 0; margin-bottom: -1px; }
-  .metrics__band{ flex-direction: column; align-items: flex-start; gap: 16px; }
+  /* полоса складывается в одну колонку; горизонтальный padding возвращается
+     на саму полосу — выравнивать по второй карточке здесь нечего, карточки
+     тоже стоят стопкой */
+  /* «6+ лет» и «до 16» остаются в две колонки и на узком экране: вдвоем они
+     коротки, а стопкой давали лишнюю высоту в и без того длинном первом
+     экране. Горизонтальный padding здесь на самой полосе — карточки выше
+     идут в одну колонку, выравнивать по второй из них нечего. */
+  .metrics__band{ grid-template-columns: 1fr 1fr; align-items: center; gap: 16px; padding: 16px 24px; }
+  .metrics__band > div{ padding: 0; }
   .metrics__star{ display: none; }
 
   /* Три колонки на узкий экран не помещаются. Не переносим их по строкам
