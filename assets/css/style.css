@@ -3814,6 +3814,22 @@ h1,h2,h3,p{ margin: 0; }
   text-decoration: none;
   margin-bottom: 24px;
 }
+/* Стрелки в реплике набраны иконками, а не символами. Текстовые глифы
+   не подхватывают начертание 700-800: рядом с жирным заголовком и кнопкой
+   они выглядели тонкими, не как на самом сайте. У символа в спрайте
+   non-scaling-stroke, поэтому толщина держится 1.6px при любом размере. */
+.mnp-arrow{
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.13em;
+  color: currentColor;
+  /* толщина задана здесь, а не атрибутом: stroke-width наследуется внутрь
+     path, и подобрать вес обеих стрелок можно в одном месте */
+  stroke-width: 3;
+}
+.mnp-arrow--ne{ width: .85em; height: .85em; vertical-align: -0.02em; stroke-width: 2.35; }
+
 .mnp-hero__ratings{ display: flex; align-items: center; gap: 14px; }
 .mnp-hero__rating{ display: flex; align-items: center; gap: 8px; }
 .mnp-hero__rating img{ display: block; height: 20px; width: auto; }
