@@ -114,7 +114,18 @@
         "Айдентика и&nbsp;бренд-системы",
         "Брендбук и&nbsp;презентации",
         "Иллюстрации и&nbsp;AI-визуалы"
-      ]
+      ],
+      "pageTitle": "Бренд- и&nbsp;графический дизайн",
+      "pageLead": "Создаю системы бренда для&nbsp;digital- и&nbsp;офлайн-среды.",
+      "steps": [
+        "Аудит бизнес-задачи",
+        "Концепция и&nbsp;айдентика",
+        "Примерка на&nbsp;носители",
+        "Гайдлайн"
+      ],
+      "stepsCaption": "Дизайн-процесс для&nbsp;бренд проекта",
+      "previewImg": "assets/images/preview/brand-ecommerce.webp",
+      "previewAlt": "E-commerce сайт Togas"
     },
     "product": {
       "name": "Продукт &amp; UX/UI",
@@ -127,7 +138,18 @@
         "Исследование и&nbsp;гипотезы",
         "Прототипы и&nbsp;интерфейсы",
         "Дизайн-системы"
-      ]
+      ],
+      "pageTitle": "Продуктовый и&nbsp;UX/UI-дизайн",
+      "pageLead": "Проектирую сложные B2B-интерфейсы и&nbsp;B2C-продукты: от&nbsp;сценариев до&nbsp;дизайн-системы и&nbsp;передачи в&nbsp;разработку.",
+      "steps": [
+        "Исследование и&nbsp;анализ",
+        "Проверка гипотез",
+        "Итерации решений",
+        "Рабочий продукт"
+      ],
+      "stepsCaption": "Дизайн-процесс для&nbsp;UX/UI проекта",
+      "previewImg": "assets/images/preview/product-mobile-app.webp",
+      "previewAlt": "Мобильное приложение Togas"
     },
     "web": {
       "name": "Web &amp; digital",
@@ -140,7 +162,18 @@
         "Лендинги и&nbsp;сайты",
         "Tilda, Webflow, Framer",
         "Vibe coding и&nbsp;AI-продакшен"
-      ]
+      ],
+      "pageTitle": "Веб- и&nbsp;digital-дизайн",
+      "pageLead": "Собираю сайты целиком: от&nbsp;структуры и&nbsp;текста до&nbsp;дизайна, верстки и&nbsp;публикации.",
+      "steps": [
+        "Бриф и&nbsp;анализ",
+        "Концепция решения",
+        "Дизайн и&nbsp;сборка",
+        "Публикация"
+      ],
+      "stepsCaption": "Дизайн-процесс для&nbsp;web &amp; digital",
+      "previewImg": "assets/images/preview/web-catalog.webp",
+      "previewAlt": "Каталог Togas «Система сна»"
     }
   },
   "pages": [
@@ -217,7 +250,8 @@
         "icons",
         "site-header",
         "site-footer",
-        "all-directions"
+        "all-directions",
+        "metrics"
       ],
       "homeHref": "./index.html",
       "worksHref": "./portfolio.html",
@@ -235,7 +269,14 @@
       "navDirections": "",
       "description": "Lana Svitla – 10+ лет в дизайне бренда и продукта, 6+ лет на senior- и руководящих позициях. CV, portfolio, подход к работе.",
       "ogTitle": "Обо мне – Lana Svitla",
-      "ogImage": "assets/images/og-default.jpg"
+      "ogImage": "assets/images/og-default.jpg",
+      "metricList": [
+        "cs-design-system",
+        "togas-orders",
+        "togas-sites",
+        "verba-traffic",
+        "mentoring-middle"
+      ]
     },
     {
       "path": "product.html",
@@ -245,7 +286,10 @@
         "role-switch",
         "site-footer",
         "work-cases",
-        "other-directions"
+        "other-directions",
+        "direction-intro",
+        "direction-cv",
+        "metrics"
       ],
       "homeHref": "./index.html",
       "worksHref": "./portfolio.html",
@@ -268,7 +312,12 @@
       "navDirections": "is-current",
       "description": "Продуктовый и UX/UI дизайн: исследование, информационная архитектура, интерфейсы, дизайн-системы, работа с метриками.",
       "ogTitle": "Продукт и UX/UI – Lana Svitla",
-      "ogImage": "assets/images/og-default.jpg"
+      "ogImage": "assets/images/og-default.jpg",
+      "metricList": [
+        "togas-orders",
+        "cs-design-system",
+        "ithub-course"
+      ]
     },
     {
       "path": "brand.html",
@@ -278,7 +327,11 @@
         "role-switch",
         "site-footer",
         "work-cases",
-        "other-directions"
+        "other-directions",
+        "direction-intro",
+        "direction-cv",
+        "metrics",
+        "direction-steps"
       ],
       "homeHref": "./index.html",
       "worksHref": "./portfolio.html",
@@ -301,14 +354,20 @@
       "navDirections": "is-current",
       "description": "Бренд- и графический дизайн: айдентика, визуальные системы, арт-дирекшен, digital-коммуникация, сайты, презентации.",
       "ogTitle": "Бренд и коммуникация – Lana Svitla",
-      "ogImage": "assets/images/og-default.jpg"
+      "ogImage": "assets/images/og-default.jpg",
+      "metricList": [
+        "verba-traffic",
+        "verba-campaigns",
+        "togas-sites"
+      ]
     },
     {
       "path": "process.html",
       "components": [
         "icons",
         "site-header",
-        "site-footer"
+        "site-footer",
+        "services"
       ],
       "homeHref": "./index.html",
       "worksHref": "./portfolio.html",
@@ -326,7 +385,8 @@
       "navDirections": "",
       "description": "Как я веду проект. Бренд-задача и продукт: дизайн-процесс по шагам.",
       "ogTitle": "Процесс – Lana Svitla",
-      "ogImage": "assets/images/og-default.jpg"
+      "ogImage": "assets/images/og-default.jpg",
+      "servicesFromDirections": true
     },
     {
       "path": "process-product.html",
@@ -568,7 +628,10 @@
         "role-switch",
         "site-footer",
         "work-cases",
-        "other-directions"
+        "other-directions",
+        "direction-intro",
+        "direction-cv",
+        "metrics"
       ],
       "homeHref": "./index.html",
       "worksHref": "./portfolio.html",
@@ -591,7 +654,12 @@
       "navDirections": "is-current",
       "description": "Web и digital дизайн: лендинги и сайты на Tilda, Webflow, Framer, сборка кодом вместе с AI. Публикация сайта: настройка хостинга, домена, контекстной рекламы.",
       "ogTitle": "Web и digital – Lana Svitla",
-      "ogImage": "assets/images/og-default.jpg"
+      "ogImage": "assets/images/og-default.jpg",
+      "metricList": [
+        "verba-traffic",
+        "togas-sites",
+        "embroidery-pages"
+      ]
     },
     {
       "path": "404.html",
@@ -620,5 +688,47 @@
       "ogImage": "assets/images/og-default.jpg",
       "noindex": true
     }
-  ]
+  ],
+  "metrics": {
+    "cs-design-system": {
+      "value": "50+",
+      "text": "компонентов и&nbsp;модулей в&nbsp;дизайн-системе, собранной с&nbsp;нуля: токены и&nbsp;документация в&nbsp;Figma и&nbsp;Confluence, связка со&nbsp;Storybook. Время на&nbsp;макеты сократилось на&nbsp;80%",
+      "source": "/ Control Systems"
+    },
+    "togas-orders": {
+      "value": "+25%",
+      "text": "к&nbsp;числу заказов после переработки личного кабинета и&nbsp;checkout",
+      "source": "/ TOGAS"
+    },
+    "togas-sites": {
+      "value": "4",
+      "text": "сайта новых направлений и&nbsp;суббрендов, запущенных с&nbsp;нуля",
+      "source": "/ TOGAS"
+    },
+    "verba-traffic": {
+      "value": "+20%",
+      "text": "трафика основного сайта после редизайна цифровой экосистемы бренда",
+      "source": "/ Verba Mayr"
+    },
+    "verba-campaigns": {
+      "value": "10+",
+      "text": "digital-кампаний с&nbsp;единым визуальным и&nbsp;пользовательским опытом бренда",
+      "source": "/ Verba Mayr"
+    },
+    "mentoring-middle": {
+      "value": "4",
+      "text": "junior-дизайнера вышли на&nbsp;уверенный middle за&nbsp;полгода",
+      "source": "<span>/ Менторство</span> <span>/ Control Systems</span>"
+    },
+    "ithub-course": {
+      "value": "18+",
+      "text": "модулей курса по&nbsp;продуктовому и&nbsp;UX/UI-дизайну, программа на&nbsp;9 месяцев",
+      "source": "/ IT Career Hub"
+    },
+    "embroidery-pages": {
+      "value": "30",
+      "text": "страниц авторской галереи, собранных кодом и&nbsp;опубликованных со&nbsp;своим доменом",
+      "source": "/ Svitla Embroidery"
+    }
+  }
 }

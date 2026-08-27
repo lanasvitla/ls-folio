@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=254">
+<link rel="stylesheet" href="assets/css/style.css?v=265">
 <!-- component:analytics -->
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1WF4KEEHWP"></script>
@@ -96,8 +96,7 @@
 <!-- /component:site-header -->
 
 <main class="wrap about-page">
-
-  <section class="about-row about-row--first about-row--lead">
+  <section class="about-row about-row--first about-row--switch">
     <p class="about-row__label reveal">Направление</p>
     <div class="about-row__body">
       <!-- component:role-switch -->
@@ -107,30 +106,43 @@
         <a class="switch__item" href="web.html">Web &amp; digital</a>
       </nav>
       <!-- /component:role-switch -->
+    </div>
+  </section>
+
+  <section class="about-row about-row--intro about-row--plain">
+    <div class="about-row__body">
+      <!-- component:direction-intro -->
       <h1 class="about-intro__title reveal"><b>Бренд- и&nbsp;графический дизайн</b></h1>
-      <p class="about-note reveal">Создаю визуальные системы бренда для&nbsp;digital- и&nbsp;офлайн-среды: айдентика, сайты, презентации, рекламные материалы и&nbsp;кампании.</p>
+      <p class="about-note reveal">Создаю системы бренда для&nbsp;digital- и&nbsp;офлайн-среды.</p>
+      <ul class="direction-skills reveal">
+        <li>Айдентика и&nbsp;бренд-системы</li>
+        <li>Брендбук и&nbsp;презентации</li>
+        <li>Иллюстрации и&nbsp;AI-визуалы</li>
+      </ul>
+      <!-- /component:direction-intro -->
     </div>
   </section>
 
   <section class="about-row about-row--lead">
-    <p class="about-row__label reveal">Опыт</p>
+    <p class="about-row__label reveal">Процесс</p>
     <div class="about-row__body">
-      <p class="about-lead reveal"><b>10+ лет в&nbsp;visual identity, digital-коммуникациях и&nbsp;рекламе</b></p>
-      <p class="about-note reveal">Дополнительный слой: продуктовая логика, web сайты, пользовательские сценарии и&nbsp;дизайн-системы.</p>
-
-      <ul class="about-list reveal">
-        <li><span class="about-list__when">2023 – сейчас</span><span class="about-list__what"><b>Проектная занятость</b>, Германия / Турция / Грузия · айдентика, web-дизайн, рекламная графика, презентации</span></li>
-        <li><span class="about-list__when">2023 – 2026</span><span class="about-list__what"><b>Vivanti</b> · дизайнер проектной команды агентства фармацевтического маркетинга: презентации, лендинги, рассылки, инфографика</span></li>
-        <li><span class="about-list__when">2023 – 2024</span><span class="about-list__what"><b>Verba Mayr</b> · Art Director / Lead Designer. Редизайн digital-экосистемы премиального medical &amp; wellness бренда</span></li>
-        <li><span class="about-list__when">2016 – 2021</span><span class="about-list__what"><b>TOGAS</b> · руководитель дизайн-бюро. Единая визуальная коммуникация бренда домашнего текстиля: digital, каталоги, реклама, email, точки контакта в&nbsp;ритейле</span></li>
-      </ul>
-
-      <div class="cv-links">
-        <a class="link-arrow" href="./cv-brand/" target="_blank" rel="noopener">
-          <span>CV: Brand &amp; Graphic Designer</span>
-          <svg class="icon-arrow-ne" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-arrow-ne"/></svg>
-        </a>
+      <p class="about-lead reveal"><b>Процесс подстраиваю под&nbsp;задачу.</b></p>
+      <p class="about-note reveal">В&nbsp;бренд-проекте он идет от&nbsp;бизнес-задачи к&nbsp;построению системы, которую можно применять без&nbsp;меня.</p>
+      <!-- component:direction-steps -->
+      <div class="process-chips reveal">
+        <span class="chip">Аудит бизнес-задачи</span>
+        <svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        <span class="chip">Концепция и&nbsp;айдентика</span>
+        <svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        <span class="chip">Примерка на&nbsp;носители</span>
+        <svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        <span class="chip">Гайдлайн</span>
       </div>
+      <!-- /component:direction-steps -->
+      <a class="link-arrow about-more" href="./process.html">
+        <span>Смотреть как&nbsp;я&nbsp;работаю</span>
+        <svg class="icon-arrow-ne" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-arrow-ne"/></svg>
+      </a>
     </div>
   </section>
 
@@ -144,20 +156,22 @@
   <section class="about-row">
     <p class="about-row__label reveal">Результаты</p>
     <div class="about-row__body">
+      <!-- component:metrics -->
       <ul class="about-facts">
-        <li class="reveal">
-          <b>+20%</b>
-          <span>трафика основного сайта после редизайна цифровой экосистемы бренда <i>/ Verba Mayr</i></span>
-        </li>
-        <li class="reveal">
-          <b>10+</b>
-          <span>digital-кампаний с&nbsp;единым визуальным и&nbsp;пользовательским опытом бренда <i>/ Verba Mayr</i></span>
-        </li>
-        <li class="reveal">
-          <b>4</b>
-          <span>сайта новых направлений и&nbsp;суббрендов, запущенных с&nbsp;нуля <i>/ TOGAS</i></span>
-        </li>
-      </ul>
+              <li class="reveal">
+                <b>+20%</b>
+                <span>трафика основного сайта после редизайна цифровой экосистемы бренда <i>/ Verba Mayr</i></span>
+              </li>
+              <li class="reveal">
+                <b>10+</b>
+                <span>digital-кампаний с&nbsp;единым визуальным и&nbsp;пользовательским опытом бренда <i>/ Verba Mayr</i></span>
+              </li>
+              <li class="reveal">
+                <b>4</b>
+                <span>сайта новых направлений и&nbsp;суббрендов, запущенных с&nbsp;нуля <i>/ TOGAS</i></span>
+              </li>
+            </ul>
+      <!-- /component:metrics -->
     </div>
   </section>
 
@@ -199,25 +213,16 @@
     </div>
   </section>
 
-
-  <section class="about-row about-row--lead">
-    <p class="about-row__label reveal">Процесс</p>
+  <section class="about-row about-row--plain">
     <div class="about-row__body">
-      <p class="about-lead reveal"><b>Процесс подстраиваю под&nbsp;задачу.</b></p>
-      <p class="about-note reveal">В&nbsp;бренд-проекте он идет от&nbsp;бизнес-задачи к&nbsp;построению системы, которую можно применять без&nbsp;меня.</p>
-      <div class="process-chips reveal">
-        <span class="chip">Аудит бизнес-задачи</span>
-        <svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-        <span class="chip">Концепция и&nbsp;айдентика</span>
-        <svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-        <span class="chip">Примерка на&nbsp;носители</span>
-        <svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-        <span class="chip">Гайдлайн</span>
+      <!-- component:direction-cv -->
+      <div class="cv-links">
+        <a class="link-arrow" href="cv-brand/" target="_blank" rel="noopener">
+          <span>CV: Brand &amp; Graphic Designer</span>
+          <svg class="icon-arrow-ne" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-arrow-ne"/></svg>
+        </a>
       </div>
-      <a class="link-arrow about-more" href="./process.html">
-        <span>Смотреть как&nbsp;я&nbsp;работаю</span>
-        <svg class="icon-arrow-ne" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-arrow-ne"/></svg>
-      </a>
+      <!-- /component:direction-cv -->
     </div>
   </section>
 
@@ -249,7 +254,6 @@
     </div>
   </section>
   <!-- /component:other-directions -->
-
 </main>
 </div>
 

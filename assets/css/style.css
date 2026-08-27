@@ -81,6 +81,12 @@
   --fs-nav: 14px;
 
   --ease: cubic-bezier(.16,.84,.44,1);
+
+  /* Увеличение картинки внутри неподвижной рамки. Одно поведение на весь
+     сайт: карточки каталога и блоки услуг на «Процессе». Рамка не двигается,
+     края подрезает overflow у обёртки. */
+  --media-zoom: 1.06;
+  --media-zoom-dur: .6s;
 }
 
 *{ box-sizing: border-box; }
@@ -1007,6 +1013,14 @@ h1,h2,h3,p{ margin: 0; }
    ниже. Пока это правило стояло выше .about-row, линия первого раздела
    упиралась в шапку, а верхний отступ не применялся. */
 .about-row--first{ border-top: none; padding-top: 96px; }
+/* Первый экран страницы направления собран из двух строк сетки.
+   Строка с переключателем: метка и переключатель выравниваются по центру
+   друг друга — раньше метка пыталась встать одновременно и по переключателю,
+   и по крупному заголовку, и привязка получалась неверной. */
+.about-row--switch{ align-items: center; padding-bottom: 40px; }
+/* Строка с заголовком: линии и верхнего отступа нет — переключатель
+   и вводный блок читаются как одна зона, а не два раздела. */
+.about-row--intro{ border-top: none; padding-top: 0; }
 /* min-width: auto у грид-элемента позволяет содержимому растягивать колонку:
    раскрытая лента обложек раздувала строку до своей полной ширины */
 .about-row__body{ min-width: 0; }
@@ -1180,6 +1194,23 @@ h1,h2,h3,p{ margin: 0; }
 /* тот же прием, что в `.about-lead b`: смысловая часть уходит в черный,
    остальная строка остается серой — размер и начертание почти не меняются */
 .about-notes b{ font-weight: 500; color: var(--ink); }
+
+/* Три компетенции направления. Значения приходят из общего реестра, поэтому
+   разметка одна на три страницы. Маркеров нет намеренно: список держится
+   строчным ритмом, как в карточках направлений. */
+.direction-skills{
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.direction-skills li{
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  color: var(--muted);
+}
 
 /* fact sheet: skills / tools / location */
 .about-spec{ margin: 0; display: grid; gap: 20px; }
@@ -2144,10 +2175,10 @@ h1,h2,h3,p{ margin: 0; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .6s cubic-bezier(.16,.84,.44,1);
+  transition: transform var(--media-zoom-dur) var(--ease);
 }
 .pcase:hover .pcase__cover img,
-.pcase:focus-visible .pcase__cover img{ transform: scale(1.06); }
+.pcase:focus-visible .pcase__cover img{ transform: scale(var(--media-zoom)); }
 
 /* Механика с референса gocetinkaya.com. В покое кнопка — сплющенная и
    наклонённая капсула, стрелка внутри смотрит вверх-вправо под 45°. При
@@ -2348,6 +2379,7 @@ h1,h2,h3,p{ margin: 0; }
   .featured__img,
   .featured__caption,
   .pcase__cover img,
+  .process-services__ph img,
   .dcard__fill,
   .ilink .ic,
   .ilink__rule::after,
@@ -2355,7 +2387,9 @@ h1,h2,h3,p{ margin: 0; }
   .allworks__text::after{ transition: none; }
   .featured:hover .featured__img.is-current,
   .pcase:hover .pcase__cover img,
-  .pcase:focus-visible .pcase__cover img{ transform: none; }
+  .pcase:focus-visible .pcase__cover img,
+  .process-services__item:hover .process-services__ph img,
+  .process-services__item:focus-within .process-services__ph img{ transform: none; }
   /* на тач-экране сдвига стрелки нет: наведения не бывает */
   .pcase__go .ic{ transition: none; transform: none; }
   .pcase:hover .pcase__go .ic,
@@ -2417,21 +2451,32 @@ h1,h2,h3,p{ margin: 0; }
    (shared borders between segments, accent fill for the active one)
    instead of a generic dark pill switch. */
 .switch{
-  margin-bottom: 32px;
-  display: flex;
+  /* три равные колонки на всю ширину контентной колонки: направления
+     равноправны как маршруты, поэтому и весят в навигации одинаково,
+     независимо от длины названия. Пустого хвоста после третьего пункта
+     не остаётся. */
+  display: grid;
+  /* minmax(0, …), а не голый 1fr: 1fr не позволяет колонке стать уже
+     своего содержимого, и длинное «Бренд & коммуникация» раздувало
+     первую треть на узком экране */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: var(--surface);
   overflow: hidden;
 }
 .switch__item{
-  padding: 13px 22px;
+  padding: 13px 18px;
   font-family: var(--font-display);
   font-size: 15px;
   font-weight: 500;
   line-height: 1.2;
+  text-align: center;
   color: var(--muted);
-  white-space: nowrap;
+  /* Переносов по слогам нет намеренно. break-word оставлен только страховкой
+     от переполнения на совсем узких экранах — в норме не срабатывает. */
+  overflow-wrap: break-word;
   transition: color .3s var(--ease), background .3s var(--ease);
 }
 .switch__item + .switch__item{ border-left: 1px solid var(--line); }
@@ -2770,16 +2815,30 @@ h1,h2,h3,p{ margin: 0; }
     --lockup-size: clamp(46px, 13vw, 72px);
     padding-bottom: 40px;
   }
-  /* the two labels are long in Russian: let the control fill the width and the
-     labels wrap inside their halves instead of pushing the page sideways */
-  .switch{ display: flex; width: 100%; }
+  /* Раскладка та же, что на широком экране, — три равные колонки. На узком
+     меняются только кегль и отступы, а длинные русские названия переносятся
+     внутри своей колонки и не толкают страницу вбок. */
   .switch__item{
-    flex: 1 1 0;
-    min-width: 0;
-    padding: 10px 12px;
-    font-size: 14px;
-    text-align: center;
+    /* боковые поля уже, чем на десктопе: длинному «коммуникация» нужна
+       вся ширина ячейки, чтобы уместиться в одну строку без переноса */
+    padding: 10px 8px;
+    /* 14px везде, кроме совсем узких экранов: на 320px «коммуникация»
+       в треть ширины не влезает, и кегль сам ужимается до 12.5px вместо
+       того, чтобы рвать слово переносом */
+    font-size: clamp(12px, 3.9vw, 14px);
     white-space: normal;
+  }
+  /* Переключатель на всю ширину экрана: боковые поля страницы гасим тем же
+     токеном, которым они заданы. Полоса идёт от края до края, поэтому
+     скругление и боковые границы сняты — они пришлись бы ровно на кромку. */
+  .about-row--switch .about-row__body{
+    margin-left: calc(-1 * var(--page-x));
+    margin-right: calc(-1 * var(--page-x));
+  }
+  .about-row--switch .switch{
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
   }
   .expertise{ grid-template-columns: 1fr; gap: 28px; }
   .pop-media__big{ width: 180px; height: 180px; }
@@ -3240,10 +3299,9 @@ h1,h2,h3,p{ margin: 0; }
    без отдельного media-правила под каждую промежуточную ширину. */
 .process-services__item{ display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px 40px; }
 .process-services__text{ flex: 1 1 260px; min-width: 200px; }
-/* заглушка тем же токеном, что фон пилюли хедера: --tint-soft.
-   overflow:hidden — под будущее фото: сейчас масштабируется сама плашка,
-   когда придёт картинка, тот же hover будет её увеличивать без выхода за
-   скруглённые края. position:relative — точка отсчёта для кнопки поверх. */
+/* Рамка неподвижна, увеличивается только картинка внутри неё: overflow
+   подрезает выход за скруглённые края. Раньше масштабировалась сама рамка —
+   это было временно, пока вместо фото стояла заглушка. */
 .process-services__ph{
   position: relative;
   flex: 0 0 220px;
@@ -3251,44 +3309,21 @@ h1,h2,h3,p{ margin: 0; }
   border-radius: var(--radius-md);
   background: var(--tint-soft);
   overflow: hidden;
-  transition: transform .4s var(--ease);
 }
-.process-services__item:hover .process-services__ph,
-.process-services__item:focus-within .process-services__ph{ transform: scale(1.05); }
+.process-services__item:hover .process-services__ph img,
+.process-services__item:focus-within .process-services__ph img{ transform: scale(var(--media-zoom)); }
+/* «Подробнее» отзывается на наведение всего блока, а не только на себя:
+   после удаления зелёной кнопки выход из блока остался один, поэтому
+   реакция блока целиком указывает именно на него и ни с чем не спорит.
+   Повторяем то же, что делает .ilink:hover — линия и сдвиг стрелки. */
+.process-services__item:hover .process-services__more .ic{ transform: translateX(2px); }
+.process-services__item:hover .process-services__more .ilink__rule::after{ transform: scaleX(1); }
 .process-services__ph img{
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform .4s var(--ease);
-}
-/* «В портфолио» — та же лаймовая пилюля, что у «Смотреть все работы»
-   (.allworks__circle), только текстом и появляется по наведению/фокусу,
-   не стоит на плашке постоянно */
-.process-services__ph-cta{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) scale(.94);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  border-radius: var(--radius-pill);
-  background: var(--accent);
-  color: var(--accent-ink);
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 500;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity .3s var(--ease), transform .3s var(--ease);
-}
-.process-services__ph-cta .ic{ width: 16px; height: 16px; }
-.process-services__item:hover .process-services__ph-cta,
-.process-services__ph-cta:focus-visible{
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+  transition: transform var(--media-zoom-dur) var(--ease);
 }
 .process-services__title{
   margin: 0 0 8px;
@@ -3296,6 +3331,18 @@ h1,h2,h3,p{ margin: 0; }
   font-size: 32px;
   font-weight: 500;
   color: var(--ink);
+}
+/* Заголовок встаёт по картинке высотой заглавной буквы, а не верхом строки.
+   Строка оставляет над прописной ~0.387em воздуха (при line-height 1.5 и
+   cap-height 0.727), из-за чего текстовая колонка проваливалась ниже кромки
+   картинки на 12px. Тот же приём уже применён к парам «лейбл + лид»
+   в about-строках. Картинка и чипсы не двигаются — только текст. */
+@supports (text-box-trim: trim-start){
+  .process-services__title{ text-box-trim: trim-start; text-box-edge: cap alphabetic; }
+}
+@supports not (text-box-trim: trim-start){
+  /* в em, а не в px: работает и на узком экране, где кегль другой */
+  .process-services__title{ margin-top: -0.387em; }
 }
 /* список через «/»: слэш — псевдоэлемент, не часть текста, чтобы контент
    можно было переставлять и редактировать без ручного слэша в разметке */
@@ -3388,27 +3435,12 @@ h1,h2,h3,p{ margin: 0; }
     flex-direction: column;
     align-items: flex-start;
   }
-  .process-services__item:hover .process-services__ph,
-  .process-services__item:focus-within .process-services__ph{ transform: none; }
+  .process-services__item:hover .process-services__ph img,
+  .process-services__item:focus-within .process-services__ph img{ transform: none; }
   .process-services__ph img{
     height: 200px;
     border-radius: var(--radius-md);
   }
-  .process-services__ph-cta{
-    position: static;
-    /* left/top остались бы от абсолютного позиционирования и продолжали
-       смещать кнопку уже в обычном потоке */
-    left: auto;
-    top: auto;
-    opacity: 1;
-    margin-top: 16px;
-    transform: none;
-  }
-  /* тот же вес селектора, что у правила наведения на широком экране: иначе
-     оно перебивает мобильное и возвращает кнопке центрирующий сдвиг
-     translate(-50%,-50%) — кнопка уезжала за левый край */
-  .process-services__item:hover .process-services__ph-cta,
-  .process-services__ph-cta:focus-visible{ transform: none; }
   /* явные grid-row/column у --icon-label создают вторую колонку сами по
      себе, даже когда общий .about-row уже схлопнут в одну (браузер
      достраивает недостающий трек под явное размещение) — сбрасываем на

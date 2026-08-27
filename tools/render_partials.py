@@ -83,15 +83,99 @@ def build_directions(page: dict, directions: dict) -> dict:
     if not current:
         return values
     d = directions[current]
+    # три компетенции на самой странице направления — тот же список `rows`,
+    # что и в карточках, только без обёртки карточки и без маркеров
+    skills = "\n".join(
+        f'  <li>{r}</li>' for r in d.get("rows", [])
+    )
+    # цепочка шагов со стрелками между ними — те же `steps`, что и на «Процессе»
+    arrow = ('\n  <svg class="ic" viewBox="0 0 22 22" aria-hidden="true">'
+             '<use href="#i-arrow-right"/></svg>')
+    steps = arrow.join(
+        f'\n  <span class="chip">{c}</span>' for c in d.get("steps", [])
+    )
     values.update({
         "switchItems": "\n".join(items),
         "otherDirections": "\n".join(others) + "\n" + star.format(mod="mid"),
         "directionName": d["name"],
+        "directionTitle": d.get("pageTitle", d["name"]),
+        "directionLead": d.get("pageLead", d.get("desc", "")),
+        "directionSkills": skills,
+        "directionSteps": steps,
         "directionProcess": root + d["process"],
         "directionCv": root + d["cv"],
         "directionCvLabel": d["cvLabel"],
     })
     return values
+
+
+def build_services(page: dict, directions: dict) -> dict:
+    """Блоки услуг на «Процессе»: по блоку на направление.
+
+    Всё содержимое приходит из того же реестра, что кормит карточки
+    направлений и сами страницы направлений. Раньше эти блоки были
+    написаны отдельной разметкой, и списки услуг успели разойтись с реестром.
+    """
+    if not page.get("servicesFromDirections"):
+        return {}
+    root = page.get("root", "")
+    blocks = []
+    for key, d in directions.items():
+        rows = "\n".join(f'              <li>{r}</li>' for r in d.get("rows", []))
+        chips = "\n".join(
+            f'              <span class="chip">{c}</span>' for c in d.get("steps", [])
+        )
+        blocks.append(
+            '        <li class="process-services__item reveal">\n'
+            '          <span class="process-services__ph">\n'
+            f'            <img src="{root}{d["previewImg"]}" alt="{d["previewAlt"]}" '
+            'width="440" height="340" loading="lazy" decoding="async">\n'
+            '          </span>\n'
+            '          <div class="process-services__text">\n'
+            f'            <h3 class="process-services__title">{d["name"]}</h3>\n'
+            '            <ul class="process-services__list">\n'
+            f'{rows}\n'
+            '            </ul>\n'
+            '            <span class="process-services__more">'
+            f'<!-- component:ilink text="Подробнее" href="{root}{d["path"]}" -->'
+            '<!-- /component:ilink --></span>\n'
+            '          </div>\n'
+            '          <div class="process-services__flow">\n'
+            f'            <span class="process-services__caption">{d["stepsCaption"]}</span>\n'
+            '            <div class="process-services__chips">\n'
+            f'{chips}\n'
+            '            </div>\n'
+            '          </div>\n'
+            '        </li>'
+        )
+    return {"serviceBlocks": "\n".join(blocks)}
+
+
+def build_metrics(page: dict, metrics: dict) -> dict:
+    """Блок цифр: «Достижения» на about и «Результаты» на направлениях.
+
+    Одна цифра живёт в реестре один раз. Страница перечисляет ключи в том
+    порядке, в каком показывает, — раньше один и тот же результат был
+    переписан руками в двух-трёх файлах и мог разойтись при правке.
+    """
+    keys = page.get("metricList")
+    if not keys:
+        return {}
+    items = []
+    for key in keys:
+        if key not in metrics:
+            raise SystemExit(
+                f"[render_partials] {page['path']}: неизвестная метрика '{key}'. "
+                f"Есть: {', '.join(sorted(metrics))}"
+            )
+        m = metrics[key]
+        items.append(
+            '        <li class="reveal">\n'
+            f'          <b>{m["value"]}</b>\n'
+            f'          <span>{m["text"]} <i>{m["source"]}</i></span>\n'
+            '        </li>'
+        )
+    return {"metricsItems": "\n".join(items)}
 
 
 BASE_URL = "https://lanasvitla.github.io/ls-folio/"
@@ -385,6 +469,8 @@ def main() -> int:
             **build_case_slots(page, cases),
             **build_home_cases(page, cases),
             **build_directions(page, directions),
+            **build_metrics(page, manifest.get("metrics", {})),
+            **build_services(page, directions),
             **seo_fields(page),
         }
         original = target.read_text(encoding="utf-8")
