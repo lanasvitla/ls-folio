@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=265">
+<link rel="stylesheet" href="assets/css/style.css?v=274">
 <!-- component:analytics -->
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1WF4KEEHWP"></script>
@@ -97,7 +97,7 @@
 
 <main class="wrap about-page">
   <section class="about-row about-row--first about-row--switch">
-    <p class="about-row__label reveal">Направление</p>
+    <p class="about-row__label reveal">Направления</p>
     <div class="about-row__body">
       <!-- component:role-switch -->
       <nav class="switch" aria-label="Направление">
@@ -112,8 +112,8 @@
   <section class="about-row about-row--intro about-row--plain">
     <div class="about-row__body">
       <!-- component:direction-intro -->
-      <h1 class="about-intro__title reveal"><b>Продуктовый и&nbsp;UX/UI-дизайн</b></h1>
-      <p class="about-note reveal">Проектирую сложные B2B-интерфейсы и&nbsp;B2C-продукты: от&nbsp;сценариев до&nbsp;дизайн-системы и&nbsp;передачи в&nbsp;разработку.</p>
+      <h1 class="about-intro__title reveal"><b>Продуктовый и&nbsp;UX/UI дизайн</b></h1>
+      <p class="about-note reveal"><b>Проектирую B2C-продукты и&nbsp;сложные B2B-интерфейсы:</b> от&nbsp;сценариев до&nbsp;дизайн-системы и&nbsp;передачи в&nbsp;разработку.</p>
       <ul class="direction-skills reveal">
         <li>Исследование и&nbsp;гипотезы</li>
         <li>Прототипы и&nbsp;интерфейсы</li>
@@ -126,18 +126,23 @@
   <section class="about-row about-row--lead">
     <p class="about-row__label reveal">Процесс</p>
     <div class="about-row__body">
-      <p class="about-lead reveal"><b>Процесс подстраиваю под&nbsp;задачу,</b> но&nbsp;на&nbsp;продуктовом проекте он начинается с&nbsp;метрики и&nbsp;ей же&nbsp;заканчивается.</p>
-      <a class="link-arrow about-more" href="./process.html">
-        <span>Как&nbsp;я&nbsp;работаю</span>
-        <svg class="icon-arrow-ne" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-arrow-ne"/></svg>
-      </a>
-    </div>
-  </section>
-
-  <section class="about-row">
-    <p class="about-row__label reveal">Экспертиза</p>
-    <div class="about-row__body">
-      <p class="about-tags__line reveal">Полный цикл продукта (Product Discovery &amp; Delivery) • Информационная архитектура • User Flow / CJM • Enterprise B2B и&nbsp;data-heavy интерфейсы • B2C и&nbsp;e-commerce • Оптимизация конверсии и&nbsp;checkout • Design-to-Development • Работа с&nbsp;продуктовыми метриками • Дизайн-системы и&nbsp;их документация • Design Leadership / DesignOps • Design Operations • Управление дизайн-командами до&nbsp;16&nbsp;человек • Построение дизайн-процессов • Менторинг дизайнеров • AI-автоматизация дизайн-процессов • AI-assisted Creative Workflow</p>
+      <!-- component:direction-process -->
+      <p class="about-lead reveal"><b>Процесс подстраиваю под&nbsp;задачу.</b></p>
+            <p class="about-note reveal">В&nbsp;продуктовом проекте метрика задает старт и&nbsp;подтверждает результат.</p>
+            <div class="process-chips reveal">
+        <span class="chip">Исследование и&nbsp;анализ</span>
+        <svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        <span class="chip">Проверка гипотез</span>
+        <svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        <span class="chip">Итерации решений</span>
+        <svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        <span class="chip">Рабочий продукт</span>
+            </div>
+            <a class="link-arrow about-more" href="process.html">
+              <span>Смотреть как&nbsp;я&nbsp;работаю</span>
+              <svg class="icon-arrow-ne" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-arrow-ne"/></svg>
+            </a>
+      <!-- /component:direction-process -->
     </div>
   </section>
 
@@ -152,11 +157,11 @@
               </li>
               <li class="reveal">
                 <b>50+</b>
-                <span>компонентов и&nbsp;модулей в&nbsp;дизайн-системе, собранной с&nbsp;нуля: токены и&nbsp;документация в&nbsp;Figma и&nbsp;Confluence, связка со&nbsp;Storybook. Время на&nbsp;макеты сократилось на&nbsp;80% <i>/ Control Systems</i></span>
+                <span>компонентов и&nbsp;модулей в&nbsp;дизайн-системе: токены и&nbsp;документация в&nbsp;Figma и&nbsp;Confluence, связка со&nbsp;Storybook. Время на&nbsp;макеты сократилось на&nbsp;80% <i>/ Control Systems</i></span>
               </li>
               <li class="reveal">
                 <b>18+</b>
-                <span>модулей курса по&nbsp;продуктовому и&nbsp;UX/UI-дизайну, программа на&nbsp;9 месяцев <i>/ IT Career Hub</i></span>
+                <span>модулей курса по&nbsp;продуктовому и&nbsp;UX/UI-дизайну, программа на&nbsp;9&nbsp;месяцев <i>/ IT Career Hub</i></span>
               </li>
             </ul>
       <!-- /component:metrics -->
@@ -201,13 +206,29 @@
     </div>
   </section>
 
-  <section class="about-row about-row--plain">
+  <section class="about-row">
+    <p class="about-row__label reveal">Компетенции</p>
     <div class="about-row__body">
+      <!-- component:direction-expertise -->
+            <ul class="tag-chips reveal">
+              <li class="chip">Полный цикл продукта / Product Discovery &amp; Delivery</li>
+              <li class="chip">Информационная архитектура</li>
+              <li class="chip">User Flow / CJM</li>
+              <li class="chip">B2C, e-commerce / онлайн-магазины</li>
+              <li class="chip">B2B и&nbsp;data-heavy интерфейсы</li>
+              <li class="chip">Design-to-Development</li>
+              <li class="chip">UX-исследования</li>
+              <li class="chip chip--accent">Работа с&nbsp;продуктовыми метриками</li>
+              <li class="chip">Дизайн-системы и&nbsp;их документация</li>
+              <li class="chip">AI-автоматизация дизайн-процессов</li>
+            </ul>
+      <!-- /component:direction-expertise -->
       <!-- component:direction-cv -->
       <div class="cv-links">
-        <a class="link-arrow" href="cv-product/" target="_blank" rel="noopener">
-          <span>CV: Product / UX/UI Designer</span>
+        <a class="link-arrow" href="assets/cv/lana-svitla-cv-product-designer.pdf" target="_blank" rel="noopener">
+          <span>Более подробные компетенции в&nbsp;CV</span>
           <svg class="icon-arrow-ne" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-arrow-ne"/></svg>
+          <span class="link-arrow__meta">PDF · 93&nbsp;КБ</span>
         </a>
       </div>
       <!-- /component:direction-cv -->
@@ -224,7 +245,7 @@
           <span class="dcard__title">Бренд &amp; коммуникация</span>
           <span class="dcard__row">Айдентика и&nbsp;бренд-системы</span>
           <span class="dcard__row">Брендбук и&nbsp;презентации</span>
-          <span class="dcard__row">Иллюстрации и&nbsp;AI-визуалы</span>
+          <span class="dcard__row">Key visuals и&nbsp;AI-визуалы</span>
           <span class="dcard__spacer"></span>
           <span class="dcard__action"><!-- component:ilink text="Подробнее" --><span class="ilink"><span class="ilink__row">Подробнее<svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ilink__rule"></span></span><!-- /component:ilink --></span>
         </a>
@@ -264,7 +285,7 @@
       </nav>
 
       <nav class="site-footer__nav" aria-label="Направления">
-        <p class="site-footer__col-title">Направления</p>
+        <p class="site-footer__col-title" aria-hidden="true"></p>
         <a href="./brand.html">Бренд &amp; коммуникация</a>
         <a href="./product.html">Продукт &amp; UX/UI</a>
         <a href="./web.html">Web &amp; digital</a>

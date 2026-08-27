@@ -96,7 +96,7 @@
         "Web design",
         "Art direction"
       ],
-      "metricValue": "30",
+      "metricValue": "20+",
       "metricLabel": "страниц галереи",
       "niche": "web",
       "type": "Веб / арт-дирекшен"
@@ -108,15 +108,14 @@
       "path": "brand.html",
       "desc": "Айдентика, бренд-системы, арт-дирекшен и&nbsp;рекламные кампании.",
       "process": "process.html",
-      "cv": "cv-brand/",
-      "cvLabel": "Brand &amp; Graphic Designer",
+      "cv": "assets/cv/lana-svitla-cv-brand-designer.pdf",
       "rows": [
         "Айдентика и&nbsp;бренд-системы",
         "Брендбук и&nbsp;презентации",
-        "Иллюстрации и&nbsp;AI-визуалы"
+        "Key visuals и&nbsp;AI-визуалы"
       ],
-      "pageTitle": "Бренд- и&nbsp;графический дизайн",
-      "pageLead": "Создаю системы бренда для&nbsp;digital- и&nbsp;офлайн-среды.",
+      "pageTitle": "Бренд и&nbsp;коммуникационный дизайн",
+      "pageLead": "<b>Создаю систему бренда</b> для&nbsp;digital- и&nbsp;офлайн-среды.",
       "steps": [
         "Аудит бизнес-задачи",
         "Концепция и&nbsp;айдентика",
@@ -125,22 +124,35 @@
       ],
       "stepsCaption": "Дизайн-процесс для&nbsp;бренд проекта",
       "previewImg": "assets/images/preview/brand-ecommerce.webp",
-      "previewAlt": "E-commerce сайт Togas"
+      "previewAlt": "E-commerce сайт Togas",
+      "processLead": "В&nbsp;бренд-проекте он идет от&nbsp;бизнес-задачи к&nbsp;построению системы, которую можно применять без&nbsp;меня.",
+      "expertise": [
+        "Единая визуальная коммуникация бренда",
+        "Visual Brand Identity",
+        "Art Direction",
+        "Digital-коммуникация",
+        "Key visuals",
+        "Лендинги и&nbsp;промосайты",
+        "Маркетинговые кампании",
+        "Презентации",
+        "Print Design",
+        "Брендбук и&nbsp;гайдлайны",
+        "AI-автоматизация дизайн-процессов"
+      ]
     },
     "product": {
       "name": "Продукт &amp; UX/UI",
       "path": "product.html",
       "desc": "Сценарии, интерфейсы, прототипы и&nbsp;дизайн-системы.",
       "process": "process.html",
-      "cv": "cv-product/",
-      "cvLabel": "Product / UX/UI Designer",
+      "cv": "assets/cv/lana-svitla-cv-product-designer.pdf",
       "rows": [
         "Исследование и&nbsp;гипотезы",
         "Прототипы и&nbsp;интерфейсы",
         "Дизайн-системы"
       ],
-      "pageTitle": "Продуктовый и&nbsp;UX/UI-дизайн",
-      "pageLead": "Проектирую сложные B2B-интерфейсы и&nbsp;B2C-продукты: от&nbsp;сценариев до&nbsp;дизайн-системы и&nbsp;передачи в&nbsp;разработку.",
+      "pageTitle": "Продуктовый и&nbsp;UX/UI дизайн",
+      "pageLead": "<b>Проектирую B2C-продукты и&nbsp;сложные B2B-интерфейсы:</b> от&nbsp;сценариев до&nbsp;дизайн-системы и&nbsp;передачи в&nbsp;разработку.",
       "steps": [
         "Исследование и&nbsp;анализ",
         "Проверка гипотез",
@@ -149,22 +161,34 @@
       ],
       "stepsCaption": "Дизайн-процесс для&nbsp;UX/UI проекта",
       "previewImg": "assets/images/preview/product-mobile-app.webp",
-      "previewAlt": "Мобильное приложение Togas"
+      "previewAlt": "Мобильное приложение Togas",
+      "processLead": "В&nbsp;продуктовом проекте метрика задает старт и&nbsp;подтверждает результат.",
+      "expertise": [
+        "Полный цикл продукта / Product Discovery &amp; Delivery",
+        "Информационная архитектура",
+        "User Flow / CJM",
+        "B2C, e-commerce / онлайн-магазины",
+        "B2B и&nbsp;data-heavy интерфейсы",
+        "Design-to-Development",
+        "UX-исследования",
+        "!Работа с&nbsp;продуктовыми метриками",
+        "Дизайн-системы и&nbsp;их документация",
+        "AI-автоматизация дизайн-процессов"
+      ]
     },
     "web": {
       "name": "Web &amp; digital",
       "path": "web.html",
       "desc": "Сайты целиком: структура, дизайн, сборка и&nbsp;публикация.",
       "process": "process.html",
-      "cv": "cv-brand/",
-      "cvLabel": "Brand &amp; Graphic Designer",
+      "cv": "assets/cv/lana-svitla-cv-brand-designer.pdf",
       "rows": [
         "Лендинги и&nbsp;сайты",
         "Tilda, Webflow, Framer",
         "Vibe coding и&nbsp;AI-продакшен"
       ],
-      "pageTitle": "Веб- и&nbsp;digital-дизайн",
-      "pageLead": "Собираю сайты целиком: от&nbsp;структуры и&nbsp;текста до&nbsp;дизайна, верстки и&nbsp;публикации.",
+      "pageTitle": "Web и&nbsp;digital дизайн",
+      "pageLead": "<b>Собираю лендинги</b>, промостраницы и&nbsp;многостраничные сайты. Дизайн и&nbsp;сборка в&nbsp;одних руках. <b>Верстаю любые макеты для&nbsp;печати:</b> от&nbsp;креативных постеров до&nbsp;каталогов.",
       "steps": [
         "Бриф и&nbsp;анализ",
         "Концепция решения",
@@ -173,7 +197,25 @@
       ],
       "stepsCaption": "Дизайн-процесс для&nbsp;web &amp; digital",
       "previewImg": "assets/images/preview/web-catalog.webp",
-      "previewAlt": "Каталог Togas «Система сна»"
+      "previewAlt": "Каталог Togas «Система сна»",
+      "processLead": "В&nbsp;web-проекте он строится на&nbsp;цели задачи и&nbsp;заканчивается готовым результатом: сайтом в&nbsp;сети или&nbsp;макетом в&nbsp;печать.",
+      "expertise": [
+        "Web design",
+        "Лендинги и&nbsp;промосайты",
+        "Многоязычные сайты",
+        "Информационная архитектура сайта",
+        "Сборка сайта под&nbsp;ключ",
+        "Tilda",
+        "Webflow",
+        "Framer",
+        "Lovable",
+        "Vibe coding",
+        "Подключение CRM",
+        "Публикация и&nbsp;подключение домена",
+        "Art Direction",
+        "Print Design",
+        "AI-автоматизация дизайн-процессов"
+      ]
     }
   },
   "pages": [
@@ -288,8 +330,10 @@
         "work-cases",
         "other-directions",
         "direction-intro",
+        "direction-expertise",
         "direction-cv",
-        "metrics"
+        "metrics",
+        "direction-process"
       ],
       "homeHref": "./index.html",
       "worksHref": "./portfolio.html",
@@ -329,9 +373,10 @@
         "work-cases",
         "other-directions",
         "direction-intro",
+        "direction-expertise",
         "direction-cv",
         "metrics",
-        "direction-steps"
+        "direction-process"
       ],
       "homeHref": "./index.html",
       "worksHref": "./portfolio.html",
@@ -616,7 +661,7 @@
       "webHref": "../../web.html",
       "directionsHref": "../../index.html#directions",
       "navDirections": "",
-      "description": "Цифровая галерея и магазин авторской вышивки: 30+ страниц работ, единая визуальная система, языковые версии.",
+      "description": "Цифровая галерея и магазин авторской вышивки: 20+ страниц работ, единая визуальная система, языковые версии.",
       "ogTitle": "Svitla Embroidery Gallery",
       "ogImage": "assets/works/SvitlaEmbroidery/cover-ls-embroidery.webp"
     },
@@ -630,8 +675,10 @@
         "work-cases",
         "other-directions",
         "direction-intro",
+        "direction-expertise",
         "direction-cv",
-        "metrics"
+        "metrics",
+        "direction-process"
       ],
       "homeHref": "./index.html",
       "worksHref": "./portfolio.html",
@@ -658,7 +705,7 @@
       "metricList": [
         "verba-traffic",
         "togas-sites",
-        "embroidery-pages"
+        "print-catalogs"
       ]
     },
     {
@@ -692,7 +739,7 @@
   "metrics": {
     "cs-design-system": {
       "value": "50+",
-      "text": "компонентов и&nbsp;модулей в&nbsp;дизайн-системе, собранной с&nbsp;нуля: токены и&nbsp;документация в&nbsp;Figma и&nbsp;Confluence, связка со&nbsp;Storybook. Время на&nbsp;макеты сократилось на&nbsp;80%",
+      "text": "компонентов и&nbsp;модулей в&nbsp;дизайн-системе: токены и&nbsp;документация в&nbsp;Figma и&nbsp;Confluence, связка со&nbsp;Storybook. Время на&nbsp;макеты сократилось на&nbsp;80%",
       "source": "/ Control Systems"
     },
     "togas-orders": {
@@ -722,13 +769,18 @@
     },
     "ithub-course": {
       "value": "18+",
-      "text": "модулей курса по&nbsp;продуктовому и&nbsp;UX/UI-дизайну, программа на&nbsp;9 месяцев",
+      "text": "модулей курса по&nbsp;продуктовому и&nbsp;UX/UI-дизайну, программа на&nbsp;9&nbsp;месяцев",
       "source": "/ IT Career Hub"
     },
     "embroidery-pages": {
-      "value": "30",
+      "value": "20+",
       "text": "страниц авторской галереи, собранных кодом и&nbsp;опубликованных со&nbsp;своим доменом",
       "source": "/ Svitla Embroidery"
+    },
+    "print-catalogs": {
+      "value": "30+",
+      "text": "печатных каталогов для&nbsp;премиум продуктов и&nbsp;услуг",
+      "source": ""
     }
   }
 }

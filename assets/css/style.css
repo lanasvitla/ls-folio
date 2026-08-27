@@ -1069,6 +1069,9 @@ h1,h2,h3,p{ margin: 0; }
   text-wrap: pretty;
 }
 .about-note + .about-note{ margin-top: 12px; }
+/* Тот же приём, что в `.about-lead b` и `.about-notes b`: ключевая часть
+   фразы уходит в чёрный, остальная строка остаётся серой. */
+.about-note b{ font-weight: 500; color: var(--ink); }
 /* верхний отступ нужен, только когда над абзацем что-то есть: если он
    открывает раздел (как в «Локации»), 24px опускали текст ниже заголовка
    слева, и строка переставала начинаться с ним на одном уровне */
@@ -1166,6 +1169,12 @@ h1,h2,h3,p{ margin: 0; }
   border-top: 1px solid var(--line);
 }
 .about-tags__line{ max-width: 780px; font-size: var(--fs-body); line-height: 1.55; color: var(--muted); }
+/* Компетенции чипсами — те же `.chip` с фоном, что под кейсами. */
+.tag-chips{ margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; max-width: 780px; }
+.tag-chips .chip{ background: var(--surface); }
+/* акцентный чипс — черный контур вместо заливки: в ряду серых пилюль хватает
+   одного контраста рамки, цвет здесь звучал бы громче остальной страницы */
+.tag-chips .chip--accent{ border-color: var(--ink); color: var(--ink); }
 
 /* numbers */
 .about-facts{
@@ -2383,6 +2392,8 @@ h1,h2,h3,p{ margin: 0; }
   .dcard__fill,
   .ilink .ic,
   .ilink__rule::after,
+  .cv-links .link-arrow > span:first-child::after,
+  .link-arrow.about-more > span:first-child::after,
   .allworks__circle,
   .allworks__text::after{ transition: none; }
   .featured:hover .featured__img.is-current,
@@ -2780,6 +2791,28 @@ h1,h2,h3,p{ margin: 0; }
 
 /* two CVs side by side; they wrap under each other on a narrow screen */
 .cv-links{ margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px 32px; }
+/* Линия под текстом — тот же жест, что у `.ilink__rule`: выезжает слева направо
+   по наведению, постоянной подложки нет. Только под самой надписью: стрелка
+   доворачивается на 45°, а вес файла — сноска, подчеркивать ее нечего. */
+.cv-links .link-arrow > span:first-child,
+.link-arrow.about-more > span:first-child{ position: relative; }
+.cv-links .link-arrow > span:first-child::after,
+.link-arrow.about-more > span:first-child::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .42s var(--ease) .04s;
+}
+.cv-links .link-arrow:hover > span:first-child::after,
+.cv-links .link-arrow:focus-visible > span:first-child::after,
+.link-arrow.about-more:hover > span:first-child::after,
+.link-arrow.about-more:focus-visible > span:first-child::after{ transform: scaleX(1); }
 
 @media (max-width: 720px){
   .about-row{
@@ -3183,7 +3216,9 @@ h1,h2,h3,p{ margin: 0; }
    из исходного файла (fill в svg заменён на currentColor). */
 .process-lead{ display: flex; flex-direction: column; gap: 24px; }
 .process-lead__icon{
-  width: clamp(128px, 16vw, 208px);
+  /* 88.9% прежнего размера: иконка стала уже ровно на ширину одного ромба
+     (77.18 из 693 единиц viewBox = 11.14%), пропорции сохранены */
+  width: clamp(114px, 14.2vw, 185px);
   height: auto;
   color: var(--ink);
 }
@@ -3206,7 +3241,8 @@ h1,h2,h3,p{ margin: 0; }
      текста справа (измерено в браузере: getBoundingClientRect ромбов
      против getClientRects текста) */
   margin-top: -17px;
-  width: 100%;
+  /* не 100%, а 88.9%: уже на ширину одного ромба */
+  width: 88.9%;
   max-width: none;
 }
 .about-row--icon-label > .about-row__body{ grid-row: 1 / 3; grid-column: 2; }
@@ -3452,7 +3488,7 @@ h1,h2,h3,p{ margin: 0; }
     grid-column: auto;
   }
   .about-row--icon-label > .process-lead__icon{
-    width: min(100%, 208px);
+    width: min(88.9%, 185px);
     margin-top: 16px;
   }
 }

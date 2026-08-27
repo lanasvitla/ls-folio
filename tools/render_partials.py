@@ -34,6 +34,18 @@ def load_manifest() -> dict:
     return json.loads(MANIFEST.read_text(encoding="utf-8"))
 
 
+def cv_size(rel_path: str) -> str:
+    """Вес файла резюме — считается при сборке, а не пишется руками.
+
+    Рядом со ссылкой стоит «PDF · N КБ», и это обещание должно оставаться
+    правдой: заменили файл, пересобрали — цифра поехала следом.
+    """
+    f = SITE / rel_path
+    if not f.is_file():
+        raise SystemExit(f"[render_partials] нет файла резюме: {rel_path}")
+    return f"{round(f.stat().st_size / 1024)}&nbsp;КБ"
+
+
 def build_directions(page: dict, directions: dict) -> dict:
     """Переключатель направлений и блок «Другие направления».
 
@@ -94,7 +106,20 @@ def build_directions(page: dict, directions: dict) -> dict:
     steps = arrow.join(
         f'\n  <span class="chip">{c}</span>' for c in d.get("steps", [])
     )
+    # компетенции чипсами, теми же, что под кейсами: один сплошной список без
+    # деления на группы. Восклицательный знак в начале пункта делает чипс
+    # акцентным.
+    chips = []
+    for c in d.get("expertise", []):
+        cls = "chip chip--accent" if c.startswith("!") else "chip"
+        chips.append(f'        <li class="{cls}">{c.lstrip("!")}</li>')
+    groups = (
+        ['      <ul class="tag-chips reveal">\n' + "\n".join(chips) + "\n      </ul>"]
+        if chips
+        else []
+    )
     values.update({
+        "directionExpertise": "\n".join(groups),
         "switchItems": "\n".join(items),
         "otherDirections": "\n".join(others) + "\n" + star.format(mod="mid"),
         "directionName": d["name"],
@@ -102,9 +127,10 @@ def build_directions(page: dict, directions: dict) -> dict:
         "directionLead": d.get("pageLead", d.get("desc", "")),
         "directionSkills": skills,
         "directionSteps": steps,
+        "directionProcessLead": d.get("processLead", ""),
         "directionProcess": root + d["process"],
         "directionCv": root + d["cv"],
-        "directionCvLabel": d["cvLabel"],
+        "directionCvSize": cv_size(d["cv"]),
     })
     return values
 
@@ -169,10 +195,15 @@ def build_metrics(page: dict, metrics: dict) -> dict:
                 f"Есть: {', '.join(sorted(metrics))}"
             )
         m = metrics[key]
+        # Источник идет хвостом внутри текста, а не отдельной строкой: так его
+        # и просили. Он может быть пустым — метрика не всегда привязана к одному
+        # проекту, тогда хвоста просто нет.
+        source = m.get("source", "")
+        tail = f' <i>{source}</i>' if source else ""
         items.append(
             '        <li class="reveal">\n'
             f'          <b>{m["value"]}</b>\n'
-            f'          <span>{m["text"]} <i>{m["source"]}</i></span>\n'
+            f'          <span>{m["text"]}{tail}</span>\n'
             '        </li>'
         )
     return {"metricsItems": "\n".join(items)}
