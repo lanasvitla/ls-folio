@@ -272,8 +272,10 @@ h1,h2,h3,p{ margin: 0; }
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: 41px;
-  height: 41px;
+  /* 44px — минимум зоны нажатия по Apple HIG. Фон прозрачный и полоски стоят
+     по центру, поэтому рост с 41px виден только пальцу, не глазу. */
+  width: 44px;
+  height: 44px;
   flex: 0 0 auto;
   background: transparent;
   border: none;
@@ -306,27 +308,49 @@ h1,h2,h3,p{ margin: 0; }
   .site-header__menu-btn{ display: flex; }
   .site-header__nav{ display: none; }
   .site-header.is-open .site-header__logo{ margin-left: 0; }
+  /* Меню списком, а не строкой. В строку помещались четыре пункта, пятый
+     («Направления») сжал их до нечитаемого; на 375px пункты вставали в 15px
+     без отступов, и попасть пальцем можно было только в сам текст.
+     Теперь каждый пункт — строка во всю ширину с зоной нажатия 48px:
+     это выше минимума Apple HIG (44pt) и WCAG. */
   .site-header.is-open .site-header__nav{
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
     gap: 0;
     width: 100%;
-    margin-top: 20px;
-    padding-bottom: 4px;
+    margin-top: 14px;
   }
   .site-header.is-open .site-header__nav-links{
-    display: contents;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
   }
   .site-header.is-open .site-header__nav-links a{
-    font-size: 15px;
-    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 12px 2px;
+    font-size: 17px;
   }
-  .site-header.is-open .site-header__nav a:not(.site-header__cta){ display: block; }
+  /* волосяная линия между строками: видно, где кончается одна зона нажатия
+     и начинается следующая */
+  .site-header.is-open .site-header__nav-links a + a{
+    border-top: 1px solid var(--line);
+  }
+  /* сдвиг вправо на hover в списке не нужен: на тач-экране наведения нет,
+     а в вертикальном ряду он ломает левый край */
+  .site-header.is-open .site-header__nav-links a:hover{ transform: none; }
+  .site-header.is-open .site-header__nav a:not(.site-header__cta){ display: flex; }
   .site-header.is-open .site-header__cta{
-    font-size: 15px;
-    padding: 6px 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    margin-top: 14px;
+    padding: 12px 16px;
+    font-size: 17px;
     white-space: nowrap;
   }
   .site-header.is-open .site-header__inner{
