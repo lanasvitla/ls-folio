@@ -1,3 +1,128 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Manrope, вариативное начертание 200–800, свои файлы вместо Google Fonts.
+
+   Было: семь статических начертаний с fonts.googleapis.com. Браузер тянул
+   по файлу на каждое начертание и на каждый алфавит — четырнадцать запросов
+   и 267 КБ на русской странице, и отрисовка ждала ответа чужого домена.
+   Стало: один файл на алфавит, два запроса и 38 КБ с того же домена.
+   Подмножества размечены unicode-range: браузер скачивает только те буквы,
+   которые есть на странице.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../fonts/cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Шрифты реплики сайта вышивки. Живут только на странице этого кейса, но
+   тянулись из Google так же, как основной шрифт. Забраны к себе по той же
+   причине: чужой домен на пути к первой отрисовке и IP посетителя у Google.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-300-italic-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-300-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-300-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-300-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/inter-400-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/inter-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../fonts/cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../fonts/greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../fonts/vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../fonts/latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../fonts/latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ============================================================
    Lana Svitla — Portfolio v2 design system
    Style family: Manrope, large display type, generous whitespace,
@@ -395,34 +520,7 @@ h1,h2,h3,p{ margin: 0; }
   background: var(--surface-soft);
   aspect-ratio: 16/8.2;
 }
-.hero__media img{ width: 100%; height: 100%; object-fit: cover; }
-
-/* Home intro follows the reference's restrained one-line greeting. */
-/* First screen budget: title + lockup + portrait row + button must clear the
-   fold on a laptop. The three vertical gaps are expressed in svh so the whole
-   composition shrinks with the window instead of pushing the button under it. */
-.hero--home{
-  min-height: 0;
-  display: grid;
-  place-items: center;
-  padding: var(--stack-gap) 0 var(--stack-gap);
-  text-align: center;
-}
-/* Reference at 1440: 40px / 56px / 500, one line, grey lead-in + black name,
-   block centred at max-width 920. Cyrillic runs wider than Latin, so the cap is
-   raised to 1040 to keep «Привет! Я Lana Svitla» on a single line. */
-.hero__title--home{
-  max-width: 1040px;
-  font-size: clamp(28px, 2.9vw, 40px);
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: normal;
-}
-.hero__title--home span{
-  color: var(--tone-soft);
-}
-
-/* Home about teaser: the V1 portrait interaction in the quieter V2 system. */
+.hero__media img{ width: 100%; height: 100%; object-fit: cover; }/* Home about teaser: the V1 portrait interaction in the quieter V2 system. */
 .home-about{
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -439,22 +537,7 @@ h1,h2,h3,p{ margin: 0; }
   height: var(--portrait-h, 260px);
   aspect-ratio: 1;
   overflow: visible;
-}
-.home-about__image{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity .45s var(--ease), transform .65s var(--ease);
-}
-.home-about__image--base{ opacity: 1; }
-.home-about__image--hover{ opacity: 0; }
-.home-about__content{
-  display: grid;
-  align-content: center;
-}
-.home-about__text{
+}.home-about__text{
   max-width: 30ch;
   font-family: var(--font-display);
   font-size: var(--fs-about-lead);
@@ -467,71 +550,11 @@ h1,h2,h3,p{ margin: 0; }
 .home-about__text b{
   color: var(--ink);
   font-weight: 500;
-}
-.home-about__more{
-  justify-self: end;
-  margin-top: clamp(20px, 3svh, 42px);
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 57px;
-  padding: 16px 32px;
-  border-radius: 64px;
-  background: var(--tint-soft);
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.4;
-  /* the outline is drawn with an inset shadow, not a border: a real border
-     would add 2px to the box and nudge the label on hover */
-  box-shadow: inset 0 0 0 0 var(--ink);
-  transition: background .3s var(--ease), box-shadow .3s var(--ease);
-}
-.home-about__more:hover{
-  background: var(--surface);
-  box-shadow: inset 0 0 0 1px var(--ink);
-}
-.home-about__more:hover .icon-arrow-ne{ transform: rotate(45deg); }
-.home-about__more:focus-visible{ outline: 2px solid var(--ink); outline-offset: 2px; }
-.home-about__more .icon-arrow-ne{
+}.home-about__more:hover .icon-arrow-ne{ transform: rotate(45deg); }.home-about__more .icon-arrow-ne{
   width: 16px;
   height: 16px;
   transition: transform .3s var(--ease);
-}
-.home-about__hi{
-  position: absolute;
-  z-index: 3;
-  top: 18px;
-  right: -36px;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  pointer-events: none;
-  animation: home-hi-float 12s cubic-bezier(.45, 0, .55, 1) infinite;
-  will-change: transform;
-}
-.home-about__hi-cursor{
-  width: 19px;
-  height: 20px;
-  background: var(--ink);
-  clip-path: polygon(0 0, 100% 40%, 44% 55%, 32% 100%);
-  transform: rotate(-14deg);
-}
-.home-about__hi-label{
-  display: inline-flex;
-  align-items: center;
-  min-height: 23px;
-  padding: 5px 9px 6px;
-  border-radius: 5px;
-  background: var(--ink);
-  color: var(--surface);
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1;
-  white-space: nowrap;
-}
-/* Амплитуда ±7px по каждой оси: путь по диагонали ≈19.8px — вдвое короче
+}/* Амплитуда ±7px по каждой оси: путь по диагонали ≈19.8px — вдвое короче
    прежнего. Период 12s: на этом пути даёт 3.3 px/s — на треть медленнее,
    чем 8s, по отдельной правке Ланы. */
 @keyframes home-hi-float{
@@ -567,87 +590,20 @@ h1,h2,h3,p{ margin: 0; }
   color: var(--muted);
   max-width: 40ch;
   font-size: var(--fs-lead);
-}
-.services__grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.services__col{
-  background: var(--surface);
-  padding: 28px clamp(24px, 3vw, 42px) 34px;
-  border-left: 1px solid var(--line);
-}
-.services__col:first-child{ border-left: 0; padding-left: 0; }
-.services__col:last-child{ padding-right: 0; }
-.services__index{
-  margin-bottom: 56px;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 500;
-}
-.services__col h3{
-  font-size: var(--fs-h3);
-  font-weight: 500;
-  margin-bottom: 28px;
-}
-.services__col ul li{
-  color: var(--muted);
-  min-height: 54px;
-  display: flex;
-  align-items: center;
-  padding: 12px 0;
-  border-top: 1px solid var(--line);
-  font-size: 15px;
-}
-
-@media (max-width: 860px){
+}@media (max-width: 860px){
   .home-about{
     grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
     gap: 48px;
-  }
-  .services__grid{ grid-template-columns: 1fr; }
-  .services__col,
-  .services__col:first-child,
-  .services__col:last-child{
-    padding: 28px 0 34px;
-    border-left: 0;
-    border-top: 1px solid var(--line);
-  }
-  .services__col:first-child{ border-top: 0; }
-  .services__index{ margin-bottom: 28px; }
-}
+  }}
 
-@media (max-width: 640px){
-  .hero--home{
-    min-height: 230px;
-    padding: 64px 0 48px;
-  }
-  .hero__title--home{
-    max-width: 10ch;
-    font-size: clamp(38px, 12vw, 52px);
-  }
-  .home-about{
+@media (max-width: 640px){  .home-about{
     grid-template-columns: 1fr;
     gap: 40px;
     padding: 32px 0 88px;
   }
   .home-about__portrait{
     width: min(82vw, 360px);
-  }
-  .home-about__hi{
-    top: 14px;
-    right: -16px;
-  }
-  .home-about__text{ max-width: none; }
-  .home-about__more{
-    justify-self: start;
-    margin-top: 32px;
-    padding: 14px 24px;
-    min-height: 53px;
-  }
-}
+  }  .home-about__text{ max-width: none; }}
 
 .chip{
   font-size: 12px;
@@ -667,7 +623,6 @@ h1,h2,h3,p{ margin: 0; }
   margin-top: 24px;
 }
 .process-chips .ic{ width: 14px; height: 14px; color: var(--muted); }
-
 
 /* ---------- case page ---------- */
 /* padding-bottom is required, not decorative: whatever the hero's last child
@@ -751,15 +706,7 @@ h1,h2,h3,p{ margin: 0; }
 /* height: auto is required, not optional: the width/height attributes on the
    <img> act as a presentational hint, so scaling the width alone leaves the
    old pixel height in place and squashes the picture */
-.case-hero__media img{ width: 100%; height: auto; display: block; }
-/* square cover: at full column width it would stand 1178px tall, so it is held
-   to a poster size and centred instead of stretched across the page */
-.case-hero__media--poster{
-  max-width: 760px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.case-hero__media--video{ aspect-ratio: 16 / 9; }
+.case-hero__media img{ width: 100%; height: auto; display: block; }.case-hero__media--video{ aspect-ratio: 16 / 9; }
 .case-hero__media--video iframe{ display: block; width: 100%; height: 100%; border: 0; }
 
 .case-overview{
@@ -805,11 +752,7 @@ h1,h2,h3,p{ margin: 0; }
   height: auto;
   border-radius: var(--radius-lg);
 }
-.case-gallery--two{ grid-template-columns: 1fr 1fr; }
-.case-gallery--three{ grid-template-columns: 1fr 1fr 1fr; }
-
-.case-link-row{ padding-bottom: 80px; }
-.case-gallery--tight-bottom{ padding-bottom: 80px; }
+.case-gallery--two{ grid-template-columns: 1fr 1fr; }.case-gallery--tight-bottom{ padding-bottom: 80px; }
 /* Идущие подряд галереи — это одна сетка, разбитая на секции только ради
    разной раскладки строк (2 в ряд / во всю ширину). Поэтому по вертикали
    между ними тот же шаг, что и между картинками внутри строки (gap: 24px),
@@ -983,9 +926,7 @@ h1,h2,h3,p{ margin: 0; }
 @supports (text-box-trim: trim-start){
   .case-other{ margin-top: 40px; }
   .section-head h2{ text-box-trim: trim-start; text-box-edge: cap alphabetic; }
-}
-.case-other--no-border{ border-top: none; }
-.case-other__grid{ margin-top: 40px; padding-bottom: 0; }
+}.case-other__grid{ margin-top: 40px; padding-bottom: 0; }
 
 /* ---------- about page ----------
    Reference /about: narrow label column on the left (16px/500), content on the
@@ -1122,9 +1063,7 @@ h1,h2,h3,p{ margin: 0; }
   font-size: var(--fs-body);
   line-height: 1.5;
 }
-.about-list li:first-child{ border-top: none; padding-top: 0; }
-.about-list--courses{ margin-top: 40px; }
-/* A row hidden with hidden="until-found" keeps its box: the browser skips the
+.about-list li:first-child{ border-top: none; padding-top: 0; }/* A row hidden with hidden="until-found" keeps its box: the browser skips the
    contents, not the padding and the hairline, so it would leave an empty
    striped band behind. Zeroing both collapses it to nothing while the row stays
    reachable by find-in-page. */
@@ -1173,26 +1112,7 @@ h1,h2,h3,p{ margin: 0; }
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 40px;
   max-width: 780px;
-}
-.expertise__name{
-  margin-bottom: 12px;
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--ink);
-}
-.expertise__list{
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--muted);
-  text-wrap: pretty;
-}
-.expertise__shared{
-  grid-column: 1 / -1;
-  padding-top: 28px;
-  border-top: 1px solid var(--line);
-}
-.about-tags__line{ max-width: 780px; font-size: var(--fs-body); line-height: 1.55; color: var(--muted); }
+}.about-tags__line{ max-width: 780px; font-size: var(--fs-body); line-height: 1.55; color: var(--muted); }
 /* Компетенции чипсами — те же `.chip` с фоном, что под кейсами. */
 .tag-chips{ margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; max-width: 780px; }
 .tag-chips .chip{ background: var(--surface); }
@@ -1287,38 +1207,7 @@ h1,h2,h3,p{ margin: 0; }
   line-height: .75;
   letter-spacing: normal;
   color: var(--mark);
-}
-/* The glyphs fill the 132px box to the pixel (ink measures 131.8), so a clip of
-   inset(0 …) shaved the caps. Padding widens the clip box; the negative margin
-   gives the space back to the layout, so the lockup height does not change. */
-.lockup__layer{
-  display: block;
-  width: max-content;
-  padding: 10px 0;
-  margin: -10px 0;
-  white-space: nowrap;
-  will-change: clip-path, transform;
-}
-/* the first layer stays in flow so the heading has a width of its own —
-   with both layers absolute the box collapsed to zero and the shapes beside it
-   slid on top of the word */
-.lockup__layer--from{
-  position: relative;
-  color: var(--morph-from-color, var(--ink));
-  clip-path: var(--morph-from-clip, inset(0 0 0 0));
-  transform: translateY(var(--morph-from-y, 0));
-}
-.lockup__layer--to{
-  position: absolute;
-  inset: 0 auto auto 0;
-}
-.lockup__layer--to{
-  color: var(--morph-to-color, var(--ink));
-  clip-path: var(--morph-to-clip, inset(100% 0 0 0));
-  transform: translateY(var(--morph-to-y, 0));
-  pointer-events: none;
-}
-/* WORKS is the longer word: the heading keeps room for it so the shapes do not
+}/* WORKS is the longer word: the heading keeps room for it so the shapes do not
    jump sideways halfway through the morph */
 .lockup__word::after{
   content: "WORK";
@@ -1333,26 +1222,7 @@ h1,h2,h3,p{ margin: 0; }
   align-items: flex-start;
   gap: clamp(20px, 3vw, 40px);
   pointer-events: none;
-}
-.lockup__frame{
-  display: grid;
-  place-items: center;
-  width: var(--lockup-size);
-  height: var(--lockup-size);
-  overflow: hidden;
-  transform-style: preserve-3d;
-  perspective: 700px;
-}
-/* each shape leaves on its own timing, so they do not vanish as one slab */
-.lockup__frame--flip{
-  clip-path: var(--form-one-clip, inset(0 0 0 0));
-  transition: transform 740ms cubic-bezier(.16,1,.3,1);
-}
-.lockup__frame--spin{
-  clip-path: var(--form-two-clip, inset(0 0 0 0));
-  transition: transform 920ms cubic-bezier(.16,1,.3,1);
-}
-.lockup__frame--flip.is-flipping{ transform: rotateY(90deg); }
+}.lockup__frame--flip.is-flipping{ transform: rotateY(90deg); }
 .lockup__frame--spin.is-flipping-reverse{ transform: rotateY(-90deg); }
 .lockup__form{
   display: block;
@@ -1361,11 +1231,7 @@ h1,h2,h3,p{ margin: 0; }
   object-fit: contain;
 }
 
-@media (prefers-reduced-motion: reduce){
-  .lockup__frame--flip,
-  .lockup__frame--spin{ transition: none; }
-}
-
+@media (prefers-reduced-motion: reduce){}
 
 /* ============================================================
    Figma: Home / Approved hero + Directions (118:1118)
@@ -1736,7 +1602,6 @@ h1,h2,h3,p{ margin: 0; }
   50%{ transform: scale(1.04); }
 }
 
-
 /* ---------- Большая карточка активного кейса ---------- */
 .featured{
   position: relative;
@@ -2086,10 +1951,7 @@ h1,h2,h3,p{ margin: 0; }
 .directions__star--one{ left: 33.33%; }
 .directions__star--two{ left: 66.66%; }
 /* на «Обо мне» карточек две, поэтому стык один — ровно посередине */
-.directions__star--mid{ left: 50%; }
-/* карточка-переход несёт только заголовок и действие, ей не нужны 400 px */
-.dcard--slim{ min-height: 208px; }
-/* На тач-экране наведения не бывает: браузер подставляет hover после тапа,
+.directions__star--mid{ left: 50%; }/* На тач-экране наведения не бывает: браузер подставляет hover после тапа,
    и лаймовая заливка «залипает» на карточке, к тому же на сжатой карточке
    её фиксированные 72px наезжают на заголовок. Поэтому там её нет вовсе,
    а нажатие подтверждается подсветкой всей карточки. Кликабельность видна
@@ -2097,18 +1959,7 @@ h1,h2,h3,p{ margin: 0; }
 @media (hover: none){
   .dcard__fill{ display: none; }
   .dcard:active{ background: var(--tint-soft); }
-}
-/* Колонка = карточка направления + её CV. Так ссылка принадлежит блоку,
-   а не висит общей строкой снизу: на узком экране колонки встают друг под
-   друга и каждое CV едет вместе со своей карточкой. */
-.about-directions{
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 780px;
-}
-.about-direction{ display: flex; flex-direction: column; min-width: 0; }
-/* 24px — левый внутренний отступ карточки: ссылка начинается по той же
+}/* 24px — левый внутренний отступ карточки: ссылка начинается по той же
    вертикали, что заголовок и «Подробнее» внутри плашки, а не по её краю */
 .about-direction .link-arrow{
   margin-top: 20px;
@@ -2132,13 +1983,7 @@ h1,h2,h3,p{ margin: 0; }
   font-size: 12px;
   color: var(--muted);
   white-space: nowrap;
-}
-/* отступ нужен только когда над карточками есть текст: в «Направлениях»
-   они идут первыми и должны начинаться на общем уровне раздела */
-.about-directions:not(:first-child){ margin-top: 28px; }
-
-
-/* ---------- Каталог «Портфолио» ---------- */
+}/* ---------- Каталог «Портфолио» ---------- */
 .portfolio__head{ padding-top: 73px; }
 .portfolio__title{
   font-family: var(--font-display);
@@ -2446,28 +2291,11 @@ h1,h2,h3,p{ margin: 0; }
   flex-wrap: wrap;
   gap: 8px;
 }
-.js .filters{ display: flex; }
-.filters__btn{
-  padding: 9px 16px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-pill);
-  background: none;
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.2;
-  color: var(--muted);
-  cursor: pointer;
-  transition: color .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
-}
-.filters__btn:hover{ color: var(--ink); border-color: var(--ink); }
-.filters__btn.is-active{
+.js .filters{ display: flex; }.filters__btn.is-active{
   border-color: var(--ink);
   background: var(--ink);
   color: var(--surface);
-}
-.filters__btn:focus-visible{ outline: 2px solid var(--ink); outline-offset: 2px; }
-/* the count is for screen readers; sighted readers see the grid itself change */
+}/* the count is for screen readers; sighted readers see the grid itself change */
 .filters__status{
   position: absolute;
   width: 1px;
@@ -2526,47 +2354,7 @@ h1,h2,h3,p{ margin: 0; }
   z-index: 1;
   outline: 2px solid var(--ink);
   outline-offset: -2px;
-}
-
-
-
-/* ---------- direction router on the shared About page ---------- */
-.about-router__intro{ margin-top: 0; }
-.about-router{
-  margin-top: 28px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  max-width: 780px;
-}
-.about-router__card{
-  display: grid;
-  align-content: start;
-  gap: 10px;
-  padding: 24px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  transition: border-color .3s var(--ease), transform .3s var(--ease);
-}
-.about-router__card:hover{ border-color: var(--ink); transform: translateY(-2px); }
-.about-router__name{
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--ink);
-}
-.about-router__desc{ font-size: 16px; line-height: 1.55; color: var(--muted); }
-.about-router__go{
-  margin-top: 6px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--ink);
-}
-.about-router__card:hover .icon-arrow-ne{ transform: rotate(45deg); }
+}.about-router__card:hover .icon-arrow-ne{ transform: rotate(45deg); }
 
 /* ---------- «Подробнее» at the foot of a services column ---------- */
 .services__more{
@@ -2606,49 +2394,13 @@ h1,h2,h3,p{ margin: 0; }
   align-items: baseline;
   gap: 10px 14px;
   max-width: 780px;
-}
-.flow__step{ display: grid; gap: 2px; }
-.flow__name{
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.4;
-  color: var(--ink);
-  white-space: nowrap;
-}
-.flow__sub{ font-size: 14px; line-height: 1.4; color: var(--muted); white-space: nowrap; }
-.flow__link{ display: flex; align-items: center; color: var(--line); }
-.flow__arrow{ width: 16px; height: 16px; }
-
-.about-steps{ margin-top: 40px; display: grid; gap: 20px; counter-reset: none; }
-.about-steps li{
-  display: grid;
-  grid-template-columns: 48px 1fr;
-  gap: 20px;
-  font-size: 18px;
-  line-height: 1.5;
-  color: var(--muted);
-}
-.about-steps b{ font-weight: 500; color: var(--muted); }
-.about-steps i{ font-style: normal; color: var(--ink); }
-
-
-/* two equal blocks side by side, set in body size */
+}/* two equal blocks side by side, set in body size */
 .about-duo{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 40px;
   max-width: 780px;
-}
-.about-duo__media{
-  margin-bottom: 16px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--surface-soft);
-  aspect-ratio: 4 / 3;
-}
-.about-duo__media img{ width: 100%; height: 100%; object-fit: cover; }
-.about-duo__title{
+}.about-duo__title{
   display: flex;
   align-items: center;
   font-family: var(--font-display);
@@ -2851,21 +2603,14 @@ h1,h2,h3,p{ margin: 0; }
     --card-w: 132px;
     --bleed-l: var(--page-x);
     gap: 20px;
-  }
-  /* в столбик колонки нужно развести: иначе CV первого направления упирается
-     в карточку второго (по горизонтали карточки, наоборот, стоят встык) */
-  .about-directions{ grid-template-columns: 1fr; row-gap: 40px; }
-  .directions__star--mid{ display: none; }
+  }  .directions__star--mid{ display: none; }
   .about-list li{ grid-template-columns: 1fr; gap: 4px; }
   /* В столбик цифра и её текст должны читаться как одна пара, поэтому
      расстояние между парами заметно больше, чем внутри пары (20px).
      При прежних 24px между блоками оказывалось теснее, чем внутри них,
      и метрики сливались в сплошную ленту. */
   .about-facts{ grid-template-columns: 1fr; gap: 60px; }
-  .about-duo{ grid-template-columns: 1fr; gap: 32px; }
-  .about-router{ grid-template-columns: 1fr; gap: 16px; }
-  .filters__btn{ padding: 8px 14px; font-size: 14px; }
-  /* the word plus two shapes do not fit across 390px, so the shapes drop to
+  .about-duo{ grid-template-columns: 1fr; gap: 32px; }  /* the word plus two shapes do not fit across 390px, so the shapes drop to
      their own row instead of pushing the page sideways */
   .lockup{
     --lockup-word: clamp(58px, 16vw, 92px);
@@ -2912,7 +2657,6 @@ h1,h2,h3,p{ margin: 0; }
   --page-x: clamp(20px, 6.25vw, 80px);
   padding-bottom: 96px;
 }
-
 
 .contact-intro{ padding-top: 96px; }
 .contact-intro__eyebrow{
@@ -3515,31 +3259,7 @@ h1,h2,h3,p{ margin: 0; }
     width: min(88.9%, 185px);
     margin-top: 16px;
   }
-}
-
-/* ---------- utility ---------- */
-.section-cta{
-  margin-top: 40px;
-}
-.btn-arrow{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 600;
-  font-size: 14px;
-}
-.btn-arrow img{ width: 14px; height: 14px; }
-
-/* ---------- ссылка на живой сайт: та же лаймовая пилюля и та же инверсия
-   на hover, что у .allworks__circle («Смотреть все работы») — один и тот
-   же язык действия по всему сайту, не отдельный стиль под этот случай */
-.live-link-row{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 40px;
-}
-.live-link{
+}.live-link{
   display: inline-flex;
   align-items: center;
   gap: 14px;

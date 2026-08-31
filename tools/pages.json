@@ -23,7 +23,7 @@
     "mark-n-post": {
       "path": "work/mark-n-post/index.html",
       "title": "Mark’n’Post",
-      "desc": "Лендинг логистического сервиса: форматы отправки, процесс и&nbsp;заявка в&nbsp;Telegram.",
+      "desc": "Лендинг для&nbsp;логистической компании: доставка посылок, документов и&nbsp;личных вещей из&nbsp;Грузии в&nbsp;Европу и&nbsp;страны СНГ.",
       "cover": "assets/works/MarknPost/MarknPostCover.webp",
       "alt": "Mark’n’Post: лендинг логистического сервиса",
       "chips": [
@@ -34,12 +34,26 @@
       "metricValue": "7",
       "metricLabel": "продуктовые страницы для&nbsp;рекламной кампании",
       "niche": "web",
-      "type": "Веб / коммуникация"
+      "type": "Веб / коммуникация",
+      "meta": [
+        [
+          "Формат",
+          "Landing Page"
+        ],
+        [
+          "Платформа",
+          "Web"
+        ],
+        [
+          "Инструменты",
+          "Figma, Claude Code / Vibe coding"
+        ]
+      ]
     },
     "eqlio": {
       "path": "work/eqlio/index.html",
       "title": "Eqlio",
-      "desc": "Корпоративное приложение для&nbsp;спортивных челленджей: сценарии, интерфейс и&nbsp;прототип.",
+      "desc": "Корпоративное приложение для&nbsp;спортивных челленджей: делает wellness-активности доступными и&nbsp;интересными для&nbsp;каждого сотрудника.",
       "cover": "assets/works/Eqlio/EclioCover.webp",
       "alt": "Eqlio: корпоративное приложение для спортивных челленджей",
       "chips": [
@@ -50,13 +64,26 @@
       "metricValue": "6/7",
       "metricLabel": "участников сочли сценарий понятным",
       "niche": "product",
-      "type": "E-commerce / UX/UI"
+      "type": "E-commerce / UX/UI",
+      "meta": [
+        [
+          "Роль",
+          "Product / UX/UI Designer"
+        ],
+        [
+          "Формат",
+          "UX/UI концепт"
+        ],
+        [
+          "Платформы",
+          "iOS, Web"
+        ]
+      ]
     },
     "togas": {
       "path": "work/togas/index.html",
-      "title": "Togas",
-      "shortTitle": "Togas App",
-      "desc": "Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и&nbsp;бонусы.",
+      "title": "Togas Mobile App",
+      "desc": "Мобильное приложение для&nbsp;онлайн-бутика премиальных продуктов для&nbsp;сна: каталог, корзина, оформление заказа, бонусы и&nbsp;карта бутиков.",
       "cover": "assets/works/Togas/TogasApp.webp",
       "alt": "Togas: мобильное приложение премиального бренда",
       "chips": [
@@ -67,12 +94,26 @@
       "metricValue": "+25%",
       "metricLabel": "к&nbsp;числу заказов",
       "niche": "product brand",
-      "type": "Mobile app / UX/UI"
+      "type": "Mobile app / UX/UI",
+      "meta": [
+        [
+          "Проект",
+          "Mobile App Design"
+        ],
+        [
+          "Платформы",
+          "iOS / Android"
+        ],
+        [
+          "Направление",
+          "Communication Design"
+        ]
+      ]
     },
     "visual-brand-identity": {
       "path": "work/visual-brand-identity/index.html",
       "title": "Visual Brand Identity",
-      "desc": "Система иллюстраций для&nbsp;маркетплейса ремесленных товаров.",
+      "desc": "Набор иллюстраций для&nbsp;маркетплейса ремесленных товаров.",
       "cover": "assets/works/Illustration_set/Illustaration_set_01.webp",
       "alt": "Visual Brand Identity: система иллюстраций",
       "chips": [
@@ -83,12 +124,60 @@
       "metricValue": "15",
       "metricLabel": "изображений в&nbsp;визуальной системе",
       "niche": "brand",
-      "type": "Бренд / иллюстрация"
+      "type": "Бренд / иллюстрация",
+      "meta": [
+        [
+          "Формат",
+          "Category system"
+        ],
+        [
+          "Стиль",
+          "AI-assisted visuals"
+        ],
+        [
+          "Инструменты",
+          "Midjourney, Nano Banana"
+        ]
+      ],
+      "hero": [
+        "assets/works/Illustration_set/site-case_01.webp",
+        "Visual Brand Identity: обложка иллюстрации"
+      ],
+      "task": "Собрать единую визуальную систему категорий и&nbsp;решение проблемы текущего состояния AI генеративных инструментов&nbsp;– давать набор удачных картинок: пятнадцать разных ремесел должны выглядеть как&nbsp;один каталог.",
+      "solution": "AI на&nbsp;каждой итерации дает свой свет, ракурс и&nbsp;фактуру&nbsp;– попасть в&nbsp;один стиль генерацией сложно. Весь сет доведен до&nbsp;общей сцены, света и&nbsp;палитры, поэтому категории читаются как&nbsp;части одной системы.",
+      "gallery": [
+        [
+          [
+            "assets/works/Illustration_set/site-case_02.webp",
+            "Visual Brand Identity: иллюстрация 2"
+          ],
+          [
+            "assets/works/Illustration_set/site-case_03.webp",
+            "Visual Brand Identity: иллюстрация 3"
+          ]
+        ],
+        [
+          [
+            "assets/works/Illustration_set/site-case_04.webp",
+            "Visual Brand Identity: иллюстрация 4"
+          ]
+        ],
+        [
+          [
+            "assets/works/Illustration_set/site-case_05.webp",
+            "Visual Brand Identity: иллюстрация 5"
+          ],
+          [
+            "assets/works/Illustration_set/site-case_06.webp",
+            "Visual Brand Identity: иллюстрация 6"
+          ]
+        ]
+      ]
     },
     "svitla-embroidery": {
       "path": "work/svitla-embroidery/index.html",
       "title": "Svitla Embroidery Gallery",
-      "desc": "Цифровая галерея и&nbsp;магазин авторской вышивки: страница на&nbsp;каждую работу, три языка.",
+      "desc": "Цифровая галерея и&nbsp;магазин авторской вышивки: каждая работа со&nbsp;своей страницей, историей и&nbsp;условиями покупки.",
       "cover": "assets/works/SvitlaEmbroidery/cover-ls-embroidery.webp",
       "alt": "Svitla Embroidery Gallery: цифровая галерея вышивки",
       "chips": [
@@ -99,7 +188,389 @@
       "metricValue": "20+",
       "metricLabel": "страниц галереи",
       "niche": "web",
-      "type": "Веб / арт-дирекшен"
+      "type": "Веб / арт-дирекшен",
+      "meta": [
+        [
+          "Формат",
+          "Галерея и&nbsp;online-магазин"
+        ],
+        [
+          "Платформа",
+          "Web. Мультиязычная версия (EN&nbsp;/ UKR&nbsp;/ RU)"
+        ],
+        [
+          "Роль",
+          "Web design, Art direction, Vibe coding"
+        ]
+      ]
+    },
+    "amo": {
+      "path": "work/amo/index.html",
+      "title": "AMO",
+      "desc": "Брендинг для&nbsp;презентации косметической линейки.",
+      "cover": "assets/works/AMO/cover.webp",
+      "alt": "AMO: знак-лигатура, вырезанный на камне",
+      "chips": [
+        "Бренд",
+        "AI-визуалы",
+        "Art direction"
+      ],
+      "niche": "brand",
+      "type": "Бренд / упаковка",
+      "meta": [
+        [
+          "Формат",
+          "Brand System"
+        ],
+        [
+          "Стиль",
+          "AI-assisted visuals"
+        ],
+        [
+          "Инструменты",
+          "Midjourney, Nano Banana"
+        ]
+      ],
+      "hero": [
+        "assets/works/AMO/cover.webp",
+        "AMO: знак-лигатура, вырезанный на камне"
+      ],
+      "task": "Косметическому бренду нужна была система, которая читается как&nbsp;спокойствие. Сложность упаковки в&nbsp;том, что&nbsp;один знак должен одинаково работать при&nbsp;любой подаче: в&nbsp;тиснении на&nbsp;металле, в&nbsp;печати на&nbsp;картоне и&nbsp;на&nbsp;ткани.",
+      "solution": "Знак построен как&nbsp;лигатура A-m-o с&nbsp;заданной геометрией и&nbsp;сеткой, поэтому масштабируется без&nbsp;потери характера. Палитра – четыре теплых нейтральных оттенка от&nbsp;сливочного до&nbsp;графита, каждый с&nbsp;номером Pantone под&nbsp;печать. Типографика – две гарнитуры: гротеск Switzer и&nbsp;антиква Ortica. Система намеренно простая: приглушенный цвет, много воздуха.",
+      "gallery": [
+        [
+          [
+            "assets/works/AMO/amo-01.webp",
+            "AMO: заявление бренда и знак"
+          ]
+        ],
+        [
+          [
+            "assets/works/AMO/amo-02.webp",
+            "AMO: знак-лигатура на светлом фоне"
+          ]
+        ],
+        [
+          [
+            "assets/works/AMO/amo-03.webp",
+            "AMO: построение знака по сетке"
+          ]
+        ],
+        [
+          [
+            "assets/works/AMO/amo-04.webp",
+            "AMO: палитра и типографика"
+          ]
+        ],
+        [
+          [
+            "assets/works/AMO/amo-05.webp",
+            "AMO: линейка упаковки целиком"
+          ]
+        ],
+        [
+          [
+            "assets/works/AMO/amo-06.webp",
+            "AMO: туба и коробка Deep Hydration"
+          ]
+        ],
+        [
+          [
+            "assets/works/AMO/amo-07.webp",
+            "AMO: коробка Deep Hydration на песке"
+          ]
+        ],
+        [
+          [
+            "assets/works/AMO/amo-08.webp",
+            "AMO: коробка в композиции с тканью"
+          ]
+        ],
+        [
+          [
+            "assets/works/AMO/amo-09.webp",
+            "AMO: туба и шоппер с вышивкой"
+          ]
+        ],
+        [
+          [
+            "assets/works/AMO/amo-10.webp",
+            "AMO: макеты для соцсетей"
+          ]
+        ]
+      ]
+    },
+    "fora": {
+      "path": "work/fora/index.html",
+      "title": "Fora",
+      "desc": "Брендинг платежного сервиса (финтех-стартап): лого-знак, система цвета и&nbsp;типографики, модульный паттерн.",
+      "cover": "assets/works/Fora/cover.webp",
+      "alt": "Fora: знак на синем фоне",
+      "chips": [
+        "Бренд",
+        "Art direction",
+        "AI-визуалы"
+      ],
+      "niche": "brand",
+      "type": "Бренд / айдентика",
+      "meta": [
+        [
+          "Формат",
+          "Brand Identity"
+        ],
+        [
+          "Стиль",
+          "AI-assisted visuals"
+        ]
+      ],
+      "hero": [
+        "assets/works/Fora/cover.webp",
+        "Fora: знак на синем фоне"
+      ],
+      "task": "Собрать айдентику для&nbsp;платежного сервиса, работающего с&nbsp;обычными и&nbsp;криптовалютными платежами. Одна система должна тянуться от&nbsp;иконки приложения до&nbsp;билборда, не&nbsp;распадаясь.",
+      "solution": "Знак собран из&nbsp;идеи маршрута: точки, дуги и&nbsp;сегменты. Из&nbsp;тех же&nbsp;элементов растет паттерн, поэтому бренд масштабируется без&nbsp;новых сущностей. Насыщенная палитра и&nbsp;Magnetik дают финтеху голос, который звучит уверенно, а&nbsp;не&nbsp;холодно.",
+      "gallery": [
+        [
+          [
+            "assets/works/Fora/fora-01.webp",
+            "Fora: концепция знака и этапы работы"
+          ]
+        ],
+        [
+          [
+            "assets/works/Fora/fora-02.webp",
+            "Fora: построение знака по сетке"
+          ]
+        ],
+        [
+          [
+            "assets/works/Fora/fora-03.webp",
+            "Fora: знак на фирменном синем"
+          ]
+        ],
+        [
+          [
+            "assets/works/Fora/fora-04.webp",
+            "Fora: палитра бренда"
+          ]
+        ],
+        [
+          [
+            "assets/works/Fora/fora-05.webp",
+            "Fora: гарнитура Magnetik"
+          ]
+        ],
+        [
+          [
+            "assets/works/Fora/fora-06.webp",
+            "Fora: модульные элементы и паттерн"
+          ]
+        ],
+        [
+          [
+            "assets/works/Fora/fora-07.webp",
+            "Fora: композиции паттерна на разных фонах"
+          ]
+        ],
+        [
+          [
+            "assets/works/Fora/fora-08.webp",
+            "Fora: паттерн, который подстраивается под пользователя"
+          ]
+        ],
+        [
+          [
+            "assets/works/Fora/fora-09.webp",
+            "Fora: варианты главного баннера"
+          ]
+        ],
+        [
+          [
+            "assets/works/Fora/fora-10.webp",
+            "Fora: приложение на ноутбуке"
+          ]
+        ],
+        [
+          [
+            "assets/works/Fora/fora-11.webp",
+            "Fora: баннеры и сторис"
+          ]
+        ],
+        [
+          [
+            "assets/works/Fora/fora-12.webp",
+            "Fora: мерч — худи, часы, куртка, визитки"
+          ]
+        ],
+        [
+          [
+            "assets/works/Fora/fora-13.webp",
+            "Fora: билборд"
+          ]
+        ],
+        [
+          [
+            "assets/works/Fora/fora-14.webp",
+            "Fora: экран в зале"
+          ]
+        ]
+      ]
+    },
+    "togas-catalogue": {
+      "path": "work/togas-catalogue/index.html",
+      "title": "Togas Print Catalogue",
+      "desc": "Верстка каталога для&nbsp;линейки продуктов для&nbsp;сна.",
+      "cover": "assets/works/TogasCatalogue/cover.webp",
+      "alt": "Togas Print Catalogue: обложка каталога «Система сна»",
+      "chips": [
+        "Web &amp; digital",
+        "Print Design",
+        "Art direction"
+      ],
+      "metricValue": "3",
+      "metricLabel": "коллекции матрасов",
+      "niche": "web",
+      "type": "Print catalogue",
+      "meta": [
+        [
+          "Формат",
+          "Print catalogue"
+        ],
+        [
+          "Стиль",
+          "Editorial layout"
+        ],
+        [
+          "Инструменты",
+          "InDesign, Photoshop, Illustrator"
+        ]
+      ],
+      "hero": [
+        "assets/works/TogasCatalogue/cover.webp",
+        "Togas Print Catalogue: обложка каталога «Система сна»"
+      ],
+      "task": "Togas представляет новую линейку продуктов для&nbsp;сна: матрасы, наполнители, чехлы – товар, который невозможно оценить по&nbsp;фотографии. В&nbsp;каталоге нужно было объяснить технологию и&nbsp;показать премиальный продукт.",
+      "solution": "Технические блоки выполнены в&nbsp;одном стиле, но&nbsp;заверстаны вместе с&nbsp;имиджевыми фотографиями продукта, чтобы поддерживать премиальный стиль бренда. Каталог одновременно и&nbsp;продает, и&nbsp;объясняет.",
+      "gallery": [
+        [
+          [
+            "assets/works/TogasCatalogue/togas-cat-01.webp",
+            "Togas: развороты каталога — коллекции, наполнитель, чехол"
+          ]
+        ],
+        [
+          [
+            "assets/works/TogasCatalogue/togas-cat-02.webp",
+            "Togas: разворот «Синергия движений»"
+          ]
+        ],
+        [
+          [
+            "assets/works/TogasCatalogue/togas-cat-03.webp",
+            "Togas: страница продукта — матрас «Меджести»"
+          ]
+        ]
+      ]
+    },
+    "waiw-ai": {
+      "path": "work/waiw-ai/index.html",
+      "title": "Waiw AI",
+      "desc": "Презентация AI-платформы для&nbsp;сейсморазведки: восемь сценариев обработки геологических данных в&nbsp;одной структуре.",
+      "cover": "assets/works/WaveAI/cover.webp",
+      "alt": "Waiw AI: первый экран презентации платформы",
+      "chips": [
+        "Web &amp; digital",
+        "Презентации",
+        "Figma"
+      ],
+      "niche": "web",
+      "type": "Презентация",
+      "meta": [
+        [
+          "Формат",
+          "Презентация"
+        ],
+        [
+          "Инструменты",
+          "Figma"
+        ]
+      ],
+      "hero": [
+        "assets/works/WaveAI/cover.webp",
+        "Waiw AI: первый экран презентации платформы"
+      ],
+      "task": "Уложить техническое содержание в&nbsp;понятную структуру: платформу для&nbsp;геологов надо было показать тем, кто принимает решение о&nbsp;покупке.",
+      "solution": "Каждый сценарий – отдельный экран с&nbsp;одинаковым устройством: заголовок, контекст задачи, примеры запросов к&nbsp;системе. Темный фон и&nbsp;объемные сейсмические срезы держат внимание. Повторяющаяся структура позволяет использовать сценарий как&nbsp;вариативный шаблон.",
+      "gallery": [
+        [
+          [
+            "assets/works/WaveAI/waveai-01.webp",
+            "Waiw AI: первый экран платформы"
+          ]
+        ],
+        [
+          [
+            "assets/works/WaveAI/waveai-10.webp",
+            "Waiw AI: раздел сценариев использования"
+          ]
+        ],
+        [
+          [
+            "assets/works/WaveAI/waveai-02.webp",
+            "Waiw AI: быстрая оценка перспектив участка"
+          ]
+        ],
+        [
+          [
+            "assets/works/WaveAI/waveai-03.webp",
+            "Waiw AI: движок GeoSurreal GenAI и корреляция скважин"
+          ]
+        ],
+        [
+          [
+            "assets/works/WaveAI/waveai-04.webp",
+            "Waiw AI: примеры запросов и совместная работа"
+          ]
+        ],
+        [
+          [
+            "assets/works/WaveAI/waveai-05.webp",
+            "Waiw AI: автоматический контроль качества интерпретации"
+          ]
+        ],
+        [
+          [
+            "assets/works/WaveAI/waveai-06.webp",
+            "Waiw AI: быстрый анализ play-концепций"
+          ]
+        ],
+        [
+          [
+            "assets/works/WaveAI/waveai-07.webp",
+            "Waiw AI: планирование разработки месторождения"
+          ]
+        ],
+        [
+          [
+            "assets/works/WaveAI/waveai-08.webp",
+            "Waiw AI: работа с историей интерпретаций"
+          ]
+        ],
+        [
+          [
+            "assets/works/WaveAI/waveai-09.webp",
+            "Waiw AI: анализ повторной съемки во времени"
+          ]
+        ],
+        [
+          [
+            "assets/works/WaveAI/waveai-11.webp",
+            "Waiw AI: знак"
+          ]
+        ]
+      ],
+      "metricValue": "30",
+      "metricLabel": "слайдов в&nbsp;системе и&nbsp;едином стиле"
     }
   },
   "directions": {
@@ -250,7 +721,8 @@
       "navDirections": "",
       "description": "Lana Svitla – дизайнер бренда и продукта. Айдентика, UX/UI и веб-дизайн.",
       "ogTitle": "Lana Svitla – Brand, Product & UX/UI Designer",
-      "ogImage": "assets/images/og-default.jpg"
+      "ogImage": "assets/images/og-default.jpg",
+      "pageTitle": "Lana Svitla – Brand, Product &amp; UX/UI Designer"
     },
     {
       "path": "portfolio.html",
@@ -273,8 +745,12 @@
       "root": "",
       "caseList": [
         "mark-n-post",
+        "amo",
         "eqlio",
         "togas",
+        "togas-catalogue",
+        "fora",
+        "waiw-ai",
         "visual-brand-identity",
         "svitla-embroidery"
       ],
@@ -284,7 +760,8 @@
       "navDirections": "",
       "description": "Portfolio Lana Svitla: бренд-дизайн, продуктовый UX/UI, web и digital.",
       "ogTitle": "Портфолио – Lana Svitla",
-      "ogImage": "assets/images/og-default.jpg"
+      "ogImage": "assets/images/og-default.jpg",
+      "pageTitle": "Портфолио – Lana Svitla"
     },
     {
       "path": "about.html",
@@ -318,7 +795,8 @@
         "togas-sites",
         "verba-traffic",
         "mentoring-middle"
-      ]
+      ],
+      "pageTitle": "Обо мне – Lana Svitla"
     },
     {
       "path": "product.html",
@@ -361,7 +839,8 @@
         "togas-orders",
         "cs-design-system",
         "ithub-course"
-      ]
+      ],
+      "pageTitle": "Продукт и&nbsp;UX/UI – Lana Svitla"
     },
     {
       "path": "brand.html",
@@ -391,7 +870,9 @@
       "root": "",
       "caseList": [
         "togas",
-        "visual-brand-identity"
+        "visual-brand-identity",
+        "amo",
+        "fora"
       ],
       "direction": "brand",
       "webHref": "./web.html",
@@ -404,7 +885,8 @@
         "verba-traffic",
         "verba-campaigns",
         "togas-sites"
-      ]
+      ],
+      "pageTitle": "Бренд и&nbsp;коммуникация – Lana Svitla"
     },
     {
       "path": "process.html",
@@ -431,7 +913,8 @@
       "description": "Как я веду проект. Бренд-задача и продукт: дизайн-процесс по шагам.",
       "ogTitle": "Процесс – Lana Svitla",
       "ogImage": "assets/images/og-default.jpg",
-      "servicesFromDirections": true
+      "servicesFromDirections": true,
+      "pageTitle": "Процесс – Lana Svitla"
     },
     {
       "path": "process-product.html",
@@ -460,7 +943,8 @@
       "description": "Как я веду продуктовый проект: от бизнес-задачи и метрики до передачи в разработку и замера результата.",
       "ogTitle": "Продуктовый процесс – Lana Svitla",
       "ogImage": "assets/images/og-default.jpg",
-      "noindex": true
+      "noindex": true,
+      "pageTitle": "Продуктовый процесс – Lana Svitla"
     },
     {
       "path": "process-brand.html",
@@ -489,7 +973,8 @@
       "description": "Как я веду бренд-проект: от брифа и аудита до айдентики, носителей и гайдлайна.",
       "ogTitle": "Бренд-процесс – Lana Svitla",
       "ogImage": "assets/images/og-default.jpg",
-      "noindex": true
+      "noindex": true,
+      "pageTitle": "Бренд-процесс – Lana Svitla"
     },
     {
       "path": "contacts.html",
@@ -513,11 +998,13 @@
       "navDirections": "",
       "description": "Lana Svitla. Дизайнер бренда и продукта: Email, Telegram, LinkedIn, Behance. CV.",
       "ogTitle": "Контакты – Lana Svitla",
-      "ogImage": "assets/images/og-default.jpg"
+      "ogImage": "assets/images/og-default.jpg",
+      "pageTitle": "Контакты – Lana Svitla"
     },
     {
       "path": "work/mark-n-post/index.html",
       "components": [
+        "case-intro",
         "icons",
         "site-header",
         "other-projects",
@@ -543,11 +1030,14 @@
       "navDirections": "",
       "description": "Сервис логистической компании: форматы отправки, процесс и заявки в Telegram. 7 продуктовых страниц для рекламной кампании.",
       "ogTitle": "Mark’n’Post",
-      "ogImage": "assets/works/MarknPost/MarknPostCover.webp"
+      "ogImage": "assets/works/MarknPost/MarknPostCover.webp",
+      "pageTitle": "Mark’n’Post – Lana Svitla",
+      "case": "mark-n-post"
     },
     {
       "path": "work/eqlio/index.html",
       "components": [
+        "case-intro",
         "icons",
         "site-header",
         "other-projects",
@@ -573,11 +1063,14 @@
       "navDirections": "",
       "description": "Корпоративное приложение для спортивных челленджей: сценарии, интерфейс и прототип.",
       "ogTitle": "Eqlio",
-      "ogImage": "assets/works/Eqlio/EclioCover.webp"
+      "ogImage": "assets/works/Eqlio/EclioCover.webp",
+      "pageTitle": "Eqlio – Lana Svitla",
+      "case": "eqlio"
     },
     {
       "path": "work/togas/index.html",
       "components": [
+        "case-intro",
         "icons",
         "site-header",
         "other-projects",
@@ -602,12 +1095,15 @@
       "directionsHref": "../../index.html#directions",
       "navDirections": "",
       "description": "Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и бонусы.",
-      "ogTitle": "Togas",
-      "ogImage": "assets/works/Togas/TogasApp.webp"
+      "ogTitle": "Togas Mobile App",
+      "ogImage": "assets/works/Togas/TogasApp.webp",
+      "pageTitle": "Togas Mobile App – Lana Svitla",
+      "case": "togas"
     },
     {
       "path": "work/visual-brand-identity/index.html",
       "components": [
+        "case-body",
         "icons",
         "site-header",
         "other-projects",
@@ -633,11 +1129,146 @@
       "navDirections": "",
       "description": "Визуальная система для сервиса, сет иллюстраций для маркетплейса ремесленных товаров.",
       "ogTitle": "Visual Brand Identity",
-      "ogImage": "assets/works/Illustration_set/Illustaration_set_01.webp"
+      "ogImage": "assets/works/Illustration_set/Illustaration_set_01.webp",
+      "pageTitle": "Visual Brand Identity – Lana Svitla",
+      "case": "visual-brand-identity"
+    },
+    {
+      "path": "work/amo/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../",
+      "caseList": [
+        "visual-brand-identity",
+        "togas"
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Брендинг косметической линейки AMO: знак-лигатура, палитра, типографика и система упаковки.",
+      "ogTitle": "AMO",
+      "ogImage": "assets/works/AMO/cover.webp",
+      "pageTitle": "AMO – Lana Svitla",
+      "case": "amo"
+    },
+    {
+      "path": "work/togas-catalogue/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../",
+      "caseList": [
+        "togas",
+        "mark-n-post"
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Каталог «Система сна Togas»: верстка печатного каталога и страницы продукта для новой линейки.",
+      "ogTitle": "Togas Print Catalogue",
+      "ogImage": "assets/works/TogasCatalogue/cover.webp",
+      "pageTitle": "Togas Print Catalogue – Lana Svitla",
+      "case": "togas-catalogue"
+    },
+    {
+      "path": "work/fora/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../",
+      "caseList": [
+        "amo",
+        "togas"
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Айдентика платежного сервиса Fora: модульный знак, паттерн, палитра и типографика.",
+      "ogTitle": "Fora",
+      "ogImage": "assets/works/Fora/cover.webp",
+      "pageTitle": "Fora – Lana Svitla",
+      "case": "fora"
+    },
+    {
+      "path": "work/waiw-ai/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../",
+      "caseList": [
+        "togas-catalogue",
+        "mark-n-post"
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Презентация AI-платформы обработки сейсмических данных Waiw AI: восемь сценариев работы геолога.",
+      "ogTitle": "Waiw AI",
+      "ogImage": "assets/works/WaveAI/cover.webp",
+      "pageTitle": "Waiw AI – Lana Svitla",
+      "case": "waiw-ai"
     },
     {
       "path": "work/svitla-embroidery/index.html",
       "components": [
+        "case-intro",
         "icons",
         "site-header",
         "other-projects",
@@ -663,7 +1294,9 @@
       "navDirections": "",
       "description": "Цифровая галерея и магазин авторской вышивки: 20+ страниц работ, единая визуальная система, языковые версии.",
       "ogTitle": "Svitla Embroidery Gallery",
-      "ogImage": "assets/works/SvitlaEmbroidery/cover-ls-embroidery.webp"
+      "ogImage": "assets/works/SvitlaEmbroidery/cover-ls-embroidery.webp",
+      "pageTitle": "Svitla Embroidery Gallery – Lana Svitla",
+      "case": "svitla-embroidery"
     },
     {
       "path": "web.html",
@@ -693,7 +1326,9 @@
       "root": "",
       "caseList": [
         "mark-n-post",
-        "svitla-embroidery"
+        "svitla-embroidery",
+        "togas-catalogue",
+        "waiw-ai"
       ],
       "direction": "web",
       "webHref": "./web.html",
@@ -706,7 +1341,8 @@
         "verba-traffic",
         "togas-sites",
         "print-catalogs"
-      ]
+      ],
+      "pageTitle": "Web и&nbsp;digital – Lana Svitla"
     },
     {
       "path": "404.html",
@@ -733,7 +1369,8 @@
       "description": "Страница не найдена – Lana Svitla.",
       "ogTitle": "Страница не найдена – Lana Svitla",
       "ogImage": "assets/images/og-default.jpg",
-      "noindex": true
+      "noindex": true,
+      "pageTitle": "Страница не&nbsp;найдена – Lana Svitla"
     }
   ],
   "metrics": {

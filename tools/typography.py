@@ -16,22 +16,34 @@ Usage:
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 from pathlib import Path
 
 SITE = Path(__file__).resolve().parents[1]
 
-TARGETS = [
-    "index.html", "portfolio.html", "about.html", "product.html", "brand.html",
-    "process.html", "process-product.html", "process-brand.html", "contacts.html",
-    "work/mark-n-post/index.html", "work/eqlio/index.html",
-    "work/togas/index.html", "work/visual-brand-identity/index.html",
-    "work/svitla-embroidery/index.html", "web.html", "404.html",
+# Партиалы перечислены руками: типографить нужно только те, где есть текст.
+PARTIALS = [
     "partials/site-header.html", "partials/site-footer.html",
     "partials/social-links.html", "partials/role-switch.html",
     "partials/process-switch.html", "partials/icons.html",
 ]
+
+
+def targets() -> list:
+    """Страницы берём из реестра, а не из списка в этом файле.
+
+    Список руками уже подвёл однажды: новая страница кейса собралась, но
+    осталась без типографики, потому что её забыли сюда вписать, и обе
+    сборки при этом отчитались, что всё чисто.
+    """
+    manifest = json.loads((SITE / "tools/pages.json").read_text(encoding="utf-8"))
+    pages = [p["path"] for p in manifest["pages"]]
+    return pages + PARTIALS
+
+
+TARGETS = None  # заполняется в main(); прямых обращений быть не должно
 
 SHORT = [
     "и", "а", "в", "о", "у", "к", "с", "я", "же", "ли", "бы", "но",
@@ -69,8 +81,10 @@ def process(html: str) -> str:
 
 
 def main() -> int:
+    global TARGETS
     check = "--check" in sys.argv
     pending: list[str] = []
+    TARGETS = targets()
 
     for name in TARGETS:
         path = SITE / name

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Svitla Embroidery Gallery – Lana Svitla</title>
 <!-- component:seo -->
+<title>Svitla Embroidery Gallery – Lana Svitla</title>
 <meta name="description" content="Цифровая галерея и магазин авторской вышивки: 20+ страниц работ, единая визуальная система, языковые версии.">
 
 <link rel="canonical" href="https://lanasvitla.github.io/ls-folio/work/svitla-embroidery/index.html">
@@ -19,12 +19,10 @@
 <meta name="twitter:description" content="Цифровая галерея и магазин авторской вышивки: 20+ страниц работ, единая визуальная система, языковые версии.">
 <meta name="twitter:image" content="https://lanasvitla.github.io/ls-folio/assets/works/SvitlaEmbroidery/cover-ls-embroidery.webp">
 <!-- /component:seo -->
-<link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg?v=2">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Inter:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/css/style.css?v=276">
+<link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg?v=10e4cecf">
+<link rel="preload" href="../../assets/fonts/latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/style.css?v=b63e0508">
 <!-- component:analytics -->
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1WF4KEEHWP"></script>
@@ -101,8 +99,9 @@
   <section class="case-hero">
     <div class="case-forms reveal" data-form-root data-forms-path="../../assets/images/forms/" aria-hidden="true">
       <span class="case-forms__frame case-forms__frame--flip" data-form-slot="flip"><img class="case-forms__img" src="../../assets/images/forms/Union.svg" alt=""></span>
-      <span class="case-forms__frame case-forms__frame--spin" data-form-slot="spin"><img class="case-forms__img" src="../../assets/images/forms/Vector-33.svg" alt=""></span>
+      <span class="case-forms__frame case-forms__frame--spin" data-form-slot="spin"><img class="case-forms__img" src="../../assets/images/forms/Vector-33.svg" alt="" loading="lazy" decoding="async"></span>
     </div>
+    <!-- component:case-intro -->
     <h1 class="case-hero__title reveal">Svitla Embroidery Gallery</h1>
     <p class="case-hero__subtitle reveal">Цифровая галерея и&nbsp;магазин авторской вышивки: каждая работа со&nbsp;своей страницей, историей и&nbsp;условиями покупки.</p>
 
@@ -111,6 +110,7 @@
       <div><dt>Платформа</dt><dd>Web. Мультиязычная версия (EN&nbsp;/ UKR&nbsp;/ RU)</dd></div>
       <div><dt>Роль</dt><dd>Web design, Art direction, Vibe coding</dd></div>
     </dl>
+    <!-- /component:case-intro -->
 
     <div class="case-hero__media case-hero__media--video reveal">
       <iframe src="https://player.vimeo.com/video/1213618057?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;app_id=122963" title="Svitla Embroidery Gallery: видео интерфейса сайта" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>
@@ -143,7 +143,7 @@
         <section class="svitla-hero" lang="en" aria-label="Копия хироу сайта вышивки">
           <div class="svitla-hero__left">
             <p class="svitla-hero__eyebrow">Threads of Meaning</p>
-            <h1 class="svitla-hero__title">SVITLA</h1>
+            <div class="svitla-hero__title">SVITLA</div>
             <p class="svitla-hero__title-sub">Thread Painting Art</p>
             <blockquote class="svitla-hero__quote">&ldquo;Threads of meanings&rdquo; – I paint with threads, weave meanings into them. Each work is a shift in perception, turning something invisible – visible.</blockquote>
             <div class="svitla-hero__actions">
@@ -176,10 +176,10 @@
                 </svg>
               </div>
               <div class="svitla-hero__portal">
-                <img src="../../assets/works/SvitlaEmbroidery/portal/mavka.webp" alt="Mavka">
-                <img src="../../assets/works/SvitlaEmbroidery/portal/ganesh.webp" alt="Ganesh">
-                <img src="../../assets/works/SvitlaEmbroidery/portal/guru.webp" alt="Guru">
-                <img src="../../assets/works/SvitlaEmbroidery/portal/maruti.webp" alt="Maruti">
+                <img src="../../assets/works/SvitlaEmbroidery/portal/mavka.webp" alt="Mavka" loading="lazy" decoding="async" width="700" height="375">
+                <img src="../../assets/works/SvitlaEmbroidery/portal/ganesh.webp" alt="Ganesh" loading="lazy" decoding="async" width="700" height="375">
+                <img src="../../assets/works/SvitlaEmbroidery/portal/guru.webp" alt="Guru" loading="lazy" decoding="async" width="700" height="700">
+                <img src="../../assets/works/SvitlaEmbroidery/portal/maruti.webp" alt="Maruti" loading="lazy" decoding="async" width="700" height="700">
               </div>
               <div class="svitla-hero__portal-blob"></div>
               <div class="svitla-hero__portal-blob-2"></div>
@@ -203,7 +203,7 @@
   </div>
 
   <section class="case-gallery case-gallery--tight-bottom">
-    <img class="reveal" src="../../assets/works/SvitlaEmbroidery/behance-01-cover.webp" width="1400" height="788" alt="Svitla Embroidery Gallery: обложка презентации проекта">
+    <img class="reveal" src="../../assets/works/SvitlaEmbroidery/behance-01-cover.webp" width="1400" height="788" alt="Svitla Embroidery Gallery: обложка презентации проекта" loading="lazy" decoding="async">
   </section>
 
   <section class="case-overview case-overview--three case-overview--no-border">
@@ -227,13 +227,13 @@
   </section>
 
   <section class="case-gallery case-gallery--tight-bottom">
-    <img class="reveal" src="../../assets/works/SvitlaEmbroidery/behance-02-artist.webp" width="1400" height="788" alt="Svitla Embroidery Gallery: раздел об авторе">
+    <img class="reveal" src="../../assets/works/SvitlaEmbroidery/behance-02-artist.webp" width="1400" height="788" alt="Svitla Embroidery Gallery: раздел об авторе" loading="lazy" decoding="async">
   </section>
   <section class="case-gallery case-gallery--tight-bottom">
-    <img class="reveal" src="../../assets/works/SvitlaEmbroidery/behance-03-works.webp" width="1400" height="788" alt="Svitla Embroidery Gallery: избранные работы">
+    <img class="reveal" src="../../assets/works/SvitlaEmbroidery/behance-03-works.webp" width="1400" height="788" alt="Svitla Embroidery Gallery: избранные работы" loading="lazy" decoding="async">
   </section>
   <section class="case-gallery case-gallery--tight-bottom">
-    <img class="reveal" src="../../assets/works/SvitlaEmbroidery/behance-04-shop.webp" width="1400" height="788" alt="Svitla Embroidery Gallery: раздел магазина">
+    <img class="reveal" src="../../assets/works/SvitlaEmbroidery/behance-04-shop.webp" width="1400" height="788" alt="Svitla Embroidery Gallery: раздел магазина" loading="lazy" decoding="async">
   </section>  <!-- component:other-projects -->
   <section class="case-other">
     <div class="section-head reveal">
@@ -242,28 +242,28 @@
     <div class="portfolio__grid case-other__grid">
   <a class="pcase reveal" href="../../work/mark-n-post/index.html">
     <span class="pcase__cover">
-      <img src="../../assets/works/MarknPost/MarknPostCover.webp" alt="Mark’n’Post: лендинг логистического сервиса" width="610" height="458">
+      <img src="../../assets/works/MarknPost/MarknPostCover.webp" alt="Mark’n’Post: лендинг логистического сервиса" width="610" height="458" loading="lazy" decoding="async">
       <span class="pcase__go"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
     </span>
     <span class="pcase__caption">
       <span class="pcase__chips"><span class="chip">Web &amp; digital</span><span class="chip">Web design</span><span class="chip">Vibe coding</span></span>
       <span class="pcase__head">
         <span class="pcase__title">Mark’n’Post</span>
-        <span class="pcase__desc">Лендинг логистического сервиса: форматы отправки, процесс и&nbsp;заявка в&nbsp;Telegram.</span>
+        <span class="pcase__desc">Лендинг для&nbsp;логистической компании: доставка посылок, документов и&nbsp;личных вещей из&nbsp;Грузии в&nbsp;Европу и&nbsp;страны СНГ.</span>
       </span>
       <span class="pcase__metric"><b>7</b><span>продуктовые страницы для&nbsp;рекламной кампании</span></span>
     </span>
   </a>
   <a class="pcase reveal" href="../../work/visual-brand-identity/index.html">
     <span class="pcase__cover">
-      <img src="../../assets/works/Illustration_set/Illustaration_set_01.webp" alt="Visual Brand Identity: система иллюстраций" width="610" height="458">
+      <img src="../../assets/works/Illustration_set/Illustaration_set_01.webp" alt="Visual Brand Identity: система иллюстраций" width="610" height="458" loading="lazy" decoding="async">
       <span class="pcase__go"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
     </span>
     <span class="pcase__caption">
       <span class="pcase__chips"><span class="chip">Бренд</span><span class="chip">Иллюстрация</span><span class="chip">AI-визуалы</span></span>
       <span class="pcase__head">
         <span class="pcase__title">Visual Brand Identity</span>
-        <span class="pcase__desc">Система иллюстраций для&nbsp;маркетплейса ремесленных товаров.</span>
+        <span class="pcase__desc">Набор иллюстраций для&nbsp;маркетплейса ремесленных товаров.</span>
       </span>
       <span class="pcase__metric"><b>15</b><span>изображений в&nbsp;визуальной системе</span></span>
     </span>
@@ -335,6 +335,6 @@
 </footer>
 <!-- /component:site-footer -->
 
-<script src="../../assets/js/main.js?v=36"></script>
+<script src="../../assets/js/main.js?v=3b5a64d4"></script>
 </body>
 </html>

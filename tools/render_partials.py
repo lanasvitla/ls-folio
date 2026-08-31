@@ -20,6 +20,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import hashlib
 from pathlib import Path
 
 SITE = Path(__file__).resolve().parents[1]
@@ -32,6 +33,119 @@ INCLUDE = re.compile(r"(?P<indent>[ \t]*)\{\{>\s*(?P<name>[\w-]+)\s*\}\}")
 
 def load_manifest() -> dict:
     return json.loads(MANIFEST.read_text(encoding="utf-8"))
+
+
+# Файлы, которым браузер обязан верить только после изменения содержимого.
+# Число руками уже подводило: правишь файл, забываешь поднять версию —
+# и у человека остаётся старая версия из кеша. Отпечаток забыть нельзя.
+VERSIONED = ["assets/css/style.css", "assets/js/main.js", "assets/icons/favicon.svg"]
+
+ASSET_LINK = re.compile(
+    r'((?:href|src)="[^"]*?assets/(?:css/style\.css|js/main\.js|icons/favicon\.svg))'
+    r'\?v=[^"]*(")'
+)
+
+
+def asset_versions() -> dict:
+    """Версия файла = отпечаток его содержимого.
+
+    Строка `?v=N` стоит в каждой странице, и раньше её поднимали руками.
+    Забыть — значит отдать читателю старый файл из кэша; ошибиться — значит
+    сбросить кэш без причины. Так уже вышло со скриптом: стилям отпечаток
+    сделали, а `main.js?v=36` остался ручным. Теперь считаются все три.
+    """
+    out = {}
+    for rel in VERSIONED:
+        f = SITE / rel
+        if not f.is_file():
+            raise SystemExit(f"[render_partials] нет файла для версии: {rel}")
+        out[rel.rsplit("/", 1)[1]] = hashlib.sha1(f.read_bytes()).hexdigest()[:8]
+    return out
+
+
+IMG_TAG = re.compile(r"<img\b[^>]*>")
+
+
+_DIM_CACHE: dict = {}
+
+
+def image_dimensions(html: str, page_path: str) -> str:
+    """Проставляет width/height по реальному файлу.
+
+    Без них браузер не знает пропорцию до загрузки и верстка дергается, пока
+    картинки подтягиваются: на длинных кейсах это заметный прыжок. CSS всё
+    равно задаёт `width:100%; height:auto`, атрибуты нужны только чтобы
+    заранее зарезервировать место.
+    """
+    page_dir = (SITE / page_path).parent
+    out, last = [], 0
+    for m in IMG_TAG.finditer(html):
+        tag = m.group(0)
+        if "width=" in tag:
+            continue
+        src = re.search(r'src="([^"]+)"', tag)
+        if not src or src.group(1).startswith(("http://", "https://", "data:")):
+            continue
+        rel = src.group(1)
+        if rel.lower().endswith(".svg"):
+            continue                      # у svg размер задаёт viewBox
+        f = (page_dir / rel).resolve()
+        if f not in _DIM_CACHE:
+            _DIM_CACHE[f] = image_size(f) if f.is_file() else None
+        size = _DIM_CACHE[f]
+        if not size:
+            raise SystemExit(
+                f"[render_partials] {page_path}: не читается картинка {rel}"
+            )
+        out.append((m.start(), m.end(),
+                    tag[:-1].rstrip() + f' width="{size[0]}" height="{size[1]}">'))
+
+    if not out:
+        return html
+    parts = []
+    for start, end, tag in out:
+        parts.append(html[last:start]); parts.append(tag); last = end
+    parts.append(html[last:])
+    return "".join(parts)
+
+
+def lazy_images(html: str) -> str:
+    """Отложенная загрузка проставляется сборкой, а не руками.
+
+    Первая картинка страницы стоит в первом экране — её откладывать вредно,
+    она и есть то, чего читатель ждёт. Все остальные ниже сгиба и грузятся
+    по мере прокрутки. Раньше это добавлялось вручную и держалось на памяти:
+    на страницах кейсов из 14 картинок отложенных было ноль.
+    """
+    # счётчик пикселей аналитики не касается: он лежит в <noscript>, невидим
+    # и «первой картинкой» страницы не является — иначе обложка уезжает
+    # в отложенные, а трекер грузится сразу.
+    hidden = [(m.start(), m.end()) for m in re.finditer(r"<noscript\b.*?</noscript>", html, re.S)]
+
+    out, last, first = [], 0, True
+    for m in IMG_TAG.finditer(html):
+        tag = m.group(0)
+        if any(a <= m.start() < b for a, b in hidden):
+            continue
+        if first:
+            first = False
+            # первая картинка не должна быть отложенной, даже если так написали руками
+            if "loading=" in tag:
+                out.append((m.start(), m.end(),
+                            re.sub(r'\s+(loading|decoding)="[^"]*"', "", tag)))
+            continue
+        if "loading=" in tag:
+            continue
+        out.append((m.start(), m.end(), tag[:-1].rstrip() + ' loading="lazy" decoding="async">'))
+    if not out:
+        return html
+    buf = []
+    for a, b, new in out:
+        buf.append(html[last:a])
+        buf.append(new)
+        last = b
+    buf.append(html[last:])
+    return "".join(buf)
 
 
 def cv_size(rel_path: str) -> str:
@@ -315,6 +429,85 @@ def build_home_cases(page: dict, cases: dict) -> dict:
     }
 
 
+CASE_TEMPLATE = SITE / "tools/case-page.template.html"
+
+
+def ensure_case_page(page: dict) -> None:
+    """Страница кейса заводится сборкой, а не копированием соседнего файла.
+
+    Копирование образца уже стоило одного разъехавшегося заголовка: у нового
+    кейса в <title> осталось имя того, с кого копировали. Каркас одинаковый
+    у всех, руками в нём делать нечего.
+    """
+    target = SITE / page["path"]
+    if target.exists() or not page.get("case"):
+        return
+    skeleton = CASE_TEMPLATE.read_text(encoding="utf-8")
+    skeleton = skeleton.replace("{{root}}", page.get("root", ""))
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(skeleton, encoding="utf-8")
+    print(f"[render_partials] заведена страница кейса: {page['path']}")
+
+
+def build_case_intro(page: dict, cases: dict) -> dict:
+    """Заголовок, лид и шапка страницы кейса — из реестра.
+
+    Раньше это писалось руками в каждой странице и дублировало карточку в
+    каталоге: два места с одним смыслом, и ничто не проверяло, что они
+    совпадают. Теперь текст один, и карточка с шапкой не могут разойтись.
+    """
+    case_id = page.get("case")
+    if not case_id:
+        return {}
+    if case_id not in cases:
+        raise SystemExit(
+            f"[render_partials] unknown case id '{case_id}' in {page['path']}"
+        )
+    case = cases[case_id]
+    rows = "\n".join(
+        f"  <div><dt>{label}</dt><dd>{value}</dd></div>"
+        for label, value in case.get("meta", [])
+    )
+    return {
+        "caseTitle": case["title"],
+        "caseDesc": case["desc"],
+        "caseMetaRows": rows,
+    }
+
+
+def build_case_body(page: dict, cases: dict) -> dict:
+    """Тело страницы кейса: обложка, «Задача», «Решение» и галерея.
+
+    Ряд галереи с двумя картинками получает `--two`, с одной — обычный.
+    Класс выводится из числа картинок, а не хранится в реестре: иначе легко
+    записать «две в ряд» и положить туда три.
+    """
+    case_id = page.get("case")
+    if not case_id or "gallery" not in cases.get(case_id, {}):
+        return {}
+    case = cases[case_id]
+    root = page.get("root", "")
+
+    rows = []
+    for images in case["gallery"]:
+        two = " case-gallery--two" if len(images) == 2 else ""
+        tags = "\n".join(
+            f'  <img class="reveal" src="{root}{src}" alt="{alt}">' for src, alt in images
+        )
+        rows.append(
+            f'<section class="case-gallery{two} case-gallery--tight-bottom">\n'
+            f"{tags}\n</section>"
+        )
+
+    return {
+        "caseHeroSrc": root + case["hero"][0],
+        "caseHeroAlt": case["hero"][1],
+        "caseTask": case["task"],
+        "caseSolution": case["solution"],
+        "caseGallery": "\n\n".join(rows),
+    }
+
+
 def build_case_cards(page: dict, cases: dict, key: str = "caseList") -> str:
     """Render `caseList` — the ids of the cases a page shows — into cards.
 
@@ -350,8 +543,13 @@ def build_case_cards(page: dict, cases: dict, key: str = "caseList") -> str:
             "caseChips": chips,
             "caseTitle": case["title"],
             "caseDesc": case["desc"],
-            "caseMetricValue": case["metricValue"],
-            "caseMetricLabel": case["metricLabel"],
+            # метрика необязательна: не у каждой работы есть честная цифра,
+            # а придуманная хуже, чем никакой
+            "caseMetric": (
+                '\n    <span class="pcase__metric">'
+                f'<b>{case["metricValue"]}</b><span>{case["metricLabel"]}</span></span>'
+                if case.get("metricValue") else ""
+            ),
             "caseNiche": f' data-niche="{case["niche"]}"' if with_niche else "",
             "caseReveal": reveal,
         }
@@ -397,7 +595,17 @@ def render_component(name: str, data: dict) -> str:
         if key not in data:
             missing.append(key)
             return match.group(0)
-        return str(data[key])
+        value = str(data[key])
+        if "\n" not in value:
+            return value
+        # Многострочное значение: продолжения надо отбить так же, как отбита
+        # строка с плейсхолдером, иначе первая строка встаёт по месту, а все
+        # следующие уезжают влево. На вложенных партиалах это особенно заметно.
+        line_start = template.rfind("\n", 0, match.start()) + 1
+        indent = template[line_start:match.start()]
+        if indent.strip():
+            return value
+        return value.replace("\n", "\n" + indent)
 
     rendered = PLACEHOLDER.sub(substitute, template)
     if missing:
@@ -479,6 +687,64 @@ def apply_inline_components(html: str, page_path: str) -> str:
     return INLINE_SLOT.sub(render, html)
 
 
+# Потолки для картинок. Пережимать молча нельзя — это работы автора, и потеря
+# качества дороже сэкономленных килобайт (проверено: пережатие до бюджета
+# по КБ/Мпикс роняло PSNR ниже 40 дБ, разница видна). Поэтому сборка не трогает
+# файлы, а не даёт положить в репозиторий заведомо тяжёлую картинку.
+MAX_WIDTH = 2200          # шире не нужно даже на retina
+MAX_KB = 260              # потолок веса одного файла
+
+
+def image_size(path: Path):
+    """Размеры картинки без сторонних библиотек."""
+    raw = path.read_bytes()
+    if raw[:4] == b"RIFF" and raw[8:12] == b"WEBP":
+        fmt = raw[12:16]
+        if fmt == b"VP8X":
+            return (int.from_bytes(raw[24:27], "little") + 1,
+                    int.from_bytes(raw[27:30], "little") + 1)
+        if fmt == b"VP8 ":
+            i = raw.find(b"\x9d\x01\x2a")
+            if i > 0:
+                return (int.from_bytes(raw[i+3:i+5], "little") & 0x3FFF,
+                        int.from_bytes(raw[i+5:i+7], "little") & 0x3FFF)
+        if fmt == b"VP8L":
+            v = int.from_bytes(raw[21:25], "little")
+            return ((v & 0x3FFF) + 1, ((v >> 14) & 0x3FFF) + 1)
+    if raw[:8] == b"\x89PNG\r\n\x1a\n":
+        return (int.from_bytes(raw[16:20], "big"), int.from_bytes(raw[20:24], "big"))
+    if raw[:2] == b"\xff\xd8":
+        i = 2
+        while i < len(raw) - 9:
+            if raw[i] != 0xFF:
+                i += 1
+                continue
+            m = raw[i+1]
+            if m in (0xC0, 0xC1, 0xC2, 0xC3):
+                return (int.from_bytes(raw[i+7:i+9], "big"),
+                        int.from_bytes(raw[i+5:i+7], "big"))
+            i += 2 + int.from_bytes(raw[i+2:i+4], "big")
+    return None
+
+
+def check_images() -> list:
+    """Картинки, которые нельзя отдавать как есть."""
+    bad = []
+    for f in sorted((SITE / "assets").rglob("*")):
+        if f.suffix.lower() not in (".webp", ".jpg", ".jpeg", ".png"):
+            continue
+        if "_archive" in f.parts:
+            continue
+        kb = f.stat().st_size / 1024
+        rel = f.relative_to(SITE)
+        size = image_size(f)
+        if size and size[0] > MAX_WIDTH:
+            bad.append(f"{rel} — ширина {size[0]} px, потолок {MAX_WIDTH}")
+        if kb > MAX_KB:
+            bad.append(f"{rel} — {kb:.0f} КБ, потолок {MAX_KB} КБ")
+    return bad
+
+
 def main() -> int:
     check_only = "--check" in sys.argv
     manifest = load_manifest()
@@ -486,10 +752,12 @@ def main() -> int:
     cases = manifest.get("cases", {})
     directions = manifest.get("directions", {})
 
+    VERSIONS = asset_versions()
     changed: list[str] = []
 
     for page in manifest["pages"]:
         page_path = page["path"]
+        ensure_case_page(page)
         target = SITE / page_path
         if not target.exists():
             raise SystemExit(f"[render_partials] missing page: {page_path}")
@@ -502,6 +770,8 @@ def main() -> int:
             **build_directions(page, directions),
             **build_metrics(page, manifest.get("metrics", {})),
             **build_services(page, directions),
+            **build_case_intro(page, cases),
+            **build_case_body(page, cases),
             **seo_fields(page),
         }
         original = target.read_text(encoding="utf-8")
@@ -518,6 +788,18 @@ def main() -> int:
         # слоты с атрибутами обрабатываются после блочных: они могут стоять
         # и внутри отрендеренного компонента, и прямо в странице
         html = apply_inline_components(html, page_path)
+
+        # отложенная загрузка для всего, что ниже первого экрана
+        html = lazy_images(html)
+
+        # размеры — из самих файлов, чтобы верстка не прыгала при загрузке
+        html = image_dimensions(html, page_path)
+
+        # версии стилей, скрипта и иконки — от содержимого, а не вручную
+        html = ASSET_LINK.sub(
+            lambda m: f'{m.group(1)}?v={VERSIONS[m.group(1).rsplit("/", 1)[1]]}{m.group(2)}',
+            html,
+        )
 
         # Плейсхолдеры подставляются только внутри слотов компонентов. Если
         # `{{ключ}}` написан прямо в теле страницы, он молча уезжает в вёрстку
@@ -548,6 +830,14 @@ def main() -> int:
             changed.append(name)
             if not check_only:
                 target.write_text(content, encoding="utf-8")
+
+    heavy = check_images()
+    if heavy:
+        print("[render_partials] картинки сверх потолка:")
+        for line in heavy:
+            print(f"  - {line}")
+        print("  пережать вручную и сверить качество, молча сборка не трогает")
+        return 1
 
     if check_only:
         if changed:
