@@ -4,21 +4,8 @@
     <span class="case-forms__frame case-forms__frame--spin" data-form-slot="spin"><img class="case-forms__img" src="{{root}}assets/images/forms/Vector-33.svg" alt=""></span>
   </div>
   {{> case-intro }}
-
-  <div class="case-hero__media reveal">
-    <img src="{{caseHeroSrc}}" alt="{{caseHeroAlt}}">
-  </div>
+{{caseLinks}}{{caseHeroMedia}}
 </section>
 
-<section class="case-overview">
-  <div class="reveal">
-    <h3>Задача</h3>
-    <p>{{caseTask}}</p>
-  </div>
-  <div class="reveal">
-    <h3>Решение</h3>
-    <p>{{caseSolution}}</p>
-  </div>
-</section>
-
+{{caseOverview}}
 {{caseGallery}}

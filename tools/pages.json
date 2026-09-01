@@ -17,7 +17,11 @@
     "procProductAria": "",
     "procBrandAria": "",
     "gaId": "G-1WF4KEEHWP",
-    "ymId": "111964006"
+    "ymId": "111964006",
+    "languages": [
+      "ru",
+      "en"
+    ]
   },
   "cases": {
     "mark-n-post": {
@@ -27,14 +31,14 @@
       "cover": "assets/works/MarknPost/MarknPostCover.webp",
       "alt": "Mark’n’Post: лендинг логистического сервиса",
       "chips": [
-        "Web &amp; digital",
+        "Web&nbsp;&amp;&nbsp;digital",
         "Web design",
         "Vibe coding"
       ],
       "metricValue": "7",
-      "metricLabel": "продуктовые страницы для&nbsp;рекламной кампании",
+      "metricLabel": "продуктовых страниц для&nbsp;рекламной кампании",
       "niche": "web",
-      "type": "Веб / коммуникация",
+      "type": "Web / Landing Page",
       "meta": [
         [
           "Формат",
@@ -55,16 +59,16 @@
       "title": "Eqlio",
       "desc": "Корпоративное приложение для&nbsp;спортивных челленджей: делает wellness-активности доступными и&nbsp;интересными для&nbsp;каждого сотрудника.",
       "cover": "assets/works/Eqlio/EclioCover.webp",
-      "alt": "Eqlio: корпоративное приложение для спортивных челленджей",
+      "alt": "Eqlio: корпоративное приложение для&nbsp;спортивных челленджей",
       "chips": [
-        "Продукт &amp; UX/UI",
+        "Продукт&nbsp;&amp;&nbsp;UX/UI",
         "E-commerce",
         "Прототипы"
       ],
       "metricValue": "6/7",
       "metricLabel": "участников сочли сценарий понятным",
       "niche": "product",
-      "type": "E-commerce / UX/UI",
+      "type": "Mobile App / UX/UI",
       "meta": [
         [
           "Роль",
@@ -82,19 +86,19 @@
     },
     "togas": {
       "path": "work/togas/index.html",
-      "title": "Togas Mobile App",
+      "title": "Togas App",
       "desc": "Мобильное приложение для&nbsp;онлайн-бутика премиальных продуктов для&nbsp;сна: каталог, корзина, оформление заказа, бонусы и&nbsp;карта бутиков.",
       "cover": "assets/works/Togas/TogasApp.webp",
       "alt": "Togas: мобильное приложение премиального бренда",
       "chips": [
-        "Продукт &amp; UX/UI",
+        "Продукт&nbsp;&amp;&nbsp;UX/UI",
         "Бренд",
         "Mobile app"
       ],
       "metricValue": "+25%",
       "metricLabel": "к&nbsp;числу заказов",
       "niche": "product brand",
-      "type": "Mobile app / UX/UI",
+      "type": "Mobile App / UX/UI",
       "meta": [
         [
           "Проект",
@@ -181,7 +185,7 @@
       "cover": "assets/works/SvitlaEmbroidery/cover-ls-embroidery.webp",
       "alt": "Svitla Embroidery Gallery: цифровая галерея вышивки",
       "chips": [
-        "Web &amp; digital",
+        "Web&nbsp;&amp;&nbsp;digital",
         "Web design",
         "Art direction"
       ],
@@ -209,7 +213,7 @@
       "title": "AMO",
       "desc": "Брендинг для&nbsp;презентации косметической линейки.",
       "cover": "assets/works/AMO/cover.webp",
-      "alt": "AMO: знак-лигатура, вырезанный на камне",
+      "alt": "AMO: знак-лигатура, вырезанный на&nbsp;камне",
       "chips": [
         "Бренд",
         "AI-визуалы",
@@ -233,7 +237,7 @@
       ],
       "hero": [
         "assets/works/AMO/cover.webp",
-        "AMO: знак-лигатура, вырезанный на камне"
+        "AMO: знак-лигатура, вырезанный на&nbsp;камне"
       ],
       "task": "Косметическому бренду нужна была система, которая читается как&nbsp;спокойствие. Сложность упаковки в&nbsp;том, что&nbsp;один знак должен одинаково работать при&nbsp;любой подаче: в&nbsp;тиснении на&nbsp;металле, в&nbsp;печати на&nbsp;картоне и&nbsp;на&nbsp;ткани.",
       "solution": "Знак построен как&nbsp;лигатура A-m-o с&nbsp;заданной геометрией и&nbsp;сеткой, поэтому масштабируется без&nbsp;потери характера. Палитра – четыре теплых нейтральных оттенка от&nbsp;сливочного до&nbsp;графита, каждый с&nbsp;номером Pantone под&nbsp;печать. Типографика – две гарнитуры: гротеск Switzer и&nbsp;антиква Ortica. Система намеренно простая: приглушенный цвет, много воздуха.",
@@ -241,25 +245,25 @@
         [
           [
             "assets/works/AMO/amo-01.webp",
-            "AMO: заявление бренда и знак"
+            "AMO: заявление бренда и&nbsp;знак"
           ]
         ],
         [
           [
             "assets/works/AMO/amo-02.webp",
-            "AMO: знак-лигатура на светлом фоне"
+            "AMO: знак-лигатура на&nbsp;светлом фоне"
           ]
         ],
         [
           [
             "assets/works/AMO/amo-03.webp",
-            "AMO: построение знака по сетке"
+            "AMO: построение знака по&nbsp;сетке"
           ]
         ],
         [
           [
             "assets/works/AMO/amo-04.webp",
-            "AMO: палитра и типографика"
+            "AMO: палитра и&nbsp;типографика"
           ]
         ],
         [
@@ -271,31 +275,31 @@
         [
           [
             "assets/works/AMO/amo-06.webp",
-            "AMO: туба и коробка Deep Hydration"
+            "AMO: туба и&nbsp;коробка Deep Hydration"
           ]
         ],
         [
           [
             "assets/works/AMO/amo-07.webp",
-            "AMO: коробка Deep Hydration на песке"
+            "AMO: коробка Deep Hydration на&nbsp;песке"
           ]
         ],
         [
           [
             "assets/works/AMO/amo-08.webp",
-            "AMO: коробка в композиции с тканью"
+            "AMO: коробка в&nbsp;композиции с&nbsp;тканью"
           ]
         ],
         [
           [
             "assets/works/AMO/amo-09.webp",
-            "AMO: туба и шоппер с вышивкой"
+            "AMO: туба и&nbsp;шоппер с&nbsp;вышивкой"
           ]
         ],
         [
           [
             "assets/works/AMO/amo-10.webp",
-            "AMO: макеты для соцсетей"
+            "AMO: макеты для&nbsp;соцсетей"
           ]
         ]
       ]
@@ -305,7 +309,7 @@
       "title": "Fora",
       "desc": "Брендинг платежного сервиса (финтех-стартап): лого-знак, система цвета и&nbsp;типографики, модульный паттерн.",
       "cover": "assets/works/Fora/cover.webp",
-      "alt": "Fora: знак на синем фоне",
+      "alt": "Fora: знак на&nbsp;синем фоне",
       "chips": [
         "Бренд",
         "Art direction",
@@ -325,7 +329,7 @@
       ],
       "hero": [
         "assets/works/Fora/cover.webp",
-        "Fora: знак на синем фоне"
+        "Fora: знак на&nbsp;синем фоне"
       ],
       "task": "Собрать айдентику для&nbsp;платежного сервиса, работающего с&nbsp;обычными и&nbsp;криптовалютными платежами. Одна система должна тянуться от&nbsp;иконки приложения до&nbsp;билборда, не&nbsp;распадаясь.",
       "solution": "Знак собран из&nbsp;идеи маршрута: точки, дуги и&nbsp;сегменты. Из&nbsp;тех же&nbsp;элементов растет паттерн, поэтому бренд масштабируется без&nbsp;новых сущностей. Насыщенная палитра и&nbsp;Magnetik дают финтеху голос, который звучит уверенно, а&nbsp;не&nbsp;холодно.",
@@ -333,19 +337,19 @@
         [
           [
             "assets/works/Fora/fora-01.webp",
-            "Fora: концепция знака и этапы работы"
+            "Fora: концепция знака и&nbsp;этапы работы"
           ]
         ],
         [
           [
             "assets/works/Fora/fora-02.webp",
-            "Fora: построение знака по сетке"
+            "Fora: построение знака по&nbsp;сетке"
           ]
         ],
         [
           [
             "assets/works/Fora/fora-03.webp",
-            "Fora: знак на фирменном синем"
+            "Fora: знак на&nbsp;фирменном синем"
           ]
         ],
         [
@@ -363,19 +367,19 @@
         [
           [
             "assets/works/Fora/fora-06.webp",
-            "Fora: модульные элементы и паттерн"
+            "Fora: модульные элементы и&nbsp;паттерн"
           ]
         ],
         [
           [
             "assets/works/Fora/fora-07.webp",
-            "Fora: композиции паттерна на разных фонах"
+            "Fora: композиции паттерна на&nbsp;разных фонах"
           ]
         ],
         [
           [
             "assets/works/Fora/fora-08.webp",
-            "Fora: паттерн, который подстраивается под пользователя"
+            "Fora: паттерн, который подстраивается под&nbsp;пользователя"
           ]
         ],
         [
@@ -387,19 +391,19 @@
         [
           [
             "assets/works/Fora/fora-10.webp",
-            "Fora: приложение на ноутбуке"
+            "Fora: приложение на&nbsp;ноутбуке"
           ]
         ],
         [
           [
             "assets/works/Fora/fora-11.webp",
-            "Fora: баннеры и сторис"
+            "Fora: баннеры и&nbsp;сторис"
           ]
         ],
         [
           [
             "assets/works/Fora/fora-12.webp",
-            "Fora: мерч — худи, часы, куртка, визитки"
+            "Fora: мерч – худи, часы, куртка, визитки"
           ]
         ],
         [
@@ -411,7 +415,7 @@
         [
           [
             "assets/works/Fora/fora-14.webp",
-            "Fora: экран в зале"
+            "Fora: экран в&nbsp;зале"
           ]
         ]
       ]
@@ -423,7 +427,7 @@
       "cover": "assets/works/TogasCatalogue/cover.webp",
       "alt": "Togas Print Catalogue: обложка каталога «Система сна»",
       "chips": [
-        "Web &amp; digital",
+        "Web&nbsp;&amp;&nbsp;digital",
         "Print Design",
         "Art direction"
       ],
@@ -455,7 +459,7 @@
         [
           [
             "assets/works/TogasCatalogue/togas-cat-01.webp",
-            "Togas: развороты каталога — коллекции, наполнитель, чехол"
+            "Togas: развороты каталога – коллекции, наполнитель, чехол"
           ]
         ],
         [
@@ -467,7 +471,7 @@
         [
           [
             "assets/works/TogasCatalogue/togas-cat-03.webp",
-            "Togas: страница продукта — матрас «Меджести»"
+            "Togas: страница продукта – матрас «Меджести»"
           ]
         ]
       ]
@@ -479,7 +483,7 @@
       "cover": "assets/works/WaveAI/cover.webp",
       "alt": "Waiw AI: первый экран презентации платформы",
       "chips": [
-        "Web &amp; digital",
+        "Web&nbsp;&amp;&nbsp;digital",
         "Презентации",
         "Figma"
       ],
@@ -504,14 +508,14 @@
       "gallery": [
         [
           [
-            "assets/works/WaveAI/waveai-01.webp",
-            "Waiw AI: первый экран платформы"
+            "assets/works/WaveAI/waveai-10.webp",
+            "Waiw AI: раздел сценариев использования"
           ]
         ],
         [
           [
-            "assets/works/WaveAI/waveai-10.webp",
-            "Waiw AI: раздел сценариев использования"
+            "assets/works/WaveAI/waveai-01.webp",
+            "Waiw AI: первый экран платформы"
           ]
         ],
         [
@@ -523,13 +527,13 @@
         [
           [
             "assets/works/WaveAI/waveai-03.webp",
-            "Waiw AI: движок GeoSurreal GenAI и корреляция скважин"
+            "Waiw AI: движок GeoSurreal GenAI и&nbsp;корреляция скважин"
           ]
         ],
         [
           [
             "assets/works/WaveAI/waveai-04.webp",
-            "Waiw AI: примеры запросов и совместная работа"
+            "Waiw AI: примеры запросов и&nbsp;совместная работа"
           ]
         ],
         [
@@ -553,29 +557,401 @@
         [
           [
             "assets/works/WaveAI/waveai-08.webp",
-            "Waiw AI: работа с историей интерпретаций"
+            "Waiw AI: работа с&nbsp;историей интерпретаций"
           ]
         ],
         [
           [
             "assets/works/WaveAI/waveai-09.webp",
-            "Waiw AI: анализ повторной съемки во времени"
-          ]
-        ],
-        [
-          [
-            "assets/works/WaveAI/waveai-11.webp",
-            "Waiw AI: знак"
+            "Waiw AI: анализ повторной съемки во&nbsp;времени"
           ]
         ]
       ],
       "metricValue": "30",
       "metricLabel": "слайдов в&nbsp;системе и&nbsp;едином стиле"
+    },
+    "creavent": {
+      "path": "work/creavent/index.html",
+      "title": "CreaVent",
+      "desc": "Айдентика сервиса для&nbsp;создания событий.",
+      "cover": "assets/works/CreaVent/cover.webp",
+      "alt": "CreaVent: обложка проекта",
+      "chips": [
+        "Бренд",
+        "Art direction"
+      ],
+      "niche": "web",
+      "type": "Бренд / айдентика",
+      "meta": [
+        [
+          "Формат",
+          "Brand Identity&nbsp;&&nbsp;Web"
+        ]
+      ],
+      "hero": [
+        "assets/works/CreaVent/cover.webp",
+        "CreaVent: обложка проекта"
+      ],
+      "gallery": [
+        [
+          [
+            "assets/works/CreaVent/creavent-01.webp",
+            "CreaVent: макет 1"
+          ]
+        ],
+        [
+          [
+            "assets/works/CreaVent/creavent-02.webp",
+            "CreaVent: макет 2"
+          ]
+        ],
+        [
+          [
+            "assets/works/CreaVent/creavent-03.webp",
+            "CreaVent: макет 3"
+          ]
+        ],
+        [
+          [
+            "assets/works/CreaVent/creavent-04.webp",
+            "CreaVent: макет 4"
+          ]
+        ]
+      ],
+      "task": "Сервису для&nbsp;создания событий нужен был язык, который работает и&nbsp;как&nbsp;бренд, и&nbsp;как&nbsp;интерфейс.",
+      "solution": "Логотип и&nbsp;палитра из&nbsp;четырех контрастных цветов задают настроение, а&nbsp;сам сценарий сведен к&nbsp;трем шагам – тема, дата, место."
+    },
+    "climafiber": {
+      "path": "work/climafiber/index.html",
+      "title": "Climafiber",
+      "desc": "Сайт технологии Togas Innovations: терморегуляция, экологичность, продукты.",
+      "cover": "assets/works/Climafiber/cover.webp",
+      "alt": "Climafiber: обложка проекта",
+      "chips": [
+        "Бренд",
+        "Art direction"
+      ],
+      "niche": "brand",
+      "type": "Бренд / продукт",
+      "meta": [
+        [
+          "Формат",
+          "Landing page"
+        ]
+      ],
+      "hero": [
+        "assets/works/Climafiber/cover.webp",
+        "Climafiber: обложка проекта"
+      ],
+      "gallery": [
+        [
+          [
+            "assets/works/Climafiber/climafiber-01.webp",
+            "Climafiber: макет 1"
+          ]
+        ]
+      ],
+      "task": "Объяснить технологию, которую сложно показать: терморегулирующее волокно выглядит как&nbsp;обычный наполнитель.",
+      "solution": "Технология показана через инфографику и&nbsp;структуру волокна. Темная подача отделяет технологический сайт от&nbsp;товарного."
+    },
+    "sensotex": {
+      "path": "work/sensotex/index.html",
+      "title": "Sensotex",
+      "desc": "Продуктовый лендинг технологии Togas Innovations.",
+      "cover": "assets/works/Sensotex/cover.webp",
+      "alt": "Sensotex: обложка проекта",
+      "chips": [
+        "Web&nbsp;&amp;&nbsp;digital",
+        "Web design"
+      ],
+      "niche": "web",
+      "type": "Landing page",
+      "meta": [
+        [
+          "Формат",
+          "Landing page"
+        ]
+      ],
+      "hero": [
+        "assets/works/Sensotex/cover.webp",
+        "Sensotex: обложка проекта"
+      ],
+      "gallery": [
+        [
+          [
+            "assets/works/Sensotex/sensotex-01.webp",
+            "Sensotex: макет 1"
+          ]
+        ]
+      ],
+      "solution": "Вместо технологических схем за&nbsp;основу взята более живая имиджевая подача."
+    },
+    "togas-site": {
+      "path": "work/togas-site/index.html",
+      "title": "Togas e-commerce",
+      "desc": "Редизайн сайтов Togas.com и&nbsp;Togascouture – главного сайта компании и&nbsp;бутиковой линии. Каталог, коллекции, продуктовые страницы.",
+      "cover": "assets/works/TogasSite/cover.webp",
+      "alt": "Togas e-commerce: обложка проекта",
+      "chips": [
+        "Web&nbsp;&amp;&nbsp;digital",
+        "Web design"
+      ],
+      "niche": "web",
+      "type": "Site / UX/UI",
+      "meta": [],
+      "hero": [
+        "assets/works/TogasSite/cover.webp",
+        "Togas e-commerce: обложка проекта"
+      ],
+      "gallery": [
+        [
+          [
+            "assets/works/TogasSite/togassite-01.webp",
+            "Togas e-commerce: макет 1"
+          ]
+        ],
+        [
+          [
+            "assets/works/TogasSite/togassite-02.webp",
+            "Togas e-commerce: макет 2"
+          ]
+        ],
+        [
+          [
+            "assets/works/TogasSite/togassite-03.webp",
+            "Togas e-commerce: макет 3"
+          ]
+        ],
+        [
+          [
+            "assets/works/TogasSite/togassite-04.webp",
+            "Togas e-commerce: макет 4"
+          ]
+        ],
+        [
+          [
+            "assets/works/TogasSite/togassite-05.webp",
+            "Togas e-commerce: макет 5"
+          ]
+        ]
+      ],
+      "metricValue": "2",
+      "metricLabel": "сайта в&nbsp;одной системе",
+      "task": "У&nbsp;премиального текстиля две витрины – массовая и&nbsp;бутиковая. Им нужен общий язык, но&nbsp;разный характер.",
+      "solution": "Единая сетка и&nbsp;типографика на&nbsp;оба сайта, разный стиль подачи. Продуктовые страницы собраны из&nbsp;блоков в&nbsp;одном стиле.",
+      "links": [
+        [
+          "togas.com",
+          "https://togas.com/"
+        ],
+        [
+          "togascouture.ru",
+          "https://togascouture.ru/"
+        ]
+      ]
+    },
+    "woodform": {
+      "path": "work/woodform/index.html",
+      "title": "Woodform Studio",
+      "desc": "Лого и&nbsp;сайт студии мебели на&nbsp;заказ.",
+      "cover": "assets/works/Woodform/cover.webp",
+      "alt": "Woodform Studio: обложка проекта",
+      "chips": [
+        "Web&nbsp;&amp;&nbsp;digital",
+        "Web design",
+        "Бренд"
+      ],
+      "niche": "web",
+      "type": "Site & logo",
+      "meta": [
+        [
+          "Формат",
+          "Web"
+        ],
+        [
+          "Инструменты",
+          "Figma, Tilda"
+        ]
+      ],
+      "hero": [
+        "assets/works/Woodform/cover.webp",
+        "Woodform Studio: обложка проекта"
+      ],
+      "gallery": [
+        [
+          [
+            "assets/works/Woodform/woodform-01.webp",
+            "Woodform Studio: макет 1"
+          ]
+        ],
+        [
+          [
+            "assets/works/Woodform/woodform-02.webp",
+            "Woodform Studio: макет 2"
+          ]
+        ],
+        [
+          [
+            "assets/works/Woodform/woodform-03.webp",
+            "Woodform Studio: макет 3"
+          ]
+        ]
+      ],
+      "task": "Представить физическое ремесло студии мебели на&nbsp;заказ на&nbsp;сайте.",
+      "solution": "Знак построен на&nbsp;геометрии, взятой из&nbsp;текстуры дерева, и&nbsp;масштабируется от&nbsp;тиснения на&nbsp;бирке до&nbsp;вывески."
+    },
+    "togas-smm": {
+      "path": "work/togas-smm/index.html",
+      "title": "Togas SMM",
+      "desc": "Визуальная система бренда в&nbsp;соцсетях и&nbsp;рассылках.",
+      "cover": "assets/works/TogasSMM/cover.webp",
+      "alt": "Togas SMM: обложка проекта",
+      "chips": [
+        "Бренд",
+        "Art direction"
+      ],
+      "niche": "brand",
+      "type": "SMM / контент",
+      "meta": [
+        [
+          "Формат",
+          "SMM&nbsp;&&nbsp;emails"
+        ]
+      ],
+      "hero": [
+        "assets/works/TogasSMM/cover.webp",
+        "Togas SMM: обложка проекта"
+      ],
+      "gallery": [
+        [
+          [
+            "assets/works/TogasSMM/togassmm-01.webp",
+            "Togas SMM: макет 1"
+          ]
+        ],
+        [
+          [
+            "assets/works/TogasSMM/togassmm-02.webp",
+            "Togas SMM: макет 2"
+          ]
+        ],
+        [
+          [
+            "assets/works/TogasSMM/togassmm-03.webp",
+            "Togas SMM: макет 3"
+          ]
+        ]
+      ],
+      "solution": "Единая сетка на&nbsp;четыре канала и&nbsp;шаблоны под&nbsp;типы поводов – новинки, акции, партнерские проекты. Рекламные форматы и&nbsp;обычные посты собраны на&nbsp;едином визуальном материале.",
+      "task": "Премиальному текстилю нужно присутствие в&nbsp;соцсетях, где акции и&nbsp;распродажи не&nbsp;ломают тон бренда."
+    },
+    "verba-mayr": {
+      "path": "work/verba-mayr/index.html",
+      "title": "Verba Mayr",
+      "desc": "Сайт международного медицинского центра Verba Mayr: методика, программы, экспертиза.",
+      "cover": "assets/works/VerbaMayr/cover.webp",
+      "coverSmall": "assets/works/VerbaMayr/cover-small.webp",
+      "alt": "Verba Mayr: обложка проекта",
+      "chips": [
+        "Web&nbsp;&amp;&nbsp;digital",
+        "Web design",
+        "Бренд"
+      ],
+      "metricValue": "6",
+      "metricLabel": "внутренних страниц и&nbsp;8&nbsp;блоков главной страницы",
+      "niche": "web",
+      "type": "Site design",
+      "meta": [],
+      "hero": [
+        "assets/works/VerbaMayr/verbamayr-01.webp",
+        "Verba Mayr: главный экран сайта"
+      ],
+      "task": "Медицинский центр продает не&nbsp;процедуры, а&nbsp;состояние. Сайту нужно было объяснить метод Майера и&nbsp;программы лечения так, чтобы это читалось как&nbsp;забота, а&nbsp;не&nbsp;как&nbsp;клиника.",
+      "solution": "Зелень и&nbsp;вода задают тон, медицинская часть вынесена в&nbsp;структурированные блоки: программы, проживание, экспертиза. Схема экспертизы собирает разрозненные направления в&nbsp;одну картину, а&nbsp;отзывы и&nbsp;медиа закрывают вопрос доверия.",
+      "seamless": true,
+      "gallery": [
+        [
+          [
+            "assets/works/VerbaMayr/verbamayr-02.webp",
+            "Verba Mayr: гарнитуры и&nbsp;палитра"
+          ]
+        ],
+        [
+          [
+            "assets/works/VerbaMayr/verbamayr-03.webp",
+            "Verba Mayr: схема экспертизы центра"
+          ]
+        ],
+        [
+          [
+            "assets/works/VerbaMayr/verbamayr-04.webp",
+            "Verba Mayr: разделитель «Блоки»"
+          ]
+        ],
+        [
+          [
+            "assets/works/VerbaMayr/verbamayr-05.webp",
+            "Verba Mayr: главный экран и&nbsp;программы"
+          ]
+        ],
+        [
+          [
+            "assets/works/VerbaMayr/verbamayr-06.webp",
+            "Verba Mayr: помощь с&nbsp;выбором и&nbsp;проживание"
+          ]
+        ],
+        [
+          [
+            "assets/works/VerbaMayr/verbamayr-07.webp",
+            "Verba Mayr: искусство здоровой жизни"
+          ]
+        ],
+        [
+          [
+            "assets/works/VerbaMayr/verbamayr-08.webp",
+            "Verba Mayr: здоровье по&nbsp;Майеру"
+          ]
+        ],
+        [
+          [
+            "assets/works/VerbaMayr/verbamayr-09.webp",
+            "Verba Mayr: впечатления гостей"
+          ]
+        ],
+        [
+          [
+            "assets/works/VerbaMayr/verbamayr-10.webp",
+            "Verba Mayr: медиа и&nbsp;контакты"
+          ]
+        ]
+      ],
+      "preview": "verba-preview",
+      "heroInGallery": true
+    },
+    "collagenina": {
+      "path": "work/collagenina/index.html",
+      "title": "Collagenina. Labo",
+      "desc": "Сайт линейки интенсивного ухода за&nbsp;кожей: бренд, продукт, где купить.",
+      "cover": "assets/works/Collagenina/cover.webp",
+      "alt": "Collagenina: набор для&nbsp;интенсивного ухода",
+      "chips": [
+        "Web&nbsp;&amp;&nbsp;digital",
+        "Web design"
+      ],
+      "niche": "web",
+      "type": "Landing page",
+      "meta": [
+        [
+          "Инструменты",
+          "Tilda, Figma"
+        ]
+      ],
+      "preview": "collagenina-preview"
     }
   },
   "directions": {
     "brand": {
-      "name": "Бренд &amp; коммуникация",
+      "name": "Бренд&nbsp;&amp;&nbsp;коммуникация",
       "path": "brand.html",
       "desc": "Айдентика, бренд-системы, арт-дирекшен и&nbsp;рекламные кампании.",
       "process": "process.html",
@@ -612,7 +988,7 @@
       ]
     },
     "product": {
-      "name": "Продукт &amp; UX/UI",
+      "name": "Продукт&nbsp;&amp;&nbsp;UX/UI",
       "path": "product.html",
       "desc": "Сценарии, интерфейсы, прототипы и&nbsp;дизайн-системы.",
       "process": "process.html",
@@ -635,7 +1011,7 @@
       "previewAlt": "Мобильное приложение Togas",
       "processLead": "В&nbsp;продуктовом проекте метрика задает старт и&nbsp;подтверждает результат.",
       "expertise": [
-        "Полный цикл продукта / Product Discovery &amp; Delivery",
+        "Полный цикл продукта / Product Discovery&nbsp;&amp;&nbsp;Delivery",
         "Информационная архитектура",
         "User Flow / CJM",
         "B2C, e-commerce / онлайн-магазины",
@@ -648,7 +1024,7 @@
       ]
     },
     "web": {
-      "name": "Web &amp; digital",
+      "name": "Web&nbsp;&amp;&nbsp;digital",
       "path": "web.html",
       "desc": "Сайты целиком: структура, дизайн, сборка и&nbsp;публикация.",
       "process": "process.html",
@@ -659,14 +1035,14 @@
         "Vibe coding и&nbsp;AI-продакшен"
       ],
       "pageTitle": "Web и&nbsp;digital дизайн",
-      "pageLead": "<b>Собираю лендинги</b>, промостраницы и&nbsp;многостраничные сайты. Дизайн и&nbsp;сборка в&nbsp;одних руках. <b>Верстаю любые макеты для&nbsp;печати:</b> от&nbsp;креативных постеров до&nbsp;каталогов.",
+      "pageLead": "<b>Собираю лендинги</b>, промостраницы и&nbsp;многостраничные сайты. Дизайн&nbsp;и&nbsp;сборка в&nbsp;одних руках. <b>Верстаю любые макеты для&nbsp;печати:</b> от&nbsp;креативных постеров до&nbsp;каталогов.",
       "steps": [
         "Бриф и&nbsp;анализ",
         "Концепция решения",
-        "Дизайн и&nbsp;сборка",
+        "Дизайн&nbsp;и&nbsp;сборка",
         "Публикация"
       ],
-      "stepsCaption": "Дизайн-процесс для&nbsp;web &amp; digital",
+      "stepsCaption": "Дизайн-процесс для&nbsp;web&nbsp;&amp;&nbsp;digital",
       "previewImg": "assets/images/preview/web-catalog.webp",
       "previewAlt": "Каталог Togas «Система сна»",
       "processLead": "В&nbsp;web-проекте он строится на&nbsp;цели задачи и&nbsp;заканчивается готовым результатом: сайтом в&nbsp;сети или&nbsp;макетом в&nbsp;печать.",
@@ -719,10 +1095,10 @@
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
       "navDirections": "",
-      "description": "Lana Svitla – дизайнер бренда и продукта. Айдентика, UX/UI и веб-дизайн.",
-      "ogTitle": "Lana Svitla – Brand, Product & UX/UI Designer",
+      "description": "Lana Svitla – дизайнер бренда и&nbsp;продукта. Айдентика, UX/UI и&nbsp;веб-дизайн.",
+      "ogTitle": "Lana Svitla – Brand, Product&nbsp;&&nbsp;UX/UI Designer",
       "ogImage": "assets/images/og-default.jpg",
-      "pageTitle": "Lana Svitla – Brand, Product &amp; UX/UI Designer"
+      "pageTitle": "Lana Svitla – Brand, Product&nbsp;&amp;&nbsp;UX/UI Designer"
     },
     {
       "path": "portfolio.html",
@@ -745,11 +1121,13 @@
       "root": "",
       "caseList": [
         "mark-n-post",
-        "amo",
+        "verba-mayr",
         "eqlio",
         "togas",
         "togas-catalogue",
+        "amo",
         "fora",
+        "collagenina",
         "waiw-ai",
         "visual-brand-identity",
         "svitla-embroidery"
@@ -758,10 +1136,18 @@
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
       "navDirections": "",
-      "description": "Portfolio Lana Svitla: бренд-дизайн, продуктовый UX/UI, web и digital.",
+      "description": "Portfolio Lana Svitla: бренд-дизайн, продуктовый UX/UI, web и&nbsp;digital.",
       "ogTitle": "Портфолио – Lana Svitla",
       "ogImage": "assets/images/og-default.jpg",
-      "pageTitle": "Портфолио – Lana Svitla"
+      "pageTitle": "Портфолио – Lana Svitla",
+      "caseListSmall": [
+        "creavent",
+        "togas-site",
+        "climafiber",
+        "sensotex",
+        "woodform",
+        "togas-smm"
+      ]
     },
     {
       "path": "about.html",
@@ -770,7 +1156,8 @@
         "site-header",
         "site-footer",
         "all-directions",
-        "metrics"
+        "metrics",
+        "spec-languages"
       ],
       "homeHref": "./index.html",
       "worksHref": "./portfolio.html",
@@ -786,7 +1173,7 @@
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
       "navDirections": "",
-      "description": "Lana Svitla – 10+ лет в дизайне бренда и продукта, 6+ лет на senior- и руководящих позициях. CV, portfolio, подход к работе.",
+      "description": "Lana Svitla – 10+ лет в&nbsp;дизайне бренда и&nbsp;продукта, 6+ лет на&nbsp;senior- и&nbsp;руководящих позициях. CV, portfolio, подход к&nbsp;работе.",
       "ogTitle": "Обо мне – Lana Svitla",
       "ogImage": "assets/images/og-default.jpg",
       "metricList": [
@@ -796,7 +1183,11 @@
         "verba-traffic",
         "mentoring-middle"
       ],
-      "pageTitle": "Обо мне – Lana Svitla"
+      "pageTitle": "Обо мне – Lana Svitla",
+      "languages": [
+        "Русский",
+        "Английский · B1–B2"
+      ]
     },
     {
       "path": "product.html",
@@ -811,7 +1202,8 @@
         "direction-expertise",
         "direction-cv",
         "metrics",
-        "direction-process"
+        "direction-process",
+        "direction-more"
       ],
       "homeHref": "./index.html",
       "worksHref": "./portfolio.html",
@@ -832,8 +1224,8 @@
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
       "navDirections": "is-current",
-      "description": "Продуктовый и UX/UI дизайн: исследование, информационная архитектура, интерфейсы, дизайн-системы, работа с метриками.",
-      "ogTitle": "Продукт и UX/UI – Lana Svitla",
+      "description": "Продуктовый и&nbsp;UX/UI дизайн: исследование, информационная архитектура, интерфейсы, дизайн-системы, работа с&nbsp;метриками.",
+      "ogTitle": "Продукт и&nbsp;UX/UI – Lana Svitla",
       "ogImage": "assets/images/og-default.jpg",
       "metricList": [
         "togas-orders",
@@ -855,7 +1247,8 @@
         "direction-expertise",
         "direction-cv",
         "metrics",
-        "direction-process"
+        "direction-process",
+        "direction-more"
       ],
       "homeHref": "./index.html",
       "worksHref": "./portfolio.html",
@@ -870,16 +1263,14 @@
       "root": "",
       "caseList": [
         "togas",
-        "visual-brand-identity",
-        "amo",
-        "fora"
+        "visual-brand-identity"
       ],
       "direction": "brand",
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
       "navDirections": "is-current",
-      "description": "Бренд- и графический дизайн: айдентика, визуальные системы, арт-дирекшен, digital-коммуникация, сайты, презентации.",
-      "ogTitle": "Бренд и коммуникация – Lana Svitla",
+      "description": "Бренд- и&nbsp;графический дизайн: айдентика, визуальные системы, арт-дирекшен, digital-коммуникация, сайты, презентации.",
+      "ogTitle": "Бренд и&nbsp;коммуникация – Lana Svitla",
       "ogImage": "assets/images/og-default.jpg",
       "metricList": [
         "verba-traffic",
@@ -910,7 +1301,7 @@
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
       "navDirections": "",
-      "description": "Как я веду проект. Бренд-задача и продукт: дизайн-процесс по шагам.",
+      "description": "Как&nbsp;я&nbsp;веду проект. Бренд-задача и&nbsp;продукт: дизайн-процесс по&nbsp;шагам.",
       "ogTitle": "Процесс – Lana Svitla",
       "ogImage": "assets/images/og-default.jpg",
       "servicesFromDirections": true,
@@ -940,7 +1331,7 @@
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
       "navDirections": "",
-      "description": "Как я веду продуктовый проект: от бизнес-задачи и метрики до передачи в разработку и замера результата.",
+      "description": "Как&nbsp;я&nbsp;веду продуктовый проект: от&nbsp;бизнес-задачи и&nbsp;метрики до&nbsp;передачи в&nbsp;разработку и&nbsp;замера результата.",
       "ogTitle": "Продуктовый процесс – Lana Svitla",
       "ogImage": "assets/images/og-default.jpg",
       "noindex": true,
@@ -970,7 +1361,7 @@
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
       "navDirections": "",
-      "description": "Как я веду бренд-проект: от брифа и аудита до айдентики, носителей и гайдлайна.",
+      "description": "Как&nbsp;я&nbsp;веду бренд-проект: от&nbsp;брифа и&nbsp;аудита до&nbsp;айдентики, носителей и&nbsp;гайдлайна.",
       "ogTitle": "Бренд-процесс – Lana Svitla",
       "ogImage": "assets/images/og-default.jpg",
       "noindex": true,
@@ -981,7 +1372,7 @@
       "components": [
         "icons",
         "site-header",
-        "social-links"
+        "contact-links"
       ],
       "homeHref": "./index.html",
       "worksHref": "./portfolio.html",
@@ -996,10 +1387,37 @@
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
       "navDirections": "",
-      "description": "Lana Svitla. Дизайнер бренда и продукта: Email, Telegram, LinkedIn, Behance. CV.",
+      "description": "Lana Svitla. Дизайнер бренда и&nbsp;продукта: Email, Telegram, LinkedIn, Behance. CV.",
       "ogTitle": "Контакты – Lana Svitla",
       "ogImage": "assets/images/og-default.jpg",
       "pageTitle": "Контакты – Lana Svitla"
+    },
+    {
+      "path": "en/contacts.html",
+      "components": [
+        "icons",
+        "site-header",
+        "contact-links"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "root": "../",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "description": "Lana Svitla – brand, product and UX/UI designer. Get in touch by e-mail, Telegram, LinkedIn or Behance.",
+      "ogTitle": "Contact",
+      "ogImage": "assets/images/og-default.jpg",
+      "pageTitle": "Contact – Lana Svitla",
+      "lang": "en",
+      "translationOf": "contacts.html"
     },
     {
       "path": "work/mark-n-post/index.html",
@@ -1028,7 +1446,7 @@
       "webHref": "../../web.html",
       "directionsHref": "../../index.html#directions",
       "navDirections": "",
-      "description": "Сервис логистической компании: форматы отправки, процесс и заявки в Telegram. 7 продуктовых страниц для рекламной кампании.",
+      "description": "Сервис логистической компании: форматы отправки, процесс и&nbsp;заявки в&nbsp;Telegram. 7&nbsp;продуктовых страниц для&nbsp;рекламной кампании.",
       "ogTitle": "Mark’n’Post",
       "ogImage": "assets/works/MarknPost/MarknPostCover.webp",
       "pageTitle": "Mark’n’Post – Lana Svitla",
@@ -1061,7 +1479,7 @@
       "webHref": "../../web.html",
       "directionsHref": "../../index.html#directions",
       "navDirections": "",
-      "description": "Корпоративное приложение для спортивных челленджей: сценарии, интерфейс и прототип.",
+      "description": "Корпоративное приложение для&nbsp;спортивных челленджей: сценарии, интерфейс и&nbsp;прототип.",
       "ogTitle": "Eqlio",
       "ogImage": "assets/works/Eqlio/EclioCover.webp",
       "pageTitle": "Eqlio – Lana Svitla",
@@ -1094,10 +1512,10 @@
       "webHref": "../../web.html",
       "directionsHref": "../../index.html#directions",
       "navDirections": "",
-      "description": "Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и бонусы.",
-      "ogTitle": "Togas Mobile App",
+      "description": "Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и&nbsp;бонусы.",
+      "ogTitle": "Togas App",
       "ogImage": "assets/works/Togas/TogasApp.webp",
-      "pageTitle": "Togas Mobile App – Lana Svitla",
+      "pageTitle": "Togas App – Lana Svitla",
       "case": "togas"
     },
     {
@@ -1127,7 +1545,7 @@
       "webHref": "../../web.html",
       "directionsHref": "../../index.html#directions",
       "navDirections": "",
-      "description": "Визуальная система для сервиса, сет иллюстраций для маркетплейса ремесленных товаров.",
+      "description": "Визуальная система для&nbsp;сервиса, сет иллюстраций для&nbsp;маркетплейса ремесленных товаров.",
       "ogTitle": "Visual Brand Identity",
       "ogImage": "assets/works/Illustration_set/Illustaration_set_01.webp",
       "pageTitle": "Visual Brand Identity – Lana Svitla",
@@ -1160,7 +1578,7 @@
       "webHref": "../../web.html",
       "directionsHref": "../../index.html#directions",
       "navDirections": "",
-      "description": "Брендинг косметической линейки AMO: знак-лигатура, палитра, типографика и система упаковки.",
+      "description": "Брендинг косметической линейки AMO: знак-лигатура, палитра, типографика и&nbsp;система упаковки.",
       "ogTitle": "AMO",
       "ogImage": "assets/works/AMO/cover.webp",
       "pageTitle": "AMO – Lana Svitla",
@@ -1193,7 +1611,7 @@
       "webHref": "../../web.html",
       "directionsHref": "../../index.html#directions",
       "navDirections": "",
-      "description": "Каталог «Система сна Togas»: верстка печатного каталога и страницы продукта для новой линейки.",
+      "description": "Каталог «Система сна Togas»: верстка печатного каталога и&nbsp;страницы продукта для&nbsp;новой линейки.",
       "ogTitle": "Togas Print Catalogue",
       "ogImage": "assets/works/TogasCatalogue/cover.webp",
       "pageTitle": "Togas Print Catalogue – Lana Svitla",
@@ -1226,7 +1644,7 @@
       "webHref": "../../web.html",
       "directionsHref": "../../index.html#directions",
       "navDirections": "",
-      "description": "Айдентика платежного сервиса Fora: модульный знак, паттерн, палитра и типографика.",
+      "description": "Айдентика платежного сервиса Fora: модульный знак, паттерн, палитра и&nbsp;типографика.",
       "ogTitle": "Fora",
       "ogImage": "assets/works/Fora/cover.webp",
       "pageTitle": "Fora – Lana Svitla",
@@ -1292,7 +1710,7 @@
       "webHref": "../../web.html",
       "directionsHref": "../../index.html#directions",
       "navDirections": "",
-      "description": "Цифровая галерея и магазин авторской вышивки: 20+ страниц работ, единая визуальная система, языковые версии.",
+      "description": "Цифровая галерея и&nbsp;магазин авторской вышивки: 20+ страниц работ, единая визуальная система, языковые версии.",
       "ogTitle": "Svitla Embroidery Gallery",
       "ogImage": "assets/works/SvitlaEmbroidery/cover-ls-embroidery.webp",
       "pageTitle": "Svitla Embroidery Gallery – Lana Svitla",
@@ -1311,7 +1729,8 @@
         "direction-expertise",
         "direction-cv",
         "metrics",
-        "direction-process"
+        "direction-process",
+        "direction-more"
       ],
       "homeHref": "./index.html",
       "worksHref": "./portfolio.html",
@@ -1326,16 +1745,14 @@
       "root": "",
       "caseList": [
         "mark-n-post",
-        "svitla-embroidery",
-        "togas-catalogue",
-        "waiw-ai"
+        "collagenina"
       ],
       "direction": "web",
       "webHref": "./web.html",
       "directionsHref": "./index.html#directions",
       "navDirections": "is-current",
-      "description": "Web и digital дизайн: лендинги и сайты на Tilda, Webflow, Framer, сборка кодом вместе с AI. Публикация сайта: настройка хостинга, домена, контекстной рекламы.",
-      "ogTitle": "Web и digital – Lana Svitla",
+      "description": "Web и&nbsp;digital дизайн: лендинги и&nbsp;сайты на&nbsp;Tilda, Webflow, Framer, сборка кодом вместе с&nbsp;AI. Публикация сайта: настройка хостинга, домена, контекстной рекламы.",
+      "ogTitle": "Web и&nbsp;digital – Lana Svitla",
       "ogImage": "assets/images/og-default.jpg",
       "metricList": [
         "verba-traffic",
@@ -1366,11 +1783,2034 @@
       "directionsHref": "./index.html#directions",
       "navDirections": "",
       "root": "",
-      "description": "Страница не найдена – Lana Svitla.",
-      "ogTitle": "Страница не найдена – Lana Svitla",
+      "description": "Страница не&nbsp;найдена – Lana Svitla.",
+      "ogTitle": "Страница не&nbsp;найдена – Lana Svitla",
       "ogImage": "assets/images/og-default.jpg",
       "noindex": true,
       "pageTitle": "Страница не&nbsp;найдена – Lana Svitla"
+    },
+    {
+      "path": "work/creavent/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../",
+      "caseList": [
+        "amo",
+        "fora"
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "CreaVent – Айдентика сервиса для&nbsp;создания событий",
+      "ogTitle": "CreaVent",
+      "ogImage": "assets/works/CreaVent/cover.webp",
+      "pageTitle": "CreaVent – Lana Svitla",
+      "case": "creavent"
+    },
+    {
+      "path": "work/climafiber/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../",
+      "caseList": [
+        "amo",
+        "fora"
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Climafiber – Сайт технологии Togas Innovations: терморегуляция, экологичность, продукты",
+      "ogTitle": "Climafiber",
+      "ogImage": "assets/works/Climafiber/cover.webp",
+      "pageTitle": "Climafiber – Lana Svitla",
+      "case": "climafiber"
+    },
+    {
+      "path": "work/sensotex/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../",
+      "caseList": [
+        "waiw-ai",
+        "mark-n-post"
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Sensotex – Продуктовый лендинг технологии Togas Innovations",
+      "ogTitle": "Sensotex",
+      "ogImage": "assets/works/Sensotex/cover.webp",
+      "pageTitle": "Sensotex – Lana Svitla",
+      "case": "sensotex"
+    },
+    {
+      "path": "work/togas-site/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../",
+      "caseList": [
+        "waiw-ai",
+        "mark-n-post"
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Редизайн сайтов Togas.com и&nbsp;Togascouture – главного сайта компании и&nbsp;бутиковой линии. Каталог, коллекции, продуктовые страницы",
+      "ogTitle": "Togas e-commerce",
+      "ogImage": "assets/works/TogasSite/cover.webp",
+      "pageTitle": "Togas e-commerce – Lana Svitla",
+      "case": "togas-site"
+    },
+    {
+      "path": "work/verba-mayr/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../",
+      "caseList": [
+        "togas-site",
+        "mark-n-post"
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Verba Mayr – сайт международного медицинского центра: методика, программы, экспертиза",
+      "ogTitle": "Verba Mayr",
+      "ogImage": "assets/works/VerbaMayr/cover.webp",
+      "pageTitle": "Verba Mayr – Lana Svitla",
+      "case": "verba-mayr"
+    },
+    {
+      "path": "work/collagenina/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../",
+      "caseList": [
+        "verba-mayr",
+        "mark-n-post"
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Collagenina – сайт линейки интенсивного ухода за&nbsp;кожей",
+      "ogTitle": "Collagenina. Labo",
+      "ogImage": "assets/works/Collagenina/cover.webp",
+      "pageTitle": "Collagenina. Labo – Lana Svitla",
+      "case": "collagenina"
+    },
+    {
+      "path": "work/woodform/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../",
+      "caseList": [
+        "togas-site",
+        "mark-n-post"
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Woodform Studio – Woodform Studio / website&nbsp;&&nbsp;logo design",
+      "ogTitle": "Woodform Studio",
+      "ogImage": "assets/works/Woodform/cover.webp",
+      "pageTitle": "Woodform Studio – Lana Svitla",
+      "case": "woodform"
+    },
+    {
+      "path": "work/togas-smm/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../",
+      "caseList": [
+        "togas-catalogue",
+        "amo"
+      ],
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Togas SMM – SMM Design / Social Media",
+      "ogTitle": "Togas SMM",
+      "ogImage": "assets/works/TogasSMM/cover.webp",
+      "pageTitle": "Togas SMM – Lana Svitla",
+      "case": "togas-smm"
+    },
+    {
+      "path": "en/index.html",
+      "components": [
+        "icons",
+        "site-header",
+        "site-footer",
+        "home-cases",
+        "all-directions"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "navWorks": "is-current",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "root": "../",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "description": "Lana Svitla – дизайнер бренда и&nbsp;продукта. Айдентика, UX/UI и&nbsp;веб-дизайн.",
+      "ogTitle": "Lana Svitla – Brand, Product&nbsp;&&nbsp;UX/UI Designer",
+      "ogImage": "assets/images/og-default.jpg",
+      "pageTitle": "Lana Svitla – Brand, Product&nbsp;&amp;&nbsp;UX/UI Designer",
+      "lang": "en",
+      "translationOf": "index.html"
+    },
+    {
+      "path": "en/portfolio.html",
+      "components": [
+        "icons",
+        "site-header",
+        "case-catalogue",
+        "site-footer"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navWorks": "is-current",
+      "root": "../",
+      "caseNiche": true,
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "description": "Portfolio Lana Svitla: бренд-дизайн, продуктовый UX/UI, web и&nbsp;digital.",
+      "ogTitle": "Портфолио – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "pageTitle": "Портфолио – Lana Svitla",
+      "lang": "en",
+      "translationOf": "portfolio.html"
+    },
+    {
+      "path": "en/about.html",
+      "components": [
+        "icons",
+        "site-header",
+        "site-footer",
+        "all-directions",
+        "metrics",
+        "spec-languages"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "navAbout": "is-current",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "root": "../",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "description": "Lana Svitla – 10+ лет в&nbsp;дизайне бренда и&nbsp;продукта, 6+ лет на&nbsp;senior- и&nbsp;руководящих позициях. CV, portfolio, подход к&nbsp;работе.",
+      "ogTitle": "Обо мне – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "metricList": [
+        "cs-design-system",
+        "togas-orders",
+        "togas-sites",
+        "verba-traffic",
+        "mentoring-middle"
+      ],
+      "pageTitle": "Обо мне – Lana Svitla",
+      "lang": "en",
+      "translationOf": "about.html",
+      "languages": [
+        "Русский",
+        "Украинский",
+        "Английский · B1–B2"
+      ]
+    },
+    {
+      "path": "en/product.html",
+      "components": [
+        "icons",
+        "site-header",
+        "role-switch",
+        "site-footer",
+        "work-cases",
+        "other-directions",
+        "direction-intro",
+        "direction-expertise",
+        "direction-cv",
+        "metrics",
+        "direction-process",
+        "direction-more"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navAbout": "",
+      "root": "../",
+      "direction": "product",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "is-current",
+      "description": "Продуктовый и&nbsp;UX/UI дизайн: исследование, информационная архитектура, интерфейсы, дизайн-системы, работа с&nbsp;метриками.",
+      "ogTitle": "Продукт и&nbsp;UX/UI – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "metricList": [
+        "togas-orders",
+        "cs-design-system",
+        "ithub-course"
+      ],
+      "pageTitle": "Продукт и&nbsp;UX/UI – Lana Svitla",
+      "lang": "en",
+      "translationOf": "product.html"
+    },
+    {
+      "path": "en/brand.html",
+      "components": [
+        "icons",
+        "site-header",
+        "role-switch",
+        "site-footer",
+        "work-cases",
+        "other-directions",
+        "direction-intro",
+        "direction-expertise",
+        "direction-cv",
+        "metrics",
+        "direction-process",
+        "direction-more"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navAbout": "",
+      "root": "../",
+      "direction": "brand",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "is-current",
+      "description": "Бренд- и&nbsp;графический дизайн: айдентика, визуальные системы, арт-дирекшен, digital-коммуникация, сайты, презентации.",
+      "ogTitle": "Бренд и&nbsp;коммуникация – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "metricList": [
+        "verba-traffic",
+        "verba-campaigns",
+        "togas-sites"
+      ],
+      "pageTitle": "Бренд и&nbsp;коммуникация – Lana Svitla",
+      "lang": "en",
+      "translationOf": "brand.html"
+    },
+    {
+      "path": "en/process.html",
+      "components": [
+        "icons",
+        "site-header",
+        "site-footer",
+        "services"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "navProcess": "is-current",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "root": "../",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "description": "Как&nbsp;я&nbsp;веду проект. Бренд-задача и&nbsp;продукт: дизайн-процесс по&nbsp;шагам.",
+      "ogTitle": "Процесс – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "servicesFromDirections": true,
+      "pageTitle": "Процесс – Lana Svitla",
+      "lang": "en",
+      "translationOf": "process.html"
+    },
+    {
+      "path": "en/process-product.html",
+      "components": [
+        "icons",
+        "site-header",
+        "process-switch",
+        "site-footer"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navProcess": "is-current",
+      "procProduct": "is-current",
+      "procProductAria": " aria-current=\"page\"",
+      "root": "../",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "description": "Как&nbsp;я&nbsp;веду продуктовый проект: от&nbsp;бизнес-задачи и&nbsp;метрики до&nbsp;передачи в&nbsp;разработку и&nbsp;замера результата.",
+      "ogTitle": "Продуктовый процесс – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "noindex": true,
+      "pageTitle": "Продуктовый процесс – Lana Svitla",
+      "lang": "en",
+      "translationOf": "process-product.html"
+    },
+    {
+      "path": "en/process-brand.html",
+      "components": [
+        "icons",
+        "site-header",
+        "process-switch",
+        "site-footer"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navProcess": "is-current",
+      "procBrand": "is-current",
+      "procBrandAria": " aria-current=\"page\"",
+      "root": "../",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "description": "Как&nbsp;я&nbsp;веду бренд-проект: от&nbsp;брифа и&nbsp;аудита до&nbsp;айдентики, носителей и&nbsp;гайдлайна.",
+      "ogTitle": "Бренд-процесс – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "noindex": true,
+      "pageTitle": "Бренд-процесс – Lana Svitla",
+      "lang": "en",
+      "translationOf": "process-brand.html"
+    },
+    {
+      "path": "en/work/mark-n-post/index.html",
+      "components": [
+        "case-intro",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Сервис логистической компании: форматы отправки, процесс и&nbsp;заявки в&nbsp;Telegram. 7&nbsp;продуктовых страниц для&nbsp;рекламной кампании.",
+      "ogTitle": "Mark’n’Post",
+      "ogImage": "assets/works/MarknPost/MarknPostCover.webp",
+      "pageTitle": "Mark’n’Post – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/mark-n-post/index.html"
+    },
+    {
+      "path": "en/work/eqlio/index.html",
+      "components": [
+        "case-intro",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Корпоративное приложение для&nbsp;спортивных челленджей: сценарии, интерфейс и&nbsp;прототип.",
+      "ogTitle": "Eqlio",
+      "ogImage": "assets/works/Eqlio/EclioCover.webp",
+      "pageTitle": "Eqlio – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/eqlio/index.html"
+    },
+    {
+      "path": "en/work/togas/index.html",
+      "components": [
+        "case-intro",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и&nbsp;бонусы.",
+      "ogTitle": "Togas App",
+      "ogImage": "assets/works/Togas/TogasApp.webp",
+      "pageTitle": "Togas App – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/togas/index.html"
+    },
+    {
+      "path": "en/work/visual-brand-identity/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Визуальная система для&nbsp;сервиса, сет иллюстраций для&nbsp;маркетплейса ремесленных товаров.",
+      "ogTitle": "Visual Brand Identity",
+      "ogImage": "assets/works/Illustration_set/Illustaration_set_01.webp",
+      "pageTitle": "Visual Brand Identity – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/visual-brand-identity/index.html"
+    },
+    {
+      "path": "en/work/amo/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Брендинг косметической линейки AMO: знак-лигатура, палитра, типографика и&nbsp;система упаковки.",
+      "ogTitle": "AMO",
+      "ogImage": "assets/works/AMO/cover.webp",
+      "pageTitle": "AMO – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/amo/index.html"
+    },
+    {
+      "path": "en/work/togas-catalogue/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Каталог «Система сна Togas»: верстка печатного каталога и&nbsp;страницы продукта для&nbsp;новой линейки.",
+      "ogTitle": "Togas Print Catalogue",
+      "ogImage": "assets/works/TogasCatalogue/cover.webp",
+      "pageTitle": "Togas Print Catalogue – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/togas-catalogue/index.html"
+    },
+    {
+      "path": "en/work/fora/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Айдентика платежного сервиса Fora: модульный знак, паттерн, палитра и&nbsp;типографика.",
+      "ogTitle": "Fora",
+      "ogImage": "assets/works/Fora/cover.webp",
+      "pageTitle": "Fora – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/fora/index.html"
+    },
+    {
+      "path": "en/work/waiw-ai/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Презентация AI-платформы обработки сейсмических данных Waiw AI: восемь сценариев работы геолога.",
+      "ogTitle": "Waiw AI",
+      "ogImage": "assets/works/WaveAI/cover.webp",
+      "pageTitle": "Waiw AI – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/waiw-ai/index.html"
+    },
+    {
+      "path": "en/work/svitla-embroidery/index.html",
+      "components": [
+        "case-intro",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Цифровая галерея и&nbsp;магазин авторской вышивки: 20+ страниц работ, единая визуальная система, языковые версии.",
+      "ogTitle": "Svitla Embroidery Gallery",
+      "ogImage": "assets/works/SvitlaEmbroidery/cover-ls-embroidery.webp",
+      "pageTitle": "Svitla Embroidery Gallery – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/svitla-embroidery/index.html"
+    },
+    {
+      "path": "en/web.html",
+      "components": [
+        "icons",
+        "site-header",
+        "role-switch",
+        "site-footer",
+        "work-cases",
+        "other-directions",
+        "direction-intro",
+        "direction-expertise",
+        "direction-cv",
+        "metrics",
+        "direction-process",
+        "direction-more"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navAbout": "",
+      "root": "../",
+      "direction": "web",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "is-current",
+      "description": "Web и&nbsp;digital дизайн: лендинги и&nbsp;сайты на&nbsp;Tilda, Webflow, Framer, сборка кодом вместе с&nbsp;AI. Публикация сайта: настройка хостинга, домена, контекстной рекламы.",
+      "ogTitle": "Web и&nbsp;digital – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "metricList": [
+        "verba-traffic",
+        "togas-sites",
+        "print-catalogs"
+      ],
+      "pageTitle": "Web и&nbsp;digital – Lana Svitla",
+      "lang": "en",
+      "translationOf": "web.html"
+    },
+    {
+      "path": "en/404.html",
+      "components": [
+        "icons",
+        "site-header",
+        "site-footer",
+        "seo",
+        "analytics"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "root": "../",
+      "description": "Страница не&nbsp;найдена – Lana Svitla.",
+      "ogTitle": "Страница не&nbsp;найдена – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "noindex": true,
+      "pageTitle": "Страница не&nbsp;найдена – Lana Svitla",
+      "lang": "en",
+      "translationOf": "404.html"
+    },
+    {
+      "path": "en/work/creavent/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "CreaVent – Айдентика сервиса для&nbsp;создания событий",
+      "ogTitle": "CreaVent",
+      "ogImage": "assets/works/CreaVent/cover.webp",
+      "pageTitle": "CreaVent – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/creavent/index.html"
+    },
+    {
+      "path": "en/work/climafiber/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Climafiber – Сайт технологии Togas Innovations: терморегуляция, экологичность, продукты",
+      "ogTitle": "Climafiber",
+      "ogImage": "assets/works/Climafiber/cover.webp",
+      "pageTitle": "Climafiber – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/climafiber/index.html"
+    },
+    {
+      "path": "en/work/sensotex/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Sensotex – Продуктовый лендинг технологии Togas Innovations",
+      "ogTitle": "Sensotex",
+      "ogImage": "assets/works/Sensotex/cover.webp",
+      "pageTitle": "Sensotex – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/sensotex/index.html"
+    },
+    {
+      "path": "en/work/togas-site/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Редизайн сайтов Togas.com и&nbsp;Togascouture – главного сайта компании и&nbsp;бутиковой линии. Каталог, коллекции, продуктовые страницы",
+      "ogTitle": "Togas e-commerce",
+      "ogImage": "assets/works/TogasSite/cover.webp",
+      "pageTitle": "Togas e-commerce – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/togas-site/index.html"
+    },
+    {
+      "path": "en/work/woodform/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Woodform Studio – Woodform Studio / website&nbsp;&&nbsp;logo design",
+      "ogTitle": "Woodform Studio",
+      "ogImage": "assets/works/Woodform/cover.webp",
+      "pageTitle": "Woodform Studio – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/woodform/index.html"
+    },
+    {
+      "path": "en/work/togas-smm/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Togas SMM – SMM Design / Social Media",
+      "ogTitle": "Togas SMM",
+      "ogImage": "assets/works/TogasSMM/cover.webp",
+      "pageTitle": "Togas SMM – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/togas-smm/index.html"
+    },
+    {
+      "path": "en/work/verba-mayr/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Verba Mayr – сайт международного медицинского центра: методика, программы, экспертиза",
+      "ogTitle": "Verba Mayr",
+      "ogImage": "assets/works/VerbaMayr/cover.webp",
+      "pageTitle": "Verba Mayr – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/verba-mayr/index.html"
+    },
+    {
+      "path": "en/work/collagenina/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Collagenina – сайт линейки интенсивного ухода за&nbsp;кожей",
+      "ogTitle": "Collagenina. Labo",
+      "ogImage": "assets/works/Collagenina/cover.webp",
+      "pageTitle": "Collagenina. Labo – Lana Svitla",
+      "lang": "en",
+      "translationOf": "work/collagenina/index.html"
+    },
+    {
+      "path": "uk/index.html",
+      "components": [
+        "icons",
+        "site-header",
+        "site-footer",
+        "home-cases",
+        "all-directions"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "navWorks": "is-current",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "root": "../",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "description": "Lana Svitla – дизайнер бренда и&nbsp;продукта. Айдентика, UX/UI и&nbsp;веб-дизайн.",
+      "ogTitle": "Lana Svitla – Brand, Product&nbsp;&&nbsp;UX/UI Designer",
+      "ogImage": "assets/images/og-default.jpg",
+      "pageTitle": "Lana Svitla – Brand, Product&nbsp;&amp;&nbsp;UX/UI Designer",
+      "lang": "uk",
+      "translationOf": "index.html"
+    },
+    {
+      "path": "uk/portfolio.html",
+      "components": [
+        "icons",
+        "site-header",
+        "case-catalogue",
+        "site-footer"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navWorks": "is-current",
+      "root": "../",
+      "caseNiche": true,
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "description": "Portfolio Lana Svitla: бренд-дизайн, продуктовый UX/UI, web и&nbsp;digital.",
+      "ogTitle": "Портфолио – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "pageTitle": "Портфолио – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "portfolio.html"
+    },
+    {
+      "path": "uk/about.html",
+      "components": [
+        "icons",
+        "site-header",
+        "site-footer",
+        "all-directions",
+        "metrics",
+        "spec-languages"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "navAbout": "is-current",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "root": "../",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "description": "Lana Svitla – 10+ лет в&nbsp;дизайне бренда и&nbsp;продукта, 6+ лет на&nbsp;senior- и&nbsp;руководящих позициях. CV, portfolio, подход к&nbsp;работе.",
+      "ogTitle": "Обо мне – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "metricList": [
+        "cs-design-system",
+        "togas-orders",
+        "togas-sites",
+        "verba-traffic",
+        "mentoring-middle"
+      ],
+      "pageTitle": "Обо мне – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "about.html",
+      "languages": [
+        "Русский",
+        "Украинский",
+        "Английский · B1–B2"
+      ]
+    },
+    {
+      "path": "uk/product.html",
+      "components": [
+        "icons",
+        "site-header",
+        "role-switch",
+        "site-footer",
+        "work-cases",
+        "other-directions",
+        "direction-intro",
+        "direction-expertise",
+        "direction-cv",
+        "metrics",
+        "direction-process",
+        "direction-more"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navAbout": "",
+      "root": "../",
+      "direction": "product",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "is-current",
+      "description": "Продуктовый и&nbsp;UX/UI дизайн: исследование, информационная архитектура, интерфейсы, дизайн-системы, работа с&nbsp;метриками.",
+      "ogTitle": "Продукт и&nbsp;UX/UI – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "metricList": [
+        "togas-orders",
+        "cs-design-system",
+        "ithub-course"
+      ],
+      "pageTitle": "Продукт и&nbsp;UX/UI – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "product.html"
+    },
+    {
+      "path": "uk/brand.html",
+      "components": [
+        "icons",
+        "site-header",
+        "role-switch",
+        "site-footer",
+        "work-cases",
+        "other-directions",
+        "direction-intro",
+        "direction-expertise",
+        "direction-cv",
+        "metrics",
+        "direction-process",
+        "direction-more"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navAbout": "",
+      "root": "../",
+      "direction": "brand",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "is-current",
+      "description": "Бренд- и&nbsp;графический дизайн: айдентика, визуальные системы, арт-дирекшен, digital-коммуникация, сайты, презентации.",
+      "ogTitle": "Бренд и&nbsp;коммуникация – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "metricList": [
+        "verba-traffic",
+        "verba-campaigns",
+        "togas-sites"
+      ],
+      "pageTitle": "Бренд и&nbsp;коммуникация – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "brand.html"
+    },
+    {
+      "path": "uk/process.html",
+      "components": [
+        "icons",
+        "site-header",
+        "site-footer",
+        "services"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "navProcess": "is-current",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "root": "../",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "description": "Как&nbsp;я&nbsp;веду проект. Бренд-задача и&nbsp;продукт: дизайн-процесс по&nbsp;шагам.",
+      "ogTitle": "Процесс – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "servicesFromDirections": true,
+      "pageTitle": "Процесс – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "process.html"
+    },
+    {
+      "path": "uk/process-product.html",
+      "components": [
+        "icons",
+        "site-header",
+        "process-switch",
+        "site-footer"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navProcess": "is-current",
+      "procProduct": "is-current",
+      "procProductAria": " aria-current=\"page\"",
+      "root": "../",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "description": "Как&nbsp;я&nbsp;веду продуктовый проект: от&nbsp;бизнес-задачи и&nbsp;метрики до&nbsp;передачи в&nbsp;разработку и&nbsp;замера результата.",
+      "ogTitle": "Продуктовый процесс – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "noindex": true,
+      "pageTitle": "Продуктовый процесс – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "process-product.html"
+    },
+    {
+      "path": "uk/process-brand.html",
+      "components": [
+        "icons",
+        "site-header",
+        "process-switch",
+        "site-footer"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navProcess": "is-current",
+      "procBrand": "is-current",
+      "procBrandAria": " aria-current=\"page\"",
+      "root": "../",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "description": "Как&nbsp;я&nbsp;веду бренд-проект: от&nbsp;брифа и&nbsp;аудита до&nbsp;айдентики, носителей и&nbsp;гайдлайна.",
+      "ogTitle": "Бренд-процесс – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "noindex": true,
+      "pageTitle": "Бренд-процесс – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "process-brand.html"
+    },
+    {
+      "path": "uk/contacts.html",
+      "components": [
+        "icons",
+        "site-header",
+        "contact-links"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "root": "../",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "description": "Lana Svitla. Дизайнер бренда и&nbsp;продукта: Email, Telegram, LinkedIn, Behance. CV.",
+      "ogTitle": "Контакты – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "pageTitle": "Контакты – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "contacts.html"
+    },
+    {
+      "path": "uk/work/mark-n-post/index.html",
+      "components": [
+        "case-intro",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Сервис логистической компании: форматы отправки, процесс и&nbsp;заявки в&nbsp;Telegram. 7&nbsp;продуктовых страниц для&nbsp;рекламной кампании.",
+      "ogTitle": "Mark’n’Post",
+      "ogImage": "assets/works/MarknPost/MarknPostCover.webp",
+      "pageTitle": "Mark’n’Post – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/mark-n-post/index.html"
+    },
+    {
+      "path": "uk/work/eqlio/index.html",
+      "components": [
+        "case-intro",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Корпоративное приложение для&nbsp;спортивных челленджей: сценарии, интерфейс и&nbsp;прототип.",
+      "ogTitle": "Eqlio",
+      "ogImage": "assets/works/Eqlio/EclioCover.webp",
+      "pageTitle": "Eqlio – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/eqlio/index.html"
+    },
+    {
+      "path": "uk/work/togas/index.html",
+      "components": [
+        "case-intro",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Мобильное приложение онлайн-бутика: каталог, корзина, оформление заказа и&nbsp;бонусы.",
+      "ogTitle": "Togas App",
+      "ogImage": "assets/works/Togas/TogasApp.webp",
+      "pageTitle": "Togas App – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/togas/index.html"
+    },
+    {
+      "path": "uk/work/visual-brand-identity/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Визуальная система для&nbsp;сервиса, сет иллюстраций для&nbsp;маркетплейса ремесленных товаров.",
+      "ogTitle": "Visual Brand Identity",
+      "ogImage": "assets/works/Illustration_set/Illustaration_set_01.webp",
+      "pageTitle": "Visual Brand Identity – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/visual-brand-identity/index.html"
+    },
+    {
+      "path": "uk/work/amo/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Брендинг косметической линейки AMO: знак-лигатура, палитра, типографика и&nbsp;система упаковки.",
+      "ogTitle": "AMO",
+      "ogImage": "assets/works/AMO/cover.webp",
+      "pageTitle": "AMO – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/amo/index.html"
+    },
+    {
+      "path": "uk/work/togas-catalogue/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Каталог «Система сна Togas»: верстка печатного каталога и&nbsp;страницы продукта для&nbsp;новой линейки.",
+      "ogTitle": "Togas Print Catalogue",
+      "ogImage": "assets/works/TogasCatalogue/cover.webp",
+      "pageTitle": "Togas Print Catalogue – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/togas-catalogue/index.html"
+    },
+    {
+      "path": "uk/work/fora/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Айдентика платежного сервиса Fora: модульный знак, паттерн, палитра и&nbsp;типографика.",
+      "ogTitle": "Fora",
+      "ogImage": "assets/works/Fora/cover.webp",
+      "pageTitle": "Fora – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/fora/index.html"
+    },
+    {
+      "path": "uk/work/waiw-ai/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Презентация AI-платформы обработки сейсмических данных Waiw AI: восемь сценариев работы геолога.",
+      "ogTitle": "Waiw AI",
+      "ogImage": "assets/works/WaveAI/cover.webp",
+      "pageTitle": "Waiw AI – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/waiw-ai/index.html"
+    },
+    {
+      "path": "uk/work/svitla-embroidery/index.html",
+      "components": [
+        "case-intro",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Цифровая галерея и&nbsp;магазин авторской вышивки: 20+ страниц работ, единая визуальная система, языковые версии.",
+      "ogTitle": "Svitla Embroidery Gallery",
+      "ogImage": "assets/works/SvitlaEmbroidery/cover-ls-embroidery.webp",
+      "pageTitle": "Svitla Embroidery Gallery – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/svitla-embroidery/index.html"
+    },
+    {
+      "path": "uk/web.html",
+      "components": [
+        "icons",
+        "site-header",
+        "role-switch",
+        "site-footer",
+        "work-cases",
+        "other-directions",
+        "direction-intro",
+        "direction-expertise",
+        "direction-cv",
+        "metrics",
+        "direction-process",
+        "direction-more"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "navAbout": "",
+      "root": "../",
+      "direction": "web",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "is-current",
+      "description": "Web и&nbsp;digital дизайн: лендинги и&nbsp;сайты на&nbsp;Tilda, Webflow, Framer, сборка кодом вместе с&nbsp;AI. Публикация сайта: настройка хостинга, домена, контекстной рекламы.",
+      "ogTitle": "Web и&nbsp;digital – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "metricList": [
+        "verba-traffic",
+        "togas-sites",
+        "print-catalogs"
+      ],
+      "pageTitle": "Web и&nbsp;digital – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "web.html"
+    },
+    {
+      "path": "uk/404.html",
+      "components": [
+        "icons",
+        "site-header",
+        "site-footer",
+        "seo",
+        "analytics"
+      ],
+      "homeHref": "./index.html",
+      "worksHref": "./portfolio.html",
+      "processHref": "./process.html",
+      "aboutHref": "./about.html",
+      "contactPageHref": "./contacts.html",
+      "productHref": "./product.html",
+      "brandHref": "./brand.html",
+      "processProductHref": "./process-product.html",
+      "processBrandHref": "./process-brand.html",
+      "webHref": "./web.html",
+      "directionsHref": "./index.html#directions",
+      "navDirections": "",
+      "root": "../",
+      "description": "Страница не&nbsp;найдена – Lana Svitla.",
+      "ogTitle": "Страница не&nbsp;найдена – Lana Svitla",
+      "ogImage": "assets/images/og-default.jpg",
+      "noindex": true,
+      "pageTitle": "Страница не&nbsp;найдена – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "404.html"
+    },
+    {
+      "path": "uk/work/creavent/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "CreaVent – Айдентика сервиса для&nbsp;создания событий",
+      "ogTitle": "CreaVent",
+      "ogImage": "assets/works/CreaVent/cover.webp",
+      "pageTitle": "CreaVent – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/creavent/index.html"
+    },
+    {
+      "path": "uk/work/climafiber/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Climafiber – Сайт технологии Togas Innovations: терморегуляция, экологичность, продукты",
+      "ogTitle": "Climafiber",
+      "ogImage": "assets/works/Climafiber/cover.webp",
+      "pageTitle": "Climafiber – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/climafiber/index.html"
+    },
+    {
+      "path": "uk/work/sensotex/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Sensotex – Продуктовый лендинг технологии Togas Innovations",
+      "ogTitle": "Sensotex",
+      "ogImage": "assets/works/Sensotex/cover.webp",
+      "pageTitle": "Sensotex – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/sensotex/index.html"
+    },
+    {
+      "path": "uk/work/togas-site/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Редизайн сайтов Togas.com и&nbsp;Togascouture – главного сайта компании и&nbsp;бутиковой линии. Каталог, коллекции, продуктовые страницы",
+      "ogTitle": "Togas e-commerce",
+      "ogImage": "assets/works/TogasSite/cover.webp",
+      "pageTitle": "Togas e-commerce – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/togas-site/index.html"
+    },
+    {
+      "path": "uk/work/verba-mayr/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Verba Mayr – сайт международного медицинского центра: методика, программы, экспертиза",
+      "ogTitle": "Verba Mayr",
+      "ogImage": "assets/works/VerbaMayr/cover.webp",
+      "pageTitle": "Verba Mayr – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/verba-mayr/index.html"
+    },
+    {
+      "path": "uk/work/collagenina/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Collagenina – сайт линейки интенсивного ухода за&nbsp;кожей",
+      "ogTitle": "Collagenina. Labo",
+      "ogImage": "assets/works/Collagenina/cover.webp",
+      "pageTitle": "Collagenina. Labo – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/collagenina/index.html"
+    },
+    {
+      "path": "uk/work/woodform/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Woodform Studio – Woodform Studio / website&nbsp;&&nbsp;logo design",
+      "ogTitle": "Woodform Studio",
+      "ogImage": "assets/works/Woodform/cover.webp",
+      "pageTitle": "Woodform Studio – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/woodform/index.html"
+    },
+    {
+      "path": "uk/work/togas-smm/index.html",
+      "components": [
+        "case-body",
+        "icons",
+        "site-header",
+        "other-projects",
+        "site-footer"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "Togas SMM – SMM Design / Social Media",
+      "ogTitle": "Togas SMM",
+      "ogImage": "assets/works/TogasSMM/cover.webp",
+      "pageTitle": "Togas SMM – Lana Svitla",
+      "lang": "uk",
+      "translationOf": "work/togas-smm/index.html"
     }
   ],
   "metrics": {

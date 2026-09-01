@@ -667,11 +667,16 @@ h1,h2,h3,p{ margin: 0; }
   font-size: var(--fs-h1);
   font-weight: 400;
   letter-spacing: -0.01em;
+  /* строки заголовка делятся поровну, а не «длинная и одно слово» */
+  text-wrap: balance;
 }
 .case-hero__subtitle{
   margin-top: 12px;
   font-size: var(--fs-lead);
   color: var(--muted);
+  /* последняя строка не остаётся с одним словом; неразрывные пробелы
+     после артиклей и предлогов ставит типографика, это — про остальное */
+  text-wrap: pretty;
 }
 .case-meta{
   margin: 40px 0 0;
@@ -1740,16 +1745,25 @@ h1,h2,h3,p{ margin: 0; }
   transition: color .32s var(--ease);
 }
 .crow__title{
-  flex: 1 1 auto;
+  /* не сжимается: когда строке тесно, место уступает подпись справа,
+     а не название — иначе оно уезжало на вторую строку */
+  flex: 1 0 auto;
   min-width: 0;
   font-family: var(--font-display);
-  font-size: 18px;
+  /* На 1180–1400 строка кейса стоит в узкой правой колонке: длинное
+     название ломалось на две строки, а короткие рядом оставались в одну —
+     ряд разъезжался. Кегль идёт за шириной. */
+  font-size: clamp(16px, 1.25vw, 18px);
   font-weight: 500;
   line-height: 27px;
   color: var(--ink);
 }
 .crow__type{
-  width: 167px;
+  /* 167px держат подписи в одной колонке, пока в строке есть место;
+     когда его нет, ширина отдаётся названию */
+  flex: 0 1 167px;
+  min-width: 0;
+  white-space: nowrap;
   font-size: 12px;
   line-height: 18px;
   text-transform: uppercase;
@@ -2031,6 +2045,11 @@ h1,h2,h3,p{ margin: 0; }
 .work-cases__grid{ margin-top: 0; padding-bottom: 0; }
 /* если над сеткой есть текст, отбиваем ее самым крупным шагом ряда */
 .about-row__body > * + .work-cases__grid{ margin-top: 40px; }
+/* Ссылка «ещё работы» под сеткой кейсов: тот же шаг, что у сетки, и тот же
+   вид, что у «Подробнее» на карточках направлений. Раньше здесь стоял блок
+   с главной — он растянут на всю ширину колонки, и стрелка уезжала от текста
+   к правому краю. */
+.direction-more{ margin-top: 40px; }
 .portfolio__empty{
   margin-top: 52px;
   padding-bottom: 112px;
@@ -2667,7 +2686,10 @@ h1,h2,h3,p{ margin: 0; }
   color: var(--muted);
 }
 .contact-intro__title{
-  margin-top: 24px;
+  /* Надзаголовка «Контакты» больше нет — он повторял пункт меню. Отступ,
+     который отбивал заголовок от него, теперь не нужен: страница начинается
+     с самого заголовка. */
+  margin-top: 0;
   font-family: var(--font-display);
   font-size: var(--fs-footer-title);
   font-weight: 500;
@@ -2678,7 +2700,10 @@ h1,h2,h3,p{ margin: 0; }
    at 400px the lead broke into a ragged column. */
 .contact-intro__lead{
   margin-top: 24px;
-  max-width: 620px;
+  /* По замеру: 946 px — строка до тире, 997 px — весь остаток фразы.
+     При 960 «на задачу.» уезжало третьей строкой в 119 px. 1010 держит
+     текст в двух строках и оставляет тире в конце первой. */
+  max-width: 1010px;
   font-family: var(--font-display);
   font-size: 24px;
   font-weight: 500;
@@ -3271,6 +3296,20 @@ h1,h2,h3,p{ margin: 0; }
   color: var(--accent-ink);
   transition: background .3s var(--ease), color .3s var(--ease);
 }
+/* Ряд из нескольких кнопок: у кейса может быть больше одного живого адреса
+   (у Togas это основной сайт и бутиковая линия). Правило для вложенной
+   кнопки существовало давно, а самой раскладки ряда не было. */
+.live-link-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 40px;
+}
+/* Кнопки стоят в первом экране, на месте строки характеристик: у части
+   кейсов там одно поле, и строка растягивалась пустотой на всю ширину.
+   Отбивка та же, что у самой строки. */
+.case-meta + .live-link-row{ margin-top: 32px; }
+.live-link-row + .case-hero__media{ margin-top: 60px; }
 .live-link-row .live-link{ margin-top: 0; }
 .live-link:hover, .live-link:focus-visible{ background: var(--ink); color: var(--accent); outline: none; }
 /* Кнопка ведёт на внешний сайт или в стор, поэтому стрелка диагональная
@@ -3329,6 +3368,12 @@ h1,h2,h3,p{ margin: 0; }
      там padding секции, поэтому расхождение было только здесь */
   padding-bottom: 80px;
 }
+/* Копия сайта лежит внутри секции шапки, а не рядом с блоком текста,
+   поэтому соседний селектор её не находил. Складывались нижний padding
+   шапки и нижний padding самой копии — сверху выходило 160 против 80 снизу.
+   Отбивку даёт копия, шапка своей не добавляет. */
+.case-hero:has(.site-preview-wrap){ padding-bottom: 0; }
+
 /* Секции уже отбивают себя снизу своим padding'ом. Собственный margin
    превью складывался с ним и давал 120px там, где сверху блока стоит 80px —
    один и тот же промежуток отбивали дважды. */
@@ -3754,3 +3799,259 @@ h1,h2,h3,p{ margin: 0; }
   .journeys{ max-width: none; grid-template-columns: 1fr; gap: 24px; }
   .metric-board{ grid-template-columns: repeat(2, 1fr); padding: 32px 24px; gap: 28px 20px; }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Контакты: строки-ссылки. Отдельный вид только для этой страницы — в подвале
+   мелкие текстовые ссылки уместны, а здесь ссылка и есть цель страницы.
+   Раньше все четыре набирались тем же кеглем, что абзац рядом, с одинаковой
+   стрелкой на всех трёх сервисах: узнать нельзя, попасть пальцем трудно
+   (высота строки была 25 px при рекомендованных 44).
+   ───────────────────────────────────────────────────────────────────────── */
+.contact-links{
+  display: grid;
+  gap: 0;
+  margin: 48px 0 0;
+  border-top: 1px solid var(--line);
+  max-width: 560px;
+}
+.clink{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 64px;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  transition: padding-left var(--dur, .25s) var(--ease, ease);
+}
+.clink__mark{
+  flex: 0 0 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--surface-soft);
+  transition: background var(--dur, .25s) var(--ease, ease);
+}
+.clink__mark svg{ width: 20px; height: 20px; }
+.clink__body{ display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.clink__name{ font-size: 17px; font-weight: 600; line-height: 1.3; }
+.clink__value{
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.clink__go{
+  width: 16px; height: 16px;
+  margin-left: auto;
+  flex: 0 0 auto;
+  color: var(--muted);
+  transition: transform var(--dur, .25s) var(--ease, ease), color var(--dur, .25s) var(--ease, ease);
+}
+.clink:hover{ padding-left: 10px; }
+.clink:hover .clink__mark{ background: var(--accent); }
+.clink:hover .clink__go{ color: var(--ink); transform: translate(2px, -2px); }
+.clink:focus-visible{ outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 8px; }
+
+@media (max-width: 700px){
+  .contact-links{ margin-top: 32px; max-width: none; }
+  .clink__value{ font-size: 13px; }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Второй ряд внимания в каталоге. Приём измерен у Pentagram: на одной
+   странице две величины карточки при одной и той же пропорции — крупные
+   924×616 и мелкие 456×304. Иерархию делает размер, а не заголовок и не
+   слово «архив»: оно сказало бы «устарело», а нужно «менее важно».
+   Обложки здесь берутся с Behance в их родном 818×639 — под 390 px это
+   ровно двойная плотность.
+   ───────────────────────────────────────────────────────────────────────── */
+.portfolio__grid--small{
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 44px 24px;
+  margin-top: 28px;
+  padding-bottom: 112px;
+}
+.portfolio__more{
+  margin: 0;
+  padding-top: 56px;
+  border-top: 1px solid var(--line);
+}
+.pcase--small .pcase__cover{ aspect-ratio: 818 / 639; }
+.pcase--small .pcase__caption{ gap: 10px; }
+.pcase--small .pcase__title{ font-size: 19px; line-height: 1.3; }
+.pcase--small .pcase__chips .chip{ font-size: 11px; }
+
+@media (max-width: 1000px){
+  .portfolio__grid--small{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px){
+  .portfolio__grid--small{ grid-template-columns: 1fr; gap: 32px; }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Сплошное полотно. Кейс, который на исходнике был одной высокой картинкой
+   и разрезан на куски: скругления и зазоры между ними выдали бы шов там,
+   где его в макете нет. Куски встают вплотную и читаются как одно целое.
+   ───────────────────────────────────────────────────────────────────────── */
+.case-gallery--seamless{ padding-bottom: 0; gap: 0; }
+.case-gallery--seamless img{ border-radius: 0; display: block; }
+/* Полотно — одно целое, но верхний край всё же край: скругляем только его,
+   как у любой другой картинки на сайте. Низ и стыки остаются прямыми. */
+.case-gallery--seamless-first img{
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+}
+.case-gallery--seamless + .case-gallery--seamless{ margin-top: 0; }
+/* нижний отступ возвращает последний кусок, иначе полотно упрётся в подвал */
+.case-gallery--seamless-last{ padding-bottom: 80px; }
+
+.case-hero__media--flat{ border-radius: 0; }
+
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Копия первого экрана verbamayr.ru. Собрана разметкой, а не скриншотом:
+   текст остаётся текстом и переводится вместе с сайтом. Шрифт, логотип
+   и значки — их собственные. Clear Sans под Apache 2.0, хостить у себя можно.
+   Взят только первый экран: без плашки куки, телефона, переключателя языка
+   и плавающих иконок чата — к работе они отношения не имеют.
+   ───────────────────────────────────────────────────────────────────────── */
+/* Light их сайт не подключает, но шрифт открытый: взят из официального
+   репозитория Intel под Apache 2.0 и урезан до латиницы — в копии экрана
+   только английский текст. */
+@font-face{
+  font-family: 'Clear Sans';
+  font-style: normal; font-weight: 300; font-display: swap;
+  src: url('../fonts/clear-sans-300.woff2') format('woff2');
+}
+@font-face{
+  font-family: 'Clear Sans';
+  font-style: normal; font-weight: 400; font-display: swap;
+  src: url('../fonts/clear-sans-400.woff') format('woff');
+}
+@font-face{
+  font-family: 'Clear Sans';
+  font-style: normal; font-weight: 500; font-display: swap;
+  src: url('../fonts/clear-sans-500.woff') format('woff');
+}
+@font-face{
+  font-family: 'Clear Sans';
+  font-style: normal; font-weight: 700; font-display: swap;
+  src: url('../fonts/clear-sans-700.woff') format('woff');
+}
+
+.vm-hero{
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  color: #fff;
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+}
+.vm-hero__bg{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* Верх кадра светлый — стекло и зелень, — и белая строка меню на нём
+   пропадала. Затемняющая подложка сверху и снизу: так делают на самом сайте,
+   иначе шапка и кнопки читаются только на удачном кадре. */
+.vm-hero::before{
+  content: "";
+  position: absolute; inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.12) 18%, rgba(0,0,0,0) 34%),
+    linear-gradient(0deg, rgba(0,0,0,.34) 0%, rgba(0,0,0,0) 26%);
+}
+/* z-index действует только на позиционированных элементах. Когда я убрал
+   отсюда position, подложка легла поверх меню и иконок — их стало не видно.
+   Позиционирование нужно, но абсолютным блокам его нельзя перебивать,
+   поэтому они идут следом отдельным правилом. */
+.vm-hero__bg{ z-index: 0; }
+.vm-hero > :not(.vm-hero__bg){ position: relative; z-index: 1; }
+/* Селектор через `>` — иначе правило выше специфичнее и возвращает relative,
+   а блоки уезжают со своих мест. */
+.vm-hero > .vm-hero__title,
+.vm-hero > .vm-hero__facts,
+.vm-hero > .vm-hero__actions{ position: absolute; }
+
+.vm-hero__top{
+  display: flex; align-items: center; gap: 34px;
+  padding: 30px 46px 0;
+  font-size: 17px;
+}
+.vm-hero__menu{ display: inline-flex; align-items: center; gap: 14px; }
+.vm-hero__burger{
+  width: 26px; height: 12px;
+  border-top: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+}
+.vm-hero__search svg{ width: 22px; height: 22px; display: block; }
+.vm-hero__logo{ margin: 0 auto; width: 250px; height: auto; }
+.vm-hero__soc{ display: inline-flex; gap: 12px; }
+.vm-hero__soc svg{ width: 34px; height: 34px; display: block; }
+
+.vm-hero__title{
+  /* по высоте — на уровне головы человека в бассейне */
+  top: 46%; left: 46px;
+  margin: 0;
+  max-width: 820px;
+  /* На живом сайте заголовок 40 px при ширине окна около 1900. Сцена копии
+     1400, поэтому пропорционально это ~38. Я ставил 54 — тот же вес при
+     большем кегле читается заметно жирнее. Начертаний тоньше 400 у Clear Sans
+     на их сайте нет. */
+  font-size: 49px; font-weight: 300; line-height: 1.2; letter-spacing: -.005em;
+}
+/* Иконки с подписями стоят слева внизу, кнопки — справа внизу, как в макете.
+   Обе группы прижаты к нижнему краю и не пересекаются по горизонтали. */
+.vm-hero__facts{
+  position: absolute; left: 46px; bottom: 40px;
+  display: flex; gap: 62px;
+  margin: 0; padding: 0; list-style: none;
+  font-size: 17px;
+  max-width: 60%;
+}
+.vm-hero__facts li{ display: flex; flex-direction: column; gap: 16px; }
+.vm-hero__facts img{ width: 46px; height: 46px; }
+
+.vm-hero__actions{
+  position: absolute; right: 46px; bottom: 40px;
+  display: flex; gap: 14px;
+}
+.vm-hero__btn{
+  padding: 15px 34px;
+  background: #fff; color: #1b1b1b;
+  font-size: 14px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+}
+.vm-hero__btn--ghost{ background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.7); }
+
+
+
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Копия первого экрана collagenina.ru. Сайт собран на Tilda, шрифт —
+   Helvetica Neue, он есть в системе, подключать нечего. Взят только первый
+   экран: шапка со знаком Swiss Patents и логотипом LABO, кадр продукта
+   и текст справа.
+   ───────────────────────────────────────────────────────────────────────── */
+.cg-hero{ background: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+.cg-hero__top{
+  display: flex; align-items: center; gap: 40px;
+  padding: 22px 60px; border-bottom: 1px solid #ececec;
+}
+.cg-hero__patents{ width: 200px; height: auto; }
+.cg-hero__nav{
+  display: flex; gap: 56px; margin: 0 auto;
+  font-size: 15px; letter-spacing: .06em; color: #1c1c1c;
+}
+.cg-hero__logo{ width: 220px; height: auto; }
+.cg-hero__stage{ position: relative; }
+.cg-hero__shot{ display: block; width: 100%; height: auto; }
+.cg-hero__copy{
+  position: absolute; right: 7%; top: 50%; transform: translateY(-50%);
+  max-width: 40%; color: #4a3b2a;
+}
+.cg-hero__title{ margin: 0; font-size: 58px; font-weight: 400; letter-spacing: -.01em; }
+.cg-hero__lead{ margin: 18px 0 0; font-size: 19px; line-height: 1.5; }

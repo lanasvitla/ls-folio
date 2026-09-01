@@ -31,6 +31,9 @@ ACCEPTED = [
     ("работы вышивки идут по 300–460 КБ на мегапиксель",
      "пережимал под бюджет — PSNR падал до 32 дБ, на плотной вышивке разница "
      "видна. Качество работ дороже килобайтов. Решено 31.08.2026."),
+    ("Climafiber и Sensotex стоят двумя кейсами, а не одним",
+     "оба — сайты технологий Togas Innovations с похожей структурой, я "
+     "предлагал свести их в один кейс. Решено оставить раздельно 31.08.2026."),
     ("lana-svitla-portrait-hover.webp лежит неиспользованным",
      "68 КБ, оставлен намеренно до отдельного решения. Решено 31.08.2026."),
 ]
@@ -185,6 +188,118 @@ def no_external_css():
             href = re.search(r'href="([^"]+)"', tag)
             if href and href.group(1).startswith(("http://", "https://", "//")):
                 findings.append((p, f"внешний ресурс на пути к отрисовке: {href.group(1)}"))
+
+
+@check("на странице языковой версии не осталось непереведённого текста")
+def language_purity():
+    """Правишь исходный текст — перевод тихо остаётся прежним. Ловится
+    сравнением с исходной страницей: совпавшая строка значит непереведённую.
+
+    По алфавиту это не проверить: украинский тоже кириллица, и проверка
+    «есть ли кириллица» ругалась на верный украинский текст.
+    """
+    m = json.loads((SITE / "tools/pages.json").read_text(encoding="utf-8"))
+    def strip(h):
+        # текст между тегами плюс то, что видно поисковику и читалке:
+        # title, description, og:*, подписи картинок
+        found = re.findall(r">([^<>]+)<", h)
+        found += re.findall(r'(?:content|alt|title|aria-label)="([^"]+)"', h)
+        return set(x.strip() for x in found if x.strip())
+    for page in m["pages"]:
+        base = page.get("translationOf")
+        if not base:
+            continue
+        html = re.sub(r"<(script|style)\b.*?</\1>", "",
+                      (SITE / page["path"]).read_text(encoding="utf-8"), flags=re.S)
+        src = re.sub(r"<(script|style)\b.*?</\1>", "",
+                     (SITE / base).read_text(encoding="utf-8"), flags=re.S)
+        # Слова, совпадающие законно, лежат в словаре как перевод в себя.
+        # Словарей два: компонентов и текстов страниц — смотреть надо оба,
+        # иначе «Гайдлайн» из компонента считается непереведённым.
+        lang = page.get("lang", "ru")
+        known = set()
+        for name in (f"{lang}.json", f"{lang}-pages.json"):
+            dic = SITE / "tools/i18n" / name
+            if dic.is_file():
+                known |= {k for k in json.loads(dic.read_text(encoding="utf-8"))
+                          if not k.startswith("_")}
+        norm = lambda x: " ".join(x.replace("&nbsp;", " ").replace("\u00a0", " ").split())
+        known |= {norm(k) for k in known}
+        same = [x for x in strip(html) & strip(src)
+                if re.search(r"[А-Яа-яЁё]", x)
+                and x not in known and norm(x) not in known]
+        # латиница, цифры и имена брендов совпадают законно — их отсекает фильтр
+        for h in sorted(same)[:3]:
+            findings.append((page["path"], f"не переведено: «{h[:56]}»"))
+
+
+@check("у каждой страницы есть hreflang на все её языковые версии")
+def hreflang_complete():
+    m = json.loads((SITE / "tools/pages.json").read_text(encoding="utf-8"))
+    groups = {}
+    for page in m["pages"]:
+        groups.setdefault(page.get("translationOf") or page["path"], []).append(page)
+    for group in groups.values():
+        if len(group) < 2:
+            continue
+        for page in group:
+            html = (SITE / page["path"]).read_text(encoding="utf-8")
+            for other in group:
+                lang = other.get("lang", "ru")
+                if f'hreflang="{lang}"' not in html:
+                    findings.append((page["path"], f"нет hreflang на {lang}"))
+
+
+@check("обложка кейса не совпадает с картинкой из его галереи")
+def cover_is_not_a_slide():
+    """У пяти кейсов в обложке лежал первый макет: блок «Другие проекты»
+    показывал скриншот вёрстки вместо обложки. Ловится сравнением путей."""
+    m = json.loads((SITE / "tools/pages.json").read_text(encoding="utf-8"))
+    for key, case in m["cases"].items():
+        shots = {src for row in case.get("gallery", []) for src, _ in row}
+        for field in ("cover", "coverSmall"):
+            path = case.get(field)
+            if path and path in shots:
+                findings.append((f"cases.{key}", f"{field} — это картинка из галереи: {path}"))
+
+
+@check("ссылки языковой версии ведут внутрь своего языка")
+def links_stay_in_language():
+    """Со страницы /en/ ссылка на brand.html должна вести в /en/, а не в корень.
+
+    Ломалось так: корень для картинок и корень для ссылок — разные вещи,
+    а генератор считал их одним. Английские «Направления» вели на русские
+    страницы. Проверяется по факту: куда указывает каждая ссылка.
+    """
+    m = json.loads((SITE / "tools/pages.json").read_text(encoding="utf-8"))
+    for page in m["pages"]:
+        lang = page.get("lang")
+        if not lang:
+            continue
+        path = Path(page["path"])
+        html = (SITE / path).read_text(encoding="utf-8")
+        # hreflang и canonical в head ведут в другие языки намеренно
+        body = html.split("</head>", 1)[-1]
+        for href in re.findall(r'href="([^"#][^"]*\.html)(?:#[^"]*)?"', body):
+            target = os.path.normpath(os.path.join(path.parent, href))
+            if not target.startswith(lang + os.sep):
+                findings.append((page["path"], f"ссылка уводит из /{lang}/: {href}"))
+
+
+@check("состав кейсов у языковой версии тот же, что у основной")
+def case_lists_match():
+    """Списки лежали копией в каждой языковой записи и разошлись незаметно:
+    русское портфолио показывало один набор работ, английское — другой.
+    Теперь состав наследуется, а проверка следит, что копий не завели снова."""
+    m = json.loads((SITE / "tools/pages.json").read_text(encoding="utf-8"))
+    by_path = {p["path"]: p for p in m["pages"]}
+    for page in m["pages"]:
+        base = by_path.get(page.get("translationOf"))
+        if not base:
+            continue
+        for key in [k for k in page if k.startswith("caseList") or k in ("heroList", "case")]:
+            if page[key] != base.get(key):
+                findings.append((page["path"], f"свой {key} вместо состава основной страницы"))
 
 
 def main() -> int:

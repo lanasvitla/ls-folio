@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import json
 import re
+from collections import Counter
 import sys
 import hashlib
 from pathlib import Path
@@ -67,6 +68,20 @@ IMG_TAG = re.compile(r"<img\b[^>]*>")
 
 
 _DIM_CACHE: dict = {}
+
+
+def link_root(page: dict) -> str:
+    """Корень для ссылок на другие страницы той же языковой версии.
+
+    `root` ведёт к корню сайта — он верен для картинок и шрифтов, они общие.
+    Но страницы у каждого языка свои, и en/index.html должен ссылаться на
+    en/brand.html, а не на русский. Языковая версия зеркалит корень, поэтому
+    достаточно снять с пути один уровень — саму языковую папку.
+    """
+    root = page.get("root", "")
+    if page.get("lang") and root.startswith("../"):
+        return root[3:]
+    return root
 
 
 def image_dimensions(html: str, page_path: str) -> str:
@@ -173,6 +188,7 @@ def build_directions(page: dict, directions: dict) -> dict:
     if current and current not in directions:
         raise SystemExit(f"[render_partials] unknown direction '{current}' in {page['path']}")
     root = page.get("root", "")
+    lroot = link_root(page)
 
     items, others, every = [], [], []
     for key, d in directions.items():
@@ -180,7 +196,7 @@ def build_directions(page: dict, directions: dict) -> dict:
         cls = " is-current" if is_current else ""
         aria = ' aria-current="page"' if is_current else ""
         items.append(
-            f'  <a class="switch__item{cls}" href="{root}{d["path"]}"{aria}>{d["name"]}</a>'
+            f'  <a class="switch__item{cls}" href="{lroot}{d["path"]}"{aria}>{d["name"]}</a>'
         )
         rows = "".join(
             f'\n        <span class="dcard__row">{r}</span>' for r in d.get("rows", [])
@@ -188,7 +204,7 @@ def build_directions(page: dict, directions: dict) -> dict:
         # разметка карточки — та же, что на главной: направление везде выглядит
         # одинаково, а «Подробнее» остаётся общим компонентом ссылки
         card = (
-            f'      <a class="dcard reveal" href="{root}{d["path"]}">\n'
+            f'      <a class="dcard reveal" href="{lroot}{d["path"]}">\n'
             f'        <span class="dcard__fill" aria-hidden="true"></span>\n'
             f'        <span class="dcard__title">{d["name"]}</span>'
             f'{rows}\n'
@@ -242,7 +258,9 @@ def build_directions(page: dict, directions: dict) -> dict:
         "directionSkills": skills,
         "directionSteps": steps,
         "directionProcessLead": d.get("processLead", ""),
-        "directionProcess": root + d["process"],
+        # кнопка «ещё работы» ведёт в портфолио с уже включённым фильтром
+        "directionMoreHref": f"{lroot}portfolio.html?filter={current}",
+        "directionProcess": lroot + d["process"],
         "directionCv": root + d["cv"],
         "directionCvSize": cv_size(d["cv"]),
     })
@@ -259,6 +277,7 @@ def build_services(page: dict, directions: dict) -> dict:
     if not page.get("servicesFromDirections"):
         return {}
     root = page.get("root", "")
+    lroot = link_root(page)
     blocks = []
     for key, d in directions.items():
         rows = "\n".join(f'              <li>{r}</li>' for r in d.get("rows", []))
@@ -277,7 +296,7 @@ def build_services(page: dict, directions: dict) -> dict:
             f'{rows}\n'
             '            </ul>\n'
             '            <span class="process-services__more">'
-            f'<!-- component:ilink text="Подробнее" href="{root}{d["path"]}" -->'
+            f'<!-- component:ilink text="Подробнее" href="{lroot}{d["path"]}" -->'
             '<!-- /component:ilink --></span>\n'
             '          </div>\n'
             '          <div class="process-services__flow">\n'
@@ -335,7 +354,7 @@ def canonical_url(page: dict) -> str:
     return BASE_URL + path
 
 
-def seo_fields(page: dict) -> dict:
+def seo_fields(page: dict, manifest: dict | None = None) -> dict:
     """og:image требует абсолютный URL — относительный краулеры не читают."""
     robots = (
         '<meta name="robots" content="noindex, nofollow">'
@@ -345,6 +364,7 @@ def seo_fields(page: dict) -> dict:
         "canonicalUrl": canonical_url(page),
         "ogImageAbs": BASE_URL + page["ogImage"],
         "robotsMeta": robots,
+        "hreflangLinks": hreflang_links(page, manifest) if manifest else "",
     }
 
 
@@ -373,6 +393,24 @@ def build_sitemap(pages: list[dict]) -> str:
     )
 
 
+INHERITED = ("heroList", "heroSelected", "case")
+
+
+def with_inherited(page: dict, pages: dict) -> dict:
+    """Состав страницы языковая версия берёт у своей основной.
+
+    Списки кейсов лежали копией в каждой записи и разошлись молча: русское
+    портфолио показывало один набор, английское — другой. Копий больше нет,
+    источник один. Свой текст у языковой версии остаётся своим.
+    """
+    base = pages.get(page.get("translationOf"))
+    if not base:
+        return page
+    extra = {k: v for k, v in base.items()
+             if (k in INHERITED or k.startswith("caseList")) and k not in page}
+    return {**page, **extra} if extra else page
+
+
 def build_case_slots(page: dict, cases: dict) -> dict:
     """A page may show more than one grid — brand.html has a brand row and a web
     row. Every `caseList<Suffix>` key on the page fills `{{caseCards<Suffix>}}`.
@@ -397,6 +435,7 @@ def build_home_cases(page: dict, cases: dict) -> dict:
     if not ids:
         return {}
     root = page.get("root", "")
+    lroot = link_root(page)
     selected = page.get("heroSelected", 0)
     images, rows = [], []
     for i, case_id in enumerate(ids):
@@ -411,7 +450,7 @@ def build_home_cases(page: dict, cases: dict) -> dict:
         )
         rows.append(
             f'        <a class="crow reveal{" is-selected" if i == selected else ""}" '
-            f'href="{root}{case["path"]}" data-case="{i}">\n'
+            f'href="{lroot}{case["path"]}" data-case="{i}">\n'
             f'          <span class="crow__num">{i + 1:02d}</span>\n'
             f'          <span class="crow__title">{title}</span>\n'
             f'          <span class="crow__type">{case["type"]}</span>\n'
@@ -422,7 +461,7 @@ def build_home_cases(page: dict, cases: dict) -> dict:
     return {
         "heroImages": "\n".join(images),
         "heroRows": "\n".join(rows),
-        "heroHref": root + hero["path"],
+        "heroHref": lroot + hero["path"],
         "heroNum": f"{selected + 1:02d}",
         "heroTitle": hero.get("shortTitle", hero["title"]),
         "heroType": hero["type"],
@@ -449,6 +488,92 @@ def ensure_case_page(page: dict) -> None:
     print(f"[render_partials] заведена страница кейса: {page['path']}")
 
 
+I18N = SITE / "tools/i18n"
+_dicts: dict = {}
+missing_translations: dict = {}
+
+
+def dictionary(lang: str) -> dict:
+    """Словарь языка. Ключ — исходная русская строка."""
+    if lang not in _dicts:
+        f = I18N / f"{lang}.json"
+        if not f.is_file():
+            raise SystemExit(f"[render_partials] нет словаря языка: {f}")
+        _dicts[lang] = {norm_key(k): v for k, v in
+                        json.loads(f.read_text(encoding="utf-8")).items()
+                        if not k.startswith("_")}
+    return _dicts[lang]
+
+
+def norm_key(s: str) -> str:
+    """Ключ словаря без типографских тонкостей.
+
+    Неразрывный пробел и вид тире — забота типографики, а не перевода. Стоило
+    типографике проставить `&nbsp;` в подписях, как полсотни строк разом
+    потеряли перевод: ключи перестали совпадать по символу, которого никто
+    не видит.
+    """
+    return " ".join(s.replace("&nbsp;", " ").replace("\u00a0", " ")
+                     .replace("–", "—").split())
+
+
+CYRILLIC = re.compile(r"[А-Яа-яЁё]")
+
+
+def translate(value: str, lang: str, where: str) -> str:
+    """Перевести строку, пришедшую из реестра или партиала.
+
+    Непереведённое не заменяется тихо: строка остаётся русской и попадает
+    в отчёт сборки. Молчаливый пропуск дал бы наполовину русскую английскую
+    страницу, которую никто не заметит.
+    """
+    if lang == "ru" or not isinstance(value, str) or not CYRILLIC.search(value):
+        return value
+    d = dictionary(lang)
+    key = norm_key(value)
+    if key in d:
+        return d[key]
+    missing_translations.setdefault(lang, {}).setdefault(value, set()).add(where)
+    return value
+
+
+HTML_LANG = re.compile(r'(<html\s+lang=")[a-z-]+(")')
+
+
+def hreflang_links(page: dict, manifest: dict) -> str:
+    """Ссылки на языковые версии страницы.
+
+    Без них поисковик считает переводы дублями и выбирает один сам.
+    Переключателя на сайте нет — версии раздаются ссылкой адресно, — поэтому
+    hreflang остаётся единственным местом, где они связаны друг с другом.
+    """
+    group = page.get("translationOf") or page["path"]
+    family = [p for p in manifest["pages"]
+              if (p.get("translationOf") or p["path"]) == group]
+    if len(family) < 2:
+        return ""
+    out = []
+    for p in family:
+        out.append(f'<link rel="alternate" hreflang="{p.get("lang", "ru")}" '
+                   f'href="{canonical_url(p)}">')
+    default = next((p for p in family if p.get("lang", "ru") == "ru"), family[0])
+    out.append(f'<link rel="alternate" hreflang="x-default" href="{canonical_url(default)}">')
+    return "\n".join(out)
+
+
+def build_language_chips(page: dict) -> dict:
+    """Языки автора — списком из реестра, у каждой версии свой.
+
+    В файле странице их держать нельзя: языковую версию набирают заново
+    из русской, и добавленный руками чип пропал бы на первой же сборке.
+    Пишутся по-русски, на язык страницы их переводит общий словарь.
+    """
+    langs = page.get("languages")
+    if not langs:
+        return {}
+    return {"languageChips": "".join(f'<span class="chip">{x}</span>' for x in langs)}
+
+
 def build_case_intro(page: dict, cases: dict) -> dict:
     """Заголовок, лид и шапка страницы кейса — из реестра.
 
@@ -464,14 +589,20 @@ def build_case_intro(page: dict, cases: dict) -> dict:
             f"[render_partials] unknown case id '{case_id}' in {page['path']}"
         )
     case = cases[case_id]
-    rows = "\n".join(
-        f"  <div><dt>{label}</dt><dd>{value}</dd></div>"
-        for label, value in case.get("meta", [])
-    )
+    # Пустая шапка не рисуется вовсе: у части кейсов поле одно, и строка
+    # растягивалась на всю ширину пустотой. Её место занимают кнопки.
+    meta = case.get("meta", [])
+    if meta:
+        rows = "\n".join(
+            f"    <div><dt>{label}</dt><dd>{value}</dd></div>" for label, value in meta
+        )
+        block = f'<dl class="case-meta reveal">\n{rows}\n  </dl>'
+    else:
+        block = ""
     return {
         "caseTitle": case["title"],
         "caseDesc": case["desc"],
-        "caseMetaRows": rows,
+        "caseMeta": block,
     }
 
 
@@ -483,27 +614,96 @@ def build_case_body(page: dict, cases: dict) -> dict:
     записать «две в ряд» и положить туда три.
     """
     case_id = page.get("case")
-    if not case_id or "gallery" not in cases.get(case_id, {}):
+    case = cases.get(case_id, {})
+    # Кейс может состоять из одной копии сайта: галереи и обложки у него нет,
+    # и требовать их незачем. Признак шаблонной страницы — превью или галерея.
+    if not case_id or not ("gallery" in case or "preview" in case):
         return {}
-    case = cases[case_id]
     root = page.get("root", "")
+    lroot = link_root(page)
+
+    # Полотно: куски одной разрезанной картинки идут вплотную, без скруглений
+    seamless = " case-gallery--seamless" if case.get("seamless") else ""
+
+    gallery = case.get("gallery", [])
+    # У кейса-полотна первый кусок — часть того же макета, и отделять его
+    # шапкой незачем: он встаёт первым рядом галереи, а «Задача» с «Решением»
+    # идут сразу за копией сайта. Первый экран при этом не пустой — его
+    # занимает превью.
+    hero_in_gallery = case.get("heroInGallery")
+    if hero_in_gallery:
+        gallery = [[[case["hero"][0], case["hero"][1]]]] + gallery
 
     rows = []
-    for images in case["gallery"]:
+    for i, images in enumerate(gallery):
         two = " case-gallery--two" if len(images) == 2 else ""
+        # Край полотна помечаем явно. `:first-of-type` тут не работает: он
+        # смотрит на тип элемента, а первая секция страницы — шапка кейса,
+        # а не галерея.
+        if seamless:
+            if i == 0:
+                two += " case-gallery--seamless-first"
+            if i == len(gallery) - 1:
+                two += " case-gallery--seamless-last"
         tags = "\n".join(
             f'  <img class="reveal" src="{root}{src}" alt="{alt}">' for src, alt in images
         )
         rows.append(
-            f'<section class="case-gallery{two} case-gallery--tight-bottom">\n'
+            f'<section class="case-gallery{two}{seamless} case-gallery--tight-bottom">\n'
             f"{tags}\n</section>"
         )
 
+    # «Задача» и «Решение» могут быть ещё не написаны — кейс переносится
+    # с картинками, текст добавляется позже. Пустой заголовок на странице
+    # хуже отсутствующего, поэтому блок собирается только когда есть что
+    # показать. Это про «пока нет», а не про «можно без них».
+    parts = []
+    if case.get("task"):
+        parts.append(f'  <div class="reveal">\n    <h3>Задача</h3>\n'
+                     f'    <p>{case["task"]}</p>\n  </div>')
+    if case.get("solution"):
+        parts.append(f'  <div class="reveal">\n    <h3>Решение</h3>\n'
+                     f'    <p>{case["solution"]}</p>\n  </div>')
+    overview = ('<section class="case-overview">\n' + "\n".join(parts) + "\n</section>\n"
+                if parts else "")
+
+    # Копия первого экрана живого сайта. Отдельный партиал на кейс: у каждого
+    # сайта своя вёрстка, общего шаблона тут быть не может. Со своей кнопкой
+    # внутри, поэтому список ссылок для таких кейсов не нужен.
+    preview = ""
+    if case.get("preview"):
+        f = PARTIALS / f'{case["preview"]}.html'
+        if not f.is_file():
+            raise SystemExit(f"[render_partials] нет партиала превью: {f}")
+        preview = f.read_text(encoding="utf-8").replace("{{root}}", root).rstrip("\n") + "\n"
+
+    # Живые адреса проекта. У кейса их может быть несколько — у Togas это
+    # основной сайт и бутиковая линия, — поэтому список, а не одно поле.
+    links = case.get("links", [])
+    if links:
+        buttons = "\n".join(
+            f'  <a class="live-link" href="{url}" target="_blank" rel="noopener">\n'
+            f'    <span class="live-link__badge"><span class="live-link__dot" aria-hidden="true"></span>'
+            f'Live&nbsp;site</span>\n'
+            f'    <span class="live-link__text">{label}'
+            f'<svg class="icon-arrow-ne" viewBox="0 0 16 16" aria-hidden="true">'
+            f'<use href="#i-arrow-ne"/></svg></span>\n  </a>'
+            for label, url in links
+        )
+        case_links = f'<div class="live-link-row reveal">\n{buttons}\n</div>\n'
+    else:
+        case_links = ""
+
     return {
-        "caseHeroSrc": root + case["hero"][0],
-        "caseHeroAlt": case["hero"][1],
-        "caseTask": case["task"],
-        "caseSolution": case["solution"],
+        "caseHeroMedia": "" if (hero_in_gallery or "hero" not in case) else (
+            '\n  <div class="case-hero__media reveal'
+            + (" case-hero__media--flat" if case.get("seamless") else "")
+            + f'">\n    <img src="{root}{case["hero"][0]}" alt="{case["hero"][1]}">\n  </div>'
+        ),
+        "caseLinks": preview + case_links,
+        "caseHeroSrc": root + case["hero"][0] if "hero" in case else "",
+        "caseHeroAlt": case["hero"][1] if "hero" in case else "",
+        "caseOverview": overview,
         "caseGallery": "\n\n".join(rows),
     }
 
@@ -523,10 +723,16 @@ def build_case_cards(page: dict, cases: dict, key: str = "caseList") -> str:
         return ""
 
     root = page.get("root", "./")
+    lroot = link_root(page)
     with_niche = page.get("caseNiche")  # only the filtered catalogue needs it
     # the catalogue is driven by the filter, so it opts out of the reveal animation
     reveal = "" if with_niche else " reveal"
-    template = (PARTIALS / "case-card.html").read_text(encoding="utf-8").rstrip("\n")
+    # Ключ `caseListSmall` рисует второй ряд внимания: та же карточка, вдвое
+    # меньше, без описания и метрики. Признак берётся из имени ключа, чтобы не
+    # держать «этот кейс мелкий» ещё и в самом кейсе — иначе два источника.
+    small = key.endswith("Small")
+    name = "case-card-small.html" if small else "case-card.html"
+    template = (PARTIALS / name).read_text(encoding="utf-8").rstrip("\n")
 
     cards = []
     for case_id in ids:
@@ -537,8 +743,14 @@ def build_case_cards(page: dict, cases: dict, key: str = "caseList") -> str:
         case = cases[case_id]
         chips = "".join(f'<span class="chip">{c}</span>' for c in case["chips"])
         values = {
-            "caseHref": root + case["path"],
-            "caseCover": root + case["cover"],
+            "caseHref": lroot + case["path"],
+            # Обложка одна на кейс. Отдельная мелкая нужна редко — только
+            # когда крупная слишком велика и кадрируется неудачно; тогда
+            # заводится coverSmall. Раньше у пяти кейсов в cover лежал первый
+            # макет, а настоящая обложка — только в coverSmall, и блок
+            # «Другие проекты» показывал скриншот вёрстки вместо обложки.
+            "caseCover": root + (case.get("coverSmall") if small and case.get("coverSmall")
+                                 else case["cover"]),
             "caseAlt": case["alt"],
             "caseChips": chips,
             "caseTitle": case["title"],
@@ -584,7 +796,7 @@ def expand_includes(template: str, name: str, seen: tuple[str, ...] = ()) -> str
     return INCLUDE.sub(replace, template)
 
 
-def render_component(name: str, data: dict) -> str:
+def render_component(name: str, data: dict, lang: str = "ru", where: str = "") -> str:
     template = (PARTIALS / f"{name}.html").read_text(encoding="utf-8").rstrip("\n")
     template = expand_includes(template, name)
 
@@ -608,6 +820,41 @@ def render_component(name: str, data: dict) -> str:
         return value.replace("\n", "\n" + indent)
 
     rendered = PLACEHOLDER.sub(substitute, template)
+
+    # Перевод идёт здесь, а не в данных: через рендер проходит и подставленное
+    # из реестра, и текст, написанный прямо в партиале — вроде «Портфолио»
+    # в шапке. Одна точка вместо двух.
+    if lang != "ru":
+        def translate_node(m: re.Match) -> str:
+            """Переводит текст между тегами, не трогая пробелы по краям.
+
+            Пробел на краю узла — не форматирование, а слово-разделитель:
+            в «…в одних руках. <b>Верстаю» он единственный, что стоит между
+            двумя предложениями. Обрезали его при переводе — и в украинской
+            версии два предложения слиплись.
+            """
+            raw = m.group(1)
+            core = raw.strip()
+            if not core:
+                return m.group(0)
+            lead = raw[:len(raw) - len(raw.lstrip())]
+            tail = raw[len(raw.rstrip()):]
+            return ">" + lead + translate(core, lang, where or name) + tail + "<"
+
+        rendered = re.sub(r">([^<>]+)<", translate_node, rendered)
+        rendered = re.sub(
+            r'((?:alt|aria-label|title|content)=")([^"]+)(")',
+            lambda m: m.group(1) + translate(m.group(2), lang, where or name) + m.group(3),
+            rendered,
+        )
+        # Подпись кнопки живёт атрибутом внутри слота-комментария и текстовым
+        # узлом не является: <!-- component:ilink text="Подробнее" -->
+        rendered = re.sub(
+            r'(component:[a-z0-9-]+[^>]*\btext=")([^"]+)(")',
+            lambda m: m.group(1) + translate(m.group(2), lang, where or name) + m.group(3),
+            rendered,
+        )
+
     if missing:
         raise SystemExit(
             f"[render_partials] component '{name}': missing keys in pages.json: "
@@ -651,7 +898,10 @@ INLINE_SLOT = re.compile(
     # атрибуты обязательны: слот без них — обычный блочный компонент
     r'(?P<open><!--\s*component:(?P<name>[a-z0-9-]+)\s+'
     r'(?P<attrs>[a-zA-Z][\w-]*="[^"]*"[^>]*?)\s*-->)'
-    r'.*?'
+    # содержимое слота не может перешагнуть через следующий такой же слот:
+    # партиал с незакрытым `component:ilink` иначе дотягивался до закрывающего
+    # тега в соседнем блоке и съедал всё, что лежало между ними
+    r'(?:(?!<!--\s*component:(?P=name)\s).)*?'
     r'<!--\s*/component:(?P=name)\s*-->',
     re.DOTALL,
 )
@@ -755,7 +1005,9 @@ def main() -> int:
     VERSIONS = asset_versions()
     changed: list[str] = []
 
+    by_path = {p["path"]: p for p in manifest["pages"]}
     for page in manifest["pages"]:
+        page = with_inherited(page, by_path)
         page_path = page["path"]
         ensure_case_page(page)
         target = SITE / page_path
@@ -770,9 +1022,10 @@ def main() -> int:
             **build_directions(page, directions),
             **build_metrics(page, manifest.get("metrics", {})),
             **build_services(page, directions),
+            **build_language_chips(page),
             **build_case_intro(page, cases),
             **build_case_body(page, cases),
-            **seo_fields(page),
+            **seo_fields(page, manifest),
         }
         original = target.read_text(encoding="utf-8")
         html = original
@@ -783,17 +1036,38 @@ def main() -> int:
         # Если слота нет — сборка падает явной ошибкой, а не молча пропускает.
         components = ["seo", "analytics", *page.get("components", [])]
         for component in components:
-            html = apply_component(html, component, render_component(component, data), page_path)
+            html = apply_component(
+                html, component,
+                render_component(component, data, page.get("lang", "ru"), page_path),
+                page_path,
+            )
 
         # слоты с атрибутами обрабатываются после блочных: они могут стоять
         # и внутри отрендеренного компонента, и прямо в странице
         html = apply_inline_components(html, page_path)
+
+        # незакрытый слот раньше уезжал в вёрстку молча — теперь это ошибка.
+        # Открывающий тег остаётся в разметке и после раскрытия, поэтому
+        # считаем пары: закрывающих должно быть столько же, сколько открывающих.
+        opened = Counter(m.group(1) for m in
+                         re.finditer(r'<!--\s*component:([a-z0-9-]+)\s+[a-zA-Z][\w-]*="', html))
+        closed = Counter(re.findall(r'<!--\s*/component:([a-z0-9-]+)\s*-->', html))
+        unclosed = [n for n, k in opened.items() if closed[n] < k]
+        if unclosed:
+            raise SystemExit(
+                f"[render_partials] {page_path}: слот без закрывающего тега: "
+                + ", ".join(sorted(set(unclosed)))
+                + ". Инлайн-слот пишется парой: <!-- component:имя ... --><!-- /component:имя -->"
+            )
 
         # отложенная загрузка для всего, что ниже первого экрана
         html = lazy_images(html)
 
         # размеры — из самих файлов, чтобы верстка не прыгала при загрузке
         html = image_dimensions(html, page_path)
+
+        # язык документа — из реестра, а не из копии соседней страницы
+        html = HTML_LANG.sub(rf'\g<1>{page.get("lang", "ru")}\g<2>', html)
 
         # версии стилей, скрипта и иконки — от содержимого, а не вручную
         html = ASSET_LINK.sub(
@@ -838,6 +1112,13 @@ def main() -> int:
             print(f"  - {line}")
         print("  пережать вручную и сверить качество, молча сборка не трогает")
         return 1
+
+    if missing_translations:
+        for lang, items in missing_translations.items():
+            print(f"[render_partials] нет перевода на {lang}: {len(items)} строк")
+            for text, where in sorted(items.items())[:12]:
+                print(f"  - «{text[:64]}»  на {', '.join(sorted(where))[:52]}")
+        print("  добавить в tools/i18n/<язык>.json; пока стоит русский текст")
 
     if check_only:
         if changed:

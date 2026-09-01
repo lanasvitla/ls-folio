@@ -204,8 +204,15 @@ document.documentElement.classList.add('js');
   var grid = document.getElementById('portfolio-grid');
   if(!bar || !grid) return;
 
+  /* Каталог идёт двумя рядами внимания: крупные карточки и мелкие. Фильтр
+     работает поверх обоих — иначе выбранное направление показывало бы только
+     часть работ. Блок второго ряда прячется целиком, когда в нём после
+     фильтрации ничего не осталось: иначе от него остаётся голая линия. */
+  var more = document.getElementById('portfolio-more');
+  var gridSmall = document.getElementById('portfolio-grid-small');
+
   var buttons = bar.querySelectorAll('.pfilter');
-  var cards = grid.querySelectorAll('[data-niche]');
+  var cards = document.querySelectorAll('#portfolio-grid [data-niche], #portfolio-grid-small [data-niche]');
   var status = document.querySelector('.filters__status');
   var empty = document.querySelector('.portfolio__empty');
   var LABELS = { all: 'все работы', product: 'продукт и UX/UI', brand: 'бренд', web: 'web и digital' };
@@ -234,6 +241,10 @@ document.documentElement.classList.add('js');
       btn.classList.toggle('is-active', on);
       btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
+    if(more && gridSmall){
+      var left = gridSmall.querySelectorAll('[data-niche]:not([hidden])').length;
+      more.hidden = left === 0;
+    }
     if(empty) empty.hidden = shown !== 0;
     if(status) status.textContent = shown + ' ' + plural(shown) + ' – ' + LABELS[value];
   }
