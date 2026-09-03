@@ -163,16 +163,27 @@ def lazy_images(html: str) -> str:
     return "".join(buf)
 
 
+def cv_for(direction: dict, page: dict) -> str:
+    """Какое резюме отдаём на этой странице."""
+    if page.get("lang") and direction.get("cvEn"):
+        return direction["cvEn"]
+    return direction["cv"]
+
+
 def cv_size(rel_path: str) -> str:
     """Вес файла резюме — считается при сборке, а не пишется руками.
 
     Рядом со ссылкой стоит «PDF · N КБ», и это обещание должно оставаться
     правдой: заменили файл, пересобрали — цифра поехала следом.
+
+    Возвращается только число: единица стоит в партиале отдельным узлом и
+    переводится словарём. Пока они были одной строкой, словарь знал перевод
+    для «PDF · 94 КБ», и замена файла оставляла надпись без перевода.
     """
     f = SITE / rel_path
     if not f.is_file():
         raise SystemExit(f"[render_partials] нет файла резюме: {rel_path}")
-    return f"{round(f.stat().st_size / 1024)}&nbsp;КБ"
+    return str(round(f.stat().st_size / 1024))
 
 
 def build_directions(page: dict, directions: dict) -> dict:
@@ -261,8 +272,12 @@ def build_directions(page: dict, directions: dict) -> dict:
         # кнопка «ещё работы» ведёт в портфолио с уже включённым фильтром
         "directionMoreHref": f"{lroot}portfolio.html?filter={current}",
         "directionProcess": lroot + d["process"],
-        "directionCv": root + d["cv"],
-        "directionCvSize": cv_size(d["cv"]),
+        # Резюме по языку страницы. Английская версия ставится и на украинскую:
+        # украинского резюме нет, а русский PDF на украинской странице читателю
+        # бесполезнее английского. Вес рядом со ссылкой считается от того файла,
+        # который реально отдаётся.
+        "directionCv": root + cv_for(d, page),
+        "directionCvSize": cv_size(cv_for(d, page)),
     })
     return values
 

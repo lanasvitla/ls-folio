@@ -985,7 +985,8 @@
         "Print Design",
         "Брендбук и&nbsp;гайдлайны",
         "AI-автоматизация дизайн-процессов"
-      ]
+      ],
+      "cvEn": "assets/cv/lana-svitla-cv-brand-designer-en.pdf"
     },
     "product": {
       "name": "Продукт&nbsp;&amp;&nbsp;UX/UI",
@@ -1021,7 +1022,8 @@
         "!Работа с&nbsp;продуктовыми метриками",
         "Дизайн-системы и&nbsp;их документация",
         "AI-автоматизация дизайн-процессов"
-      ]
+      ],
+      "cvEn": "assets/cv/lana-svitla-cv-product-designer-en.pdf"
     },
     "web": {
       "name": "Web&nbsp;&amp;&nbsp;digital",
@@ -1062,7 +1064,8 @@
         "Art Direction",
         "Print Design",
         "AI-автоматизация дизайн-процессов"
-      ]
+      ],
+      "cvEn": "assets/cv/lana-svitla-cv-brand-designer-en.pdf"
     }
   },
   "pages": [
