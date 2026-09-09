@@ -302,6 +302,35 @@ def case_lists_match():
                 findings.append((page["path"], f"свой {key} вместо состава основной страницы"))
 
 
+@check("относительные пути ведут в существующий файл")
+def relative_paths_resolve():
+    """Каждый src, href и data-*-path проверяется по факту: файл на диске есть.
+
+    Ломалось так: у четырёх кейсов с авторским телом — Mark'n'Post, Eqlio,
+    Togas App, Svitla Embroidery — языковая версия набиралась копией русской.
+    Пути в src поправили на глубину /en/ и /uk/, а data-forms-path на
+    обёртке блока форм пропустили: он не src и не href, замена его не
+    увидела. Первый кадр из HTML грузился, а ротация форм в main.js ходила
+    по нему же на уровень выше и получала 404 — формы гасли по одной, через
+    6,8 и 16 секунд после открытия страницы. Восемь страниц, полгода
+    незаметно. Проверка дешёвая и ловит весь класс: любой недокрученный
+    ../ падает здесь, до публикации.
+    """
+    attr = re.compile(r'(?:src|href|data-[a-z-]*path)="([^"]+)"')
+    for path in pages():
+        page = SITE / path
+        html = page.read_text(encoding="utf-8")
+        for ref in attr.findall(html):
+            if ref.startswith(("#", "http", "//", "mailto:", "tel:", "data:", "{{")):
+                continue
+            target = SITE / os.path.normpath(
+                os.path.join(Path(path).parent, ref.split("?")[0].split("#")[0]))
+            # путь-префикс для скрипта — каталог, а не файл
+            exists = target.is_dir() if ref.endswith("/") else target.exists()
+            if not exists:
+                findings.append((path, f"путь никуда не ведёт: {ref}"))
+
+
 def main() -> int:
     strict = "--strict" in sys.argv
     for fn in list(globals().values()):
