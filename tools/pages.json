@@ -1425,6 +1425,7 @@
     {
       "path": "work/mark-n-post/index.html",
       "components": [
+        "case-forms",
         "case-intro",
         "icons",
         "site-header",
@@ -1458,6 +1459,7 @@
     {
       "path": "work/eqlio/index.html",
       "components": [
+        "case-forms",
         "case-intro",
         "icons",
         "site-header",
@@ -1491,6 +1493,7 @@
     {
       "path": "work/togas/index.html",
       "components": [
+        "case-forms",
         "case-intro",
         "icons",
         "site-header",
@@ -1689,6 +1692,7 @@
     {
       "path": "work/svitla-embroidery/index.html",
       "components": [
+        "case-forms",
         "case-intro",
         "icons",
         "site-header",
@@ -2342,6 +2346,7 @@
     {
       "path": "en/work/mark-n-post/index.html",
       "components": [
+        "case-forms",
         "case-intro",
         "icons",
         "site-header",
@@ -2372,6 +2377,7 @@
     {
       "path": "en/work/eqlio/index.html",
       "components": [
+        "case-forms",
         "case-intro",
         "icons",
         "site-header",
@@ -2402,6 +2408,7 @@
     {
       "path": "en/work/togas/index.html",
       "components": [
+        "case-forms",
         "case-intro",
         "icons",
         "site-header",
@@ -2582,6 +2589,7 @@
     {
       "path": "en/work/svitla-embroidery/index.html",
       "components": [
+        "case-forms",
         "case-intro",
         "icons",
         "site-header",
@@ -3235,6 +3243,7 @@
     {
       "path": "uk/work/mark-n-post/index.html",
       "components": [
+        "case-forms",
         "case-intro",
         "icons",
         "site-header",
@@ -3265,6 +3274,7 @@
     {
       "path": "uk/work/eqlio/index.html",
       "components": [
+        "case-forms",
         "case-intro",
         "icons",
         "site-header",
@@ -3295,6 +3305,7 @@
     {
       "path": "uk/work/togas/index.html",
       "components": [
+        "case-forms",
         "case-intro",
         "icons",
         "site-header",
@@ -3475,6 +3486,7 @@
     {
       "path": "uk/work/svitla-embroidery/index.html",
       "components": [
+        "case-forms",
         "case-intro",
         "icons",
         "site-header",
