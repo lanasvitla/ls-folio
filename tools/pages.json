@@ -670,10 +670,14 @@
         [
           "Формат",
           "Landing page"
+        ],
+        [
+          "Решение",
+          "Вместо технологических схем за&nbsp;основу взята более живая имиджевая подача."
         ]
       ],
       "hero": [
-        "assets/works/Sensotex/cover.webp",
+        "assets/works/Sensotex/sensotex-hero.webp",
         "Sensotex: обложка проекта"
       ],
       "gallery": [
@@ -683,8 +687,7 @@
             "Sensotex: макет 1"
           ]
         ]
-      ],
-      "solution": "Вместо технологических схем за&nbsp;основу взята более живая имиджевая подача."
+      ]
     },
     "togas-site": {
       "path": "work/togas-site/index.html",
@@ -802,7 +805,7 @@
     },
     "togas-smm": {
       "path": "work/togas-smm/index.html",
-      "title": "Togas SMM",
+      "title": "Togas SMM&nbsp;&&nbsp;emails",
       "desc": "Визуальная система бренда в&nbsp;соцсетях и&nbsp;рассылках.",
       "cover": "assets/works/TogasSMM/cover.webp",
       "alt": "Togas SMM: обложка проекта",
@@ -812,16 +815,6 @@
       ],
       "niche": "brand",
       "type": "SMM / контент",
-      "meta": [
-        [
-          "Формат",
-          "SMM&nbsp;&&nbsp;emails"
-        ]
-      ],
-      "hero": [
-        "assets/works/TogasSMM/cover.webp",
-        "Togas SMM: обложка проекта"
-      ],
       "gallery": [
         [
           [
@@ -2055,9 +2048,9 @@
       "directionsHref": "../../index.html#directions",
       "navDirections": "",
       "description": "Togas SMM – SMM Design / Social Media",
-      "ogTitle": "Togas SMM",
+      "ogTitle": "Togas SMM&nbsp;&&nbsp;emails",
       "ogImage": "assets/works/TogasSMM/cover.webp",
-      "pageTitle": "Togas SMM – Lana Svitla",
+      "pageTitle": "Togas SMM&nbsp;&&nbsp;emails – Lana Svitla",
       "case": "togas-smm"
     },
     {
@@ -2864,9 +2857,9 @@
       "directionsHref": "../../index.html#directions",
       "navDirections": "",
       "description": "Togas SMM – SMM Design / Social Media",
-      "ogTitle": "Togas SMM",
+      "ogTitle": "Togas SMM&nbsp;&&nbsp;emails",
       "ogImage": "assets/works/TogasSMM/cover.webp",
-      "pageTitle": "Togas SMM – Lana Svitla",
+      "pageTitle": "Togas SMM&nbsp;&&nbsp;emails – Lana Svitla",
       "lang": "en",
       "translationOf": "work/togas-smm/index.html"
     },
@@ -3821,9 +3814,9 @@
       "directionsHref": "../../index.html#directions",
       "navDirections": "",
       "description": "Togas SMM – SMM Design / Social Media",
-      "ogTitle": "Togas SMM",
+      "ogTitle": "Togas SMM&nbsp;&&nbsp;emails",
       "ogImage": "assets/works/TogasSMM/cover.webp",
-      "pageTitle": "Togas SMM – Lana Svitla",
+      "pageTitle": "Togas SMM&nbsp;&&nbsp;emails – Lana Svitla",
       "lang": "uk",
       "translationOf": "work/togas-smm/index.html"
     }
