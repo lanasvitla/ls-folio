@@ -940,6 +940,21 @@
         ]
       ],
       "preview": "collagenina-preview"
+    },
+    "tbilisi-botanical-garden": {
+      "path": "en/work/tbilisi-botanical-garden/index.html",
+      "singleLanguage": true,
+      "title": "Tbilisi Botanical Garden",
+      "desc": "Мобильный гид по&nbsp;саду: помогает найти интересные места, выбрать прогулку и&nbsp;не&nbsp;сбиться с&nbsp;пути на&nbsp;сложном рельефе.",
+      "cover": "assets/works/BotanicalGarden/cover.webp",
+      "alt": "Tbilisi Botanical Garden: обложка кейса",
+      "chips": [
+        "Продукт&nbsp;&amp;&nbsp;UX/UI",
+        "Mobile app",
+        "UX research"
+      ],
+      "niche": "product",
+      "type": "Mobile App / UX/UI"
     }
   },
   "directions": {
@@ -1083,6 +1098,7 @@
       "processBrandHref": "./process-brand.html",
       "root": "",
       "heroList": [
+        "tbilisi-botanical-garden",
         "mark-n-post",
         "eqlio",
         "togas"
@@ -1116,6 +1132,7 @@
       "navWorks": "is-current",
       "root": "",
       "caseList": [
+        "tbilisi-botanical-garden",
         "mark-n-post",
         "verba-mayr",
         "eqlio",
@@ -3819,6 +3836,38 @@
       "pageTitle": "Togas SMM&nbsp;&&nbsp;emails – Lana Svitla",
       "lang": "uk",
       "translationOf": "work/togas-smm/index.html"
+    },
+    {
+      "path": "en/work/tbilisi-botanical-garden/index.html",
+      "components": [
+        "icons",
+        "site-header",
+        "site-footer",
+        "case-forms",
+        "case-intro"
+      ],
+      "homeHref": "../../index.html",
+      "worksHref": "../../portfolio.html",
+      "processHref": "../../process.html",
+      "aboutHref": "../../about.html",
+      "contactPageHref": "../../contacts.html",
+      "navWorks": "is-current",
+      "productHref": "../../product.html",
+      "brandHref": "../../brand.html",
+      "processProductHref": "../../process-product.html",
+      "processBrandHref": "../../process-brand.html",
+      "root": "../../../",
+      "webHref": "../../web.html",
+      "directionsHref": "../../index.html#directions",
+      "navDirections": "",
+      "description": "A mobile guide to Tbilisi Botanical Garden: visitor research, route planning, information architecture and wireframes.",
+      "ogTitle": "Tbilisi Botanical Garden Guide",
+      "ogImage": "assets/works/BotanicalGarden/about-phones.webp",
+      "pageTitle": "Tbilisi Botanical Garden Guide – Lana Svitla",
+      "lang": "en",
+      "caseTitle": "Tbilisi Botanical Garden",
+      "caseDesc": "A&nbsp;mobile garden guide that helps visitors discover places, choose a&nbsp;walk and&nbsp;find their way through changing terrain.",
+      "caseMeta": ""
     }
   ],
   "metrics": {

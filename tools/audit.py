@@ -162,8 +162,16 @@ def lead_matches_card():
         sub = re.search(r'case-hero__subtitle reveal">(.*?)</p>', html, re.S)
         if not sub:
             findings.append((c["path"], "не найден лид"))
-        elif sub.group(1) != c["desc"]:
-            findings.append((c["path"], f"лид разошёлся с карточкой ({k})"))
+        else:
+            # У кейса с одной языковой версией страница написана на своем языке,
+            # а описание в реестре — на русском. Сверяем с переводом описания.
+            want = c["desc"]
+            lang = c["path"].split("/")[0]
+            dic = SITE / f"tools/i18n/{lang}.json"
+            if c.get("singleLanguage") and dic.is_file():
+                want = json.loads(dic.read_text(encoding="utf-8")).get(want, want)
+            if sub.group(1) != want:
+                findings.append((c["path"], f"лид разошёлся с карточкой ({k})"))
 
 
 @check("версии файлов считаются от содержимого, а не пишутся руками")
@@ -272,6 +280,9 @@ def links_stay_in_language():
     страницы. Проверяется по факту: куда указывает каждая ссылка.
     """
     m = json.loads((SITE / "tools/pages.json").read_text(encoding="utf-8"))
+    # Кейс, у которого пока одна языковая версия, ведет туда из всех каталогов.
+    # Это осознанное исключение, а не разъехавшаяся ссылка.
+    single = {c["path"] for c in m.get("cases", {}).values() if c.get("singleLanguage")}
     for page in m["pages"]:
         lang = page.get("lang")
         if not lang:
@@ -282,6 +293,8 @@ def links_stay_in_language():
         body = html.split("</head>", 1)[-1]
         for href in re.findall(r'href="([^"#][^"]*\.html)(?:#[^"]*)?"', body):
             target = os.path.normpath(os.path.join(path.parent, href))
+            if target in single:
+                continue
             if not target.startswith(lang + os.sep):
                 findings.append((page["path"], f"ссылка уводит из /{lang}/: {href}"))
 

@@ -465,7 +465,7 @@ def build_home_cases(page: dict, cases: dict) -> dict:
         )
         rows.append(
             f'        <a class="crow reveal{" is-selected" if i == selected else ""}" '
-            f'href="{lroot}{case["path"]}" data-case="{i}">\n'
+            f'href="{(root if case.get("singleLanguage") else lroot)}{case["path"]}" data-case="{i}">\n'
             f'          <span class="crow__num">{i + 1:02d}</span>\n'
             f'          <span class="crow__title">{title}</span>\n'
             f'          <span class="crow__type">{case["type"]}</span>\n'
@@ -476,7 +476,7 @@ def build_home_cases(page: dict, cases: dict) -> dict:
     return {
         "heroImages": "\n".join(images),
         "heroRows": "\n".join(rows),
-        "heroHref": lroot + hero["path"],
+        "heroHref": (root if hero.get("singleLanguage") else lroot) + hero["path"],
         "heroNum": f"{selected + 1:02d}",
         "heroTitle": hero.get("shortTitle", hero["title"]),
         "heroType": hero["type"],
@@ -758,7 +758,10 @@ def build_case_cards(page: dict, cases: dict, key: str = "caseList") -> str:
         case = cases[case_id]
         chips = "".join(f'<span class="chip">{c}</span>' for c in case["chips"])
         values = {
-            "caseHref": lroot + case["path"],
+            # Кейс, у которого есть только одна языковая версия, во всех
+            # каталогах ведет на нее же: путь считается от корня сайта,
+            # а не от папки языка. Обычные кейсы остаются внутри языка.
+            "caseHref": (root if case.get("singleLanguage") else lroot) + case["path"],
             # Обложка одна на кейс. Отдельная мелкая нужна редко — только
             # когда крупная слишком велика и кадрируется неудачно; тогда
             # заводится coverSmall. Раньше у пяти кейсов в cover лежал первый

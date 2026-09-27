@@ -1,0 +1,33 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="2800" height="3400" viewBox="0 0 2800 3400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Radial guides / clipped to white field">
+<mask id="mask0_0_7" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-1" y="-1" width="2802" height="3072">
+<path id="Vector" d="M0 0H2800V2770L0 3070V0Z" fill="white" stroke="black"/>
+</mask>
+<g mask="url(#mask0_0_7)">
+<path id="Radial guide / 23" d="M1660 1370L6489.628 75.902" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 22" d="M1660 1370L5990.125 -1130.003" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 21" d="M1660 1370L5195.537 -2165.531" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 20" d="M1660 1370L4160.000 -2960.127" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 19" d="M1660 1370L2954.099 -3459.628" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 18" d="M1660 1370L1660.000 -3630.000" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 17" d="M1660 1370L365.904 -3459.629" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 16" d="M1660 1370L-840.000 -2960.127" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 15" d="M1660 1370L-1875.534 -2165.534" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 14" d="M1660 1370L-2670.127 -1130.000" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 13" d="M1660 1370L-3169.628 75.902" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 12" d="M1660 1370L-3340.000 1370.000" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 11" d="M1660 1370L-3169.627 2664.102" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 10" d="M1660 1370L-2670.127 3870.000" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 9" d="M1660 1370L-1875.531 4905.537" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 8" d="M1660 1370L-840.003 5700.125" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 7" d="M1660 1370L365.902 6199.628" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 6" d="M1660 1370L1660.000 6370.000" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 5" d="M1660 1370L2954.102 6199.627" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 4" d="M1660 1370L4160.003 5700.125" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 3" d="M1660 1370L5195.534 4905.534" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 2" d="M1660 1370L5990.125 3870.003" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 1" d="M1660 1370L6489.627 2664.102" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+<path id="Radial guide / 0" d="M1400 1640H3900" stroke="#A1ABA3" stroke-opacity="0.72" stroke-width="2.4" stroke-dasharray="9 14"/>
+</g>
+</g>
+</svg>
