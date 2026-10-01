@@ -1710,6 +1710,7 @@ h1,h2,h3,p{ margin: 0; }
   transform: scale(1.02);
   transition: opacity .32s var(--ease), transform .32s var(--ease);
 }
+.featured__img--top{ object-position: center top; transform-origin: center top; }
 .featured__img.is-current{ opacity: 1; transform: scale(1); }
 .featured__img.is-leaving{ opacity: 0; transform: scale(.99); }
 .featured:hover .featured__img.is-current{ transform: scale(1.02); }
@@ -1820,10 +1821,10 @@ h1,h2,h3,p{ margin: 0; }
   transition: color .32s var(--ease);
 }
 .crow__title{
-  /* не сжимается: когда строке тесно, место уступает подпись справа,
-     а не название — иначе оно уезжало на вторую строку */
-  flex: 1 0 auto;
+  /* Название может переноситься в тесной колонке; зазор до типа сохраняется. */
+  flex: 1 1 auto;
   min-width: 0;
+  margin-right: 16px;
   font-family: var(--font-display);
   /* На 1180–1400 строка кейса стоит в узкой правой колонке: длинное
      название ломалось на две строки, а короткие рядом оставались в одну —
@@ -1834,9 +1835,8 @@ h1,h2,h3,p{ margin: 0; }
   color: var(--ink);
 }
 .crow__type{
-  /* 167px держат подписи в одной колонке, пока в строке есть место;
-     когда его нет, ширина отдаётся названию */
-  flex: 0 1 167px;
+  /* Тип проекта занимает свою ширину без наложения на название. */
+  flex: 0 0 auto;
   min-width: 0;
   white-space: nowrap;
   font-size: 12px;
@@ -2300,7 +2300,7 @@ h1,h2,h3,p{ margin: 0; }
      а стрелка держит правый край на всю высоту строки. */
   .crow{
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     height: auto;
     padding: 14px 11px 14px 24px;
@@ -2308,10 +2308,9 @@ h1,h2,h3,p{ margin: 0; }
     row-gap: 2px;
   }
   .crow__num, .crow__title, .crow__type{ width: auto; }
-  .crow__num{ grid-column: 1; grid-row: 1; }
-  .crow__title{ grid-column: 2; grid-row: 1; }
-  .crow__type{ grid-column: 2; grid-row: 2; }
-  .crow__arrow{ grid-column: 3; grid-row: 1 / 3; margin-left: 0; }
+  .crow__title{ grid-column: 1; grid-row: 1; margin-right: 0; }
+  .crow__type{ grid-column: 1; grid-row: 2; }
+  .crow__arrow{ grid-column: 2; grid-row: 1 / 3; margin-left: 0; }
 
   .directions__grid{ flex-direction: column; }
   /* В колонке flex-basis: 0 из базового правила меряется по высоте: карточки

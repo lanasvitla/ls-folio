@@ -442,7 +442,7 @@ def build_case_slots(page: dict, cases: dict) -> dict:
 
 
 def build_home_cases(page: dict, cases: dict) -> dict:
-    """Render the home hero — the big preview plus the numbered index — from the
+    """Render the home hero — the big preview plus the project index — from the
     same case registry the cards use, so a cover or a title has one home only.
     `heroList` names the cases in order; `heroSelected` is the one shown first.
     """
@@ -459,14 +459,14 @@ def build_home_cases(page: dict, cases: dict) -> dict:
         case = cases[case_id]
         title = case.get("shortTitle", case["title"])
         current = " is-current" if i == selected else ""
+        image_class = " featured__img--top" if case_id == "tbilisi-botanical-garden" else ""
         images.append(
-            f'        <img class="featured__img{current}" src="{root}{case["cover"]}" '
+            f'        <img class="featured__img{image_class}{current}" src="{root}{case["cover"]}" '
             f'alt="{case["alt"]}" width="760" height="340" data-case="{i}">'
         )
         rows.append(
             f'        <a class="crow reveal{" is-selected" if i == selected else ""}" '
             f'href="{(root if case.get("singleLanguage") else lroot)}{case["path"]}" data-case="{i}">\n'
-            f'          <span class="crow__num">{i + 1:02d}</span>\n'
             f'          <span class="crow__title">{title}</span>\n'
             f'          <span class="crow__type">{case["type"]}</span>\n'
             f'          <span class="crow__arrow"><svg class="ic" viewBox="0 0 22 22" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>\n'

@@ -282,7 +282,6 @@ document.documentElement.classList.add('js');
 
   var rows = Array.prototype.slice.call(index.querySelectorAll('.crow'));
   var imgs = Array.prototype.slice.call(featured.querySelectorAll('.featured__img'));
-  var num = featured.querySelector('.featured__num');
   var title = featured.querySelector('.featured__title');
   var type = featured.querySelector('.featured__type');
   if(!rows.length || !imgs.length) return;
@@ -308,7 +307,6 @@ document.documentElement.classList.add('js');
 
     // подпись меняется с задержкой, чтобы не спорить с кроссфейдом
     window.setTimeout(function(){
-      num.textContent = row.querySelector('.crow__num').textContent;
       title.textContent = row.querySelector('.crow__title').textContent;
       type.textContent = row.querySelector('.crow__type').textContent;
       featured.setAttribute('href', row.getAttribute('href'));
