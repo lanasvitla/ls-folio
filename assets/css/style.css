@@ -2278,18 +2278,15 @@ h1,h2,h3,p{ margin: 0; }
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    /* Плашка в столбик выше, чем десктопная строка, и на прижатой к низу
-       позиции воздух над ней и под ней разный. Держим оба отступа и центруем
-       свободное место через auto-маргины: высота остаётся по содержимому.
-       Через transform центровать нельзя — `.featured:hover .featured__caption`
-       специфичнее и вернул бы плашку на место при первом же касании. */
-    top: 24px;
+    /* Равный отступ от нижнего и боковых краев обложки. */
+    top: auto;
     bottom: 24px;
-    height: fit-content;
-    margin-block: auto;
+    height: auto;
+    margin-block: 0;
     padding: 14px 16px;
     gap: 6px;
   }
+  .featured:hover .featured__caption{ transform: none; }
   .featured__num, .featured__title, .featured__type{ width: auto; }
   .featured__title, .featured__type{ white-space: normal; }
   .featured__caption .ilink{ margin-left: 0; margin-top: 2px; }
