@@ -1415,7 +1415,8 @@ h1,h2,h3,p{ margin: 0; }
   /* сдвиг влево на ширину портрета + тот же gap, что был между подписью
      и портретом в старой flex-раскладке — визуально подпись остаётся
      на прежнем месте */
-  right: calc(100% + clamp(190px, 16vw, 230px) + clamp(20px, 2.78vw, 40px));
+  left: 0;
+  right: auto;
   width: 36px;
   display: flex;
   align-items: stretch;
@@ -1457,6 +1458,10 @@ h1,h2,h3,p{ margin: 0; }
 .home-hero__author{
   grid-column: 1;
   grid-row: 1;
+  /* точка отсчета для вертикальной подписи: она встает по левому краю
+     блока, а не отмеряется от текстовой колонки. Поэтому ширина портрета
+     может меняться, подпись остается на месте. */
+  position: relative;
   display: flex;
   gap: clamp(20px, 2.78vw, 40px);
   /* stretch внутри блока: текстовая колонка тянется на высоту портрета,
@@ -1466,8 +1471,13 @@ h1,h2,h3,p{ margin: 0; }
   /* но сам блок не тянется на высоту ряда: ее задает блок метрик справа
      (224px), и без этого колонка растягивалась под него, а ссылка уезжала
      ниже портрета */
-  align-self: start;
-  margin-left: clamp(24px, 3.75vw, 54px);
+  /* тянемся на высоту ряда: ее задает блок метрик справа, и оба блока
+     верхушки получают одинаковый габарит */
+  align-self: stretch;
+  /* левый край блока совпадает с левым краем превью под ним; место слева
+     занимает вертикальная подпись */
+  margin-left: 0;
+  padding-left: calc(36px + clamp(6px, 0.8vw, 12px));
 }
 .home-hero__metrics{ grid-column: 2; grid-row: 1; }
 .home-hero__featured{ grid-column: 1; grid-row: 2; }
@@ -1479,8 +1489,12 @@ h1,h2,h3,p{ margin: 0; }
   flex: 0 0 auto;
   /* уменьшено 27.08: портрет был выше текстовой колонки и не сходился
      с ней по нижней кромке */
+  /* Картинка квадратная и занимает 86.15% ширины блока, остаток справа
+     держит место под пузырь «Hi!». Ширина подобрана так, чтобы высота
+     картинки совпала с высотой всего блока автора — от верхней кромки
+     до строки «Подробнее обо мне». */
   width: clamp(190px, 16vw, 230px);
-  /* не растягивать вместе с колонкой: у пузыря «Hi!» позиция в процентах
+  /* не растягивать вместе с колонкой: у пузыря позиция в процентах
      от высоты контейнера, при растяжении он уезжал бы вниз */
   align-self: flex-start;
 }
@@ -1532,7 +1546,8 @@ h1,h2,h3,p{ margin: 0; }
 
 /* текстовая колонка автора */
 .author-copy{
-  position: relative; /* точка отсчёта для .home-hero__spine */
+  /* точкой отсчета для вертикальной подписи теперь служит сам блок автора,
+     поэтому колонка больше не позиционированный предок */
   flex: 1 1 auto;
   min-width: 0;
   display: flex;
@@ -1622,8 +1637,10 @@ h1,h2,h3,p{ margin: 0; }
   flex-direction: column;
   justify-content: center;
   gap: 4px;
-  min-height: 112.5px;
-  padding: 16px 24px;
+  /* Воздух сверху и снизу 20px по факту: 19px поля плюс пиксель рамки.
+     Было 26px, пробовали 11px по нижним строкам — остановились на 20.
+     Отдельная минимальная высота не нужна: плашка обнимает текст. */
+  padding: 19px 24px;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
@@ -1639,8 +1656,7 @@ h1,h2,h3,p{ margin: 0; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  min-height: 112.5px;
-  padding: 16px 0;
+  padding: 19px 0;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
@@ -2216,7 +2232,7 @@ h1,h2,h3,p{ margin: 0; }
   /* одна колонка — блоки идут стопкой, между ними и над первым по 40px */
   .home-hero{ grid-template-columns: 1fr; row-gap: 40px; padding-top: 40px; }
   .home-hero__spine{ display: none; }
-  .home-hero__author{ margin-left: 0; }
+  .home-hero__author{ margin-left: 0; padding-left: 0; align-self: start; }
   .home-hero__metrics,
   .home-hero__featured,
   .home-hero__index{ grid-column: 1; }
@@ -2233,6 +2249,7 @@ h1,h2,h3,p{ margin: 0; }
   .home-hero__author{ flex-direction: column; gap: 24px; }
   .author-portrait{ width: 100%; height: auto; }
   .author-portrait__img{ width: min(224px, 60vw); height: auto; aspect-ratio: 1; }
+  .author-portrait__hi{ left: min(199px, 52vw); }
   .author-portrait__hi{ left: min(199px, 52vw); top: 60%; }
   /* те же уменьшенные размеры, что в V1 на узком экране */
   .author-portrait__hi{ gap: 6px; }

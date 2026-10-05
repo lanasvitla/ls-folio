@@ -29,8 +29,11 @@
     el.classList.remove('reveal');
     el.querySelectorAll('thead, tbody > tr').forEach(part);
   });
-  root.querySelectorAll('.g-cover-bubble, .g-cover-caption, .g-cover-mark, #garden-title').forEach(part);
+  // Обложку ведет собственная сцена в botanical-garden-cover.js: заголовок,
+  // телефон и плашки там привязаны к прокрутке, а не к появлению в кадре.
+  // Общая хореография ее не трогает, иначе два механизма спорят за opacity.
   root.querySelectorAll('.reveal').forEach(function (el) {
+    if (el.closest('.g-cover')) { el.classList.remove('reveal'); return; }
     el.classList.remove('reveal'); part(el);
   });
   var parts = Array.from(root.querySelectorAll('.g-part'));

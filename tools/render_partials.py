@@ -39,11 +39,15 @@ def load_manifest() -> dict:
 # Файлы, которым браузер обязан верить только после изменения содержимого.
 # Число руками уже подводило: правишь файл, забываешь поднять версию —
 # и у человека остаётся старая версия из кеша. Отпечаток забыть нельзя.
-VERSIONED = ["assets/css/style.css", "assets/js/main.js", "assets/icons/favicon.svg"]
+VERSIONED = ["assets/css/style.css", "assets/js/main.js", "assets/icons/favicon.svg",
+             "assets/css/botanical-garden.css",
+             "assets/js/botanical-garden-motion.js", "assets/js/botanical-garden-cover.js",
+             "assets/js/botanical-garden-scenes.js"]
 
 ASSET_LINK = re.compile(
-    r'((?:href|src)="[^"]*?assets/(?:css/style\.css|js/main\.js|icons/favicon\.svg))'
-    r'\?v=[^"]*(")'
+    r'((?:href|src)="[^"]*?assets/(?:css/style\.css|css/botanical-garden\.css|js/main\.js'
+    r'|icons/favicon\.svg|js/botanical-garden-motion\.js|js/botanical-garden-cover\.js|js/botanical-garden-scenes\.js))'
+    r'(?:\?v=[^"]*)?(")'
 )
 
 

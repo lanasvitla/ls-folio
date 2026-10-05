@@ -3842,6 +3842,7 @@
       "components": [
         "icons",
         "site-header",
+        "other-projects",
         "site-footer",
         "case-forms",
         "case-intro"
@@ -3862,12 +3863,16 @@
       "navDirections": "",
       "description": "A mobile guide to Tbilisi Botanical Garden: visitor research, route planning, information architecture and wireframes.",
       "ogTitle": "Tbilisi Botanical Garden Guide",
-      "ogImage": "assets/works/BotanicalGarden/about-phones.webp",
+      "ogImage": "assets/works/BotanicalGarden/cover.webp",
       "pageTitle": "Tbilisi Botanical Garden Guide – Lana Svitla",
       "lang": "en",
       "caseTitle": "Tbilisi Botanical Garden",
       "caseDesc": "A&nbsp;mobile garden guide that helps visitors discover places, choose a&nbsp;walk and&nbsp;find their way through changing terrain.",
-      "caseMeta": ""
+      "caseMeta": "",
+      "caseList": [
+        "eqlio",
+        "togas"
+      ]
     }
   ],
   "metrics": {
