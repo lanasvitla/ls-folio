@@ -752,6 +752,10 @@ h1,h2,h3,p{ margin: 0; }
   padding-top: 28px;
   border-top: 1px solid var(--line);
 }
+.case-hero--mark-n-post .case-meta{
+  grid-template-columns: calc(2 * clamp(96px, 11vw, 132px) + clamp(28px, 3.5vw, 40px)) minmax(0, calc(320px - clamp(32px, 4.2vw, 60px))) minmax(0, 1fr);
+  column-gap: clamp(32px, 4.2vw, 60px);
+}
 .case-meta dt{
   font-size: 13px;
   color: var(--muted);
@@ -802,6 +806,7 @@ h1,h2,h3,p{ margin: 0; }
    свой край рамки, вторая линия под ним читается как лишняя. Воздух между
    ними при этом нужен — блок начинает новую мысль. */
 .site-preview-wrap + .case-overview{ border-top: 0; padding-top: 60px; }
+.site-preview-wrap + .case-overview.case-overview--balanced-preview-gap{ padding-top: 0; }
 .case-overview--three{ grid-template-columns: repeat(3, 1fr); }
 /* Метка блока живёт по тем же правилам, что и остальные метки на кейсе
    (case-meta dt, case-story__label): 13px, обычное начертание, серый.
@@ -3854,7 +3859,7 @@ h1,h2,h3,p{ margin: 0; }
 .mnp-hero__quote{
   /* подъём формы на колонку с картинкой; значение подобрано так, чтобы под
      голубой карточкой остались те же 30px зазора, что и на оригинале */
-  margin-top: -40px;
+  margin-top: -60px;
   position: relative;
   z-index: 1;
   display: grid;
@@ -3896,6 +3901,42 @@ h1,h2,h3,p{ margin: 0; }
   font-size: 13px;
   color: rgb(98, 98, 98);
 }
+.mnp-hero--georgia,
+.mnp-hero--serbia{ padding-top: 0; }
+.mnp-site-header{
+  min-height: 68px;
+  margin: 0 -110px 48px;
+  padding: 10px 32px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: #fff;
+  border-bottom: 1px solid rgb(216, 221, 226);
+}
+.mnp-site-header__logo{ display: block; width: 220px; height: auto; flex: 0 0 auto; }
+.mnp-site-header__nav{ display: flex; align-items: center; gap: 28px; color: rgb(98, 98, 98); font-size: 15px; white-space: nowrap; }
+.mnp-hero--georgia .mnp-hero__title,
+.mnp-hero--serbia .mnp-hero__title{ max-width: 650px; font-size: 56px; line-height: 1.06; margin-bottom: 24px; }
+.mnp-hero--georgia .mnp-hero__lead,
+.mnp-hero--serbia .mnp-hero__lead{ max-width: 650px; font-size: 20px; line-height: 30px; margin-bottom: 24px; }
+.mnp-hero--georgia .mnp-hero__cta,
+.mnp-hero--serbia .mnp-hero__cta{ gap: 10px; font-size: 20px; padding: 16px 22px; margin-bottom: 24px; }
+.mnp-hero--georgia .mnp-hero__rating-score,
+.mnp-hero--serbia .mnp-hero__rating-score{ font-size: 16px; }
+.mnp-hero--georgia .mnp-hero__rating-count,
+.mnp-hero--serbia .mnp-hero__rating-count{ font-size: 12px; }
+.mnp-hero--georgia .mnp-hero__usp,
+.mnp-hero--serbia .mnp-hero__usp{ padding-bottom: 20px; min-height: 0; }
+.mnp-hero--georgia .mnp-hero__usp{ padding-bottom: 20px; }
+.mnp-hero--georgia .mnp-hero__usp{ top: 276px; }
+.mnp-hero--serbia .mnp-hero__visual{ height: 455px; }
+.mnp-hero--serbia .mnp-hero__visual > img{ top: 0; left: -13px; width: 430px; height: auto; }
+.mnp-hero--serbia .mnp-hero__usp{ top: 218px; left: 0; width: 404px; }
+.mnp-hero--serbia .mnp-hero__usp strong{ font-size: 28px; line-height: 30px; }
+.mnp-hero--serbia .mnp-hero__title{ max-width: 700px; font-size: 56px; line-height: 1.06; }
+.mnp-hero__field span{ color: rgb(145, 145, 145); }
 
 @media (max-width: 640px){
   .case-meta{ grid-template-columns: 1fr; gap: 16px; }
@@ -3906,6 +3947,13 @@ h1,h2,h3,p{ margin: 0; }
   .insight-grid{ grid-template-columns: 1fr; gap: 28px; }
   .journeys{ max-width: none; grid-template-columns: 1fr; gap: 24px; }
   .metric-board{ grid-template-columns: repeat(2, 1fr); padding: 32px 24px; gap: 28px 20px; }
+}
+
+@media (max-width: 700px){
+  .case-hero--mark-n-post .case-meta{ grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; }
+}
+@media (max-width: 640px){
+  .case-hero--mark-n-post .case-meta{ grid-template-columns: 1fr; }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
