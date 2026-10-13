@@ -3927,7 +3927,8 @@ h1,h2,h3,p{ margin: 0; }
 .mnp-hero__field span{ color: rgb(145, 145, 145); }
 
 /* Balkans preview: geometry measured on the published hero at 1400px.
-   The title decoration follows its English text in flow. */
+   The circles sit behind the last letter; vertical-align:middle follows the
+   lowercase x-height rather than the title line box or the descender of g. */
 .mnp-hero--balkans{ padding-top: 0; background: #f5f7f8; line-height: 1.5; }
 .mnp-hero--balkans .mnp-site-header{ height: 72px; margin-bottom: 38px; padding: 0 40px; }
 .mnp-balkans-brand{ display: flex; align-items: center; gap: 14px; font-size: 20px; }
@@ -3935,9 +3936,9 @@ h1,h2,h3,p{ margin: 0; }
 .mnp-hero--balkans .mnp-site-header__nav{ gap: 38px; color: #555; }
 .mnp-hero--balkans .mnp-hero__eyebrow{ display: flex; align-items: center; gap: 5px; margin-bottom: 16px; font-weight: 750; line-height: 1.3; letter-spacing: .035em; }
 .mnp-hero--balkans .mnp-hero__title{ font-size: 64px; line-height: .99; letter-spacing: -.045em; margin-bottom: 12px; }
-.mnp-balkans-title-end{ display: flex; align-items: center; gap: 4px; white-space: nowrap; }
-.mnp-balkans-title-end > span{ flex: 0 0 auto; }
-.mnp-balkans-decoration{ display: flex; align-items: center; font-size: 20px; font-weight: 400; line-height: 1.2; letter-spacing: 0; }
+.mnp-balkans-title-end{ display: block; white-space: nowrap; isolation: isolate; }
+.mnp-balkans-title-text{ position: relative; z-index: 2; }
+.mnp-balkans-decoration{ display: inline-flex; align-items: center; vertical-align: middle; position: relative; z-index: 1; margin-left: -24px; font-size: 20px; font-weight: 400; line-height: 1; letter-spacing: 0; }
 .mnp-balkans-countries{ flex: 0 0 auto; display: flex; align-items: center; position: relative; z-index: 1; }
 .mnp-balkans-countries img{ display: block; width: 48px; height: 48px; border: 2px solid #fff; border-radius: 50%; object-fit: cover; }
 .mnp-balkans-countries img + img{ margin-left: -16px; }
